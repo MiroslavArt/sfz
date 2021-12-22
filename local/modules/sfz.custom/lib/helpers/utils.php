@@ -446,5 +446,42 @@ class Utils
         return strip_tags($el->LAST_ERROR);
     }
 
+        /**
+     * Get enum id
+     * @param array $fields
+     * @param array $properties
+     * @return int|null
+     * @throws \Bitrix\Main\LoaderException
+     */
+    public static function getEnumvalue(int $fieldid, string $checkvalue)
+        //public static function createElement(array $fields, array $properties)
+    {
+        $obEnum = new \CUserFieldEnum; 
+        $rsEnum = $obEnum->GetList(array(), array("USER_FIELD_ID" => $fieldid)); 
+        //print_r($rsEnum);
+        $findid = 0;
+        while($arEnum = $rsEnum->Fetch()){
+            if($arEnum['VALUE']==$checkvalue) {
+                $findid = $arEnum['ID'];
+            }
+        } 
+        return $findid;
+    }
+
+            /**
+     * Get enum id
+     * @param array $fields
+     * @param array $properties
+     * @return int|null
+     * @throws \Bitrix\Main\LoaderException
+     */
+    public static function xml2array ( $xmlObject, $out = array () )
+        //public static function createElement(array $fields, array $properties)
+    {
+        foreach ( (array) $xmlObject as $index => $node )
+                $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node;
+        
+        return $out;
+    }
 
 }
