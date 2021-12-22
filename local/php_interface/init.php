@@ -1,2 +1,8 @@
 <?php
-\Bitrix\Main\Diag\Debug::writeToFile('log', "dataexp".date("d.m.Y G.i.s"), "__main.log");
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/bitrix/vendor/autoload.php')) {
+    require_once ($_SERVER['DOCUMENT_ROOT'].'/bitrix/vendor/autoload.php');
+}
+
+if(Bitrix\Main\Loader::includeModule('sfz.custom')) {
+    \SFZ\Custom\Application::init();
+}

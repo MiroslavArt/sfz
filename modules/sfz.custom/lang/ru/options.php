@@ -1,0 +1,19 @@
+<?php
+$MODULE_ID = 'sfz.custom';
+$MESS[$MODULE_ID.'_company'] = 'Синхронизация компаний';
+$MESS[$MODULE_ID.'_rootXML'] = 'Путь до файла импорта';
+$MESS[$MODULE_ID.'_marketiID'] = 'ID поля маркет';
+$MESS[$MODULE_ID.'_marketUF'] = 'Симв код поля маркет';
+$MESS[$MODULE_ID.'_dealerIB'] = 'ID ИБ дилеров';
+$MESS[$MODULE_ID.'_dealerSyPlyUF'] = 'Симв код поля дилеров СуПлай';
+$MESS[$MODULE_ID.'_dealerLamUF'] = 'Симв код поля дилеров Ламарти';
+$MESS[$MODULE_ID.'_marketnameUF'] = 'Симв код поля имя клиента Маркет';
+$MESS[$MODULE_ID.'_marketthroughnameUF'] = 'Симв код поля сквозного имени клиента Маркет';
+$MESS[$MODULE_ID.'_idGalUF'] = 'Симв код поля id Галактики';
+$MESS[$MODULE_ID.'_hashUF'] = 'Симв код поля hash изменений';
+$MESS[$MODULE_ID.'_statusdealUF'] = 'Симв код поля статус дилерства';
+$MESS[$MODULE_ID.'_manLamUF'] = 'Симв код поля менеджер ламарти';
+$MESS[$MODULE_ID.'_manSyPlyUF'] = 'Симв код поля менеджер фанеры';
+$MESS[$MODULE_ID.'_partncodeUF'] = 'Симв код поля код партнера';
+$MESS[$MODULE_ID.'_furnitcompUF'] = 'Симв код поля компания мебельщик';
+$MESS[$MODULE_ID.'_save'] = 'Сохранить';
