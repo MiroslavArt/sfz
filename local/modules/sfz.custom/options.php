@@ -123,6 +123,7 @@ $arAllOptions = [
             Option::get($MODULE_ID, '_furnitcompUF'),
             ['text']
         ],
+    ]
 ];
 
 if(isset($request["save"]) && check_bitrix_sessid()) {
