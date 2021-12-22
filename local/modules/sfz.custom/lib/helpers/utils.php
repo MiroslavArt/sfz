@@ -479,7 +479,7 @@ class Utils
         //public static function createElement(array $fields, array $properties)
     {
         foreach ( (array) $xmlObject as $index => $node )
-                $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node;
+                $out[$index] = ( is_object ( $node ) ) ? self::xml2array ( $node ) : $node;
         
         return $out;
     }
