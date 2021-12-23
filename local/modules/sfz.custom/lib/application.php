@@ -36,6 +36,9 @@ class Application
         define('manSyPlyUF', \COption::GetOptionString('sfz.custom', 'company_manSyPlyUF'));
         define('partncodeUF', \COption::GetOptionString('sfz.custom', 'company_partncodeUF'));
         define('furnitcompUF', \COption::GetOptionString('sfz.custom', 'company_furnitcompUF'));
+        define('eng1UF', \COption::GetOptionString('sfz.custom', 'company_eng1UF'));
+        define('eng2UF', \COption::GetOptionString('sfz.custom', 'company_eng2UF'));
+        define('commdir', \COption::GetOptionString('sfz.custom', 'company_commdir'));
     }
 
     protected static function initJsHandlers()

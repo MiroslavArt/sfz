@@ -123,6 +123,24 @@ $arAllOptions = [
             Option::get($MODULE_ID, '_furnitcompUF'),
             ['text']
         ],
+        [
+            'company_eng1UF',
+            Loc::getMessage($MODULE_ID.'_eng1UF'),
+            Option::get($MODULE_ID, '_eng1UF'),
+            ['text']
+        ],
+        [
+            'company_eng2UF',
+            Loc::getMessage($MODULE_ID.'_eng2UF'),
+            Option::get($MODULE_ID, '_eng2UF'),
+            ['text']
+        ],
+        [
+            'company_commdir',
+            Loc::getMessage($MODULE_ID.'_commdir'),
+            Option::get($MODULE_ID, '_commdir'),
+            ['text']
+        ]
     ]
 ];
 

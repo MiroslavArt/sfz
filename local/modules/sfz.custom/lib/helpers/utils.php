@@ -484,4 +484,23 @@ class Utils
         return $out;
     }
 
+                /**
+     * Get enum id
+     * @param array $fields
+     * @param array $properties
+     * @return int|null
+     * @throws \Bitrix\Main\LoaderException
+     */
+    public static function getUserbycondition ( array $filter = [] )
+        //public static function createElement(array $fields, array $properties)
+    {
+        $user = \Bitrix\Main\UserTable::getList(array(
+            'filter' => $filter,
+            'limit'=>1,
+            'select'=>array('*','UF_*')
+        ))->fetch();
+
+        return $user; 
+    }
+
 }
