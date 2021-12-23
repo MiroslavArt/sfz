@@ -114,11 +114,11 @@ class ExportImport
                             }
 
                             if($newel['issupplier']==0 && $newel['isbuyer']==1) {
-                                $arNewCompany['COMPANY_TYPE'] == "CUSTOMER";
+                                $arNewCompany['COMPANY_TYPE'] = "CUSTOMER";
                             } elseif($newel['issupplier']==1 && $newel['isbuyer']==0) {
-                                $arNewCompany['COMPANY_TYPE'] == "SUPPLIER";
+                                $arNewCompany['COMPANY_TYPE'] = "SUPPLIER";
                             } else {
-                                $arNewCompany['COMPANY_TYPE'] == "PARTNER";
+                                $arNewCompany['COMPANY_TYPE'] = "PARTNER";
                             }
 
                             if($newel['managerplyemail']) {
