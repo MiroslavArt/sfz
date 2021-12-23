@@ -27,6 +27,7 @@ class ExportImport
                     $idgal = $newel['@attributes']['id'];
                     $title = $newel['org'];
                     if($idga && $title) {
+                        echo "first"; 
                         $arFilter = [
                             idGalUF => $idgal, //выбираем определенную сделку по ID
                             "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
@@ -131,9 +132,17 @@ class ExportImport
                                     $arNewCompany[manLamUF] = $user['ID']; 
                                 }
                             }
+
+                            echo "<pre>";
+                            print_r($arNewCompany);
+                            echo "</pre>";
                             
                             $company = new \CCrmCompany(false);
                             $companyID = $company->Add($arNewCompany);
+
+                            echo "<pre>";
+                            print_r($companyID);
+                            echo "</pre>";
                             
                             if($companyID) {
                                 $requisiteFields=[
@@ -160,7 +169,8 @@ class ExportImport
     
                         }
                     }
-                }    
+                }
+                $test++;    
             }
         } else {
             exit('Не удалось открыть файл'.rootXML);
