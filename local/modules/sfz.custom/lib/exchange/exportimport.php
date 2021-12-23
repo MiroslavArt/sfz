@@ -164,7 +164,7 @@ class ExportImport
                                     $requisiteFields['RQ_KPP'] = $newel['kpp']; 
                                 }
 
-                                $requisiteEntity = new Bitrix\Crm\EntityRequisite();
+                                $requisiteEntity = new \Bitrix\Crm\EntityRequisite();
                                 $resultRequisit = $requisiteEntity->add($requisiteFields);
                             }
                         } else {
