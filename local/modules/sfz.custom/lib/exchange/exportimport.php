@@ -26,6 +26,12 @@ class ExportImport
                     echo "</pre>";
                     $idgal = $newel['@attributes']['id'];
                     $title = $newel['org'];
+                    echo "<pre>";
+                    print_r($idgal);
+                    echo "</pre>";
+                    echo "<pre>";
+                    print_r($title);
+                    echo "</pre>";
                     if($idga && $title) {
                         echo "first"; 
                         $arFilter = [
