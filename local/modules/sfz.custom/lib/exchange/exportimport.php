@@ -26,13 +26,8 @@ class ExportImport
                     echo "</pre>";
                     $idgal = $newel['@attributes']['id'];
                     $title = $newel['org'];
-                    echo "<pre>";
-                    print_r($idgal);
-                    echo "</pre>";
-                    echo "<pre>";
-                    print_r($title);
-                    echo "</pre>";
-                    if($idga && $title) {
+
+                    if($idgal && $title) {
                         echo "first"; 
                         $arFilter = [
                             idGalUF => $idgal, //выбираем определенную сделку по ID
@@ -49,7 +44,7 @@ class ExportImport
                             $arNewCompany = [
                                 'TITLE' => $title,
                                 'OPENED' => 'Y',
-                                idGalUF => $idga,
+                                idGalUF => $idgal,
                                 hashUF => $newel['row_hash'],
                                 "ASSIGNED_BY_ID" => commdir      
                             ]; 
