@@ -34,7 +34,7 @@ class Crm
         }
     }
     
-    public static function onCrmRequisiteUpdate(&$arFields)
+    public static function onBeforeCrmRequisiteUpdate(&$arFields)
     {
         Loader::includeModule('crm');
         \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
