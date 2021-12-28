@@ -34,6 +34,29 @@ class Crm
         }
     }
     
+    public static function onCrmRequisiteUpdate(&$arFields)
+    {
+        Loader::includeModule('crm');
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+        /*if(count($arFields)>4) {
+            $arFilter = [
+                "ID" => $arFields["ID"], //выбираем определенную сделку по ID
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "*",
+                "UF_*"
+            ];
+            $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+            $arCompany = $res->fetch();
+            if($arCompany[idGalUF]) {
+                $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
+                $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
+                $root->Contragent->Market = '1';
+                $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").':'.date("H.i.s").'companyupdate.xml');
+            }
+        }*/
+    }
     
     public static function onBeforeCrmDealUpdate(&$arFields)
     {
