@@ -8,6 +8,12 @@ use SFZ\Custom\Helpers\Utils;
 
 class Crm
 {
+    public static function onAfterCrmCompanyUpdate(&$arFields)
+    {
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+    }
+    
+    
     public static function onBeforeCrmDealUpdate(&$arFields)
     {
         /*if (\Bitrix\Main\Loader::includeModule('crm')) {
