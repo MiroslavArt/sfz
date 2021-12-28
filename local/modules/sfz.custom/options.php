@@ -40,6 +40,12 @@ $arAllOptions = [
             ['text']
         ],
         [
+            'company_importfileXML',
+            Loc::getMessage($MODULE_ID.'_importfileXML'),
+            Option::get($MODULE_ID, '_importfileXML'),
+            ['text']
+        ],
+        [
             'company_marketiID',
             Loc::getMessage($MODULE_ID.'_marketiID'),
             Option::get($MODULE_ID, '_marketiID'),
@@ -133,6 +139,12 @@ $arAllOptions = [
             'company_eng2UF',
             Loc::getMessage($MODULE_ID.'_eng2UF'),
             Option::get($MODULE_ID, '_eng2UF'),
+            ['text']
+        ],
+        [
+            'company_archiveUF',
+            Loc::getMessage($MODULE_ID.'_archiveUF'),
+            Option::get($MODULE_ID, '_archiveUF'),
             ['text']
         ],
         [

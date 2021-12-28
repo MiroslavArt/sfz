@@ -22,6 +22,7 @@ class Application
 
     protected static function setConstants() {   
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
+        define('importfile', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
         define('marketiID', \COption::GetOptionString('sfz.custom', 'company_marketiID'));
         define('marketUF', \COption::GetOptionString('sfz.custom', 'company_marketUF'));
         define('dealerIB', \COption::GetOptionString('sfz.custom', 'company_dealerIB'));
@@ -38,6 +39,7 @@ class Application
         define('furnitcompUF', \COption::GetOptionString('sfz.custom', 'company_furnitcompUF'));
         define('eng1UF', \COption::GetOptionString('sfz.custom', 'company_eng1UF'));
         define('eng2UF', \COption::GetOptionString('sfz.custom', 'company_eng2UF'));
+        define('archiveUF', \COption::GetOptionString('sfz.custom', 'company_archiveUF'));
         define('commdir', \COption::GetOptionString('sfz.custom', 'company_commdir'));
     }
 

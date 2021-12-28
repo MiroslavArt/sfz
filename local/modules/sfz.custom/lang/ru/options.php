@@ -1,7 +1,8 @@
 <?php
 $MODULE_ID = 'sfz.custom';
 $MESS[$MODULE_ID.'_company'] = 'Синхронизация компаний';
-$MESS[$MODULE_ID.'_rootXML'] = 'Путь до файла импорта';
+$MESS[$MODULE_ID.'_rootXML'] = 'Путь до папки обмена';
+$MESS[$MODULE_ID.'_importfile'] = 'Имя файла импорта';
 $MESS[$MODULE_ID.'_marketiID'] = 'ID поля маркет';
 $MESS[$MODULE_ID.'_marketUF'] = 'Симв код поля маркет';
 $MESS[$MODULE_ID.'_dealerIB'] = 'ID ИБ дилеров';
@@ -18,5 +19,6 @@ $MESS[$MODULE_ID.'_partncodeUF'] = 'Симв код поля код партне
 $MESS[$MODULE_ID.'_furnitcompUF'] = 'Симв код поля компания мебельщик';
 $MESS[$MODULE_ID.'_eng1UF'] = 'Симв код поля Наименование на английском 1';
 $MESS[$MODULE_ID.'_eng2UF'] = 'Симв код поля Наименование на английском 2';
+$MESS[$MODULE_ID.'_archiveUF'] = 'Симв код поля архивный';
 $MESS[$MODULE_ID.'_commdir'] = 'ID коммерческого директора';
 $MESS[$MODULE_ID.'_save'] = 'Сохранить';
