@@ -58,7 +58,6 @@ class Application
     {
         $eventManager = EventManager::getInstance();
         $eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
-        $eventManager->addEventHandler('crm','onBeforeCrmRequisiteUpdate', ['\SFZ\Custom\EventHandlers\Crm','onBeforeCrmRequisiteUpdate']);
         //$eventManager->addEventHandler('crm','OnBeforeCrmDealUpdate', ['\iTrack\Custom\EventHandlers\Crm','onBeforeCrmDealUpdate']);
         //$eventManager->addEventHandler('crm','OnBeforeCrmDealAdd', ['\iTrack\Custom\EventHandlers\Crm','OnBeforeCrmDealAdd']);
     }
