@@ -115,9 +115,9 @@ class ExportImport
 
     private static function preparecompanydata($newel = array()) {
         $arParseCompany = [
-            'TITLE' => $newel['@attributes']['id'],
+            'TITLE' => $newel['org'],
             'OPENED' => 'Y',
-            idGalUF => $newel['org'],
+            idGalUF => $newel['@attributes']['id'],
             hashUF => $newel['row_hash'],
             "ASSIGNED_BY_ID" => commdir      
         ]; 
