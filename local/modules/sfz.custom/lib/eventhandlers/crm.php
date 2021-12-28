@@ -10,7 +10,35 @@ class Crm
 {
     public static function onAfterCrmCompanyUpdate(&$arFields)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+        Loader::includeModule('crm');
+
+        
+        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+        if(count($arFields)>4) {
+            $arFilter = [
+                "ID" => $arFields["ID"], //выбираем определенную сделку по ID
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "*",
+                "UF_*"
+            ];
+            $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+            $arCompany = $res->fetch();
+            if($arCompany[idGalUF]) {
+                $xmlstr = <<<XML
+                <?xml version='1.0'?>
+                <Catalog>
+                </Catalog>
+                XML;
+
+                $sxe = new \SimpleXMLElement($xmlstr);
+                $contragent = $sxe->Catalog->addChild('Contragent');
+                $contragent->addAttribute('id', $arCompany[idGalUF]);
+                $sxe->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").date("H:i:s").'companyupdate.xml');
+
+            }
+        }
     }
     
     
