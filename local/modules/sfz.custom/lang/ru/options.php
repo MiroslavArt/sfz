@@ -2,7 +2,7 @@
 $MODULE_ID = 'sfz.custom';
 $MESS[$MODULE_ID.'_company'] = 'Синхронизация компаний';
 $MESS[$MODULE_ID.'_rootXML'] = 'Путь до папки обмена';
-$MESS[$MODULE_ID.'_importfile'] = 'Имя файла импорта';
+$MESS[$MODULE_ID.'_importfileXML'] = 'Имя файла импорта';
 $MESS[$MODULE_ID.'_marketiID'] = 'ID поля маркет';
 $MESS[$MODULE_ID.'_marketUF'] = 'Симв код поля маркет';
 $MESS[$MODULE_ID.'_dealerIB'] = 'ID ИБ дилеров';

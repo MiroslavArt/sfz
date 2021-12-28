@@ -15,7 +15,7 @@ class ExportImport
     public static function parseCompanyXML()
     {        
         Loader::includeModule('crm');
-        $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/'.importfile;
+        $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/'.importfileXML;
         if (file_exists($impfile)) {
             $xml = simplexml_load_file($impfile);
             $contr = $xml->Contragent;

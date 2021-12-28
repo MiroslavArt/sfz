@@ -22,7 +22,7 @@ class Application
 
     protected static function setConstants() {   
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
-        define('importfile', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
+        define('importfileXML', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
         define('marketiID', \COption::GetOptionString('sfz.custom', 'company_marketiID'));
         define('marketUF', \COption::GetOptionString('sfz.custom', 'company_marketUF'));
         define('dealerIB', \COption::GetOptionString('sfz.custom', 'company_dealerIB'));
