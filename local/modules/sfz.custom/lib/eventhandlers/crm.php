@@ -26,17 +26,10 @@ class Crm
             $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
             $arCompany = $res->fetch();
             if($arCompany[idGalUF]) {
-                $xmlstr = <<<XML
-                <?xml version='1.0'?>
-                <Catalog>
-                </Catalog>
-                XML;
-
-                $sxe = new \SimpleXMLElement($xmlstr);
-                $contragent = $sxe->Catalog->addChild('Contragent');
-                $contragent->addAttribute('id', $arCompany[idGalUF]);
-                $sxe->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").date("H:i:s").'companyupdate.xml');
-
+                $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
+                $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
+                $root->Contragent->Market = '1';
+                $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").':'.date("H.i.s").'companyupdate.xml');
             }
         }
     }
