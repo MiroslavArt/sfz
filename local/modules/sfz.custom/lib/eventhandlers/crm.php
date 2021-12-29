@@ -12,8 +12,7 @@ class Crm
     {
         Loader::includeModule('crm');
 
-        
-        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
         if(count($arFields)>4) {
             $arFilter = [
                 "ID" => $arFields["ID"], //выбираем определенную сделку по ID
@@ -28,8 +27,75 @@ class Crm
             if($arCompany[idGalUF]) {
                 $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
                 $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
-                $root->Contragent->Market = '1';
-                $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").':'.date("H.i.s").'companyupdate.xml');
+                $export = false;
+                if($arCompany['TITLE']) {
+                    $export = true;
+                    $root->Contragent->org = $arCompany['TITLE'];
+                }
+                if($arCompany[marketnameUF]) {
+                    $export = true;
+                    $root->Contragent->name1 = $arCompany[marketnameUF];
+                }
+                if($arCompany[marketthroughnameUF]) {
+                    $export = true;
+                    $root->Contragent->name2 = $arCompany[marketthroughnameUF];
+                }
+                if($arCompany[marketthroughnameUF]) {
+                    $export = true;
+                    $root->Contragent->name2 = $arCompany[marketthroughnameUF];
+                }
+                if($arCompany[dealerSyPlyUF]) {
+                    $export = true;
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arCompany[dealerSyPlyUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $root->Contragent->dealerply = $ibid['NAME'];
+                    }
+                }
+                if($arCompany[dealerLamUF]) {
+                    $export = true;
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arCompany[dealerLamUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $root->Contragent->dealerply = $ibid['NAME'];
+                    }
+                }
+                if($arCompany[marketiID]) {
+                    $export = true;
+                    $fieldval = Utils::getEnumvalue(marketiID, $arCompany[marketiID], 'value');
+                    $root->Contragent->market = $fieldval;
+                }
+                if($arCompany[statusdealUF]) {
+                    $export = true;
+                    $root->Contragent->daelerlamarty2 = $arCompany[statusdealUF];
+                }
+                if($arCompany[partncodeUF]) {
+                    $export = true;
+                    $root->Contragent->partner = $arCompany[partncodeUF];
+                }
+                if($arCompany[furnitcompUF]) {
+                    $export = true;
+                    $root->Contragent->mebel = $arCompany[furnitcompUF];
+                }
+                if($arCompany[eng1UF]) {
+                    $export = true;
+                    $root->Contragent->name1eng = $arCompany[eng1UF];
+                }
+                if($arCompany[eng2UF]) {
+                    $export = true;
+                    $root->Contragent->name2eng = $arCompany[eng2UF];
+                }
+                if($arCompany[manSyPlyUF]) {
+                    $export = true;
+                    $user = Utils::getUserbycondition(array('=ID' =>($arCompany[manSyPlyUF]));
+                    $root->Contragent->managerplyemail = $user['EMAIL'];
+                }
+                if($arCompany[manLamUF]) {
+                    $export = true;
+                    $user = Utils::getUserbycondition(array('=ID' =>($arCompany[manLamUF]));
+                    $root->Contragent->managerplyemail = $user['EMAIL'];
+                }
+                if($export) {
+                    $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
+                }
             }
         }
     }
