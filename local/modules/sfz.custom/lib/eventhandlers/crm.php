@@ -32,8 +32,8 @@ class Crm
                     $export = true;
                     $root->Contragent->org = $arCompany['TITLE'];
                 }
-                if($arCompany['FM']['EMAIL']) {
-                    foreach($arCompany['FM']['EMAIL'] as $item) {
+                if($arFields['FM']['EMAIL']) {
+                    foreach($arFields['FM']['EMAIL'] as $item) {
                         if($item['VALUE']) {
                             if($email) {
                                 $email = $email.','.$item['VALUE'];  
@@ -47,21 +47,17 @@ class Crm
                         $root->Contragent->email = $email; 
                     }
                 }
-                \Bitrix\Main\Diag\Debug::writeToFile($arCompany['FM'], "export1", "__miros.log");
-                \Bitrix\Main\Diag\Debug::writeToFile($arCompany['FM']['PHONE'], "export1", "__miros.log");
-                if($arCompany['FM']['PHONE']) {
-                    foreach($arCompany['FM']['PHONE'] as $item) {
-                        \Bitrix\Main\Diag\Debug::writeToFile($item['VALUE'], "export1", "__miros.log");
+                
+                if($arFields['FM']['PHONE']) {
+                    foreach($arFields['FM']['PHONE'] as $item) {                     
                         if($item['VALUE']) {
-                            \Bitrix\Main\Diag\Debug::writeToFile('match', "export1", "__miros.log");
                             if($phone) {
                                 $phone = $phone.','.$item['VALUE'];  
                             } else {
                                 $phone = $item['VALUE']; 
                             }
                         }
-                    }
-                    \Bitrix\Main\Diag\Debug::writeToFile($phone, "export1", "__miros.log");
+                    }                  
                     if($phone) {
                         $export = true;
                         $root->Contragent->tel = $phone; 
