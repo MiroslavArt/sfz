@@ -12,7 +12,7 @@ class Crm
     {
         Loader::includeModule('crm');
 
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
         if(count($arFields)>4) {
             $arFilter = [
                 "ID" => $arFields["ID"], //выбираем определенную сделку по ID
@@ -28,9 +28,9 @@ class Crm
                 $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
                 $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
                 $export = false;
-                if($arCompany['TITLE']) {
+                if($arFields['TITLE']) {
                     $export = true;
-                    $root->Contragent->org = $arCompany['TITLE'];
+                    $root->Contragent->org = $arFields['TITLE'];
                 }
                 if($arFields['FM']['EMAIL']) {
                     foreach($arFields['FM']['EMAIL'] as $item) {
@@ -63,65 +63,65 @@ class Crm
                         $root->Contragent->tel = $phone; 
                     }
                 }
-                if($arCompany[marketnameUF]) {
+                if($arFields[marketnameUF]) {
                     $export = true;
-                    $root->Contragent->name1 = $arCompany[marketnameUF];
+                    $root->Contragent->name1 = $arFields[marketnameUF];
                 }
-                if($arCompany[marketthroughnameUF]) {
+                if($arFields[marketthroughnameUF]) {
                     $export = true;
-                    $root->Contragent->name2 = $arCompany[marketthroughnameUF];
+                    $root->Contragent->name2 = $arFields[marketthroughnameUF];
                 }
-                if($arCompany[marketthroughnameUF]) {
+                if($arFields[marketthroughnameUF]) {
                     $export = true;
-                    $root->Contragent->name2 = $arCompany[marketthroughnameUF];
+                    $root->Contragent->name2 = $arFields[marketthroughnameUF];
                 }
-                if($arCompany[dealerSyPlyUF]) {
+                if($arFields[dealerSyPlyUF]) {
                     $export = true;
-                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arCompany[dealerSyPlyUF]], ['NAME'=>'desc']));
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerSyPlyUF]], ['NAME'=>'desc']));
                     if($ibid) {
                         $root->Contragent->dealerply = $ibid['NAME'];
                     }
                 }
-                if($arCompany[dealerLamUF]) {
+                if($arFields[dealerLamUF]) {
                     $export = true;
-                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arCompany[dealerLamUF]], ['NAME'=>'desc']));
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerLamUF]], ['NAME'=>'desc']));
                     if($ibid) {
                         $root->Contragent->dealerply = $ibid['NAME'];
                     }
                 }
-                if($arCompany[marketiID]) {
+                if($arFields[marketiID]) {
                     $export = true;
-                    $fieldval = Utils::getEnumvalue(marketiID, $arCompany[marketiID], 'value');
+                    $fieldval = Utils::getEnumvalue(marketiID, $arFields[marketiID], 'value');
                     $root->Contragent->market = $fieldval;
                 }
-                if($arCompany[statusdealUF]) {
+                if($arFields[statusdealUF]) {
                     $export = true;
-                    $root->Contragent->daelerlamarty2 = $arCompany[statusdealUF];
+                    $root->Contragent->daelerlamarty2 = $arFields[statusdealUF];
                 }
-                if($arCompany[partncodeUF]) {
+                if($arFields[partncodeUF]) {
                     $export = true;
-                    $root->Contragent->partner = $arCompany[partncodeUF];
+                    $root->Contragent->partner = $arFields[partncodeUF];
                 }
-                if($arCompany[furnitcompUF]) {
+                if($arFields[furnitcompUF]) {
                     $export = true;
-                    $root->Contragent->mebel = $arCompany[furnitcompUF];
+                    $root->Contragent->mebel = $arFields[furnitcompUF];
                 }
-                if($arCompany[eng1UF]) {
+                if($arFields[eng1UF]) {
                     $export = true;
-                    $root->Contragent->name1eng = $arCompany[eng1UF];
+                    $root->Contragent->name1eng = $arFields[eng1UF];
                 }
-                if($arCompany[eng2UF]) {
+                if($arFields[eng2UF]) {
                     $export = true;
-                    $root->Contragent->name2eng = $arCompany[eng2UF];
+                    $root->Contragent->name2eng = $arFields[eng2UF];
                 }
-                if($arCompany[manSyPlyUF]) {
+                if($arFields[manSyPlyUF]) {
                     $export = true;
-                    $user = Utils::getUserbycondition(array('=ID' =>$arCompany[manSyPlyUF]));
+                    $user = Utils::getUserbycondition(array('=ID' =>$arFields[manSyPlyUF]));
                     $root->Contragent->managerplyemail = $user['EMAIL'];
                 }
-                if($arCompany[manLamUF]) {
+                if($arFields[manLamUF]) {
                     $export = true;
-                    $user = Utils::getUserbycondition(array('=ID' =>$arCompany[manLamUF]));
+                    $user = Utils::getUserbycondition(array('=ID' =>$arFields[manLamUF]));
                     $root->Contragent->managerplyemail = $user['EMAIL'];
                 }
                 if($export) {
