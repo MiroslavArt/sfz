@@ -71,10 +71,7 @@ class Crm
                     $export = true;
                     $root->Contragent->name2 = $arFields[marketthroughnameUF];
                 }
-                if($arFields[marketthroughnameUF]) {
-                    $export = true;
-                    $root->Contragent->name2 = $arFields[marketthroughnameUF];
-                }
+                
                 if($arFields[dealerSyPlyUF]) {
                     $export = true;
                     $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerSyPlyUF]], ['NAME'=>'desc']));
@@ -86,12 +83,12 @@ class Crm
                     $export = true;
                     $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerLamUF]], ['NAME'=>'desc']));
                     if($ibid) {
-                        $root->Contragent->dealerply = $ibid['NAME'];
+                        $root->Contragent->daelerlamarty = $ibid['NAME'];
                     }
                 }
-                if($arFields[marketiID]) {
+                if($arFields[marketUF]) {
                     $export = true;
-                    $fieldval = Utils::getEnumvalue(marketiID, $arFields[marketiID], 'value');
+                    $fieldval = Utils::getEnumvalue(marketiID, $arFields[marketUF], 'value');
                     $root->Contragent->market = $fieldval;
                 }
                 if($arFields[statusdealUF]) {
