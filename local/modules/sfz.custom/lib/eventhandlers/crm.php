@@ -28,9 +28,37 @@ class Crm
                 $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
                 $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
                 $export = false;
-                /*if($arCompany['TITLE']) {
+                if($arCompany['TITLE']) {
                     $export = true;
                     $root->Contragent->org = $arCompany['TITLE'];
+                }
+                if($arCompany['FM']['EMAIL']) {
+                    foreach($arCompany['FM']['EMAIL'] as $item) {
+                        if($item['VALUE']) {
+                            if($email) {
+                                $email = $email.','.$item['VALUE'];  
+                            } else {
+                                $email = $item['VALUE']; 
+                            }
+                        }
+                    }
+                    if($email) {
+                        $root->Contragent->email = $email; 
+                    }
+                }
+                if($arCompany['FM']['PHONE']) {
+                    foreach($arCompany['FM']['PHONE'] as $item) {
+                        if($item['VALUE']) {
+                            if($phone) {
+                                $phone = $phone.','.$item['VALUE'];  
+                            } else {
+                                $phone = $item['VALUE']; 
+                            }
+                        }
+                    }
+                    if($phone) {
+                        $root->Contragent->tel = $phone; 
+                    }
                 }
                 if($arCompany[marketnameUF]) {
                     $export = true;
@@ -85,14 +113,14 @@ class Crm
                 }
                 if($arCompany[manSyPlyUF]) {
                     $export = true;
-                    $user = Utils::getUserbycondition(array('=ID' =>($arCompany[manSyPlyUF]));
+                    $user = Utils::getUserbycondition(array('=ID' =>$arCompany[manSyPlyUF]));
                     $root->Contragent->managerplyemail = $user['EMAIL'];
                 }
                 if($arCompany[manLamUF]) {
                     $export = true;
-                    $user = Utils::getUserbycondition(array('=ID' =>($arCompany[manLamUF]));
+                    $user = Utils::getUserbycondition(array('=ID' =>$arCompany[manLamUF]));
                     $root->Contragent->managerplyemail = $user['EMAIL'];
-                }*/
+                }
                 if($export) {
                     $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
                 }
