@@ -47,8 +47,9 @@ class Crm
                         $root->Contragent->email = $email; 
                     }
                 }
+                \Bitrix\Main\Diag\Debug::writeToFile($arCompany['FM'], "export1", "__miros.log");
+                \Bitrix\Main\Diag\Debug::writeToFile($arCompany['FM']['PHONE'], "export1", "__miros.log");
                 if($arCompany['FM']['PHONE']) {
-                    \Bitrix\Main\Diag\Debug::writeToFile($arCompany['FM']['PHONE'], "export1", "__miros.log");
                     foreach($arCompany['FM']['PHONE'] as $item) {
                         \Bitrix\Main\Diag\Debug::writeToFile($item['VALUE'], "export1", "__miros.log");
                         if($item['VALUE']) {
