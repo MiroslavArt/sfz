@@ -28,7 +28,7 @@ class Crm
                 $root = simplexml_load_string('<Catalog><Contragent></Contragent></Catalog>');
                 $root->Contragent->addAttribute('id', $arCompany[idGalUF]);
                 $export = false;
-                if($arCompany['TITLE']) {
+                /*if($arCompany['TITLE']) {
                     $export = true;
                     $root->Contragent->org = $arCompany['TITLE'];
                 }
@@ -92,7 +92,7 @@ class Crm
                     $export = true;
                     $user = Utils::getUserbycondition(array('=ID' =>($arCompany[manLamUF]));
                     $root->Contragent->managerplyemail = $user['EMAIL'];
-                }
+                }*/
                 if($export) {
                     $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
                 }
