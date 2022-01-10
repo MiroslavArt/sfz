@@ -212,6 +212,10 @@ class ExportImport
             $arParseCompany[archiveUF] = $newel['isarch']; 
         }
 
+        if($newel['ismarket']) {
+            $arParseCompany[marketinUF] = $newel['ismarket']; 
+        }
+
         return $arParseCompany; 
     }
 }

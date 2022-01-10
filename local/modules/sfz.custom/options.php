@@ -46,6 +46,12 @@ $arAllOptions = [
             ['text']
         ],
         [
+            'company_makeexportXML',
+            Loc::getMessage($MODULE_ID.'_makeexportXML'),
+            Option::get($MODULE_ID, '_makeexportXML'),
+            ['boolean']
+        ],
+        [
             'company_marketiID',
             Loc::getMessage($MODULE_ID.'_marketiID'),
             Option::get($MODULE_ID, '_marketiID'),
@@ -145,6 +151,12 @@ $arAllOptions = [
             'company_archiveUF',
             Loc::getMessage($MODULE_ID.'_archiveUF'),
             Option::get($MODULE_ID, '_archiveUF'),
+            ['text']
+        ],
+        [
+            'company_marketinUF',
+            Loc::getMessage($MODULE_ID.'_marketinUF'),
+            Option::get($MODULE_ID, '_marketinUF'),
             ['text']
         ],
         [
