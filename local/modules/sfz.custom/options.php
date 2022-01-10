@@ -49,7 +49,7 @@ $arAllOptions = [
             'company_makeexportXML',
             Loc::getMessage($MODULE_ID.'_makeexportXML'),
             Option::get($MODULE_ID, '_makeexportXML'),
-            ['boolean']
+            ['checkbox']
         ],
         [
             'company_marketiID',
