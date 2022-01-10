@@ -114,9 +114,7 @@ class ExportImport
     }
 
     private static function preparecompanydata($newel = array()) {
-        echo "<pre>";
-        print_r($newel);
-        echo "</pre>";
+
         $arParseCompany = [
             'TITLE' => $newel['org'],
             'OPENED' => 'Y',
@@ -213,9 +211,7 @@ class ExportImport
         if($newel['isarch']) {
             $arParseCompany[archiveUF] = $newel['isarch']; 
         }
-        echo "<pre>";
-        print_r($arParseCompany);
-        echo "</pre>";
+
         return $arParseCompany; 
     }
 }
