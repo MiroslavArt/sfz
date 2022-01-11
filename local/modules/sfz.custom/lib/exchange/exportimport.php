@@ -69,7 +69,7 @@ class ExportImport
                         }
                     } else {
                         if($arCompany[hashUF]!=$newel['row_hash']) {
-                            $arUpdateCompany = self::preparecompanydata($newel);
+                            $arUpdateCompany = self::preparecompanydata($newel, $arCompany['ID']);
                             $res = $company->Update($arCompany['ID'],$arUpdateCompany);  
                             $requisiteFields=[
                                 "ENTITY_TYPE_ID"=>4, /*реквизит для компании*/
