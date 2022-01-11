@@ -234,7 +234,6 @@ class ExportImport
         if($newel['ismarket']) {
             $arParseCompany[marketinUF] = $newel['ismarket']; 
         } 
-
         return $arParseCompany; 
     }
 
