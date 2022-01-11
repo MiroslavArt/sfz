@@ -113,30 +113,49 @@ class ExportImport
         return '\SFZ\Custom\Exchange\ExportImport::parseCompanyXML();';
     }
 
-    private static function preparecompanydata($newel = array()) {
-
+    private static function preparecompanydata($newel = array(), $companyid = NULL) {
         $arParseCompany = [
             'TITLE' => $newel['org'],
             'OPENED' => 'Y',
             idGalUF => $newel['@attributes']['id'],
             hashUF => $newel['row_hash'],
-            "ASSIGNED_BY_ID" => commdir      
+            "ASSIGNED_BY_ID" => commdir,
+            marketnameUF => "",
+            marketthroughnameUF => "",
+            dealerSyPlyUF => "",
+            dealerLamUF => "",
+            statusdealUF => "",
+            partncodeUF => "",
+            furnitcompUF => "",
+            eng1UF => "",
+            eng2UF => "",
+            manSyPlyUF => "",
+            manLamUF => "",
+            marketUF => "",
+            manLamUF => "",
+            archiveUF => "",
+            marketinUF => ""
         ]; 
+        
         if($newel['tel']) {
-            $arParseCompany['FM']['PHONE'] = array(
-                'n0' => array(
-                    'VALUE_TYPE' => 'WORK',
-                    'VALUE' => $newel['tel'],
-                )
-            );
+            if(self::checkcompanycontact('PHONE', $companyid, $newel['tel'])) {
+                $arParseCompany['FM']['PHONE'] = array(
+                    'n0' => array(
+                        'VALUE_TYPE' => 'WORK',
+                        'VALUE' => $newel['tel'],
+                    )
+                );
+            }
         }
         if($newel['email']) {
-            $arParseCompany['FM']['EMAIL'] = array(
-                'n0' => array(
-                    'VALUE_TYPE' => 'WORK',
-                    'VALUE' => $newel['email'],
-                )
-            );
+            if(self::checkcompanycontact('EMAIL', $companyid, $newel['email'])) {
+                $arParseCompany['FM']['EMAIL'] = array(
+                    'n0' => array(
+                        'VALUE_TYPE' => 'WORK',
+                        'VALUE' => $newel['email'],
+                    )
+                );
+            }
         }
         if($newel['name1']) {
             $arParseCompany[marketnameUF] = $newel['name1']; 
@@ -206,16 +225,34 @@ class ExportImport
             if($user['ID']) {
                 $arParseCompany[manLamUF] = $user['ID']; 
             }
-        }
+        } 
 
         if($newel['isarch']) {
             $arParseCompany[archiveUF] = $newel['isarch']; 
-        }
+        } 
 
         if($newel['ismarket']) {
             $arParseCompany[marketinUF] = $newel['ismarket']; 
-        }
+        } 
 
         return $arParseCompany; 
+    }
+
+
+    private static function checkcompanycontact($contacttype, $companyid, $checkvalue) {
+        if(!$companyid) {
+            return true;
+        } else {
+            $rs = \CCrmFieldMulti::GetList(
+                array("ID"=>"ASC"),
+                array('ENTITY_ID'=>'COMPANY', 'TYPE_ID' => $contacttype, 'ELEMENT_ID' => $companyid)
+            );
+            while($ar=$rs->fetch()){
+                if($ar['VALUE']==$checkvalue) {
+                    return false;
+                }    
+            }
+            return true; 
+        }
     }
 }
