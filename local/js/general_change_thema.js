@@ -30,4 +30,4 @@ BX.sfz.General.ChangeThema = {
     }
 }
 
-//BX.sfz.General.ChangeThema.init();
+BX.sfz.General.ChangeThema.init();
