@@ -1,7 +1,7 @@
 BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
-    init: function(usertype) {
+    init: function() {
         BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         /*switch(type) {
             case 'detail':
@@ -17,8 +17,7 @@ BX.sfz.General.ChangeThema = {
     hideHandler: function(ActionPanel) {
         console.log(ActionPanel)
         console.log("click")
-        var elem = $("#user-block");
-        elem.remove();
+        var elem = ("#menu-popup-user-menu")
         //var elemsTotal = elems.length;
         console.log(elem); 
         $('span.menu-popup-item-text').each(
@@ -31,4 +30,4 @@ BX.sfz.General.ChangeThema = {
     }
 }
 
-//BX.sfz.General.ChangeThema.init();
+BX.sfz.General.ChangeThema.init();
