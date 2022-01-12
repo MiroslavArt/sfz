@@ -7,8 +7,3 @@ if(Bitrix\Main\Loader::includeModule('sfz.custom')) {
     \SFZ\Custom\Application::init();
 }
 
-\CJSCore::RegisterExt('general_change_thema',
-[
-    'js' => '/local/js/general_change_thema.js'
-]
-);
