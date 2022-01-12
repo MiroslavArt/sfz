@@ -15,6 +15,7 @@ BX.sfz.General.ChangeThema = {
         console.log(usertype); 
     },
     hideHandler: function(ActionPanel) {
+        console.log(ActionPanel)
         console.log("click")
         var elem = $("#user-block");
         elem.remove();
