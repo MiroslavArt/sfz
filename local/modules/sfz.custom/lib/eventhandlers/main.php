@@ -25,7 +25,7 @@ class Main
     {
         
         global $USER;
-        //\CJSCore::init(['jquery', 'general_change_thema']);
+        \CJSCore::init(['general_change_thema']);
         //$asset = Asset::getInstance();
         //$asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         
