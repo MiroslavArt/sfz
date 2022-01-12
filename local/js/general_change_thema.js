@@ -15,8 +15,13 @@ BX.sfz.General.ChangeThema = {
         console.log(usertype); 
     },
     hideHandler: function(ActionPanel) {
-        console.log("hide");
-        console.log(ActionPanel);
+        $('span.menu-popup-item-text').each(
+            function(item)
+                {
+                    console.log(item)
+                    console.log(item.text())
+                }
+            );
     }
 }
 
