@@ -16,7 +16,8 @@ BX.sfz.General.ChangeThema = {
     },
     hideHandler: function(ActionPanel) {
         console.log("click")
-        var elem = $("#popup-window-content-menu-popup-user-menu");
+        var elem = $("#menu-popup-user-menu");
+        elem.remove();
         //var elemsTotal = elems.length;
         console.log(elem); 
         $('span.menu-popup-item-text').each(
