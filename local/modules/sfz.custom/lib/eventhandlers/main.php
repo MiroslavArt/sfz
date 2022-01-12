@@ -25,9 +25,9 @@ class Main
     {
         
         global $USER;
-        \CJSCore::init(['jquery', 'general_change_thema']);
-        $asset = Asset::getInstance();
-        $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
+        //\CJSCore::init(['jquery', 'general_change_thema']);
+        //$asset = Asset::getInstance();
+        //$asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         
         /*$urlTemplates = [
             'lead_detail' => ltrim(Option::get('crm', 'path_to_lead_details', '', SITE_ID), '/'),
