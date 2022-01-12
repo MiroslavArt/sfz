@@ -12,12 +12,12 @@ BX.sfz.General.ChangeThema = {
                 BX.addCustomEvent('Kanban.Grid:onRender', BX.delegate(this.kanbanHandler, this));
                 break;
         }*/
-        console.log(usertype); 
+        //console.log(usertype); 
     },
     hideHandler: function(ActionPanel) {
         console.log(ActionPanel)
         console.log("click")
-        var elem = ("#menu-popup-user-menu")
+        var elem = $("#menu-popup-user-menu")
         //var elemsTotal = elems.length;
         console.log(elem); 
         $('span.menu-popup-item-text').each(
@@ -30,4 +30,4 @@ BX.sfz.General.ChangeThema = {
     }
 }
 
-BX.sfz.General.ChangeThema.init();
+//BX.sfz.General.ChangeThema.init();
