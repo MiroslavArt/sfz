@@ -5,7 +5,7 @@ BX.sfz.General.ChangeThema = {
         console.log(usertype)
         if(usertype==1) {
             console.log("here")
-            $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
+            $("#user-block").attr("onClick","f2()");
             
             //$("#user-block").click(function (event) {
             //    event.preventDefault()
@@ -54,3 +54,8 @@ BX.sfz.General.ChangeThema = {
 }
 //$.holdReady( true );
 //BX.sfz.General.ChangeThema.init();
+
+function f2()
+{
+    console.log("x")
+}
