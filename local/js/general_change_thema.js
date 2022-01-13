@@ -28,6 +28,7 @@ BX.sfz.General.ChangeThema = {
         //console.log(usertype); 
     },
     hideHandler: function() {
+        console.log(this.userid)
         var bindElement = BX("user-block");
 		BX.addClass(bindElement, "user-block-active");
 		BX.PopupMenu.show("user-menu", bindElement, [
