@@ -1,9 +1,10 @@
 BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
-    init: function(usertype) {
+    userid: null,
+    init: function(usertype, useridval) {
         //console.log(usertype)
-
+        this.userid = useridval
         if(usertype==1) {
             //console.log("here")
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
@@ -33,7 +34,7 @@ BX.sfz.General.ChangeThema = {
                 {
                     text : "Моя страница",
                     className : "menu-popup-no-icon",
-                    href: "/company/personal/user/35/"
+                    href: "/company/personal/user/${this.userid}/"
                 },			
                 { text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
                 { text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
