@@ -4,19 +4,14 @@ BX.sfz.General.ChangeThema = {
     userid: null,
     init: function(usertype) {
         this.userid = BX.message('USER_ID')
-        console.log(this.userid)
         if(usertype!=1) {
+            // удаляем на кнопке профиля
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
+            // удаляем в нижнем меню
             $(".footer-link").each(function (index, el){
-                // Для каждого элемента сохраняем значение в personsIdsArray,
-                // если значение есть.
                 var v  = $(el).attr("onclick");
-                console.log(v)
-                //if (v) personsIdsArray.push(v);
+                if (v=='BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog()') $(el).remove();
             });
-
-
-
         }
 
     },
