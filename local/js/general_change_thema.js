@@ -2,11 +2,12 @@ BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
+        console.log(usertype)
         //if(usertype==1) {
             console.log("here")
-            $("#user-block").onclick(function (event) {
-                console.log("click")
+            $("#user-block").click(function (event) {
                 event.preventDefault()
+                console.log("click")
             })
         //}
         //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
