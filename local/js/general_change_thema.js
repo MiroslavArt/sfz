@@ -3,15 +3,17 @@ BX.namespace('sfz.General.ChangeThema');
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
         console.log(usertype)
-        //if(usertype==1) {
-        //    console.log("here")
-        //    $("#user-block").attr("onClick","showUsercutmenu()");
+
+
+        if(usertype==1) {
+            console.log("here")
+            $("#user-block").attr("onClick","showUsercutmenu()");
             
             //$("#user-block").click(function (event) {
             //    event.preventDefault()
             //    console.log("click")
             //})
-        //}
+        }
         //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         //BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
         /*switch(type) {
@@ -57,7 +59,7 @@ BX.sfz.General.ChangeThema = {
 
 function showUsercutmenu()
 {
-    var bindElement = BX("user-block");
+    /*var bindElement = BX("user-block");
 		BX.addClass(bindElement, "user-block-active");
 		BX.PopupMenu.show("user-menu", bindElement, [
 			{
@@ -65,14 +67,7 @@ function showUsercutmenu()
 				className : "menu-popup-no-icon",
 				href: "/company/personal/user/35/"
 			},
-			/*			{
-				text : "Темы оформления",
-				className : "menu-popup-no-icon",
-				id: "theme-picker",
-				onclick: function() {
-					BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog(false);
-				}
-			},*/
+			
 			{ text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
 			{ text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
 			{'text':'Расширения','items':[{'id':'landing_bind','system':true,'text':'Выбрать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'id':'landing_create','system':true,'text':'Создать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu&create=Y\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'delimiter':true},{'href':'/marketplace/?placement=USER_PROFILE_MENU','text':'Битрикс24.Маркет'}]},
@@ -87,5 +82,5 @@ function showUsercutmenu()
 						BX.removeClass(this.bindElement, "user-block-active");
 					}
 				}
-		});
+		});*/
 }
