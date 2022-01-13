@@ -50,5 +50,5 @@ BX.sfz.General.ChangeThema = {
         console.log(par2)
     }*/
 }
-$.holdReady( true );
-BX.sfz.General.ChangeThema.init();
+//$.holdReady( true );
+//BX.sfz.General.ChangeThema.init();
