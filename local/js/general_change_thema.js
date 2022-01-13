@@ -4,7 +4,7 @@ BX.sfz.General.ChangeThema = {
     userid: null,
     init: function(usertype) {
         this.userid = BX.message('USER_ID')
-        console.log(useridval)
+        console.log(this.userid)
         if(usertype==1) {
             //console.log("here")
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
