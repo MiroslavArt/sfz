@@ -3,7 +3,9 @@ BX.namespace('sfz.General.ChangeThema');
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
         if(usertype==1) {
+            console.log("here")
             $("#user-block").onclick(function (event) {
+                console.log("click")
                 event.preventDefault()
             })
         }
