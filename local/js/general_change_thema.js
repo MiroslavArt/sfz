@@ -5,10 +5,12 @@ BX.sfz.General.ChangeThema = {
         console.log(usertype)
         //if(usertype==1) {
             console.log("here")
-            $("#user-block").click(function (event) {
-                event.preventDefault()
-                console.log("click")
-            })
+            $("#user-block").attr("onClick","this.hideHandler");
+            
+            //$("#user-block").click(function (event) {
+            //    event.preventDefault()
+            //    console.log("click")
+            //})
         //}
         //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         //BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
@@ -24,7 +26,7 @@ BX.sfz.General.ChangeThema = {
         //console.log(usertype); 
     },
     hideHandler: function() {
-        //console.log("window")
+        console.log("window")
         //console.log(ActionPanel)
         //console.log(param1)
         //console.log(param2)
