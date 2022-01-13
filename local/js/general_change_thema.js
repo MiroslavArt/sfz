@@ -5,7 +5,7 @@ BX.sfz.General.ChangeThema = {
         console.log(usertype)
         if(usertype==1) {
             console.log("here")
-            $("#user-block").attr("onClick","f2()");
+            $("#user-block").attr("onClick","showUsercutmenu()");
             
             //$("#user-block").click(function (event) {
             //    event.preventDefault()
@@ -55,7 +55,37 @@ BX.sfz.General.ChangeThema = {
 //$.holdReady( true );
 //BX.sfz.General.ChangeThema.init();
 
-function f2()
+function showUsercutmenu()
 {
-    console.log("x")
+    var bindElement = BX("user-block");
+		BX.addClass(bindElement, "user-block-active");
+		BX.PopupMenu.show("user-menu", bindElement, [
+			{
+				text : "Моя страница",
+				className : "menu-popup-no-icon",
+				href: "/company/personal/user/35/"
+			},
+			/*			{
+				text : "Темы оформления",
+				className : "menu-popup-no-icon",
+				id: "theme-picker",
+				onclick: function() {
+					BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog(false);
+				}
+			},*/
+			{ text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
+			{ text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
+			{'text':'Расширения','items':[{'id':'landing_bind','system':true,'text':'Выбрать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'id':'landing_create','system':true,'text':'Создать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu&create=Y\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'delimiter':true},{'href':'/marketplace/?placement=USER_PROFILE_MENU','text':'Битрикс24.Маркет'}]},
+			{ text : "Выйти", className : "menu-popup-no-icon", href : "/auth/?logout=yes&sessid=" + BX.bitrix_sessid() + "&backurl=" + encodeURIComponent(B24.getBackUrl()) }
+			],
+			{
+				offsetTop: -9,
+				offsetLeft: 40,
+				angle: true,
+				events: {
+					onPopupClose : function() {
+						BX.removeClass(this.bindElement, "user-block-active");
+					}
+				}
+		});
 }
