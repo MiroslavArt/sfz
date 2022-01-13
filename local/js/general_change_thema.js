@@ -29,13 +29,14 @@ BX.sfz.General.ChangeThema = {
     },
     hideHandler: function() {
         console.log(this.userid)
+        var useridval = this.userid
         var bindElement = BX("user-block");
 		BX.addClass(bindElement, "user-block-active");
 		BX.PopupMenu.show("user-menu", bindElement, [
                 {
                     text : "Моя страница",
                     className : "menu-popup-no-icon",
-                    href: "/company/personal/user/${this.userid}/"
+                    href: '/company/personal/user/${useridval}/'
                 },			
                 { text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
                 { text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
