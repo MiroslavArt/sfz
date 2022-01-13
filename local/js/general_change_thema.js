@@ -31,7 +31,7 @@ BX.sfz.General.ChangeThema = {
                 function(item)
                     {
                         console.log(item)
-                        console.log(item.text())
+                        //console.log(item.text())
                     }
                 );
         });
