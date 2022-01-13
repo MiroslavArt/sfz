@@ -2,13 +2,13 @@ BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
-        if(usertype==1) {
+        //if(usertype==1) {
             console.log("here")
             $("#user-block").onclick(function (event) {
                 console.log("click")
                 event.preventDefault()
             })
-        }
+        //}
         //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         //BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
         /*switch(type) {
