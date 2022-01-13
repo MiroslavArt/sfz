@@ -22,18 +22,19 @@ BX.sfz.General.ChangeThema = {
         //console.log(param2)
         //console.log("click")
         
-        $(function(){
+        //$(function(){
             //onPageLoad();
-            var elem = $("#menu-popup-user-menu")
-            //var elemsTotal = elems.length;
-            console.log(elem); 
-            $(".menu-popup-item-text").each(function (index, el){
-                // Для каждого элемента сохраняем значение в personsIdsArray,
-                // если значение есть.
-                console.log($(el).text());
-                
-            });
+        $.holdReady( false );
+        var elem = $("#menu-popup-user-menu")
+        //var elemsTotal = elems.length;
+        console.log(elem); 
+        $(".menu-popup-item-text").each(function (index, el){
+            // Для каждого элемента сохраняем значение в personsIdsArray,
+            // если значение есть.
+            console.log($(el).text());
+            
         });
+        //});
     },
     /*detailHandler: function(par1, par2) {
         console.log("detailed")
@@ -41,5 +42,5 @@ BX.sfz.General.ChangeThema = {
         console.log(par2)
     }*/
 }
-
+$.holdReady( true );
 BX.sfz.General.ChangeThema.init();
