@@ -3,6 +3,7 @@ BX.namespace('sfz.General.ChangeThema');
 BX.sfz.General.ChangeThema = {
     init: function() {
         BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
+        BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
         /*switch(type) {
             case 'detail':
                 BX.addCustomEvent('BX.Crm.EntityEditor:onInit', BX.delegate(this.detailHandler, this));
@@ -29,6 +30,10 @@ BX.sfz.General.ChangeThema = {
                     console.log(item.text())
                 }
             );
+    },
+    detailHandler: function(editor, data) {
+        console.log(editor)
+        console.log(data)
     }
 }
 
