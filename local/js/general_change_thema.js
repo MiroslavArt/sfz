@@ -3,15 +3,15 @@ BX.namespace('sfz.General.ChangeThema');
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
         console.log(usertype)
-        //if(usertype==1) {
+        if(usertype==1) {
             console.log("here")
-            $("#user-block").attr("onClick","this.hideHandler");
+            $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
             
             //$("#user-block").click(function (event) {
             //    event.preventDefault()
             //    console.log("click")
             //})
-        //}
+        }
         //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         //BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
         /*switch(type) {
