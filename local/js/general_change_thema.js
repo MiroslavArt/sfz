@@ -2,12 +2,11 @@ BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
     init: function(usertype) {
-        console.log(usertype)
-
+        //console.log(usertype)
 
         if(usertype==1) {
-            console.log("here")
-            $("#user-block").attr("onClick","showUsercutmenu()");
+            //console.log("here")
+            $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
             
             //$("#user-block").click(function (event) {
             //    event.preventDefault()
