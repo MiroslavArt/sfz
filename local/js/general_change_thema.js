@@ -36,7 +36,7 @@ BX.sfz.General.ChangeThema = {
                 {
                     text : "Моя страница",
                     className : "menu-popup-no-icon",
-                    href: '/company/personal/user/${useridval}/'
+                    href: '/company/personal/user/' + useridval + '/'
                 },			
                 { text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
                 { text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
