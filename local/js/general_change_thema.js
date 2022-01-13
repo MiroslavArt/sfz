@@ -27,13 +27,12 @@ BX.sfz.General.ChangeThema = {
             var elem = $("#menu-popup-user-menu")
             //var elemsTotal = elems.length;
             console.log(elem); 
-            $('span.menu-popup-item-text').each(
-                function(item)
-                    {
-                        console.log(item)
-                        //console.log(item.text())
-                    }
-                );
+            $(".menu-popup-item-text").each(function (index, el){
+                // Для каждого элемента сохраняем значение в personsIdsArray,
+                // если значение есть.
+                console.log($(el).text());
+                
+            });
         });
     },
     /*detailHandler: function(par1, par2) {
