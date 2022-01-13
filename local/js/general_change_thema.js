@@ -1,8 +1,13 @@
 BX.namespace('sfz.General.ChangeThema');
 
 BX.sfz.General.ChangeThema = {
-    init: function() {
-        BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
+    init: function(usertype) {
+        if(usertype==1) {
+            $("#user-block").onclick(function (event) {
+                event.preventDefault()
+            })
+        }
+        //BX.addCustomEvent('BX.UI.ActionPanel:created', BX.delegate(this.hideHandler, this));
         //BX.addCustomEvent('BX.Crm.EntityEditorSection:onLayout', BX.delegate(this.detailHandler, this));
         /*switch(type) {
             case 'detail':
@@ -24,16 +29,16 @@ BX.sfz.General.ChangeThema = {
         
         //$(function(){
             //onPageLoad();
-        $.holdReady( false );
-        var elem = $("#menu-popup-user-menu")
+        //$.holdReady( false );
+        //var elem = $("#menu-popup-user-menu")
         //var elemsTotal = elems.length;
-        console.log(elem); 
-        $(".menu-popup-item-text").each(function (index, el){
+        //console.log(elem); 
+        //$(".menu-popup-item-text").each(function (index, el){
             // Для каждого элемента сохраняем значение в personsIdsArray,
             // если значение есть.
-            console.log($(el).text());
+        //    console.log($(el).text());
             
-        });
+        //});
         //});
     },
     /*detailHandler: function(par1, par2) {
