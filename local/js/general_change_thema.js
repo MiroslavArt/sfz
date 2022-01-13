@@ -34,8 +34,8 @@ BX.sfz.General.ChangeThema = {
     },
     detailHandler: function(par1, par2) {
         console.log("detailed")
-        console.log(editor)
-        console.log(data)
+        console.log(par1)
+        console.log(par2)
     }
 }
 
