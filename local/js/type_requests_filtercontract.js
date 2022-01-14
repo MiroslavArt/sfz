@@ -8,6 +8,14 @@ BX.sfz.Type.RequestsFilterContract = {
     reacttoChange: function(event, data) {
         console.log(event)
         console.log(data)
+        if(typeof event === 'object') {
+            this.clientid = data.entityId;
+            console.log(this.clientid)
+            var form = event._formElement;
+            var parentform = $(form).parents('div.ui-entity-editor-content-block');
+            console.log(parentform)
+        }
+         
         //if(typeof event === 'object') {
             //console.log(event._settings.data.REQUISITES[0])
         //    this.clientid = event._settings.data.REQUISITES[0].entityId
