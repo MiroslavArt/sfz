@@ -33,8 +33,9 @@ BX.sfz.Type.RequestsFilterContract = {
                 
                 
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                console.log(typeof up_names)
-                console.log(up_names)
+                let myArray = Array.from(up_names)
+                console.log(myArray)
+                //console.log(up_names.outerText)
                 //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
