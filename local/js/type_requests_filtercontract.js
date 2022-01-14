@@ -34,6 +34,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(list[0])
                 for (var item of list) {
                     console.log(item);
+
                 }
                                     
                 //var elems = document.getElementsByClassName('enumeration-select')
@@ -52,7 +53,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 //let myArray = Array.from(up_names)
                 //console.log(myArray)
                 //console.log(up_names.outerText)
-                //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
+                console.log(up_names[0]);
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
                 //up_names.forEach((rate) => {
