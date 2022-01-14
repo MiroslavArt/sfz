@@ -30,12 +30,12 @@ BX.sfz.Type.RequestsFilterContract = {
                 //NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
                 //HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
-                var list = document.getElementsByClassName("ui-entity-editor-content-block");
+                //var list = document.getElementsByClassName("ui-entity-editor-content-block");
                 //console.log(list[0])
-                for (var item of list) {
-                    console.log(item);
+                //for (var item of list) {
+                //    console.log(item);
 
-                }
+                //}
                                     
                 //var elems = document.getElementsByClassName('enumeration-select')
                 //console.log(elems)
@@ -55,6 +55,9 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(up_names.outerText)
                 var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
                 console.log(up_names[0]);
+                var wrap = up_names[0];
+                var select = wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                console.log(select[0]);
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
                 //up_names.forEach((rate) => {
