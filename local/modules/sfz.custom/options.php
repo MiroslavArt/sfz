@@ -39,7 +39,7 @@ $arAllOptions = [
             Option::get($MODULE_ID, '_hidethema'),
             ['checkbox']
         ]
-    },
+    ],
     'company' => [
         [
             'company_rootXML',
