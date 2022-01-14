@@ -22,7 +22,7 @@ BX.sfz.Type.RequestsFilterContract = {
                     true, true
                 );*/
                 var elems = document.getElementsByClassName('enumeration-select')
-                console.log(elems[0])
+                console.log(elems)
                 //for (let elem of elems) {
                 //    var children = elem.childNodes;
                 //    for (var i = 0; i < children.length; ++i) {
