@@ -47,10 +47,10 @@ BX.sfz.Type.RequestsFilterContract = {
                 //}
                 //var $value = $("[name='UF_CRM_1_1642152336']");
                 //console.log($value.length)
-                
-                var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
+                //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                console.log(up_names)
+                console.log(up_names[0])
                 console.log(typeof up_names)
                 //console.log(up_names.remove())
                 //console.log(up_names.length())
