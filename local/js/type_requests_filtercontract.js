@@ -3,17 +3,17 @@ BX.namespace('sfz.Type.RequestsFilterContract');
 BX.sfz.Type.RequestsFilterContract = {
     clientid: null, 
     init: function() {
-        BX.addCustomEvent('CRM.EntityModel.Change', BX.delegate(this.reacttoChange, this));
+        BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
     },
-    reacttoChange: function(event) {
-        //console.log(event)
-        if(typeof event === 'object') {
+    reacttoChange: function(event, data) {
+        console.log(event)
+        //if(typeof event === 'object') {
             //console.log(event._settings.data.REQUISITES[0])
-            this.clientid = event._settings.data.REQUISITES[0].entityId
-            console.log(this.clientid); 
-        }
-        let elements = document.querySelectorAll('select');
-        console.log(elements)
+        //    this.clientid = event._settings.data.REQUISITES[0].entityId
+        //    console.log(this.clientid); 
+        //}
+        //let elements = document.querySelectorAll('select');
+        //console.log(elements)
         
         //for (let elem of document.body.children) {
         //    if (elem.matches('select')) {
