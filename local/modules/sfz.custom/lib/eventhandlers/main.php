@@ -49,7 +49,7 @@ class Main
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
         if($page=='type_detail') {
-            //\CJSCore::init(['type_requests_filtercontract']);
+            \CJSCore::init(['type_requests_filtercontract']);
             //$asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
         }
 
