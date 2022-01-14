@@ -13,6 +13,8 @@ BX.sfz.Type.RequestsFilterContract = {
             console.log(this.clientid); 
         }
         //console.log(BX.Crm.EntityEditorSection)
+        var options = $("select").find(`[name=UF_CRM_1_1642152336]`)
+        console.log(options)
     }
 }
 
