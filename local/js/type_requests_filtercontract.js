@@ -52,7 +52,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
                 console.log(up_names)
                 console.log(typeof up_names)
-                console.log(up_names.remove())
+                //console.log(up_names.remove())
                 //console.log(up_names.length())
                 //let myArray = Array.from(up_names)
                 //console.log(myArray)
