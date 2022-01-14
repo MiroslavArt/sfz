@@ -53,12 +53,12 @@ BX.sfz.Type.RequestsFilterContract = {
                 //let myArray = Array.from(up_names)
                 //console.log(myArray)
                 //console.log(up_names.outerText)
-                var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
-                console.log(up_names[0]);
-                var wrap = up_names[0];
+                //var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
+                //console.log(up_names[0]);
+                //var wrap = up_names[0];
                 //var select = wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]');
-                var select = wrap.getElementsByName("UF_CRM_1_1642152336");
-                console.log(select)
+                //var select = wrap.getElementsByName("UF_CRM_1_1642152336");
+                //console.log(select)
                 //var select =  wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]')   
                 //console.log(select) 
                 //console.log(select[0]);
