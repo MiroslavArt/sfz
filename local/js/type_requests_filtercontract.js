@@ -28,11 +28,12 @@ BX.sfz.Type.RequestsFilterContract = {
                 //        console.log(children[i])
                 //    }
                 //}
-                var $value = $("[name='UF_CRM_1_1642152336']");
+                //var $value = $("[name='UF_CRM_1_1642152336']");
                 console.log($value.length)
                 
                 
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                console.log(up_names.length)
                 //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
