@@ -29,7 +29,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //    }
                 //}
                 //var $value = $("[name='UF_CRM_1_1642152336']");
-                console.log($value.length)
+                //console.log($value.length)
                 
                 
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
