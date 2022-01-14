@@ -28,12 +28,13 @@ BX.sfz.Type.RequestsFilterContract = {
                 //        console.log(children[i])
                 //    }
                 //}
-                var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                console.log(up_names[0])
-                if(up_names[0]) {
+                //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                console.log(up_names)
+                /*if(up_names[0]) {
                     var options = up_names[0].querySelectorAll('option');
                     options.forEach(o => o.remove());
-                }
+                }*/
                 //let parent = form.closest('.ui-entity-editor-content-block')
                 //console.log(parent);
                 //var form = event._formElement;
