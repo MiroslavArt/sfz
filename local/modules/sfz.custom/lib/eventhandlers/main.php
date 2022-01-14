@@ -13,12 +13,12 @@ class Main
         $eventManager = EventManager::getInstance();
         $eventManager->addEventHandler('main','OnEpilog', ['\sfz\Custom\EventHandlers\Main','onEpilog']);
 
-        \CJSCore::RegisterExt('type_requests_filtercontract',
+        /*\CJSCore::RegisterExt('type_requests_filtercontract',
             [
                 'js' => '/local/js/type_requests_filtercontract.js',
                 //'css' => '/local/js/itrack.custom/crm_detail_editor_ext/style.css'
             ]
-        );
+        );*/
     }
 
     public static function onEpilog()
