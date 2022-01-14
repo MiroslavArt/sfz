@@ -15,13 +15,13 @@ BX.sfz.Type.RequestsFilterContract = {
                 console.log(this.clientid)
                 var form = event._formElement
                 console.log(form.parentNode)
-                obSelect = BX.findChild(BX("body"), {
+                /*obSelect = BX.findChild(BX("body"), {
                     "tag" : "div",
                     "class" : "ui-entity-editor-section-edit"
                     }, 
                     true, true
-                );
-                console.log(obSelect)
+                );*/
+                console.log(document.getElementsByClassName('ui-entity-editor-section-edit'))
                 //let parent = form.closest('.ui-entity-editor-content-block')
                 //console.log(parent);
                 //var form = event._formElement;
