@@ -17,7 +17,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(form)
                 //var parentform = $(form).parent();
                 //var secparentform  =  $(parentform).parent(); 
-                console.log(event._formElement.parentElement)
+                console.log(event._formElement.parentElement.parentElement)
                 //var core = event.ownerDocument.body
                 //var parentform = BX.findChild(core, {"tag" : "select"}, true, true)
                 //var parentform = event._formElement.parentElement
