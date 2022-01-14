@@ -21,8 +21,14 @@ BX.sfz.Type.RequestsFilterContract = {
                     }, 
                     true, true
                 );*/
-                var elems = document.getElementsByClassName('enumeration-select')
-                console.log(elems)
+                "use strict";
+
+                Array.from(document.getElementsByClassName("enumeration-select")).forEach(function(item) {
+                    console.log(item.id);
+                });
+                
+                //var elems = document.getElementsByClassName('enumeration-select')
+                //console.log(elems)
                 //for (let elem of elems) {
                 //    var children = elem.childNodes;
                 //    for (var i = 0; i < children.length; ++i) {
