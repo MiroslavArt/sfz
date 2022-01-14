@@ -33,13 +33,14 @@ BX.sfz.Type.RequestsFilterContract = {
                 
                 
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                console.log(up_names.length)
+                console.log(typeof up_names)
+                console.log(up_names)
                 //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
-                up_names.forEach((rate) => {
-                    console.log(rate)
-                });
+                //up_names.forEach((rate) => {
+                //    console.log(rate)
+                //});
                 
                 /*if(up_names[0]) {
                     var options = up_names[0].querySelectorAll('option');
