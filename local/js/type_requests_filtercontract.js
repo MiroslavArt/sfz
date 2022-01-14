@@ -14,7 +14,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 this.clientid = data.entityId;
                 console.log(this.clientid)
                 var form = event._formElement
-                console.log(form.parentNode)
+                //console.log(form.parentNode)
                 /*obSelect = BX.findChild(BX("body"), {
                     "tag" : "div",
                     "class" : "ui-entity-editor-section-edit"
@@ -49,7 +49,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log($value.length)
                 
                 
-                //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                console.log(up_names)
                 //let myArray = Array.from(up_names)
                 //console.log(myArray)
                 //console.log(up_names.outerText)
