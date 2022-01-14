@@ -13,6 +13,8 @@ BX.sfz.Type.RequestsFilterContract = {
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
                 console.log(this.clientid)
+                document = event._formElement.ownerDocument
+                console.log(document.querySelectorAll("select"));
                 //var form = event._formElement;
                 //console.log(form)
                 //var parentform = $(form).parent();
@@ -26,7 +28,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //parentform = parentform.parent();
                 //var parentform = $(form).parents('.ui-entity-editor-section-content');
                 //var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
-                console.log(event._formElement.ownerDocument.querySelectorAll("select"));
+                
                 //console.log(secparentform)
             }
         }
