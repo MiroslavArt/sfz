@@ -31,7 +31,10 @@ BX.sfz.Type.RequestsFilterContract = {
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
                 //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 console.log(up_names)
-                console.log(up_names[0])
+                up_names.forEach((rate) => {
+                    console.log(rate)
+                });
+                
                 /*if(up_names[0]) {
                     var options = up_names[0].querySelectorAll('option');
                     options.forEach(o => o.remove());
