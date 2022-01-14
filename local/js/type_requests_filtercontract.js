@@ -8,7 +8,7 @@ BX.sfz.Type.RequestsFilterContract = {
     reacttoChange: function(event) {
         console.log(event)
         if(typeof event === 'object') {
-            console.log(event._settings.data.REQUISITES)
+            console.log(event._settings.data.REQUISITES[0])
             this.clientid = event._settings.data.REQUISITES[0].enitityId
             console.log(this.clientid); 
         }
