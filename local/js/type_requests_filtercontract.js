@@ -6,11 +6,11 @@ BX.sfz.Type.RequestsFilterContract = {
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
     },
     reacttoChange: function(event, data) {
-        console.log(event)
-        console.log(data)
+        //console.log(event)
+        //console.log(data)
         if(typeof event === 'object') {
             const reg = /COMPANY/
-            if(reg.test(data._id)) {
+            if(reg.test(data.id)) {
                 this.clientid = data.entityId;
                 console.log(this.clientid)
                 var form = event._formElement;
