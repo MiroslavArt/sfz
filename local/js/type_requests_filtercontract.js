@@ -21,7 +21,8 @@ BX.sfz.Type.RequestsFilterContract = {
                     }, 
                     true, true
                 );*/
-                //var elems = document.getElementsByClassName('enumeration-select')
+                var elems = document.getElementsByClassName('enumeration-select')
+                console.log(elems[0])
                 //for (let elem of elems) {
                 //    var children = elem.childNodes;
                 //    for (var i = 0; i < children.length; ++i) {
@@ -32,9 +33,9 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log($value.length)
                 
                 
-                var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                let myArray = Array.from(up_names)
-                console.log(myArray)
+                //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                //let myArray = Array.from(up_names)
+                //console.log(myArray)
                 //console.log(up_names.outerText)
                 //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var options = up_names.querySelectorAll('option');
