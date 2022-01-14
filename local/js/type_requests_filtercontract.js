@@ -21,7 +21,7 @@ BX.sfz.Type.RequestsFilterContract = {
                     }, 
                     true, true
                 );*/
-                console.log(document.getElementsByClassName('ui-entity-editor-content-block'))
+                console.log(document.getElementsByClassName('enumeration-select'))
                 //let parent = form.closest('.ui-entity-editor-content-block')
                 //console.log(parent);
                 //var form = event._formElement;
