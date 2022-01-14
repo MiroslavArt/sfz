@@ -7,10 +7,11 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     reacttoChange: function(event) {
         console.log(event)
-        if(typeof field === 'object') {
-            console.log(event._settings.data.REQUISITES[0].enitityID); 
+        if(typeof event === 'object') {
+            this.clientid = event._settings.data.REQUISITES[0].enitityID
+            console.log(this.clientid); 
         }
-        console.log(BX.Crm.EntityEditorSection)
+        //console.log(BX.Crm.EntityEditorSection)
     }
 }
 
