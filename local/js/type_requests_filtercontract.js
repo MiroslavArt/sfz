@@ -29,7 +29,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //    }
                 //}
                 var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                console.log(up_names)
+                console.log(up_names[0])
                 if(up_names[0]) {
                     var options = up_names[0].querySelectorAll('option');
                     options.forEach(o => o.remove());
