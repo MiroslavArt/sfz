@@ -23,8 +23,10 @@ BX.sfz.Type.RequestsFilterContract = {
                 );*/
                 var elems = document.getElementsByClassName('enumeration-select')
                 for (let elem of elems) {
-                    var select = elem.getElementsByTagName('select');
-                    console.log(select)
+                    var children = elem.childNodes;
+                    for (var i = 0; i < children.length; ++i) {
+                        console.log(children[i])
+                    }
                 }
                 //let parent = form.closest('.ui-entity-editor-content-block')
                 //console.log(parent);
