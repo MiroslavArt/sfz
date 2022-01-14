@@ -31,10 +31,10 @@ BX.sfz.Type.RequestsFilterContract = {
                 //HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
                 var list = document.getElementsByClassName("ui-entity-editor-content-block");
-                console.log(list[0])
-                //for (var item of list) {
-                //    console.log(item.id);
-                //}
+                //console.log(list[0])
+                for (var item of list) {
+                    console.log(item);
+                }
                                     
                 //var elems = document.getElementsByClassName('enumeration-select')
                 //console.log(elems)
