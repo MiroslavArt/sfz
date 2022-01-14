@@ -9,13 +9,17 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(event)
         console.log(data)
         if(typeof event === 'object') {
-            this.clientid = data.entityId;
-            console.log(this.clientid)
-            var form = event._formElement;
-            console.log(form)
-            //var parentform = $(form).parents('div.ui-entity-editor-content-block');
-            var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
-            console.log(parentform)
+            const reg = /COMPANY/
+            if(reg.test(data._id)) {
+                this.clientid = data.entityId;
+                console.log(this.clientid)
+                var form = event._formElement;
+                console.log(form)
+                var parentform = $(form).parent();
+                //var parentform = $(form).parents('div.ui-entity-editor-content-block');
+                //var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
+                console.log(parentform)
+            }
         }
          
         //if(typeof event === 'object') {
