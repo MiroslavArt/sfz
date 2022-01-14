@@ -6,7 +6,7 @@ BX.sfz.Type.RequestsFilterContract = {
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
     },
     reacttoChange: function(event, data) {
-        //console.log(event)
+        console.log(event)
         //console.log(data)
         if(typeof event === 'object') {
             const reg = /COMPANY/
@@ -17,7 +17,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(form)
                 //var parentform = $(form).parent();
                 //var secparentform  =  $(parentform).parent(); 
-                var parentform = BX.findParent(event._formElement.parentElement, {"class" : "ui-entity-editor-section-content"})
+                var parentform = BX.findParent(event._formElement, {"class" : "ui-entity-editor-section-content"})
                 //parentform = parentform.parent();
                 //var parentform = $(form).parents('.ui-entity-editor-section-content');
                 //var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
