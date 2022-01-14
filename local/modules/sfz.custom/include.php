@@ -7,5 +7,5 @@
 /*\CJSCore::RegisterExt('type_requests_filtercontract',
 [
     'js' => '/local/js/type_requests_filtercontract.js'
-]*/
+]
 );
