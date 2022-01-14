@@ -21,13 +21,15 @@ BX.sfz.Type.RequestsFilterContract = {
                     }, 
                     true, true
                 );*/
-                var elems = document.getElementsByClassName('enumeration-select')
-                for (let elem of elems) {
-                    var children = elem.childNodes;
-                    for (var i = 0; i < children.length; ++i) {
-                        console.log(children[i])
-                    }
-                }
+                //var elems = document.getElementsByClassName('enumeration-select')
+                //for (let elem of elems) {
+                //    var children = elem.childNodes;
+                //    for (var i = 0; i < children.length; ++i) {
+                //        console.log(children[i])
+                //    }
+                //}
+                var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                console.log(up_names)
                 //let parent = form.closest('.ui-entity-editor-content-block')
                 //console.log(parent);
                 //var form = event._formElement;
