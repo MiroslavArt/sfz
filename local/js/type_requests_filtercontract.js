@@ -17,13 +17,14 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(form)
                 //var parentform = $(form).parent();
                 //var secparentform  =  $(parentform).parent(); 
-                var core = event.ownerDocument.body
-                var parentform = BX.findChild(core, {"tag" : "select"}, true, true)
+                console.log(event._formElement.ownerDocument)
+                //var core = event.ownerDocument.body
+                //var parentform = BX.findChild(core, {"tag" : "select"}, true, true)
                 //var parentform = event._formElement.parentElement
                 //parentform = parentform.parent();
                 //var parentform = $(form).parents('.ui-entity-editor-section-content');
                 //var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
-                console.log(parentform)
+                console.log(event._formElement.ownerDocument.querySelectorAll("select"));
                 //console.log(secparentform)
             }
         }
