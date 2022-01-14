@@ -6,7 +6,7 @@ BX.sfz.Type.RequestsFilterContract = {
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
     },
     reacttoChange: function(event, data) {
-        console.log(event)
+        //console.log(event)
         //console.log(data)
         if(typeof event === 'object') {
             const reg = /COMPANY/
@@ -17,16 +17,16 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log(form)
                 //var parentform = $(form).parent();
                 //var secparentform  =  $(parentform).parent(); 
-                var parentform = event._formElement.parentElement.parentNode
+                //var parentform = event._formElement.parentElement.parentNode
                 //var secparentform = $(parentform).parent()
-                console.log(parentform)
+                //console.log(parentform)
                 //var core = event.ownerDocument.body
                 //var parentform = BX.findChild(core, {"tag" : "select"}, true, true)
                 //var parentform = event._formElement.parentElement
                 //parentform = parentform.parent();
                 //var parentform = $(form).parents('.ui-entity-editor-section-content');
                 //var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "CLIENT"});
-                //console.log(event._formElement.ownerDocument.querySelectorAll("select"));
+                console.log(event._formElement.ownerDocument.querySelectorAll("select"));
                 //console.log(secparentform)
             }
         }
@@ -50,4 +50,4 @@ BX.sfz.Type.RequestsFilterContract = {
     }
 }
 
-BX.sfz.Type.RequestsFilterContract.init()
+//BX.sfz.Type.RequestsFilterContract.init()

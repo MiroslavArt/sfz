@@ -10,15 +10,15 @@ class Main
 {
     public static function onProlog()
     {
-        /*$eventManager = EventManager::getInstance();
-        $eventManager->addEventHandler('main','OnEpilog', ['\iTrack\Custom\EventHandlers\Main','onEpilog']);
+        $eventManager = EventManager::getInstance();
+        $eventManager->addEventHandler('main','OnEpilog', ['\sfz\Custom\EventHandlers\Main','onEpilog']);
 
-        \CJSCore::RegisterExt('itrack_crm_detail_editor_ext',
+        \CJSCore::RegisterExt('type_requests_filtercontract',
             [
-                'js' => '/local/js/itrack.custom/crm_detail_editor_ext/script.js',
-                'css' => '/local/js/itrack.custom/crm_detail_editor_ext/style.css'
+                'js' => '/local/js/type_requests_filtercontract.js',
+                //'css' => '/local/js/itrack.custom/crm_detail_editor_ext/style.css'
             ]
-        );*/
+        );
     }
 
     public static function onEpilog()
@@ -50,7 +50,7 @@ class Main
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
         if($page=='type_detail') {
             \CJSCore::init(['type_requests_filtercontract']);
-            //$asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
         }
 
         
