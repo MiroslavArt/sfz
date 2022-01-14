@@ -43,7 +43,7 @@ class Main
             'contact_list' => ltrim(Option::get('crm', 'path_to_contact_list', '', SITE_ID), '/'),
             'company_list' => ltrim(Option::get('crm', 'path_to_company_list', '', SITE_ID), '/'),
             'tasks_list' => ltrim(Option::get('tasks', 'paths_task_user', '', SITE_ID), '/'),
-            'type_detail' => 'crm/type/147/details/"type_id"/'
+            'type_detail' => 'crm/type/147/details/#type_id#/'
         ];
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
