@@ -30,7 +30,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
                 //HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
-                var list = document.getElementsByClassName("ui-entity-editor-section-header");
+                var list = document.getElementsByClassName("ui-entity-editor-content-block");
                 console.log(list[0])
                 //for (var item of list) {
                 //    console.log(item.id);
