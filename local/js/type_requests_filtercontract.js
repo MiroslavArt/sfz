@@ -28,8 +28,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 //        console.log(children[i])
                 //    }
                 //}
-                //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
-                var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                var up_names = document.getElementsByName("UF_CRM_1_1642152336");
+                //var up_names = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 console.log(up_names)
                 /*if(up_names[0]) {
                     var options = up_names[0].querySelectorAll('option');
