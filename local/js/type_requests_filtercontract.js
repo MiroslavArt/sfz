@@ -48,8 +48,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 //var $value = $("[name='UF_CRM_1_1642152336']");
                 //console.log($value.length)
                 
-                
-                var up_names = document.getElementByName("UF_CRM_1_1642152336");
+                var up_names = document.querySelector('[name="UF_CRM_1_1642152336"]');
+                //var up_names = document.getElementsByName("UF_CRM_1_1642152336");
                 console.log(up_names)
                 console.log(typeof up_names)
                 console.log(up_names.remove())
