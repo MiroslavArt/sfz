@@ -25,7 +25,7 @@ class Main
     {
         
         global $USER;
-        \CJSCore::init(['jquery', 'general_change_thema']);
+        \CJSCore::init(['jquery', 'general_change_thema', 'type_requests_filtercontract']);
         $asset = Asset::getInstance();
         if(hidethema=="Y") {
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
@@ -33,7 +33,7 @@ class Main
         
         
         $urlTemplates = [
-            'lead_detail' => ltrim(Option::get('crm', 'path_to_lead_details', '', SITE_ID), '/'),
+            /*'lead_detail' => ltrim(Option::get('crm', 'path_to_lead_details', '', SITE_ID), '/'),
             'deal_detail' => ltrim(Option::get('crm', 'path_to_deal_details', '', SITE_ID), '/'),
             'contact_detail' => ltrim(Option::get('crm', 'path_to_contact_details', '', SITE_ID), '/'),
             'company_detail' => ltrim(Option::get('crm', 'path_to_company_details', '', SITE_ID), '/'),
@@ -42,13 +42,16 @@ class Main
             'deal_kanban_category' => ltrim(Option::get('crm', 'path_to_deal_kanban', '', SITE_ID), '/').'category/#category_id#/',
             'contact_list' => ltrim(Option::get('crm', 'path_to_contact_list', '', SITE_ID), '/'),
             'company_list' => ltrim(Option::get('crm', 'path_to_company_list', '', SITE_ID), '/'),
-            'tasks_list' => ltrim(Option::get('tasks', 'paths_task_user', '', SITE_ID), '/'),
+            'tasks_list' => ltrim(Option::get('tasks', 'paths_task_user', '', SITE_ID), '/'),*/
             'type_detail' => 'crm/type/147/details/#type_id#/'
         ];
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
-        \Bitrix\Main\Diag\Debug::writeToFile($page, "page".date("d.m.Y G.i.s"), "__debug.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($arVars, "vars".date("d.m.Y G.i.s"), "__debug.log");
+        if($page=='type_detail') {
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
+        }
+
+        
         //$type = '';
 
 
