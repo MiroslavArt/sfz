@@ -6,17 +6,12 @@ BX.sfz.General.ChangeThema = {
         this.userid = BX.message('USER_ID')
         if(usertype!=1) {
             // удаляем на кнопке профиля
-            $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hideHandler()");
+            $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hidetopHandler()");
             // удаляем в нижнем меню
-            $(".footer-link").each(function (index, el){
-                var v  = $(el).attr("onclick");
-                if (v=='BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog()') $(el).remove();
-            });
+            this.hidebottomHandler()
         }
-
     },
-    hideHandler: function() {
-        console.log(this.userid)
+    hidetopHandler: function() {
         var useridval = this.userid
         var bindElement = BX("user-block");
 		BX.addClass(bindElement, "user-block-active");
@@ -44,8 +39,12 @@ BX.sfz.General.ChangeThema = {
             });
         
     },
-    
+    hidebottomHandler: function() {
+        $(".footer-link").each(function (index, el){
+            var v  = $(el).attr("onclick");
+            if (v=='BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog()') $(el).remove();
+        });
+    },
 }
-//$.holdReady( true );
-//BX.sfz.General.ChangeThema.init();
+
 

@@ -1,6 +1,8 @@
 <?php
 $MODULE_ID = 'sfz.custom';
-$MESS[$MODULE_ID.'_company'] = 'Синхронизация компаний';
+$MESS[$MODULE_ID.'_main'] = 'Основные настройки';
+$MESS[$MODULE_ID.'_hidethema'] = 'Запретить менять темы оформления не админстраторам';
+$MESS[$MODULE_ID.'_company'] = 'CRM: Синхронизация компаний';
 $MESS[$MODULE_ID.'_rootXML'] = 'Путь до папки обмена';
 $MESS[$MODULE_ID.'_importfileXML'] = 'Имя файла импорта';
 $MESS[$MODULE_ID.'_makeexportXML'] = 'Делать выгрузку';

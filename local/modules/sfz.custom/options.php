@@ -32,6 +32,14 @@ while($arIBlock = $dbIblock->fetch()) {
 }
 
 $arAllOptions = [
+    'main' => [
+        [
+            'main_hidethema',
+            Loc::getMessage($MODULE_ID.'_hidethema'),
+            Option::get($MODULE_ID, '_hidethema'),
+            ['checkbox']
+        ]
+    },
     'company' => [
         [
             'company_rootXML',
@@ -179,6 +187,13 @@ if(isset($request["save"]) && check_bitrix_sessid()) {
 }
 
 $arTabs = [
+    [
+        "DIV" => "main",
+        "TAB" => Loc::getMessage($MODULE_ID.'_main'),
+        "ICON" => $MODULE_ID . '_settings',
+        "TITLE" => Loc::getMessage($MODULE_ID.'_main'),
+        'TYPE' => 'options', //options || rights || user defined
+    ],
     [
         "DIV" => "company",
         "TAB" => Loc::getMessage($MODULE_ID.'_company'),
