@@ -27,13 +27,14 @@ BX.sfz.Type.RequestsFilterContract = {
                 //    console.log(item.id);
                 //});
 
-                NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
-                HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+                //NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+                //HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
 
-                var list = document.getElementsByClassName("enumeration-select");
-                for (var item of list) {
-                    console.log(item.id);
-                }
+                var list = document.getElementsByClassName("ui-entity-editor-section-header");
+                console.log(list[0])
+                //for (var item of list) {
+                //    console.log(item.id);
+                //}
                                     
                 //var elems = document.getElementsByClassName('enumeration-select')
                 //console.log(elems)
