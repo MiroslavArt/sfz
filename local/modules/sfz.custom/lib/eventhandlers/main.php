@@ -32,7 +32,7 @@ class Main
         }
         
         
-        /*$urlTemplates = [
+        $urlTemplates = [
             'lead_detail' => ltrim(Option::get('crm', 'path_to_lead_details', '', SITE_ID), '/'),
             'deal_detail' => ltrim(Option::get('crm', 'path_to_deal_details', '', SITE_ID), '/'),
             'contact_detail' => ltrim(Option::get('crm', 'path_to_contact_details', '', SITE_ID), '/'),
@@ -43,11 +43,16 @@ class Main
             'contact_list' => ltrim(Option::get('crm', 'path_to_contact_list', '', SITE_ID), '/'),
             'company_list' => ltrim(Option::get('crm', 'path_to_company_list', '', SITE_ID), '/'),
             'tasks_list' => ltrim(Option::get('tasks', 'paths_task_user', '', SITE_ID), '/'),
+            'type_detail' => 'crm/type/147/details/"type_id"/'
         ];
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
-        $type = '';
-        if($page !== false) {
+        \Bitrix\Main\Diag\Debug::writeToFile($page, "page".date("d.m.Y G.i.s"), "__debug.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($arVars, "vars".date("d.m.Y G.i.s"), "__debug.log");
+        //$type = '';
+
+
+        /*if($page !== false) {
             switch($page) {
                 case 'lead_detail':
                 case 'deal_detail':
