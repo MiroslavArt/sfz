@@ -25,7 +25,8 @@ class Main
     {
         
         global $USER;
-        \CJSCore::init(['jquery', 'general_change_thema', 'type_requests_filtercontract']);
+        //\CJSCore::init(['jquery', 'general_change_thema', 'type_requests_filtercontract']);
+        \CJSCore::init(['jquery', 'general_change_thema']);
         $asset = Asset::getInstance();
         if(hidethema=="Y") {
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
@@ -48,7 +49,8 @@ class Main
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
         if($page=='type_detail') {
-            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
+            //\CJSCore::init(['type_requests_filtercontract']);
+            //$asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init();});</script>');
         }
 
         

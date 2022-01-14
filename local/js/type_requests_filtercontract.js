@@ -18,3 +18,4 @@ BX.sfz.Type.RequestsFilterContract = {
     }
 }
 
+BX.sfz.Type.RequestsFilterContract.init()
