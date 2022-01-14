@@ -56,7 +56,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
                 console.log(up_names[0]);
                 var wrap = up_names[0];
-                var select = wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                //var select = wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                var select =  wrap.getElementsByClassName('ui-entity-editor-content-block')    
                 console.log(select[0]);
                 //var options = up_names.querySelectorAll('option');
                 //console.log(up_names)
