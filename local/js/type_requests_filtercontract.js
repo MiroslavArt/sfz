@@ -12,7 +12,9 @@ BX.sfz.Type.RequestsFilterContract = {
             this.clientid = data.entityId;
             console.log(this.clientid)
             var form = event._formElement;
-            var parentform = $(form).parents('div.ui-entity-editor-content-block');
+            console.log(form)
+            //var parentform = $(form).parents('div.ui-entity-editor-content-block');
+            var parentform = BX.findParent(form, {"class" : "ui-entity-editor-content-block"}, {"data-cid" : "client"});
             console.log(parentform)
         }
          
