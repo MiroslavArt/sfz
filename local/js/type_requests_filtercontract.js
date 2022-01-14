@@ -12,13 +12,14 @@ BX.sfz.Type.RequestsFilterContract = {
             this.clientid = event._settings.data.REQUISITES[0].entityId
             console.log(this.clientid); 
         }
-        //let elements = document.querySelectorAll('select');
+        let elements = document.querySelectorAll('select');
+        console.log(elements)
         
-        for (let elem of document.body.children) {
-            if (elem.matches('select')) {
-              console.log(elem)
-            }
-        }
+        //for (let elem of document.body.children) {
+        //    if (elem.matches('select')) {
+        //      console.log(elem)
+        //    }
+        //}
         //console.log(BX.Crm.EntityEditorSection)
         //var options = $("select").find(`[name=UF_CRM_1_1642152336]`)
         //console.log(options)
