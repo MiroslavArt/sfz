@@ -21,12 +21,20 @@ BX.sfz.Type.RequestsFilterContract = {
                     }, 
                     true, true
                 );*/
-                "use strict";
+                //"use strict";
 
-                Array.from(document.getElementsByClassName("enumeration-select")).forEach(function(item) {
+                //Array.from(document.getElementsByClassName("enumeration-select")).forEach(function(item) {
+                //    console.log(item.id);
+                //});
+
+                NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+                HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+
+                var list = document.getElementsByClassName("enumeration-select");
+                for (var item of list) {
                     console.log(item.id);
-                });
-                
+                }
+                                    
                 //var elems = document.getElementsByClassName('enumeration-select')
                 //console.log(elems)
                 //for (let elem of elems) {
