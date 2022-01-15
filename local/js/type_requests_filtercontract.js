@@ -28,6 +28,9 @@ BX.sfz.Type.RequestsFilterContract = {
                     var options = select.querySelectorAll('option');
 
                     options.forEach(function(option, i, arr) {
+                        if(option.value==3871) {
+                            option.remove()
+                        }
                         console.log(option.value)
                     });
                    // options.forEach(o => o.remove());
