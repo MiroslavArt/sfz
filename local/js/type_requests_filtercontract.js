@@ -64,7 +64,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //var select = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 var select = document.querySelector('[name="UF_CRM_1_1642152336"]');
                 console.log(select)
-                if(typeof select !== null) {
+                if(select !== null) {
                     var options = select.querySelectorAll('option');
                     options.forEach(o => o.remove());
                 }
