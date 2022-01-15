@@ -31,7 +31,7 @@ BX.sfz.Type.RequestsFilterContract = {
                         if(option.value==3871) {
                             option.remove()
                         }
-                        console.log(option.value)
+                        //console.log(option.value)
                     });
                    // options.forEach(o => o.remove());
                 }
