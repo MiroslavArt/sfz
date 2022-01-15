@@ -61,10 +61,14 @@ BX.sfz.Type.RequestsFilterContract = {
                 console.log(up_names[0]);
                 var wrap = up_names[0];
 
-                var select = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
-                console.log(select[0])
-                var options = select[0].querySelectorAll('option');
-                options.forEach(o => o.remove());
+                //var select = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
+                var select = document.querySelector('[name="UF_CRM_1_1642152336"]');
+                console.log(select)
+                if(typeof select !== "undefined") {
+                    var options = select.querySelectorAll('option');
+                    options.forEach(o => o.remove());
+                }
+                
                 //var select = wrap.querySelectorAll('[name="UF_CRM_1_1642152336"]');
                 //var select = wrap.getElementsByName("UF_CRM_1_1642152336");
                 //console.log(select)
