@@ -6,6 +6,7 @@ BX.sfz.Type.RequestsFilterContract = {
     init: function(contuf) {
         this.contractuf = contuf; 
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
+        BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
     },
     reacttoChange: function(event, data) {
         //console.log(event)
@@ -37,8 +38,22 @@ BX.sfz.Type.RequestsFilterContract = {
                 }
             }
         }
-         
-        
+    },
+    fieldLayoutHandler: function (field) {
+        if (typeof field === 'object') {
+            if (field.hasOwnProperty('_id')) {
+                if(field._id==this.contractuf && field._mode === 1) {
+                    var select = field._innerWrapper
+                    var options = select.querySelectorAll('option');
+                    options.forEach(function(option, i, arr) {
+                        if(option.value==3871) {
+                            option.remove()
+                        }
+                        //console.log(option.value)
+                    });
+                }
+            }
+        }
     }
 }
 
