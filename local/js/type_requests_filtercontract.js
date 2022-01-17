@@ -7,6 +7,8 @@ BX.sfz.Type.RequestsFilterContract = {
         this.contractuf = contuf; 
         if(clid != 'na') {
             this.clientid = clid; 
+            localStorage.setItem('clid', this.clientid);
+            
         } else {
             this.clientid = null
         }
@@ -56,19 +58,21 @@ BX.sfz.Type.RequestsFilterContract = {
             const reg = /COMPANY/
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
+                var curclid = localStorage.getItem('clid')
+                if(curclid != this.clientid) {
+                    localStorage.setItem('clid', this.clientid);
+                    this.requestContracts().then(function(response) {
 
-                var select = document.querySelector('[name="'+this.contractuf+'"]');
-                this.requestContracts().then(function(response) {
-
-                    this.processCollectionResponse(response);
-                    var select = document.querySelector('[name="'+this.contractuf+'"]');
-                    if(select !== null) {
-                        this.processSelectHandler(select, true)
-
-                    }
-                }.bind(this), function(error){
-                    console.log(error);
-                }.bind(this));
+                        this.processCollectionResponse(response);
+                        var select = document.querySelector('[name="'+this.contractuf+'"]');
+                        if(select !== null) {
+                            this.processSelectHandler(select, true)
+    
+                        }
+                    }.bind(this), function(error){
+                        console.log(error);
+                    }.bind(this));
+                }
             }
         }
     },
