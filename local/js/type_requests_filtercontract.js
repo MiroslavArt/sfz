@@ -10,8 +10,7 @@ BX.sfz.Type.RequestsFilterContract = {
         } else {
             this.clientid = null
         }
-        console.log(this.contractuf)
-        console.log(this.clientid)
+
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
         BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
         if(this.clientid != null) {
@@ -34,7 +33,7 @@ BX.sfz.Type.RequestsFilterContract = {
         });
     },
     processCollectionResponse: function(response) {
-        console.log(response);
+        //console.log(response);
         if(response.hasOwnProperty('status')) {
             //console.log("status")
             if(response.status == 'success') {
@@ -82,7 +81,7 @@ BX.sfz.Type.RequestsFilterContract = {
                     var select = field._innerWrapper
                     //this.processSelectHandler(select)
                     var newselect = select.querySelector('[name="'+this.contractuf+'"]');
-                    console.log("field"+newselect)
+
                     if(newselect != null) {
                         this.processSelectHandler(newselect)
                     }
@@ -92,13 +91,15 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select, refresh=false) {
         var localValue = JSON.parse(localStorage.getItem('request_cnt'))
+        console.log(localValue)
         var options = select.querySelectorAll('option');
         if(!refresh) {
             if(typeof localValue==='object') {
+                console.log('object')
                 options.forEach(function(option, i, arr) {
                     var optval = option.value
                     if(optval) {
-                        if(localValue[optval] == undefined) {
+                        if(!localValue.hasOwnProperty(optval)) {
                             option.remove()
                         }
                     }
