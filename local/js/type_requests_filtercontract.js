@@ -54,12 +54,6 @@ BX.sfz.Type.RequestsFilterContract = {
                 } else {
                     this.clearstorage();
                 }
-                
-                    
-                //} else {
-                //    console.log("cleared")
-                //    this.clearstorage();
-                //}
             }
         }
         //console.log(localStorage)
@@ -79,18 +73,19 @@ BX.sfz.Type.RequestsFilterContract = {
                     console.log(response);
                     this.processCollectionResponse(response);
                     var select = document.querySelector('[name="'+this.contractuf+'"]');
-                    console.log(select)
-                    if(select !== null) {
-                        var options = select.querySelectorAll('option');
+                    this.processSelectHandler(select)
+                    //console.log(select)
+                    //if(select !== null) {
+                    //    var options = select.querySelectorAll('option');
 
-                        options.forEach(function(option, i, arr) {
-                            if(option.value==3871) {
-                                option.remove()
-                            }
+                    //    options.forEach(function(option, i, arr) {
+                    //        if(option.value==3871) {
+                    //            option.remove()
+                    //        }
                             //console.log(option.value)
-                        });
+                    //    });
                     // options.forEach(o => o.remove());
-                    }
+                    //}
                     //this.processKanbanitemSignals(grid.grid.items);
                 }.bind(this), function(error){
                     console.log(error);
@@ -111,16 +106,22 @@ BX.sfz.Type.RequestsFilterContract = {
             if (field.hasOwnProperty('_id')) {
                 if(field._id==this.contractuf && field._mode === 1) {
                     var select = field._innerWrapper
-                    var options = select.querySelectorAll('option');
-                    options.forEach(function(option, i, arr) {
-                        if(option.value==3871) {
-                            option.remove()
-                        }
+                    this.processSelectHandler(select)
+                    //var options = select.querySelectorAll('option');
+                    //options.forEach(function(option, i, arr) {
+                    //    if(option.value==3871) {
+                    //        option.remove()
+                    //    }
                         //console.log(option.value)
-                    });
+                    //});
                 }
             }
         }
+    },
+    processSelectHandler: function (select) {
+        var localValue = localStorage.getItem('request_cnt')
+        console.log(localValue)
+        console.log(select)    
     }
 }
 
