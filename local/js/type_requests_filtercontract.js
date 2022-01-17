@@ -14,7 +14,7 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(this.clientid)
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
         BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
-        /*if(this.clientid != null) {
+        if(this.clientid != null) {
             this.requestContracts().then(function(response) {
 
                 this.processCollectionResponse(response);
@@ -24,7 +24,7 @@ BX.sfz.Type.RequestsFilterContract = {
             }.bind(this));
         } else {
             this.clearstorage();
-        }*/
+        }
     },
     requestContracts: function() {
         return BX.ajax.runAction('sfz:custom.api.signal.getContract', {
@@ -110,6 +110,9 @@ BX.sfz.Type.RequestsFilterContract = {
                     //this.processSelectHandler(select)
                     var newselect = select.querySelector('[name="UF_CRM_1_1642152336"]');
                     console.log(newselect)
+                    if(newselect != null) {
+                        this.processSelectHandler(newselect)
+                    }
                     //var options = select.querySelectorAll('option');
                     //options.forEach(function(option, i, arr) {
                     //    if(option.value==3871) {
