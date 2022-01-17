@@ -126,17 +126,17 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select) {
         var localValue = localStorage.getItem('request_cnt')
-        console.log("val"+localValue)
+        var localObject = Object.assign({}, localValue);
+        console.log(localObject)
+        var options = select.querySelectorAll('option');
         if(localValue=='null') {
-            console.log("here")
-            var options = select.querySelectorAll('option');
-                console.log(options)
-                options.forEach(function(option, i, arr) {
-                    if(option.value) {
-                        option.remove()
-                    }
-                        //console.log(option.value)
-                })
+            options.forEach(function(option, i, arr) {
+                if(option.value) {
+                    option.remove()
+                }
+            })
+        } else {
+
         }
     }
 }
