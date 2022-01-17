@@ -106,14 +106,14 @@ BX.sfz.Type.RequestsFilterContract = {
             if (field.hasOwnProperty('_id')) {
                 if(field._id==this.contractuf && field._mode === 1) {
                     var select = field._innerWrapper
-                    this.processSelectHandler(select)
-                    //var options = select.querySelectorAll('option');
-                    //options.forEach(function(option, i, arr) {
-                    //    if(option.value==3871) {
-                    //        option.remove()
-                    //    }
+                    //this.processSelectHandler(select)
+                    var options = select.querySelectorAll('option');
+                    options.forEach(function(option, i, arr) {
+                        if(option.value==3871) {
+                            option.remove()
+                        }
                         //console.log(option.value)
-                    //});
+                    });
                 }
             }
         }
