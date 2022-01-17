@@ -173,7 +173,39 @@ $arAllOptions = [
             Option::get($MODULE_ID, '_commdir'),
             ['text']
         ]
-    ]
+    ],
+    'payrequests' => [
+        [
+            'payrequests_contractactivate',
+            Loc::getMessage($MODULE_ID.'_contractactivate'),
+            Option::get($MODULE_ID, '_contractactivate'),
+            ['checkbox']
+        ],
+        [
+            'payrequests_typecode',
+            Loc::getMessage($MODULE_ID.'_typecode'),
+            Option::get($MODULE_ID, '_typecode'),
+            ['text']
+        ],
+        [
+            'payrequests_contractuf',
+            Loc::getMessage($MODULE_ID.'_contractuf'),
+            Option::get($MODULE_ID, '_contractuf'),
+            ['text']
+        ], 
+        [
+            'payrequests_contractIB',
+            Loc::getMessage($MODULE_ID.'_contractIB'),
+            Option::get($MODULE_ID, '_contractIB'),
+            ['text']
+        ], 
+        [
+            'payrequests_companypropIB',
+            Loc::getMessage($MODULE_ID.'_companypropIB'),
+            Option::get($MODULE_ID, '_companypropIB'),
+            ['text']
+        ],
+    ],
 ];
 
 if(isset($request["save"]) && check_bitrix_sessid()) {
@@ -201,13 +233,13 @@ $arTabs = [
         "TITLE" => Loc::getMessage($MODULE_ID.'_company'),
         'TYPE' => 'options', //options || rights || user defined
     ],
-    /*[
-        "DIV" => "1cint",
-        "TAB" => Loc::getMessage($MODULE_ID.'_1с'),
+    [
+        "DIV" => "payrequests",
+        "TAB" => Loc::getMessage($MODULE_ID.'_payrequests'),
         "ICON" => $MODULE_ID . '_settings',
-        "TITLE" => Loc::getMessage($MODULE_ID.'_1с'),
+        "TITLE" => Loc::getMessage($MODULE_ID.'_payrequests'),
         'TYPE' => 'options', //options || rights || user defined
-    ],
+    ],/*
     [
         "DIV" => "STZint",
         "TAB" => Loc::getMessage($MODULE_ID.'_STZ'),

@@ -44,6 +44,12 @@ class Application
         define('archiveUF', \COption::GetOptionString('sfz.custom', 'company_archiveUF'));
         define('marketinUF', \COption::GetOptionString('sfz.custom', 'company_marketinUF'));
         define('commdir', \COption::GetOptionString('sfz.custom', 'company_commdir'));
+        define('commdir', \COption::GetOptionString('sfz.custom', 'company_commdir'));
+        define('contractactivate', \COption::GetOptionString('sfz.custom', 'payrequests_contractactivate'));
+        define('typecode', \COption::GetOptionString('sfz.custom', 'payrequests_typecode'));
+        define('contractuf', \COption::GetOptionString('sfz.custom', 'payrequests_contractuf'));
+        define('contractIB', \COption::GetOptionString('sfz.custom', 'payrequests_contractIB'));
+        define('companypropIB', \COption::GetOptionString('sfz.custom', 'payrequests_companypropIB'));
     }
 
     protected static function initJsHandlers()
