@@ -108,8 +108,8 @@ BX.sfz.Type.RequestsFilterContract = {
                 if(field._id==this.contractuf) {
                     var select = field._innerWrapper
                     //this.processSelectHandler(select)
-                    var select = document.querySelector('[name="UF_CRM_1_1642152336"]');
-                    console.log(select)
+                    var newselect = select.querySelector('[name="UF_CRM_1_1642152336"]');
+                    console.log(newselect)
                     //var options = select.querySelectorAll('option');
                     //options.forEach(function(option, i, arr) {
                     //    if(option.value==3871) {
