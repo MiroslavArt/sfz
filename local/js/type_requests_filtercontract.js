@@ -13,7 +13,7 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(this.contractuf)
         console.log(this.clientid)
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
-        //BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
+        BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
         if(this.clientid != null) {
             this.requestContracts().then(function(response) {
 
@@ -127,7 +127,15 @@ BX.sfz.Type.RequestsFilterContract = {
     processSelectHandler: function (select) {
         var localValue = localStorage.getItem('request_cnt')
         console.log(localValue)
-        console.log(select)    
+        if(localValue==null) {
+            var options = select.querySelectorAll('option');
+                options.forEach(function(option, i, arr) {
+                    if(option.value) {
+                        option.remove()
+                    }
+                        //console.log(option.value)
+                })
+        }
     }
 }
 
