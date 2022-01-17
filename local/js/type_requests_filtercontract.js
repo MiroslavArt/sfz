@@ -94,7 +94,7 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(localValue)
         var options = select.querySelectorAll('option');
         if(!refresh) {
-            if(typeof localValue==='object') {
+            if(localValue!==null) {
                 console.log('object')
                 options.forEach(function(option, i, arr) {
                     var optval = option.value
