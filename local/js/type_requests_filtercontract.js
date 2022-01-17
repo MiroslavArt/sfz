@@ -13,7 +13,7 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(this.contractuf)
         console.log(this.clientid)
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
-        BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
+        //BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
         if(this.clientid != null) {
             this.requestContracts().then(function(response) {
 
