@@ -16,7 +16,7 @@ BX.sfz.Type.RequestsFilterContract = {
         BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
         if(this.clientid != null) {
             this.requestContracts().then(function(response) {
-                console.log(response);
+                //console.log(response);
                 this.processCollectionResponse(response);
                 //this.processKanbanitemSignals(grid.grid.items);
             }.bind(this), function(error){
@@ -34,25 +34,32 @@ BX.sfz.Type.RequestsFilterContract = {
         });
     },
     processCollectionResponse: function(response) {
-        //console.log(response);
+        console.log(response);
         if(response.hasOwnProperty('status')) {
-            //console.log("status")
+            console.log("status")
             if(response.status == 'success') {
-                //console.log("success")
-                if(response.data.length) {
-                    var output = [], item;
-                    for (var id in response.data) {
-                        item = {};
-                        item.id = id;
-                        item.name = response.data[id];
-                        output.push(item);
-                    }
-                    console.log(output);
+                console.log("success")
+                //if(response.data.length) {
+                //    console.log("legnth")
+                var output = [], item;
+                for (var id in response.data) {
+                    item = {};
+                    item.id = id;
+                    item.name = response.data[id];
+                    output.push(item);
+                }
+                console.log(output);
+                if(output.length) {
                     localStorage.setItem('request_cnt', output);
-                    
                 } else {
                     this.clearstorage();
                 }
+                
+                    
+                //} else {
+                //    console.log("cleared")
+                //    this.clearstorage();
+                //}
             }
         }
         //console.log(localStorage)
