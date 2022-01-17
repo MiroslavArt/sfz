@@ -126,11 +126,9 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select) {
         var localValue = JSON.parse(localStorage.getItem('request_cnt'))
-        //var localObject = Object.assign({}, localValue);
-        console.log(typeof localValue === 'object')
 
         var options = select.querySelectorAll('option');
-        //if(localValue=='null') {
+        if(localValue!='null') {
             options.forEach(function(option, i, arr) {
                 var optval = option.value
                 if(optval) {
@@ -139,8 +137,15 @@ BX.sfz.Type.RequestsFilterContract = {
                     }
                 }
             })
-        //} else {
-        //}
+        } else {
+            options.forEach(function(option, i, arr) {
+                var optval = option.value
+                if(optval) {
+                    option.remove()
+                    
+                }
+            })
+        }
     }
 }
 

@@ -37,8 +37,11 @@ class Main
   
             if($page=='type_detail') {
                 $typeid = $arVars['type_id'];
-                $typeval = Utils::getTypevalues ( typecode, $typeid );
-                $companyid = $typeval['COMPANY_ID'] ? $typeval['COMPANY_ID'] : 'na'; 
+                $companyid = 'na'; 
+                if($typeid) {
+                    $typeval = Utils::getTypevalues ( typecode, $typeid );
+                    $companyid = $typeval['COMPANY_ID'] ? $typeval['COMPANY_ID'] : 'na'; 
+                }
                 \CJSCore::init(['type_requests_filtercontract']);
                 $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.contractuf.'", "'.$companyid.'");});</script>');
             }
