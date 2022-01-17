@@ -41,13 +41,13 @@ BX.sfz.Type.RequestsFilterContract = {
                 //console.log("success")
                 //if(response.data.length) {
                 //    console.log("legnth")
-                var output = [], item;
+                /*var output = [], item;
                 for (var id in response.data) {
                     item = {};
                     item.id = id;
                     item.name = response.data[id];
                     output.push(item);
-                }
+                }*/
                 //console.log(output);
                 if(output.length) {
                     localStorage.setItem('request_cnt', JSON.stringify(response.data));
@@ -129,15 +129,16 @@ BX.sfz.Type.RequestsFilterContract = {
         //var localObject = Object.assign({}, localValue);
         console.log(localValue)
         var options = select.querySelectorAll('option');
-        if(localValue=='null') {
+        //if(localValue=='null') {
             options.forEach(function(option, i, arr) {
-                if(option.value) {
-                    option.remove()
+                if(localValue) {
+                    if(localValue[option.value] === undefined) {
+                        option.remove()
+                    }
                 }
             })
-        } else {
-
-        }
+        //} else {
+        //}
     }
 }
 
