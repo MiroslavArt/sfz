@@ -7,11 +7,29 @@ BX.sfz.Type.RequestsFilterContract = {
         this.contractuf = contuf; 
         if(clid != 'na') {
             this.clientid = clid; 
+        } else {
+            this.clientid = null
         }
         console.log(this.contractuf)
         console.log(this.clientid)
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
         BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
+        if(this.clientid != null) {
+            this.requestContracts().then(function(response) {
+                console.log(response);
+                //this.processCollectionResponse(response);
+                //this.processKanbanitemSignals(grid.grid.items);
+            }.bind(this), function(error){
+                console.log(error);
+            }.bind(this));
+        }
+    },
+    requestContracts: function() {
+        return BX.ajax.runAction('sfz:custom.api.signal.getContract', {
+            data: {
+                companyid: this.clientid
+            }
+        });
     },
     reacttoChange: function(event, data) {
         //console.log(event)

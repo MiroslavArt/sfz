@@ -5,6 +5,7 @@ use Bitrix\Main;
 use Bitrix\Crm;
 use Bitrix\Main\Engine\Controller;
 use Bitrix\Main\Config\Option;
+use SFZ\Custom\Helpers\Utils;
 
 class Signal extends Controller
 {
@@ -28,9 +29,16 @@ class Signal extends Controller
     }
     
     
-    public function getContractAction($signals)
+    public function getContractAction($companyid)
     {
 
-        return $signalarr;
+        $selectcontract = Utils::getIBlockElementsByConditions(contractIB, ['PROPERTY_'.companypropIB=>$companyid]);
+        $contractarr = []; 
+
+        foreach($selectcontract as $item) {
+            $contractarr[$item['ID']] = $item['NAME']; 
+        }
+
+        return $contractarr;
     }
 }
