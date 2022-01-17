@@ -129,12 +129,12 @@ BX.sfz.Type.RequestsFilterContract = {
         //var localObject = Object.assign({}, localValue);
         console.log(localValue["3874"])
 
-
         var options = select.querySelectorAll('option');
         //if(localValue=='null') {
             options.forEach(function(option, i, arr) {
-                if(localValue) {
-                    if(localValue[option.value] === undefined) {
+                var optval = option.value
+                if(optval) {
+                    if(localValue[optval] == undefined) {
                         option.remove()
                     }
                 }
