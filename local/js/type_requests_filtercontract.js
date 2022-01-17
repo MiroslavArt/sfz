@@ -105,16 +105,18 @@ BX.sfz.Type.RequestsFilterContract = {
         console.log(field)
         if (typeof field === 'object') {
             if (field.hasOwnProperty('_id')) {
-                if(field._id==this.contractuf && field._mode === 1) {
+                if(field._id==this.contractuf) {
                     var select = field._innerWrapper
                     //this.processSelectHandler(select)
-                    var options = select.querySelectorAll('option');
-                    options.forEach(function(option, i, arr) {
-                        if(option.value==3871) {
-                            option.remove()
-                        }
+                    var select = document.querySelector('[name="UF_CRM_1_1642152336"]');
+                    console.log(select)
+                    //var options = select.querySelectorAll('option');
+                    //options.forEach(function(option, i, arr) {
+                    //    if(option.value==3871) {
+                    //        option.remove()
+                    //    }
                         //console.log(option.value)
-                    });
+                    //});
                 }
             }
         }
