@@ -50,7 +50,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 }
                 //console.log(output);
                 if(output.length) {
-                    localStorage.setItem('request_cnt', JSON.stringify(output));
+                    localStorage.setItem('request_cnt', JSON.stringify(response.data));
                 } else {
                     this.clearstorage();
                 }
@@ -126,8 +126,8 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select) {
         var localValue = localStorage.getItem('request_cnt')
-        var localObject = Object.assign({}, localValue);
-        console.log(localObject)
+        //var localObject = Object.assign({}, localValue);
+        console.log(localValue)
         var options = select.querySelectorAll('option');
         if(localValue=='null') {
             options.forEach(function(option, i, arr) {
