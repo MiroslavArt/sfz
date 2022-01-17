@@ -50,7 +50,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 }
                 console.log(output);
                 if(output.length) {
-                    localStorage.setItem('request_cnt', output);
+                    localStorage.setItem('request_cnt', JSON.stringify(output));
                 } else {
                     this.clearstorage();
                 }
