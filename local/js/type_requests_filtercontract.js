@@ -127,7 +127,7 @@ BX.sfz.Type.RequestsFilterContract = {
     processSelectHandler: function (select) {
         var localValue = localStorage.getItem('request_cnt')
         //var localObject = Object.assign({}, localValue);
-        console.log(localValue["3874"])
+        console.log(localValue)
 
         var options = select.querySelectorAll('option');
         //if(localValue=='null') {
