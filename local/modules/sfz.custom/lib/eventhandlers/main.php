@@ -5,6 +5,7 @@ namespace SFZ\Custom\EventHandlers;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\EventManager;
 use Bitrix\Main\Page\Asset;
+use SFZ\Custom\Helpers\Utils;
 
 class Main
 {
@@ -24,18 +25,26 @@ class Main
         if(hidethema=="Y") {
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         }
-        $type = '147'; 
-        $contractuf = 'UF_CRM_1_1642152336';
-        
-        $urlTemplates = [
-            'type_detail' => 'crm/type/'.$type.'/details/#type_id#/'
-        ];
+        if(contractactivate == 'Y') {
+            //$type = '147'; 
+            //$contractuf = 'UF_CRM_1_1642152336';
+            
+            $urlTemplates = [
+                'type_detail' => 'crm/type/'.typecode.'/details/#type_id#/'
+            ];
 
-        $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
-        if($page=='type_detail') {
-            \CJSCore::init(['type_requests_filtercontract']);
-            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.$contractuf.'");});</script>');
+            $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
+  
+            if($page=='type_detail') {
+                $typeid = $arVars['type_id'];
+                $typeval = Utils::getTypevalues ( typecode, $typeid );
+                $companyid = $typeval['COMPANY_ID'] ? $typeval['COMPANY_ID'] : 'na'; 
+                \CJSCore::init(['type_requests_filtercontract']);
+                $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.contractuf.'", "'.$companyid.'");});</script>');
+            }
         }
+        
+        
 
     }
 }

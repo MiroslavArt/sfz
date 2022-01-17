@@ -3,8 +3,13 @@ BX.namespace('sfz.Type.RequestsFilterContract');
 BX.sfz.Type.RequestsFilterContract = {
     clientid: null, 
     contractuf: null,
-    init: function(contuf) {
+    init: function(contuf, clid) {
         this.contractuf = contuf; 
+        if(clid != 'na') {
+            this.clientid = clid; 
+        }
+        console.log(this.contractuf)
+        console.log(this.clientid)
         BX.addCustomEvent('BX.CRM.EntityEditor:onInit', BX.delegate(this.reacttoChange, this));
         BX.addCustomEvent('BX.UI.EntityEditorField:onLayout', BX.delegate(this.fieldLayoutHandler, this));
     },

@@ -14,7 +14,7 @@ use Bitrix\Main\Data;
 use Bitrix\Main\Type;
 use Bitrix\Sale\Delivery;
 use Bitrix\Main\SystemException;
-
+use Bitrix\Crm\Service;
 
 class Utils
 {
@@ -492,7 +492,7 @@ class Utils
         return $out;
     }
 
-                /**
+    /**
      * Get enum id
      * @param array $fields
      * @param array $properties
@@ -510,5 +510,21 @@ class Utils
 
         return $user; 
     }
+
+    /**
+     * Get type
+     * @param array $fields
+     * @param array $properties
+     * @return int|null
+     * @throws \Bitrix\Main\LoaderException
+     */
+    public static function getTypevalues ( $typeid, $typeidvalue )
+        //public static function createElement(array $fields, array $properties)
+    {
+        $factory = Service\Container::getInstance()->getFactory($typeid);
+        $item = $factory->getItem($typeidvalue);
+        return $item->getData();
+    }
+
 
 }
