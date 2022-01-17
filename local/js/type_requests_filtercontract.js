@@ -17,11 +17,13 @@ BX.sfz.Type.RequestsFilterContract = {
         if(this.clientid != null) {
             this.requestContracts().then(function(response) {
                 console.log(response);
-                //this.processCollectionResponse(response);
+                this.processCollectionResponse(response);
                 //this.processKanbanitemSignals(grid.grid.items);
             }.bind(this), function(error){
                 console.log(error);
             }.bind(this));
+        } else {
+            this.clearstorage();
         }
     },
     requestContracts: function() {
@@ -31,6 +33,33 @@ BX.sfz.Type.RequestsFilterContract = {
             }
         });
     },
+    processCollectionResponse: function(response) {
+        //console.log(response);
+        if(response.hasOwnProperty('status')) {
+            //console.log("status")
+            if(response.status == 'success') {
+                //console.log("success")
+                if(response.data.length) {
+                    var output = [], item;
+                    for (var id in response.data) {
+                        item = {};
+                        item.id = id;
+                        item.name = response.data[id];
+                        output.push(item);
+                    }
+                    console.log(output);
+                    localStorage.setItem('request_cnt', output);
+                    
+                } else {
+                    this.clearstorage();
+                }
+            }
+        }
+        //console.log(localStorage)
+    },
+    clearstorage: function() {
+       localStorage.setItem('request_cnt', null);
+    },
     reacttoChange: function(event, data) {
         //console.log(event)
         //console.log(data)
@@ -39,6 +68,26 @@ BX.sfz.Type.RequestsFilterContract = {
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
                 console.log(this.clientid)
+                this.requestContracts().then(function(response) {
+                    console.log(response);
+                    this.processCollectionResponse(response);
+                    var select = document.querySelector('[name="'+this.contractuf+'"]');
+                    console.log(select)
+                    if(select !== null) {
+                        var options = select.querySelectorAll('option');
+
+                        options.forEach(function(option, i, arr) {
+                            if(option.value==3871) {
+                                option.remove()
+                            }
+                            //console.log(option.value)
+                        });
+                    // options.forEach(o => o.remove());
+                    }
+                    //this.processKanbanitemSignals(grid.grid.items);
+                }.bind(this), function(error){
+                    console.log(error);
+                }.bind(this));
                 //var form = event._formElement
 
                 //var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
@@ -46,19 +95,7 @@ BX.sfz.Type.RequestsFilterContract = {
                 //var wrap = up_names[0];
 
                 //var select = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
-                var select = document.querySelector('[name="'+this.contractuf+'"]');
-                console.log(select)
-                if(select !== null) {
-                    var options = select.querySelectorAll('option');
-
-                    options.forEach(function(option, i, arr) {
-                        if(option.value==3871) {
-                            option.remove()
-                        }
-                        //console.log(option.value)
-                    });
-                   // options.forEach(o => o.remove());
-                }
+                
             }
         }
     },
