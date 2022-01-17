@@ -33,9 +33,9 @@ BX.sfz.Type.RequestsFilterContract = {
         });
     },
     processCollectionResponse: function(response) {
-        //console.log(response);
+
         if(response.hasOwnProperty('status')) {
-            //console.log("status")
+
             if(response.status == 'success') {
 
                 if(Object.keys(response.data).length>0) {
@@ -45,22 +45,21 @@ BX.sfz.Type.RequestsFilterContract = {
                 }
             }
         }
-        //console.log(localStorage)
+
     },
     clearstorage: function() {
        localStorage.setItem('request_cnt', null);
     },
     reacttoChange: function(event, data) {
-        //console.log(event)
-        //console.log(data)
+
         if(typeof event === 'object') {
             const reg = /COMPANY/
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
-                //console.log(this.clientid)
+
                 var select = document.querySelector('[name="'+this.contractuf+'"]');
                 this.requestContracts().then(function(response) {
-                    //console.log(response);
+
                     this.processCollectionResponse(response);
                     var select = document.querySelector('[name="'+this.contractuf+'"]');
                     if(select !== null) {
@@ -91,11 +90,11 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select, refresh=false) {
         var localValue = JSON.parse(localStorage.getItem('request_cnt'))
-        console.log(localValue)
+
         var options = select.querySelectorAll('option');
         if(!refresh) {
             if(localValue!==null) {
-                console.log('object')
+
                 options.forEach(function(option, i, arr) {
                     var optval = option.value
                     if(optval) {
