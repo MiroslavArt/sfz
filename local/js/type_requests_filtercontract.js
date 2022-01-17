@@ -102,6 +102,7 @@ BX.sfz.Type.RequestsFilterContract = {
         }
     },
     fieldLayoutHandler: function (field) {
+        console.log("handler")
         if (typeof field === 'object') {
             if (field.hasOwnProperty('_id')) {
                 if(field._id==this.contractuf && field._mode === 1) {
