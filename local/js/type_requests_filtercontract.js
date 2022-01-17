@@ -36,9 +36,9 @@ BX.sfz.Type.RequestsFilterContract = {
     processCollectionResponse: function(response) {
         console.log(response);
         if(response.hasOwnProperty('status')) {
-            console.log("status")
+            //console.log("status")
             if(response.status == 'success') {
-                console.log("success")
+                //console.log("success")
                 //if(response.data.length) {
                 //    console.log("legnth")
                 var output = [], item;
@@ -48,7 +48,7 @@ BX.sfz.Type.RequestsFilterContract = {
                     item.name = response.data[id];
                     output.push(item);
                 }
-                console.log(output);
+                //console.log(output);
                 if(output.length) {
                     localStorage.setItem('request_cnt', JSON.stringify(output));
                 } else {
@@ -68,7 +68,7 @@ BX.sfz.Type.RequestsFilterContract = {
             const reg = /COMPANY/
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
-                console.log(this.clientid)
+                //console.log(this.clientid)
                 //this.requestContracts().then(function(response) {
                     //console.log(response);
                     //this.processCollectionResponse(response);
@@ -102,14 +102,14 @@ BX.sfz.Type.RequestsFilterContract = {
         }
     },
     fieldLayoutHandler: function (field) {
-        console.log(field)
+        //console.log(field)
         if (typeof field === 'object') {
             if (field.hasOwnProperty('_id')) {
                 if(field._id==this.contractuf) {
                     var select = field._innerWrapper
                     //this.processSelectHandler(select)
                     var newselect = select.querySelector('[name="UF_CRM_1_1642152336"]');
-                    console.log(newselect)
+                    console.log("field"+newselect)
                     if(newselect != null) {
                         this.processSelectHandler(newselect)
                     }
@@ -126,7 +126,7 @@ BX.sfz.Type.RequestsFilterContract = {
     },
     processSelectHandler: function (select) {
         var localValue = localStorage.getItem('request_cnt')
-        console.log(localValue)
+        console.log("val"+localValue)
         if(localValue===null) {
             console.log("here")
             var options = select.querySelectorAll('option');
