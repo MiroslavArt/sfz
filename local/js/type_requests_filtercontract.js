@@ -69,12 +69,12 @@ BX.sfz.Type.RequestsFilterContract = {
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
                 console.log(this.clientid)
-                this.requestContracts().then(function(response) {
-                    console.log(response);
-                    this.processCollectionResponse(response);
+                //this.requestContracts().then(function(response) {
+                    //console.log(response);
+                    //this.processCollectionResponse(response);
                     var select = document.querySelector('[name="'+this.contractuf+'"]');
-                    this.processSelectHandler(select)
-                    //console.log(select)
+                    //this.processSelectHandler(select)
+                    console.log(select)
                     //if(select !== null) {
                     //    var options = select.querySelectorAll('option');
 
@@ -87,9 +87,9 @@ BX.sfz.Type.RequestsFilterContract = {
                     // options.forEach(o => o.remove());
                     //}
                     //this.processKanbanitemSignals(grid.grid.items);
-                }.bind(this), function(error){
-                    console.log(error);
-                }.bind(this));
+                //}.bind(this), function(error){
+                //    console.log(error);
+                //}.bind(this));
                 //var form = event._formElement
 
                 //var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
@@ -102,7 +102,7 @@ BX.sfz.Type.RequestsFilterContract = {
         }
     },
     fieldLayoutHandler: function (field) {
-        console.log("handler")
+        console.log(field)
         if (typeof field === 'object') {
             if (field.hasOwnProperty('_id')) {
                 if(field._id==this.contractuf && field._mode === 1) {
