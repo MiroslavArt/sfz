@@ -38,17 +38,7 @@ BX.sfz.Type.RequestsFilterContract = {
         if(response.hasOwnProperty('status')) {
             //console.log("status")
             if(response.status == 'success') {
-                //console.log("success")
-                //if(response.data.length) {
-                //    console.log("legnth")
-                /*var output = [], item;
-                for (var id in response.data) {
-                    item = {};
-                    item.id = id;
-                    item.name = response.data[id];
-                    output.push(item);
-                }*/
-                //console.log(output);
+
                 if(Object.keys(response.data).length>0) {
                     localStorage.setItem('request_cnt', JSON.stringify(response.data));
                 } else {
@@ -69,35 +59,18 @@ BX.sfz.Type.RequestsFilterContract = {
             if(reg.test(data.id)) {
                 this.clientid = data.entityId;
                 //console.log(this.clientid)
-                //this.requestContracts().then(function(response) {
+                var select = document.querySelector('[name="'+this.contractuf+'"]');
+                this.requestContracts().then(function(response) {
                     //console.log(response);
-                    //this.processCollectionResponse(response);
+                    this.processCollectionResponse(response);
                     var select = document.querySelector('[name="'+this.contractuf+'"]');
-                    //this.processSelectHandler(select)
-                    console.log(select)
-                    //if(select !== null) {
-                    //    var options = select.querySelectorAll('option');
+                    if(select !== null) {
+                        this.processSelectHandler(select, true)
 
-                    //    options.forEach(function(option, i, arr) {
-                    //        if(option.value==3871) {
-                    //            option.remove()
-                    //        }
-                            //console.log(option.value)
-                    //    });
-                    // options.forEach(o => o.remove());
-                    //}
-                    //this.processKanbanitemSignals(grid.grid.items);
-                //}.bind(this), function(error){
-                //    console.log(error);
-                //}.bind(this));
-                //var form = event._formElement
-
-                //var up_names = document.querySelectorAll('[data-cid="UF_CRM_1_1642152336"]');
-                //console.log(up_names[0]);
-                //var wrap = up_names[0];
-
-                //var select = document.querySelectorAll('[name="UF_CRM_1_1642152336"]');
-                
+                    }
+                }.bind(this), function(error){
+                    console.log(error);
+                }.bind(this));
             }
         }
     },
@@ -108,44 +81,51 @@ BX.sfz.Type.RequestsFilterContract = {
                 if(field._id==this.contractuf) {
                     var select = field._innerWrapper
                     //this.processSelectHandler(select)
-                    var newselect = select.querySelector('[name="UF_CRM_1_1642152336"]');
+                    var newselect = select.querySelector('[name="'+this.contractuf+'"]');
                     console.log("field"+newselect)
                     if(newselect != null) {
                         this.processSelectHandler(newselect)
                     }
-                    //var options = select.querySelectorAll('option');
-                    //options.forEach(function(option, i, arr) {
-                    //    if(option.value==3871) {
-                    //        option.remove()
-                    //    }
-                        //console.log(option.value)
-                    //});
                 }
             }
         }
     },
-    processSelectHandler: function (select) {
+    processSelectHandler: function (select, refresh=false) {
         var localValue = JSON.parse(localStorage.getItem('request_cnt'))
-        console.log(localValue)
-
         var options = select.querySelectorAll('option');
-        if(typeof localValue===Object) {
-            options.forEach(function(option, i, arr) {
-                var optval = option.value
-                if(optval) {
-                    if(localValue[optval] == undefined) {
+        if(!refresh) {
+            if(typeof localValue==='object') {
+                options.forEach(function(option, i, arr) {
+                    var optval = option.value
+                    if(optval) {
+                        if(localValue[optval] == undefined) {
+                            option.remove()
+                        }
+                    }
+                })
+            } else {
+                options.forEach(function(option, i, arr) {
+                    var optval = option.value
+                    if(optval) {
                         option.remove()
                     }
-                }
-            })
+                })
+            }
         } else {
             options.forEach(function(option, i, arr) {
                 var optval = option.value
                 if(optval) {
                     option.remove()
-                    
                 }
             })
+            if(typeof localValue==='object') {
+                for (var key in localValue) {
+                    var opt = document.createElement('option');
+                    opt.value = key;
+                    opt.innerHTML = localValue[key];
+                    select.appendChild(opt);
+                }
+            }
         }
     }
 }
