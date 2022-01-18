@@ -106,7 +106,7 @@ class Crm
                     $PROPS['ismarket'] = $arFields[marketinUF];
                 }
                 if($PROPS) {
-                    /*foreach($PROPS as $key=>$item) {
+                    foreach($PROPS as $key=>$item) {
                         $data = [
                             'ACTIVE' => 'Y',
                             'NAME' => $key,
@@ -116,8 +116,8 @@ class Crm
                                 'DATA_IZMENENIYA' => ConvertTimeStamp(time(), "FULL") 
                             ]
                         ];
-                        $id = Utils::createIBlockElement(makeexportIB, $data);
-                    }*/
+                        $id = Utils::createIBlockElement(makeexportIB, $data, []);
+                    }
                 }
                 
                 // старый вариант - на каждый файл
