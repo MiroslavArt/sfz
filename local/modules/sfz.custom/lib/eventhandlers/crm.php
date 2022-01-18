@@ -5,6 +5,7 @@ namespace SFZ\Custom\EventHandlers;
 use Bitrix\Crm\DealTable;
 use Bitrix\Main\Loader;
 use SFZ\Custom\Helpers\Utils;
+use Bitrix\Main\Localization\Loc;
 
 class Crm
 {
@@ -136,6 +137,7 @@ class Crm
 
     public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)
     {
+        $MODULE_ID = 'sfz.custom';
         $entityID = $event->getParameter('entityID');
         \Bitrix\Main\Diag\Debug::writeToFile($entityID, "eid".date("d.m.Y G.i.s"), "__stzexp.log");
         $entTypeid = $event->getParameter('entityTypeID');
@@ -143,7 +145,7 @@ class Crm
         $tabs = $event->getParameter('tabs');
         $tabs[] = [
             'id' => 'custom',
-            'name' => 'custom',
+            'name' => Loc::getMessage($MODULE_ID.'_companies'),
             'enabled' => true
         ];
 
