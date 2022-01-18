@@ -15,8 +15,113 @@ class Crm
         Loader::includeModule('sfz.custom');
         //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
         if(makeexportXML=='Y' && rootXML) {
-            if(count($arFields)>4) {
-                $arFilter = [
+            if(count($arFields)>4 && !array_key_exists(hashUF, $arFields)) {
+                $companyid = $arFields["ID"];
+                $PROPS = [];
+                //$PROP = []; 
+                if($arFields['TITLE']) {
+                    $PROPS['org'] = $arFields['TITLE'];
+                }
+                if($arFields['FM']['EMAIL']) {
+                    foreach($arFields['FM']['EMAIL'] as $item) {
+                        if($item['VALUE']) {
+                            if($email) {
+                                $email = $email.','.$item['VALUE'];  
+                            } else {
+                                $email = $item['VALUE']; 
+                            }
+                        }
+                    }
+                    if($email) {
+                        $PROPS['email'] = $email;
+                    }
+                }
+                if($arFields['FM']['PHONE']) {
+                    foreach($arFields['FM']['PHONE'] as $item) {                     
+                        if($item['VALUE']) {
+                            if($phone) {
+                                $phone = $phone.','.$item['VALUE'];  
+                            } else {
+                                $phone = $item['VALUE']; 
+                            }
+                        }
+                    }                  
+                    if($phone) {
+                        $PROPS['tel'] = $email;
+                    }
+                }
+                if($arFields[marketnameUF]) {
+                    $PROPS['name1'] = $arFields[marketnameUF];
+                }
+                if($arFields[marketthroughnameUF]) {
+                    $PROPS['name2'] = $arFields[marketthroughnameUF];
+                }
+                
+                if($arFields[dealerSyPlyUF]) {
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerSyPlyUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $PROPS['dealerply'] = $ibid['NAME'];
+                    }
+                }
+                if($arFields[dealerLamUF]) {
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerLamUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $PROPS['daelerlamarty'] = $ibid['NAME'];
+                    }
+                }
+                if($arFields[marketUF]) {
+                    $fieldval = Utils::getEnumvalue(marketiID, $arFields[marketUF], 'value');
+                    if($fieldval) {
+                        $PROPS['market'] = $fieldval;
+                    }
+                }
+                if($arFields[statusdealUF]) {
+                    $PROPS['daelerlamarty2'] = $arFields[statusdealUF];
+                }
+                if($arFields[partncodeUF]) {
+                    $PROPS['partner'] = $arFields[partncodeUF];
+                }
+                if($arFields[furnitcompUF]) {
+                    $PROPS['mebel'] = $arFields[furnitcompUF];
+                }
+                if($arFields[eng1UF]) {
+                    $PROPS['name1eng'] = $arFields[eng1UF];
+                }
+                if($arFields[eng2UF]) {
+                    $PROPS['name2eng'] = $arFields[eng2UF];
+                }
+                if($arFields[manSyPlyUF]) {
+                    $user = Utils::getUserbycondition(array('=ID' =>$arFields[manSyPlyUF]));
+                    if($user) {
+                        $PROPS['managerplyemail'] = $user['EMAIL'];
+                    }
+                }
+                if($arFields[manLamUF]) {
+                    $user = Utils::getUserbycondition(array('=ID' =>$arFields[manLamUF]));
+                    if($user) {
+                        $PROPS['managerlamartyemail'] = $user['EMAIL'];
+                    }
+                }
+                if($arFields[marketinUF]) {
+                    $PROPS['ismarket'] = $arFields[marketinUF];
+                }
+                if($PROPS) {
+                    foreach($PROPS as $key=>$item) {
+                        $data = [
+                            'ACTIVE' => 'Y',
+                            'NAME' => $key,
+                            'PROPERTY_VALUES' => [
+                                'NOVOE_ZNACHENIE'=> $item,
+                                'KOMPANIYA' => $companyid,
+                                'DATA_IZMENENIYA' => date("d.M.Y.")
+                            ]
+                        ];
+                        $id = Utils::createIBlockElement(makeexportIB, $data);
+                    }
+                }
+                
+                // старый вариант - на каждый файл
+                /*$arFilter = [
                     "ID" => $arFields["ID"], //выбираем определенную сделку по ID
                     "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
                 ];
@@ -130,7 +235,7 @@ class Crm
                     if($export) {
                         $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
                     }
-                }
+                }*/
             }
         }
     }

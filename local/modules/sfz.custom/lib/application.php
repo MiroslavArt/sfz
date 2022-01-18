@@ -25,6 +25,7 @@ class Application
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
         define('importfileXML', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
         define('makeexportXML', \COption::GetOptionString('sfz.custom', 'company_makeexportXML'));
+        define('makeexportIB', \COption::GetOptionString('sfz.custom', 'company_makeexportIB'));
         define('marketiID', \COption::GetOptionString('sfz.custom', 'company_marketiID'));
         define('marketUF', \COption::GetOptionString('sfz.custom', 'company_marketUF'));
         define('dealerIB', \COption::GetOptionString('sfz.custom', 'company_dealerIB'));
@@ -67,11 +68,11 @@ class Application
     {
         $eventManager = EventManager::getInstance();
         $eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
-        $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
+        // хандлер таба - пока деактивен
+        //$eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
+        // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
-        //$eventManager->addEventHandler('crm','OnBeforeCrmDealUpdate', ['\iTrack\Custom\EventHandlers\Crm','onBeforeCrmDealUpdate']);
-        //$eventManager->addEventHandler('crm','OnBeforeCrmDealAdd', ['\iTrack\Custom\EventHandlers\Crm','OnBeforeCrmDealAdd']);
     }
 
     public static function log($msg, $file = 'main.log')

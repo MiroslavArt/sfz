@@ -60,6 +60,12 @@ $arAllOptions = [
             ['checkbox']
         ],
         [
+            'company_makeexportIB',
+            Loc::getMessage($MODULE_ID.'_makeexportIB'),
+            Option::get($MODULE_ID, '_makeexportIB'),
+            ['text']
+        ],
+        [
             'company_marketiID',
             Loc::getMessage($MODULE_ID.'_marketiID'),
             Option::get($MODULE_ID, '_marketiID'),
