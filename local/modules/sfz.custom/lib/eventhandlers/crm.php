@@ -113,7 +113,7 @@ class Crm
                             'PROPERTY_VALUES' => [
                                 'NOVOE_ZNACHENIE'=> $item,
                                 'KOMPANIYA' => $companyid,
-                                'DATA_IZMENENIYA' => date("d.M.Y.")
+                                'DATA_IZMENENIYA' => ConvertTimeStamp(time(), "FULL") 
                             ]
                         ];
                         $id = Utils::createIBlockElement(makeexportIB, $data);
