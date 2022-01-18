@@ -133,6 +133,24 @@ class Crm
             }
         }
     }
+
+    public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)
+    {
+        $entityID = $event->getParameter('entityID');
+        \Bitrix\Main\Diag\Debug::writeToFile($entityID, "eid".date("d.m.Y G.i.s"), "__stzexp.log");
+        $entTypeid = $event->getParameter('entityTypeID');
+        \Bitrix\Main\Diag\Debug::writeToFile($entTypeid, "eid".date("d.m.Y G.i.s"), "__stzexp.log");
+        $tabs = $event->getParameter('tabs');
+        $tabs[] = [
+            'id' => 'custom',
+            'name' => 'custom',
+            'enabled' => true
+        ];
+
+        return new \Bitrix\Main\EventResult(\Bitrix\Main\EventResult::SUCCESS, [
+            'tabs' => $tabs,
+        ]);
+    }
      
     public static function onBeforeCrmDealUpdate(&$arFields)
     {
