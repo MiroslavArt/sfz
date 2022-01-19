@@ -47,7 +47,7 @@ class Crm
                         }
                     }                  
                     if($phone) {
-                        $PROPS['tel'] = $email;
+                        $PROPS['tel'] = $phone;
                     }
                 }
                 if($arFields[marketnameUF]) {
