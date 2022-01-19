@@ -43,7 +43,7 @@ class ExportImport
                     }
                 }
             }
-            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
+            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
         }
         return '\SFZ\Custom\Exchange\ExportImport::dumpCompanyXML();';
     }
