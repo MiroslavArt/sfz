@@ -12,6 +12,42 @@ class ExportImport
         Loader::includeModule('crm');
     }
 
+    public static function dumpCompanyXML()
+    {        
+        Loader::includeModule('crm');
+        $date = date("d.m.Y H:i:s", time() - 6*60*60);
+        $fromdate = ConvertDateTime($date); 
+        $selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
+        if($selectchanges && rootXML) {
+            $root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
+            foreach($selectchanges as $item) {
+                $company = $item['PROPERTIES']['KOMPANIYA']['VALUE'];
+                if($company) {
+                    $arFilter = [
+                        "ID" => $company, //выбираем определенную сделку по ID
+                        "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+                    ];
+                    $arSelect = [
+                        "ID",
+                        idGalUF
+                    ];
+                    $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+                    $arCompany = $res->fetch();
+                    if($arCompany[idGalUF]) {
+                        $change = $root->Changes->addChild('Change');
+                        $change->addAttribute('changeid', $item['ID']);
+                        $change->field = $item['NAME'];
+                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                        $change->company = $arCompany[idGalUF];
+                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE'];
+                    }
+                }
+            }
+            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("m.d.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
+        }
+        return '\SFZ\Custom\Exchange\ExportImport::dumpCompanyXML();';
+    }
+    
     public static function parseCompanyXML()
     {        
         Loader::includeModule('crm');
