@@ -142,7 +142,7 @@ class Crm
                         'params' => [
                             //'DEAL_COUNT' => 20,
                             'INTERNAL_FILTER' => [
-                                'COMPANY_ID' => 4263
+                                COMPANYUF1 => $entityID
                             ],
                             'INTERNAL_CONTEXT' => [
                                 //'COMPANY_ID' => 4263
