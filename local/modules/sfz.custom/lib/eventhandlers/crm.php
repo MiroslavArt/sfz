@@ -136,13 +136,25 @@ class Crm
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
                 'enabled' => true,
                 'loader' => [
-                    'serviceUrl' => '/bitrix/components/bitrix/crm.company.list/lazyload.ajax.php?site'.SITE_ID.'&'.bitrix_sessid_get(),
+                    'serviceUrl' => '/bitrix/components/bitrix/crm.deal.list/lazyload.ajax.php?site'.SITE_ID.'&'.bitrix_sessid_get(),
                     'componentData' => [
                         'template' => '',
                         'params' => [
+                            'DEAL_COUNT' => 20,
                             'INTERNAL_FILTER' => [
-                                COMPANYUF1 => $entityID 
-                            ]
+                                'COMPANY_ID' => 4263 
+                            ],
+                            'INTERNAL_CONTEXT' => [
+                                'COMPANY_ID' => 4263 
+                            ],
+                            'GRID_ID_SUFFIX' => [
+                                'COMPANY_DETAILS'
+                            ],
+                            'TAB_ID' =>  'tab_deal',
+                            'NAME_TEMPLATE' => '#LAST_NAME# #NAME# #SECOND_NAME#',
+                            'ENABLE_TOOLBAR' => 1,
+                            'PRESERVE_HISTORY' => 1,
+                            'ADD_EVENT_NAME' => 'CrmCreateDealFromCompany'
                         ]
                     ]
                 ]
