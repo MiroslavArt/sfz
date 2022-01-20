@@ -150,7 +150,7 @@ class Crm
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
                             ],
-                            'TAB_ID' =>  'tab_deal',
+                            //'TAB_ID' =>  'tab_deal',
                             'NAME_TEMPLATE' => '#LAST_NAME# #NAME# #SECOND_NAME#',
                             //'ENABLE_TOOLBAR' => 1,
                             'PRESERVE_HISTORY' => 1,
