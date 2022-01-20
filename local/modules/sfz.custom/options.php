@@ -212,6 +212,38 @@ $arAllOptions = [
             ['text']
         ],
     ],
+    'throughcompanies' => [
+        [
+            'throughcompanies_tabactivate',
+            Loc::getMessage($MODULE_ID.'_tabactivate'),
+            Option::get($MODULE_ID, '_tabactivate'),
+            ['checkbox']
+        ],
+        [
+            'throughcompanies_companyuf1',
+            Loc::getMessage($MODULE_ID.'_companyuf1'),
+            Option::get($MODULE_ID, '_companyuf1'),
+            ['text']
+        ],
+        [
+            'throughcompanies_companyuf2',
+            Loc::getMessage($MODULE_ID.'_companyuf2'),
+            Option::get($MODULE_ID, '_companyuf2'),
+            ['text']
+        ],
+        [
+            'throughcompanies_type1id',
+            Loc::getMessage($MODULE_ID.'_type1id'),
+            Option::get($MODULE_ID, '_type1id'),
+            ['text']
+        ], 
+        [
+            'payrequests_type2id',
+            Loc::getMessage($MODULE_ID.'_type2id'),
+            Option::get($MODULE_ID, '_type2id'),
+            ['text']
+        ]
+    ],
 ];
 
 if(isset($request["save"]) && check_bitrix_sessid()) {
@@ -245,14 +277,14 @@ $arTabs = [
         "ICON" => $MODULE_ID . '_settings',
         "TITLE" => Loc::getMessage($MODULE_ID.'_payrequests'),
         'TYPE' => 'options', //options || rights || user defined
-    ],/*
+    ],
     [
-        "DIV" => "STZint",
-        "TAB" => Loc::getMessage($MODULE_ID.'_STZ'),
+        "DIV" => "throughcompanies",
+        "TAB" => Loc::getMessage($MODULE_ID.'_throughcompanies'),
         "ICON" => $MODULE_ID . '_settings',
-        "TITLE" => Loc::getMessage($MODULE_ID.'_STZ'),
+        "TITLE" => Loc::getMessage($MODULE_ID.'_throughcompanies'),
         'TYPE' => 'options', //options || rights || user defined
-    ]*/
+    ]
 ];
 
 $tabControl = new CAdminTabControl("tabControl", $arTabs);

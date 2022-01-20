@@ -51,6 +51,12 @@ class Application
         define('contractuf', \COption::GetOptionString('sfz.custom', 'payrequests_contractuf'));
         define('contractIB', \COption::GetOptionString('sfz.custom', 'payrequests_contractIB'));
         define('companypropIB', \COption::GetOptionString('sfz.custom', 'payrequests_companypropIB'));
+        define('companypropIB', \COption::GetOptionString('sfz.custom', 'payrequests_companypropIB'));
+        define('TCTABACTIVATE', \COption::GetOptionString('sfz.custom', 'throughcompanies_tabactivate'));
+        define('COMPANYUF1', \COption::GetOptionString('sfz.custom', 'throughcompanies_companyuf1'));
+        define('COMPANYUF2', \COption::GetOptionString('sfz.custom', 'throughcompanies_companyuf2'));
+        define('TYPE1ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type1id'));
+        define('TYPE2ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2id'));
     }
 
     protected static function initJsHandlers()
@@ -69,7 +75,7 @@ class Application
         $eventManager = EventManager::getInstance();
         $eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
         // хандлер таба - пока деактивен
-        //$eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
+        $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);

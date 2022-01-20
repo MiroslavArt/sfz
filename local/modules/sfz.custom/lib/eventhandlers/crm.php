@@ -125,18 +125,19 @@ class Crm
 
     public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)
     {
+        
         $MODULE_ID = 'sfz.custom';
         $entityID = $event->getParameter('entityID');
-        \Bitrix\Main\Diag\Debug::writeToFile($entityID, "eid".date("d.m.Y G.i.s"), "__stzexp.log");
         $entTypeid = $event->getParameter('entityTypeID');
-        \Bitrix\Main\Diag\Debug::writeToFile($entTypeid, "eid".date("d.m.Y G.i.s"), "__stzexp.log");
         $tabs = $event->getParameter('tabs');
-        $tabs[] = [
-            'id' => 'custom',
-            'name' => Loc::getMessage($MODULE_ID.'_companies'),
-            'enabled' => true
-        ];
-
+        if($entTypeid==TYPE1ID) {
+            $tabs[] = [
+                'id' => 'custom',
+                'name' => Loc::getMessage($MODULE_ID.'_companies'),
+                'enabled' => true
+            ];
+        }
+        \Bitrix\Main\Diag\Debug::writeToFile($tabs, "tabs".date("d.m.Y G.i.s"), "__stzexp.log");
         return new \Bitrix\Main\EventResult(\Bitrix\Main\EventResult::SUCCESS, [
             'tabs' => $tabs,
         ]);
@@ -144,112 +145,13 @@ class Crm
      
     public static function onBeforeCrmDealUpdate(&$arFields)
     {
-        /*if (\Bitrix\Main\Loader::includeModule('crm')) {
-            if($arFields['COMPANY_ID']) {
-                $requisite = new \Bitrix\Crm\EntityRequisite();
-                $rs = $requisite->getList([
-                    "filter" => ["ENTITY_ID" => $arFields['COMPANY_ID'], "ENTITY_TYPE_ID" => \CCrmOwnerType::Company,
-                    ]
-                ]);
-                $reqData = $rs->fetch();
-                if(!$reqData || !$reqData['RQ_INN']) {
-                    \Bitrix\Main\Loader::includeModule('im');
-                    $arFieldschat = array(
-                        "MESSAGE_TYPE" => "S", # P - private chat, G - group chat, S - notification
-                        "TO_USER_ID" => $arFields['CREATED_BY_ID'],
-                        "FROM_USER_ID" => 1,
-                        "MESSAGE" => "Невозможно привязать компанию к сделке, так как в ней не заполнено поле ИНН. ",
-                        "AUTHOR_ID" => 1
-
-                    );
-                    \CIMMessenger::Add($arFieldschat);
-                    $arFields['COMPANY_ID'] = "";
-
-                }
-            }
-        }
-
-
-        if (\Bitrix\Main\Loader::includeModule('crm')) {
-            if($arFields[DEPARTURE_UF] && !$arFields[ARRIVAL_UF]) {
-                $foundf = ARRIVAL_UF;
-            } elseif(!$arFields[DEPARTURE_UF] && $arFields[ARRIVAL_UF]) {
-                $foundf = DEPARTURE_UF;
-            }
-            $arFilterDeal = array('ID'=>$arFields['ID']);
-            $arSelectDeal = array('ID', $foundf);
-            $obResDeal = \CCrmDeal::GetListEx(false,$arFilterDeal,false,false,$arSelectDeal)->Fetch();
-            if($obResDeal[$foundf]) {
-                $arFields[$foundf] = $obResDeal[$foundf];
-            }
-        }
-
-        if($arFields[DEPARTURE_UF] && $arFields[ARRIVAL_UF]) {
-            $routeid = self::actualiseRoute($arFields[DEPARTURE_UF], $arFields[ARRIVAL_UF]);
-            if(intval($routeid) > 0) {
-                $arFields[ROUTE_UF] = $routeid;
-            }
-        }*/
-
+        
     }
 
     public static function onBeforeCrmDealAdd(&$arFields)
     {
-        /*if (\Bitrix\Main\Loader::includeModule('crm')) {
-            if($arFields['COMPANY_ID']) {
-                $requisite = new \Bitrix\Crm\EntityRequisite();
-                $rs = $requisite->getList([
-                    "filter" => ["ENTITY_ID" => $arFields['COMPANY_ID'], "ENTITY_TYPE_ID" => \CCrmOwnerType::Company,
-                    ]
-                ]);
-                $reqData = $rs->fetch();
-                if(!$reqData || !$reqData['RQ_INN']) {
-                    \Bitrix\Main\Loader::includeModule('im');
-                    $arFieldschat = array(
-                        "MESSAGE_TYPE" => "S", # P - private chat, G - group chat, S - notification
-                        "TO_USER_ID" => $arFields['CREATED_BY_ID'],
-                        "FROM_USER_ID" => 1,
-                        "MESSAGE" => "Невозможно привязать компанию к сделке, так как в ней не заполнено поле ИНН. ",
-                        "AUTHOR_ID" => 1
-
-                    );
-                    \CIMMessenger::Add($arFieldschat);
-                    $arFields['COMPANY_ID'] = "";
-
-                }
-            }
-        }
-
-
-        if($arFields[DEPARTURE_UF] && $arFields[ARRIVAL_UF]) {
-            $routeid = self::actualiseRoute($arFields[DEPARTURE_UF], $arFields[ARRIVAL_UF]);
-            if(intval($routeid) > 0) {
-                $arFields[ROUTE_UF] = $routeid;
-            }
-        }*/
+        
     }
 
-    /*protected static function actualiseRoute($departure = null, $arrival = null)
-    {
-        $logib = Utils::getIDIblockByCode(IBPL_LOGSECT, IBPL_TYPE);
-        $routeib = Utils::getIDIblockByCode(IBPL_ROUTE, IBPL_TYPE);
-        if(!is_null($departure) && !is_null($arrival)) {
-            $ibdept = Utils::getIblockElementByID($logib, $departure);
-            $logdept = $ibdept['PROPERTIES']['LOGSEKTOR']['VALUE'];
-            $ibarr =  Utils::getIblockElementByID($logib, $arrival);
-            $logarr = $ibarr['PROPERTIES']['LOGSEKTOR']['VALUE'];
-            $routes = Utils::getIBlockElementsByConditions($routeib, ['PROPERTY_LOG_OTPRAVLENIYA'=>$logdept, 'PROPERTY_LOG_PRIBYTIYA'=>$logarr]);
-            if(empty($routes)) {
-                $ID = Utils::createIBlockElement($routeib, ['NAME'=>$logdept.'->'.$logarr, 'ACTIVE' => 'Y',
-                    'PROPERTY_VALUES' => [
-                        'LOG_OTPRAVLENIYA'=>$logdept,
-                        'LOG_PRIBYTIYA' => $logarr
-                    ]
-                ], []);
-                return $ID;
-            } else {
-                return $routes[0]['ID'];
-            }
-        }
-    }*/
+    
 }
