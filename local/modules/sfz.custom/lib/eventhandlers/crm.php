@@ -130,7 +130,14 @@ class Crm
         $entityID = $event->getParameter('entityID');
         $entTypeid = $event->getParameter('entityTypeID');
         $tabs = $event->getParameter('tabs');
-        if($entTypeid==TYPE1ID) {
+        if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
+            Loader::includeModule('crm');
+            Loader::includeModule('sfz.custom');
+            $arSelect = [
+                "ID"
+            ];
+            $res = \CCrmCompany::GetListEx([], [], false, false, $arSelect);
+            $ar=$res->fetch();
             $tabs[] = [
                 'id' => 'custom',
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
@@ -140,8 +147,8 @@ class Crm
                     'componentData' => [
                         'template' => '',
                         'params' => [
-                            //'DEAL_COUNT' => 20,
                             'INTERNAL_FILTER' => [
+                                'ID' => $ar['ID'],
                                 COMPANYUF1 => $entityID
                             ],
                             'INTERNAL_CONTEXT' => [
@@ -150,17 +157,13 @@ class Crm
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
                             ],
-                            //'TAB_ID' =>  'tab_deal',
-                            'NAME_TEMPLATE' => '#LAST_NAME# #NAME# #SECOND_NAME#',
-                            //'ENABLE_TOOLBAR' => 1,
-                            'PRESERVE_HISTORY' => 1,
-                            //'ADD_EVENT_NAME' => 'CrmCreateDealFromCompany'
+                            'PRESERVE_HISTORY' => 1
                         ]
                     ]
                 ]
             ];
         }
-        \Bitrix\Main\Diag\Debug::writeToFile($tabs, "tabs".date("d.m.Y G.i.s"), "__stzexp.log");
+        
         return new \Bitrix\Main\EventResult(\Bitrix\Main\EventResult::SUCCESS, [
             'tabs' => $tabs,
         ]);
