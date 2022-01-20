@@ -154,7 +154,7 @@ class Crm
                             'NAME_TEMPLATE' => '#LAST_NAME# #NAME# #SECOND_NAME#',
                             'ENABLE_TOOLBAR' => 1,
                             'PRESERVE_HISTORY' => 1,
-                            //'ADD_EVENT_NAME' => 'CrmCreateDealFromCompany'
+                            'ADD_EVENT_NAME' => 'CrmCreateDealFromCompany'
                         ]
                     ]
                 ]
