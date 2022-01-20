@@ -140,7 +140,7 @@ class Crm
                     'componentData' => [
                         'template' => '',
                         'params' => [
-                            //'DEAL_COUNT' => 20,
+                            'DEAL_COUNT' => 20,
                             'INTERNAL_FILTER' => [
                                 'ID' => 1 
                             ],
