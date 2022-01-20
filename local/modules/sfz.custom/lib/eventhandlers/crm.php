@@ -145,7 +145,7 @@ class Crm
                                 'COMPANY_ID' => 4263
                             ],
                             'INTERNAL_CONTEXT' => [
-                                'COMPANY_ID' => 4263
+                                //'COMPANY_ID' => 4263
                             ],
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
