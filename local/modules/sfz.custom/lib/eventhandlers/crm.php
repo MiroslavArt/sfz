@@ -131,13 +131,7 @@ class Crm
         $entTypeid = $event->getParameter('entityTypeID');
         $tabs = $event->getParameter('tabs');
         if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
-            Loader::includeModule('crm');
-            Loader::includeModule('sfz.custom');
-            $arSelect = [
-                "ID"
-            ];
-            $res = \CCrmCompany::GetListEx([], [], false, false, $arSelect);
-            $ar=$res->fetch();
+
             $tabs[] = [
                 'id' => 'custom',
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
@@ -148,11 +142,7 @@ class Crm
                         'template' => '',
                         'params' => [
                             'INTERNAL_FILTER' => [
-                                'ID' => $ar['ID'],
                                 COMPANYUF1 => $entityID
-                            ],
-                            'INTERNAL_CONTEXT' => [
-                                //'COMPANY_ID' => 4263
                             ],
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
