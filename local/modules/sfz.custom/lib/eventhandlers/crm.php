@@ -142,10 +142,10 @@ class Crm
                         'params' => [
                             'DEAL_COUNT' => 20,
                             'INTERNAL_FILTER' => [
-                                'ID' => 1 
+                                'COMPANY_ID' => 4263
                             ],
                             'INTERNAL_CONTEXT' => [
-                                'ID' => 1 
+                                'COMPANY_ID' => 4263
                             ],
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
