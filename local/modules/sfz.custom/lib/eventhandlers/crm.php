@@ -136,7 +136,7 @@ class Crm
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
                 'enabled' => true,
                 'loader' => [
-                    'serviceUrl' => '/bitrix/components/bitrix/crm.deal.list/lazyload.ajax.php?site'.SITE_ID.'&'.bitrix_sessid_get(),
+                    'serviceUrl' => '/bitrix/components/bitrix/crm.company.list/lazyload.ajax.php?site'.SITE_ID.'&'.bitrix_sessid_get(),
                     'componentData' => [
                         'template' => '',
                         'params' => [
