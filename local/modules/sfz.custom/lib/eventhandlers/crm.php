@@ -134,7 +134,18 @@ class Crm
             $tabs[] = [
                 'id' => 'custom',
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
-                'enabled' => true
+                'enabled' => true,
+                'loader' => [
+                    'serviceUrl' => '/bitrix/components/bitrix/crm.company.list/lazyload.ajax.php?site'.SITE_ID.'&'.bitrix_sessid_get(),
+                    'componentData' => [
+                        'template' => '',
+                        'params' => [
+                            'INTERNAL_FILTER' => [
+                                COMPANYUF1 => $entityID 
+                            ]
+                        ]
+                    ]
+                ]
             ];
         }
         \Bitrix\Main\Diag\Debug::writeToFile($tabs, "tabs".date("d.m.Y G.i.s"), "__stzexp.log");
