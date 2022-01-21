@@ -132,7 +132,7 @@ class Crm
         $cfield 
         if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
             $cfield = COMPANY1UF; 
-        } elseif($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
+        } elseif($entTypeid==TYPE2ID && TCTABACTIVATE=='Y') {
             $cfield = COMPANYUF2; 
         }
 
