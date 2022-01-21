@@ -125,13 +125,18 @@ class Crm
 
     public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)
     {
-        
         $MODULE_ID = 'sfz.custom';
         $entityID = $event->getParameter('entityID');
         $entTypeid = $event->getParameter('entityTypeID');
         $tabs = $event->getParameter('tabs');
+        $cfield 
         if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
+            $cfield = COMPANY1UF; 
+        } elseif($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
+            $cfield = COMPANYUF2; 
+        }
 
+        if($cfield) {
             $tabs[] = [
                 'id' => 'custom',
                 'name' => Loc::getMessage($MODULE_ID.'_companies'),
@@ -142,7 +147,7 @@ class Crm
                         'template' => '',
                         'params' => [
                             'INTERNAL_FILTER' => [
-                                COMPANYUF1 => $entityID
+                                $cfield => $entityID
                             ],
                             'GRID_ID_SUFFIX' => [
                                 'COMPANY_DETAILS'
