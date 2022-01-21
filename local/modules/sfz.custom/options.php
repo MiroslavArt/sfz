@@ -238,7 +238,7 @@ $arAllOptions = [
             ['text']
         ], 
         [
-            'payrequests_type2id',
+            'throughcompanies_type2id',
             Loc::getMessage($MODULE_ID.'_type2id'),
             Option::get($MODULE_ID, '_type2id'),
             ['text']

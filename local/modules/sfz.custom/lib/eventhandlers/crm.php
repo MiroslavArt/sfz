@@ -125,11 +125,12 @@ class Crm
 
     public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)
     {
+        
         $MODULE_ID = 'sfz.custom';
         $entityID = $event->getParameter('entityID');
         $entTypeid = $event->getParameter('entityTypeID');
         $tabs = $event->getParameter('tabs');
-        $cfield 
+
         if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
             $cfield = COMPANY1UF; 
         } elseif($entTypeid==TYPE2ID && TCTABACTIVATE=='Y') {
