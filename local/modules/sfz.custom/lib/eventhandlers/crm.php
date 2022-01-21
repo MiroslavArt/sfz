@@ -132,7 +132,7 @@ class Crm
         $tabs = $event->getParameter('tabs');
 
         if($entTypeid==TYPE1ID && TCTABACTIVATE=='Y') {
-            $cfield = COMPANY1UF; 
+            $cfield = COMPANYUF1; 
         } elseif($entTypeid==TYPE2ID && TCTABACTIVATE=='Y') {
             $cfield = COMPANYUF2; 
         }
