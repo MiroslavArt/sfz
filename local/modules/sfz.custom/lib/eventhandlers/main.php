@@ -26,9 +26,7 @@ class Main
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         }
         if(contractactivate == 'Y') {
-            //$type = '147'; 
-            //$contractuf = 'UF_CRM_1_1642152336';
-            
+
             $urlTemplates = [
                 'type_detail' => 'crm/type/'.typecode.'/details/#type_id#/'
             ];
@@ -46,8 +44,5 @@ class Main
                 $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.contractuf.'", "'.$companyid.'");});</script>');
             }
         }
-        
-        
-
     }
 }

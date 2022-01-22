@@ -51,10 +51,16 @@ class Crm
                     }
                 }
                 if($arFields[marketnameUF]) {
-                    $PROPS['name1'] = $arFields[marketnameUF];
+                    $typeval = Utils::getTypevalues(TYPE1ID, $arFields[marketnameUF]);
+                    if($typeval) {
+                        $PROPS['name1'] = $typeval['TITLE'];
+                    }
                 }
                 if($arFields[marketthroughnameUF]) {
-                    $PROPS['name2'] = $arFields[marketthroughnameUF];
+                    $typeval = Utils::getTypevalues(TYPE2ID, $arFields[marketthroughnameUF]);
+                    if($typeval) {
+                        $PROPS['name2'] = $typeval['TITLE'];
+                    }
                 }
                 
                 if($arFields[dealerSyPlyUF]) {

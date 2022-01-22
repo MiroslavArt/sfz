@@ -4,6 +4,7 @@ namespace SFZ\Custom\Exchange;
 
 use Bitrix\Main\Loader;
 use SFZ\Custom\Helpers\Utils;
+use Bitrix\Crm\Service;
 
 class ExportImport
 {
@@ -194,10 +195,58 @@ class ExportImport
             }
         }
         if($newel['name1']) {
-            $arParseCompany[marketnameUF] = $newel['name1']; 
+            $factory = Service\Container::getInstance()->getFactory(TYPE1ID);  
+            $items = $factory->getItems([
+                'select' => [],
+                'filter' => ['TITLE'=>$newel['name1']]
+            ]);
+            if($items) {
+                $arParseCompany[marketnameUF] = $items[0]['ID']; 
+            } else {
+                $item = $factory->createItem(['TITLE'=>$newel['name1'], 'ASSIGNED_BY_ID'=>commdir]);
+                $operation = $factory->getAddOperation($item);
+                $operation
+                    ->disableCheckFields()
+                    ->disableBizProc()
+                    ->disableCheckAccess()
+                ;
+                $addResult = $operation->launch();
+                $errorMessages = $addResult->getErrorMessages();
+                if ($addResult->isSuccess())
+                {
+                    $newId = $item->getId();
+                    if($newId) {
+                        $arParseCompany[marketnameUF] = $newId; 
+                    }
+                }
+            }
         }
         if($newel['name2']) {
-            $arParseCompany[marketthroughnameUF] = $newel['name2']; 
+            $factory = Service\Container::getInstance()->getFactory(TYPE2ID); 
+            $items = $factory->getItems([
+                'select' => [],
+                'filter' => ['TITLE'=>$newel['name2']]
+            ]);
+            if($items) {
+                $arParseCompany[marketnameUF] = $items[0]['ID']; 
+            } else {
+                $item = $factory->createItem(['TITLE'=>$newel['name2'], 'ASSIGNED_BY_ID'=>commdir]);
+                $operation = $factory->getAddOperation($item);
+                $operation
+                    ->disableCheckFields()
+                    ->disableBizProc()
+                    ->disableCheckAccess()
+                ;
+                $addResult = $operation->launch();
+                $errorMessages = $addResult->getErrorMessages();
+                if ($addResult->isSuccess())
+                {
+                    $newId = $item->getId();
+                    if($newId) {
+                        $arParseCompany[marketthroughnameUF] = $newId; 
+                    }
+                }
+            }
         }
         $fieldid = 0;
         if($newel['market']) {
