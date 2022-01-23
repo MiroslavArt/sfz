@@ -54,9 +54,6 @@ BX.sfz.General.ChangeThema = {
             var firstChild = $(el).find(':first-child')
             $(firstChild).attr("src","/upload/sfz/sfzlogo.png");
             $(firstChild).removeAttr("srcset")
-
-            //firstChild.remove()
-            //$(el).append("<img src='/upload/sfz/sfzlogo.png'/>")
         });
     }
 }
