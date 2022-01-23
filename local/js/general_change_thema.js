@@ -54,12 +54,9 @@ BX.sfz.General.ChangeThema = {
         $(".logo-image-container").each(function (index, el){
             //var img = $(el).children(":first")
             var firstChild = $(el).find(':first-child')
-            $(firstChild).attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png 2x'})
-            //console.log(img)
-            //$(img).each(function (index2, el2){
-                
-            //    $(el2).attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'}) 
-            //});    
+            firstChild.remove()
+            $(el).append("<img src='/upload/sfz/sfzlogo.png' srcset='/upload/sfz/sfzlogo.png 2x'/>")
+            
         });
         
         
