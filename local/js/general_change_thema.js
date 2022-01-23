@@ -52,8 +52,8 @@ BX.sfz.General.ChangeThema = {
     changelogo: function() {
         var logo = $(".logo-image-container:first").find(':first-child')
         console.log(logo)
-        //$(logo).attr("src") = '/upload/sfz/sfzlogo.png'
-        //$(logo).attr("srcset") = '/upload/sfz/sfzbiglogo.png'
+        $(logo).attr("src") = '/upload/sfz/sfzlogo.png'
+        $(logo).attr("srcset") = '/upload/sfz/sfzbiglogo.png'
     }
 }
 
