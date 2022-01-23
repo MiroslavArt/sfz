@@ -52,7 +52,8 @@ BX.sfz.General.ChangeThema = {
     changelogo: function() {
         console.log("here")
         var logo = $(".logo-image-container:first").find(':first-child')
-        logo.remove()
+        console.log(logo)
+        //logo.remove()
         //$(".logo-image-container").each(function (index, el){
         //    console.log(el)
             
