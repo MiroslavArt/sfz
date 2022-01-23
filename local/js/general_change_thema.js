@@ -9,6 +9,7 @@ BX.sfz.General.ChangeThema = {
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hidetopHandler()");
             // удаляем в нижнем меню
             this.hidebottomHandler()
+            console.log(BX.message('LANGUAGE_ID'))
         }
     },
     hidetopHandler: function() {
@@ -44,7 +45,7 @@ BX.sfz.General.ChangeThema = {
             var v  = $(el).attr("onclick");
             if (v=='BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog()') $(el).remove();
         });
-    },
+    }
 }
 
 
