@@ -52,10 +52,14 @@ BX.sfz.General.ChangeThema = {
     changelogo: function() {
         console.log("here")
         $(".logo-image-container").each(function (index, el){
-            var img = $(el).children(":first")
-            $(img).each(function (index2, el2){
-                $(el2).attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'}) 
-            });    
+            //var img = $(el).children(":first")
+            var firstChild = $(el).find(':first-child')
+            firstChild.remove()
+            //console.log(img)
+            //$(img).each(function (index2, el2){
+                
+            //    $(el2).attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'}) 
+            //});    
         });
         
         
