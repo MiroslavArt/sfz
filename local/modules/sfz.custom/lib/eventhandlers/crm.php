@@ -156,9 +156,7 @@ class Crm
                             'INTERNAL_FILTER' => [
                                 $cfield => $entityID
                             ],
-                            'GRID_ID_SUFFIX' => [
-                                'COMPANY_DETAILS'
-                            ],
+                            'GRID_ID_SUFFIX' => 'COMPANY_DETAILS',
                             'PRESERVE_HISTORY' => 1
                         ]
                     ]
