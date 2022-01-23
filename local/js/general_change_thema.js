@@ -52,12 +52,14 @@ BX.sfz.General.ChangeThema = {
     changelogo: function() {
         console.log("here")
         $(".logo-image-container").each(function (index, el){
+            console.log(el)
+            
             //console.log(index)
-            if(index==0) {
+            ///if(index==0) {
                 var firstChild = $(el).find(':first-child')
                 firstChild.remove()
                 $(el).append("<img src='/upload/sfz/sfzlogo.png' srcset='/upload/sfz/sfzlogo.png 2x'/>")
-            }
+            //}
         });
     }
 }
