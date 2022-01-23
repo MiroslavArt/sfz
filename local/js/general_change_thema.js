@@ -51,7 +51,7 @@ BX.sfz.General.ChangeThema = {
     },
     changelogo: function() {
         console.log("here")
-        $(".logo-image-container:first").each(function (index, el){
+        $(".logo-image-container").each(function (index, el){
             $(el).remove()
         });
         
