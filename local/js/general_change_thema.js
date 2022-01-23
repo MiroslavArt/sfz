@@ -50,7 +50,7 @@ BX.sfz.General.ChangeThema = {
         });
     },
     changelogo: function() {
-        var img = $(".logo-image-container:first").children().first()
+        var img = $(".logo-image-container:first").children().first().attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'})
         console.log(img)
         //.attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'})
 
