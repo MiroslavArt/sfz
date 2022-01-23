@@ -45,7 +45,7 @@ if(!$isPermitted)
 }
 //For custom reload with params
 $ajaxLoaderParams = array(
-	'url' => '/bitrix/components/bitrix/crm.company.list/lazyload.ajax.php?&site='.SITE_ID.'&'.bitrix_sessid_get(),
+	'url' => '/local/components/sfz/crm.company.list/lazyload.ajax.php?&site='.SITE_ID.'&'.bitrix_sessid_get(),
 	'method' => 'POST',
 	'dataType' => 'ajax',
 	'data' => array('PARAMS' => $componentData)
