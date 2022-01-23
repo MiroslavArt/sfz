@@ -9,7 +9,10 @@ BX.sfz.General.ChangeThema = {
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hidetopHandler()");
             // удаляем в нижнем меню
             this.hidebottomHandler()
-            console.log(BX.message('LANGUAGE_ID'))
+        }
+        var lan = BX.message('LANGUAGE_ID') 
+        if(lan!='ru') {
+            this.changelogo()
         }
     },
     hidetopHandler: function() {
@@ -45,6 +48,11 @@ BX.sfz.General.ChangeThema = {
             var v  = $(el).attr("onclick");
             if (v=='BX.Intranet.Bitrix24.ThemePicker.Singleton.showDialog()') $(el).remove();
         });
+    },
+    changelogo: function() {
+        var logo = $(".logo-image-container:first").find(':first-child')
+        logo.attr("src") = '/upload/sfz/sfzlogo.png'
+        logo.attr("srcset") = '/upload/sfz/sfzbiglogo.png'
     }
 }
 
