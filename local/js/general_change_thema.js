@@ -51,7 +51,12 @@ BX.sfz.General.ChangeThema = {
     },
     changelogo: function() {
         console.log("here")
-        console.log($(".logo-image-container:first"))
+        $(".logo-image-container:first").each(function (index, el){
+            $(el).remove()
+        });
+        
+        
+     
         //img.remove()
         //console.log(img)
         //.attr({'src': '/upload/sfz/sfzlogo.png'}, {'srcset': '/upload/sfz/sfzlogo.png'})
