@@ -36,9 +36,6 @@ $container = new class extends Service\Container {
                                     $PROPS['name1eng'] = $typedata[TYPE1UFENG]; 
                                 }
 
-                                //$userId = Service\Container::getInstance()->getContext()->getUserId();
-                                //\Bitrix\Main\Diag\Debug::writeToFile($item->getData(), "dataexp1".date("d.m.Y G.i.s"), "__stzexp.log");
-                                //\Bitrix\Main\Diag\Debug::writeToFile($item->isChangedTitle(), "tchanged".date("d.m.Y G.i.s"), "__stzexp.log");
 
                                 foreach($PROPS as $key=>$item) {
                                     $data = [
@@ -78,7 +75,7 @@ $container = new class extends Service\Container {
                                 if($item->isChangedTitle()) {
                                     $PROPS['name2'] = $typedata['TITLE']; 
                                 }
-                                if($item->isChanged(TYPE1UFENG)) {
+                                if($item->isChanged(TYPE2UFENG)) {
                                     $PROPS['name2eng'] = $typedata[TYPE2UFENG]; 
                                 }
                                 if($item->isChanged(TYPE2UFMANSYPLY)) {
