@@ -179,7 +179,7 @@ class Crm
     {
         if (\Bitrix\Main\Loader::includeModule('crm'))
         {
-            $factory = new class($type) extends Factory\Dynamic {
+            $factory = new class extends Factory\Dynamic {
                 public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
                 {
                     $operation = parent::getUpdateOperation($item, $context);
@@ -200,7 +200,7 @@ class Crm
             };
             DI\ServiceLocator::getInstance()->addInstance(
                 'crm.service.factory.dynamic',
-                $factory(TYPE2ID)
+                $factory
             );
     
         }
