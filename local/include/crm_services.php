@@ -28,7 +28,8 @@ class MyFactory extends Service\Factory\Dynamic
         );
     }
 }
+$type = new \Bitrix\Crm\Model\Dynamic\Type(); 
 
-$container = new MyFactory();
+$container = new MyFactory($type);
 
 DI\ServiceLocator::getInstance()->addInstance('crm.service.factory.dynamic', $container);
