@@ -18,6 +18,7 @@ class Application
         //self::initCss();
         //self::initJsHandlers();
         self::initEventHandlers();
+        self::initFactorySubstitute(); 
     }
 
     protected static function setConstants() {   
@@ -56,6 +57,7 @@ class Application
         define('COMPANYUF2', \COption::GetOptionString('sfz.custom', 'throughcompanies_companyuf2'));
         define('TYPE1ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type1id'));
         define('TYPE2ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2id'));
+        define('CRM_USE_CUSTOM_SERVICES', true);
     }
 
     protected static function initJsHandlers()
@@ -78,6 +80,14 @@ class Application
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
+    }
+
+    public static function initFactorySubstitute()
+    {
+       if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true)
+       {
+            \SFZ\Custom\EventHandlers\Crm::onFactorySubstitute();
+        }
     }
 
     public static function log($msg, $file = 'main.log')

@@ -6,6 +6,12 @@ use Bitrix\Crm\DealTable;
 use Bitrix\Main\Loader;
 use SFZ\Custom\Helpers\Utils;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Error;
+use Bitrix\Main\Result;
+use Bitrix\Crm\Item;
+use Bitrix\Crm\Service;
+use Bitrix\Crm\Service\Operation;
+use Bitrix\Main\DI;
 
 class Crm
 {
@@ -168,15 +174,31 @@ class Crm
             'tabs' => $tabs,
         ]);
     }
-     
-    public static function onBeforeCrmDealUpdate(&$arFields)
+    public static function onFactorySubstitute()
     {
+        $factory = new class($type) extends Factory\Dynamic {
+            public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
+            {
+                $operation = parent::getUpdateOperation($item, $context);
         
-    }
-
-    public static function onBeforeCrmDealAdd(&$arFields)
-    {
-        
+                return $operation->addAction(
+                    Operation::ACTION_AFTER_SAVE,
+                    new class extends Operation\Action {
+                        public function process(Item $item): Result
+                        {
+                            $userId = Service\Container::getInstance()->getContext()->getUserId();
+                            \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp".date("d.m.Y G.i.s"), "__type.log");
+                          
+                            return new Result();
+                        }
+                    }
+                );
+            }
+        };
+        DI\ServiceLocator::getInstance()->addInstance(
+            'crm.service.factory.dynamic',
+            $factory(TYPE2ID)
+        );
     }
 
     
