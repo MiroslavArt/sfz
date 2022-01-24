@@ -7,42 +7,41 @@ use Bitrix\Crm\Service\Operation;
 use Bitrix\Main\DI;
 use Bitrix\Crm\Service\Factory;
 
+define('SUPER_ENTITY_TYPE_ID', 134);
+
 $container = new class extends Service\Container {
     public function getFactory(int $entityTypeId): ?Factory
     {
-        //\Bitrix\Main\Diag\Debug::writeToFile($entityTypeId, "ops".date("d.m.Y G.i.s"), "__stzexp.log");
         // it is the same as
         // DI\ServiceLocator::getInstance()->addInstance('Crm.Service.Factory.Dynamic.150',$factory);
-        if ($entityTypeId == '134')
+        if ($entityTypeId === SUPER_ENTITY_TYPE_ID)
         {
-            \Bitrix\Main\Diag\Debug::writeToFile('match', "ops".date("d.m.Y G.i.s"), "__stzexp.log");
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             // our new custom factory class
             $factory = new class($type) extends Factory\Dynamic {
-                public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
+                public function getDeleteOperation(Item $item, Context $context = null): Operation\Delete
                 {
-                    $operation = parent::getUpdateOperation($item, $context);
-                    \Bitrix\Main\Diag\Debug::writeToFile('match2', "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
+                    $operation = parent::getDeleteOperation($item, $context);
+
                     return $operation->addAction(
-                        Operation::ACTION_BEFORE_SAVE,
+                        Operation::ACTION_AFTER_SAVE,
                         new class extends Operation\Action {
                             public function process(Item $item): Result
                             {
-                                $result = new Result();
+                                \Bitrix\Main\Diag\Debug::writeToFile('process', "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
                                 $userId = Service\Container::getInstance()->getContext()->getUserId();
-                                
                                 \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
-                                
-                                return $result;
+                            
+                                return new Result();
                             }
                         }
-        
                     );
                 }    
             };
             return $factory;
         }
-        return parent::getFactory($entityTypeId);
+
+      return parent::getFactory($entityTypeId);
     }
 };
 // here we change the container
