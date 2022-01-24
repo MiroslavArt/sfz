@@ -28,7 +28,7 @@ class MyFactory extends Service\Factory\Dynamic
         );
     }
 }
-$type = new \Bitrix\Crm\Model\Dynamic\Type(); 
+$type = new \Bitrix\Crm\Model\Dynamic\Type('134'); 
 
 $container = new MyFactory($type);
 
