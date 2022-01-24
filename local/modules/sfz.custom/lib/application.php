@@ -89,6 +89,7 @@ class Application
         $fileName = __DIR__ . '/include/crm_services.php';
         if (file_exists($fileName))
         {
+            \Bitrix\Main\Diag\Debug::writeToFile("match", "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
             require_once ($fileName);
         }
         }
