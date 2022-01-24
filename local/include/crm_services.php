@@ -87,7 +87,7 @@ $container = new class extends Service\Container {
                                 if($item->isChanged(TYPE2UFMANLAM)) {
                                     $user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANLAM]));
                                     if($user) {
-                                        $PROPS['managerplyemail'] = $user['EMAIL'];
+                                        $PROPS['managerlamartyemail'] = $user['EMAIL'];
                                     }
                                 }
                                 
