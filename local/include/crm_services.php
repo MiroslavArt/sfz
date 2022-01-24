@@ -47,11 +47,10 @@ $container = new class extends Service\Container {
                             {
                                 $result = new Result();
                                 $userId = Service\Container::getInstance()->getContext()->getUserId();
-                                \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
+                                \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp1".date("d.m.Y G.i.s"), "__stzexp.log");
                                 \Bitrix\Main\Diag\Debug::writeToFile($item->getData(), "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
-                                $factory = Service\Container::getInstance()->getFactory(SUPER_ENTITY_TYPE_ID);
-                                $beforeitem = $factory->getItemBeforeSave();
-                                \Bitrix\Main\Diag\Debug::writeToFile($beforeitem->getData(), "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
+                                $beforeitem = $this->getItem();
+                                \Bitrix\Main\Diag\Debug::writeToFile($beforeitem, "dataexp3".date("d.m.Y G.i.s"), "__stzexp.log");
                                 return $result;
                             }
                         }
