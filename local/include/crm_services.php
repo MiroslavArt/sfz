@@ -19,7 +19,7 @@ $container = new class extends Service\Container {
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             // our new custom factory class
             $factory = new class($type) extends Factory\Dynamic {
-                public function getDeleteOperation(Item $item, Context $context = null): Operation\Delete
+                /*public function getDeleteOperation(Item $item, Context $context = null): Operation\Delete
                 {
                     $operation = parent::getDeleteOperation($item, $context);
 
@@ -36,7 +36,7 @@ $container = new class extends Service\Container {
                             }
                         }
                     );
-                }
+                }*/
                 public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
                 {
                     $operation = parent::getUpdateOperation($item, $context);
