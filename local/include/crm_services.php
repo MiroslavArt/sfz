@@ -10,10 +10,10 @@ use Bitrix\Crm\Service\Factory;
 $container = new class extends Service\Container {
     public function getFactory(int $entityTypeId): ?Factory
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($entityTypeId, "ops".date("d.m.Y G.i.s"), "__stzexp.log");
+        //\Bitrix\Main\Diag\Debug::writeToFile($entityTypeId, "ops".date("d.m.Y G.i.s"), "__stzexp.log");
         // it is the same as
         // DI\ServiceLocator::getInstance()->addInstance('Crm.Service.Factory.Dynamic.150',$factory);
-        /*if ($entityTypeId === TYPE2ID)
+        if ($entityTypeId === TYPE2ID)
         {
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             // our new custom factory class
@@ -39,7 +39,7 @@ $container = new class extends Service\Container {
                 }    
             };
             return $factory;
-        }*/
+        }
         return parent::getFactory($entityTypeId);
     }
 };
