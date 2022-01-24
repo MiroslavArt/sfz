@@ -41,7 +41,7 @@ $container = new class extends Service\Container {
                 {
                     $operation = parent::getUpdateOperation($item, $context);
                     return $operation->addAction(
-                        Operation::ACTION_AFTER_SAVE,
+                        Operation::ACTION_BEFORE_SAVE,
                         new class extends Operation\Action {
                             public function process(Item $item): Result
                             {
