@@ -86,12 +86,13 @@ class Application
     {
        if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true)
        {
-        $fileName = __DIR__ . '/local/include/crm_services.php';
-        if (file_exists($fileName))
-        {
-            \Bitrix\Main\Diag\Debug::writeToFile("match", "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
-            require_once ($fileName);
-        }
+            \Bitrix\Main\Diag\Debug::writeToFile("match1", "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
+            $fileName = __DIR__ . '/local/include/crm_services.php';
+            if (file_exists($fileName))
+            {
+                \Bitrix\Main\Diag\Debug::writeToFile("match2", "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
+                require_once ($fileName);
+            }
         }
     }
 
