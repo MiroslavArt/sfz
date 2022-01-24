@@ -49,7 +49,8 @@ $container = new class extends Service\Container {
                                 $userId = Service\Container::getInstance()->getContext()->getUserId();
                                 \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
                                 \Bitrix\Main\Diag\Debug::writeToFile($item->getData(), "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
-
+                                $beforeitem =  Service\Container::getInstance()->getItemBeforeSave();
+                                \Bitrix\Main\Diag\Debug::writeToFile($beforeitem->getData(), "dataexp2".date("d.m.Y G.i.s"), "__stzexp.log");
                                 return $result;
                             }
                         }
