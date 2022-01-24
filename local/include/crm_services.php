@@ -4,6 +4,7 @@ use Bitrix\Main\Result;
 use Bitrix\Crm\Item;
 use Bitrix\Crm\Service;
 use Bitrix\Crm\Service\Operation;
+use Bitrix\Main\DI;
 
 class MyFactory extends Service\Factory\Dynamic 
 {
@@ -27,3 +28,7 @@ class MyFactory extends Service\Factory\Dynamic
         );
     }
 }
+
+$container = new MyFactory();
+
+DI\ServiceLocator::getInstance()->addInstance('crm.service.factory.dynamic', $container);
