@@ -13,7 +13,7 @@ $container = new class extends Service\Container {
         //\Bitrix\Main\Diag\Debug::writeToFile($entityTypeId, "ops".date("d.m.Y G.i.s"), "__stzexp.log");
         // it is the same as
         // DI\ServiceLocator::getInstance()->addInstance('Crm.Service.Factory.Dynamic.150',$factory);
-        if ($entityTypeId === '134')
+        if ($entityTypeId == '134')
         {
             \Bitrix\Main\Diag\Debug::writeToFile('match', "ops".date("d.m.Y G.i.s"), "__stzexp.log");
             $type = $this->getTypeByEntityTypeId($entityTypeId);
