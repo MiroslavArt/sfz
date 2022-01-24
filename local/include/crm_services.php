@@ -30,7 +30,7 @@ $container = new class extends Service\Container {
                                 $userId = Service\Container::getInstance()->getContext()->getUserId();
                                 \Bitrix\Main\Diag\Debug::writeToFile($item->getData(), "dataexp1".date("d.m.Y G.i.s"), "__stzexp.log");
                                 \Bitrix\Main\Diag\Debug::writeToFile($item->isChangedTitle(), "tchanged".date("d.m.Y G.i.s"), "__stzexp.log");
-                                \Bitrix\Main\Diag\Debug::writeToFile($item->isChanged('UF_CRM_2_1642771356'), "ufchanged".date("d.m.Y G.i.s"), "__stzexp.log");
+                                \Bitrix\Main\Diag\Debug::writeToFile($item->isChanged('UF_CRM_3_1642771199'), "ufchanged".date("d.m.Y G.i.s"), "__stzexp.log");
                                 return $result;
                             }
                         }
