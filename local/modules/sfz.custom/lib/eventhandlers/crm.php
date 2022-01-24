@@ -12,6 +12,7 @@ use Bitrix\Crm\Item;
 use Bitrix\Crm\Service;
 use Bitrix\Crm\Service\Operation;
 use Bitrix\Main\DI;
+use Bitrix\Crm\Service\Factory;
 
 class Crm
 {
@@ -176,29 +177,34 @@ class Crm
     }
     public static function onFactorySubstitute()
     {
-        $factory = new class($type) extends Factory\Dynamic {
-            public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
-            {
-                $operation = parent::getUpdateOperation($item, $context);
-        
-                return $operation->addAction(
-                    Operation::ACTION_AFTER_SAVE,
-                    new class extends Operation\Action {
-                        public function process(Item $item): Result
-                        {
-                            $userId = Service\Container::getInstance()->getContext()->getUserId();
-                            \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp".date("d.m.Y G.i.s"), "__type.log");
-                          
-                            return new Result();
+        if (\Bitrix\Main\Loader::includeModule('crm'))
+        {
+            $factory = new class($type) extends Factory\Dynamic {
+                public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
+                {
+                    $operation = parent::getUpdateOperation($item, $context);
+            
+                    return $operation->addAction(
+                        Operation::ACTION_AFTER_SAVE,
+                        new class extends Operation\Action {
+                            public function process(Item $item): Result
+                            {
+                                $userId = Service\Container::getInstance()->getContext()->getUserId();
+                                \Bitrix\Main\Diag\Debug::writeToFile($userId, "dataexp".date("d.m.Y G.i.s"), "__type.log");
+                              
+                                return new Result();
+                            }
                         }
-                    }
-                );
-            }
-        };
-        DI\ServiceLocator::getInstance()->addInstance(
-            'crm.service.factory.dynamic',
-            $factory(TYPE2ID)
-        );
+                    );
+                }
+            };
+            DI\ServiceLocator::getInstance()->addInstance(
+                'crm.service.factory.dynamic',
+                $factory(TYPE2ID)
+            );
+    
+        }
+        
     }
 
     
