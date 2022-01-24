@@ -5,6 +5,7 @@ use Bitrix\Crm\Item;
 use Bitrix\Crm\Service;
 use Bitrix\Crm\Service\Operation;
 use Bitrix\Main\DI;
+use Bitrix\Crm\Service\Factory;
 
 $container = new class extends Service\Container {
     public function getFactory(int $entityTypeId): ?Factory
