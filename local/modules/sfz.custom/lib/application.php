@@ -56,7 +56,11 @@ class Application
         define('COMPANYUF1', \COption::GetOptionString('sfz.custom', 'throughcompanies_companyuf1'));
         define('COMPANYUF2', \COption::GetOptionString('sfz.custom', 'throughcompanies_companyuf2'));
         define('TYPE1ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type1id'));
+        define('TYPE1UFENG', \COption::GetOptionString('sfz.custom', 'throughcompanies_type1ufeng'));
         define('TYPE2ID', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2id'));
+        define('TYPE2UFENG', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufeng'));
+        define('TYPE2UFMANSYPLY', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmansyply'));
+        define('TYPE2UFMANLAM', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmanlam'));
         define('CRM_USE_CUSTOM_SERVICES', true);
     }
 
@@ -86,18 +90,13 @@ class Application
     {
        if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true)
        {
-            
             $fileName = $_SERVER["DOCUMENT_ROOT"]  . '/local/include/crm_services.php';
-            
             if (file_exists($fileName))
             {
                 if (\Bitrix\Main\Loader::includeModule('crm'))
                 {                   
                     require_once ($fileName);
                 }
-                
-                
-                
             }
         }
     }

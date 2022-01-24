@@ -238,11 +238,35 @@ $arAllOptions = [
             ['text']
         ], 
         [
+            'throughcompanies_type1ufeng',
+            Loc::getMessage($MODULE_ID.'_type1ufeng'),
+            Option::get($MODULE_ID, '_type1ufeng'),
+            ['text']
+        ], 
+        [
             'throughcompanies_type2id',
             Loc::getMessage($MODULE_ID.'_type2id'),
             Option::get($MODULE_ID, '_type2id'),
             ['text']
-        ]
+        ],
+        [
+            'throughcompanies_type2ufeng',
+            Loc::getMessage($MODULE_ID.'_type2ufeng'),
+            Option::get($MODULE_ID, '_type2ufeng'),
+            ['text']
+        ], 
+        [
+            'throughcompanies_type2ufmansyply',
+            Loc::getMessage($MODULE_ID.'_type2ufmansyply'),
+            Option::get($MODULE_ID, '_type2ufmansyply'),
+            ['text']
+        ], 
+        [
+            'throughcompanies_type2ufmanlam',
+            Loc::getMessage($MODULE_ID.'_type2ufmanlam'),
+            Option::get($MODULE_ID, '_type2ufmanlam'),
+            ['text']
+        ] 
     ],
 ];
 
