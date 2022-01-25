@@ -6,6 +6,7 @@ use Bitrix\Main\Config\Option;
 use Bitrix\Main\EventManager;
 use Bitrix\Main\Page\Asset;
 use SFZ\Custom\Helpers\Utils;
+use Bitrix\Main\DI;
 
 
 class Application
@@ -88,14 +89,18 @@ class Application
 
     public static function initFactorySubstitute()
     {
-       if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true)
+       if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true && makeexportXML=='Y')
        {
             $fileName = $_SERVER["DOCUMENT_ROOT"]  . '/local/include/crm_services.php';
             if (file_exists($fileName))
             {
                 if (\Bitrix\Main\Loader::includeModule('crm'))
                 {                   
-                    require_once ($fileName);
+                    $type = new \SFZ\Custom\EventHandlers\Crm\Type(); 
+                    // here we change the container
+                    DI\ServiceLocator::getInstance()->addInstance('crm.service.container', $type);
+                    
+                    //require_once ($fileName);
                 }
             }
         }
