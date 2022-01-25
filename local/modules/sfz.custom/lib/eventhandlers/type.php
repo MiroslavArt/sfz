@@ -1,5 +1,5 @@
 <?php
-namespace sfz\Custom\Controller;
+namespace sfz\Custom\EventHandlers;
 
 use Bitrix\Main\Error;
 use Bitrix\Main\Result;
