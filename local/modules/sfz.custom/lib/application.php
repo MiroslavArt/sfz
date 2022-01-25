@@ -96,7 +96,7 @@ class Application
             {
                 if (\Bitrix\Main\Loader::includeModule('crm'))
                 {                   
-                    $type = new \SFZ\Custom\EventHandlers\Crm\Type(); 
+                    $type = new \SFZ\Custom\EventHandlers\Type(); 
                     // here we change the container
                     DI\ServiceLocator::getInstance()->addInstance('crm.service.container', $type);
                     
