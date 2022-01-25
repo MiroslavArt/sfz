@@ -23,7 +23,9 @@ class ExportImport
             $root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
             foreach($selectchanges as $item) {
                 $company = $item['PROPERTIES']['KOMPANIYA']['VALUE'];
-                if($company) {
+                $throughcompanyone = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_1']['VALUE'];
+                $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
+                if($company && !$throughcompanyone && !$throughcompanytwo) {
                     $arFilter = [
                         "ID" => $company, //выбираем определенную сделку по ID
                         "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
@@ -40,7 +42,30 @@ class ExportImport
                         $change->field = $item['NAME'];
                         $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
                         $change->company = $arCompany[idGalUF];
+                        $change->type = 'компания';
                         $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE'];
+                    }
+                } elseif(!$company && $throughcompanyone && !$throughcompanytwo) {
+                    $typeval = Utils::getTypevalues(TYPE1ID, $throughcompanyone);
+                    if($typeval) {
+                        $change = $root->Changes->addChild('Change');
+                        $change->addAttribute('changeid', $item['ID']);
+                        $change->field = $item['NAME'];
+                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                        $change->company = $typeval['TITLE'];
+                        $change->type = 'Сквозная - 1';
+                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
+                    }
+                } elseif(!$company && !$throughcompanyone && $throughcompanytwo) {
+                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                    if($typeval) {
+                        $change = $root->Changes->addChild('Change');
+                        $change->addAttribute('changeid', $item['ID']);
+                        $change->field = $item['NAME'];
+                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                        $change->company = $typeval['TITLE'];
+                        $change->type = 'Сквозная - 2';
+                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
                     }
                 }
             }
