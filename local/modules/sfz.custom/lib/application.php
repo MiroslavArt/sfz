@@ -91,19 +91,14 @@ class Application
     {
        if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true && makeexportXML=='Y')
        {
-            $fileName = $_SERVER["DOCUMENT_ROOT"]  . '/local/include/crm_services.php';
-            if (file_exists($fileName))
-            {
-                if (\Bitrix\Main\Loader::includeModule('crm'))
-                {                   
-                    $type = new \SFZ\Custom\EventHandlers\Type(); 
-                    // here we change the container
-                    DI\ServiceLocator::getInstance()->addInstance('crm.service.container', $type);
-                    
-                    //require_once ($fileName);
-                }
+            if (\Bitrix\Main\Loader::includeModule('crm'))
+            {                   
+                $type = new \SFZ\Custom\EventHandlers\Type(); 
+                // here we change the container
+                DI\ServiceLocator::getInstance()->addInstance('crm.service.container', $type);
             }
         }
+        
     }
 
     public static function log($msg, $file = 'main.log')
