@@ -16,7 +16,7 @@ class ExportImport
     public static function dumpCompanyXML()
     {        
         Loader::includeModule('crm');
-        $date = date("d.m.Y H:i:s", time() - 6*60*60);
+        $date = date("d.m.Y H:i:s", time() - 24*60*60);
         $fromdate = ConvertDateTime($date); 
         $selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
         if($selectchanges && rootXML) {
