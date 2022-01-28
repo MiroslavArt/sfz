@@ -11,10 +11,10 @@ class Iblock
 {
     public static function OnBeforeIBlockElementAdd(&$arFields)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "аа".date("d.m.Y G.i.s"));
-        global $APPLICATION;
-        $APPLICATION->throwException("Косяк.");
-        return false;
+        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "аа".date("d.m.Y G.i.s"));
+        //global $APPLICATION;
+        //$APPLICATION->throwException("Косяк.");
+        //return false;
     }
 
     
