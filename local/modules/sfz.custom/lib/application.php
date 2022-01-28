@@ -62,7 +62,8 @@ class Application
         define('TYPE2UFENG', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufeng'));
         define('TYPE2UFMANSYPLY', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmansyply'));
         define('TYPE2UFMANLAM', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmanlam'));
-        define('CRM_USE_CUSTOM_SERVICES', true);
+        define('PLYWOODIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_plywoodIB'));
+        define('LAMARTYIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartyIB'));
     }
 
     protected static function initJsHandlers()

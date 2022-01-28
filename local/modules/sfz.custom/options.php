@@ -266,7 +266,19 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_type2ufmanlam'),
             Option::get($MODULE_ID, '_type2ufmanlam'),
             ['text']
-        ] 
+        ],
+        [
+            'throughcompanies_plywoodIB',
+            Loc::getMessage($MODULE_ID.'_plywoodIB'),
+            Option::get($MODULE_ID, '_plywoodIB'),
+            ['text']
+        ],
+        [
+            'throughcompanies_lamartyIB',
+            Loc::getMessage($MODULE_ID.'_lamartyIB'),
+            Option::get($MODULE_ID, '_lamartyIB'),
+            ['text']
+        ]    
     ],
 ];
 
