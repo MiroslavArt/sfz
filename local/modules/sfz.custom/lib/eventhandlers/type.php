@@ -113,7 +113,8 @@ class Type extends Service\Container
                                     ];
                                     $id = Utils::createIBlockElement(makeexportIB, $data, []);
                                 }
-
+                                \Bitrix\Main\Diag\Debug::writeToFile($managerplyemail, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
+                                \Bitrix\Main\Diag\Debug::writeToFile($managerlamartyemail, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
                                 if($managerplyemail) {
                                     $data = [
                                         'ACTIVE' => 'Y',
@@ -125,7 +126,7 @@ class Type extends Service\Container
                                         ]
                                     ];
                                     $id = Utils::createIBlockElement(PLYWOODIB, $data, []);
-
+                                    \Bitrix\Main\Diag\Debug::writeToFile($id, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
                                 }
 
                                 if($managerlamartyemail) {
@@ -139,7 +140,7 @@ class Type extends Service\Container
                                         ]
                                     ];
                                     $id = Utils::createIBlockElement(LAMARTYIB, $data, []);
-
+                                    \Bitrix\Main\Diag\Debug::writeToFile($id, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
                                 }
                                 
                                 return $result;
