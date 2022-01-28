@@ -93,7 +93,7 @@ class Application
 
     public static function initFactorySubstitute()
     {
-       if (defined('CRM_USE_CUSTOM_SERVICES') && CRM_USE_CUSTOM_SERVICES === true && makeexportXML=='Y')
+       if (makeexportXML=='Y')
        {
             if (\Bitrix\Main\Loader::includeModule('crm'))
             {                   
