@@ -19,56 +19,95 @@ class ExportImport
         $date = date("d.m.Y H:i:s", time() - 24*60*60);
         $fromdate = ConvertDateTime($date); 
         $selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
-        if($selectchanges && rootXML) {
-            $root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
-            foreach($selectchanges as $item) {
-                $company = $item['PROPERTIES']['KOMPANIYA']['VALUE'];
-                $throughcompanyone = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_1']['VALUE'];
-                $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
-                if($company && !$throughcompanyone && !$throughcompanytwo) {
-                    $arFilter = [
-                        "ID" => $company, //выбираем определенную сделку по ID
-                        "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
-                    ];
-                    $arSelect = [
-                        "ID",
-                        idGalUF
-                    ];
-                    $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
-                    $arCompany = $res->fetch();
-                    if($arCompany[idGalUF]) {
-                        $change = $root->Changes->addChild('Change');
-                        $change->addAttribute('changeid', $item['ID']);
-                        $change->field = $item['NAME'];
-                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
-                        $change->company = $arCompany[idGalUF];
-                        $change->type = 'компания';
-                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE'];
-                    }
-                } elseif(!$company && $throughcompanyone && !$throughcompanytwo) {
-                    $typeval = Utils::getTypevalues(TYPE1ID, $throughcompanyone);
-                    if($typeval) {
-                        $change = $root->Changes->addChild('Change');
-                        $change->addAttribute('changeid', $item['ID']);
-                        $change->field = $item['NAME'];
-                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
-                        $change->company = $typeval['TITLE'];
-                        $change->type = 'Сквозная - 1';
-                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
-                    }
-                } elseif(!$company && !$throughcompanyone && $throughcompanytwo) {
-                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
-                    if($typeval) {
-                        $change = $root->Changes->addChild('Change');
-                        $change->addAttribute('changeid', $item['ID']);
-                        $change->field = $item['NAME'];
-                        $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
-                        $change->company = $typeval['TITLE'];
-                        $change->type = 'Сквозная - 2';
-                        $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
+        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, [">=TIMESTAMP_X"=>$fromdate]);
+        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, [">=TIMESTAMP_X"=>$fromdate]);
+        if(rootXML) {
+            if($selectchanges || $selectspmanagerchanges || $selectlammanagerchanges) {
+                $root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
+                foreach($selectchanges as $item) {
+                    $company = $item['PROPERTIES']['KOMPANIYA']['VALUE'];
+                    $throughcompanyone = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_1']['VALUE'];
+                    $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
+                    if($company && !$throughcompanyone && !$throughcompanytwo) {
+                        $arFilter = [
+                            "ID" => $company, //выбираем определенную сделку по ID
+                            "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+                        ];
+                        $arSelect = [
+                            "ID",
+                            idGalUF
+                        ];
+                        $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+                        $arCompany = $res->fetch();
+                        if($arCompany[idGalUF]) {
+                            $change = $root->Changes->addChild('Change');
+                            $change->addAttribute('changeid', $item['ID']);
+                            $change->field = $item['NAME'];
+                            $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                            $change->company = $arCompany[idGalUF];
+                            $change->type = 'компания';
+                            $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE'];
+                        }
+                    } elseif(!$company && $throughcompanyone && !$throughcompanytwo) {
+                        $typeval = Utils::getTypevalues(TYPE1ID, $throughcompanyone);
+                        if($typeval) {
+                            $change = $root->Changes->addChild('Change');
+                            $change->addAttribute('changeid', $item['ID']);
+                            $change->field = $item['NAME'];
+                            $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                            $change->company = $typeval['TITLE'];
+                            $change->type = 'Сквозная - 1';
+                            $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
+                        }
+                    } elseif(!$company && !$throughcompanyone && $throughcompanytwo) {
+                        $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                        if($typeval) {
+                            $change = $root->Changes->addChild('Change');
+                            $change->addAttribute('changeid', $item['ID']);
+                            $change->field = $item['NAME'];
+                            $change->date = $item['PROPERTIES']['DATA_IZMENENIYA']['VALUE'];
+                            $change->company = $typeval['TITLE'];
+                            $change->type = 'Сквозная - 2';
+                            $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
+                        }
                     }
                 }
+                foreach($selectspmanagerchanges as $item) {
+                    $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
+                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                    if($throughcompanytwo) {
+                        $change = $root->Changes->addChild('Change');
+                        $change->addAttribute('changeid', $item['ID']);
+                        $change->field = 'managerplyemail';
+                        $change->date = $item['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
+                        $change->company = $typeval['TITLE'];
+                        $change->type = 'Сквозная - 2';
+                        $user = Utils::getUserbycondition(array('=ID' =>$item['PROPERTIES']['SOTRUDNIK']['VALUE']));
+                        if($user) {
+                            $change->newval = $user['EMAIL']; 
+                        }
+                    }
+                }
+                foreach($selectlammanagerchanges as $item) {
+                    $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
+                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                    if($throughcompanytwo) {
+                        $change = $root->Changes->addChild('Change');
+                        $change->addAttribute('changeid', $item['ID']);
+                        $change->field = 'managerlamartyemail';
+                        $change->date = $item['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
+                        $change->company = $typeval['TITLE'];
+                        $change->type = 'Сквозная - 2';
+                        $user = Utils::getUserbycondition(array('=ID' =>$item['PROPERTIES']['SOTRUDNIK']['VALUE']));
+                        if($user) {
+                            $change->newval = $user['EMAIL']; 
+                        }
+                    }
+                }
+
             }
+            
+            
             $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
         }
         return '\SFZ\Custom\Exchange\ExportImport::dumpCompanyXML();';
@@ -194,7 +233,6 @@ class ExportImport
             manSyPlyUF => "",
             manLamUF => "",
             marketUF => "",
-            manLamUF => "",
             archiveUF => "",
             marketinUF => ""
         ]; 
