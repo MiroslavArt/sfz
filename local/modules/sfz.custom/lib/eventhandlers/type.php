@@ -82,16 +82,18 @@ class Type extends Service\Container
                                     $PROPS['name2eng'] = $typedata[TYPE2UFENG]; 
                                 }
                                 if($item->isChanged(TYPE2UFMANSYPLY)) {
-                                    $user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANSYPLY]));
-                                    if($user) {
-                                        $PROPS['managerplyemail'] = $user['EMAIL'];
-                                    }
+                                    $managerplyemail = $typedata[TYPE2UFMANSYPLY]; 
+                                    //$user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANSYPLY]));
+                                    //if($user) {
+                                    //    $PROPS2['managerplyemail'] = $user['EMAIL'];
+                                    //}
                                 }
                                 if($item->isChanged(TYPE2UFMANLAM)) {
-                                    $user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANLAM]));
-                                    if($user) {
-                                        $PROPS['managerlamartyemail'] = $user['EMAIL'];
-                                    }
+                                    $managerlamartyemail = $typedata[TYPE2UFMANLAM]; 
+                                    //$user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANLAM]));
+                                    //if($user) {
+                                    //    $PROPS['managerlamartyemail'] = $user['EMAIL'];
+                                    //}
                                 }
                                 
                                 //$userId = Service\Container::getInstance()->getContext()->getUserId();
@@ -110,6 +112,34 @@ class Type extends Service\Container
                                         ]
                                     ];
                                     $id = Utils::createIBlockElement(makeexportIB, $data, []);
+                                }
+
+                                if($managerplyemail) {
+                                    $data = [
+                                        'ACTIVE' => 'Y',
+                                        'NAME' => 'Смена менеджера по фанере',
+                                        'PROPERTY_VALUES' => [
+                                            'SOTRUDNIK'=> $managerplyemail,
+                                            'SKVOZNAYA_KOMPANIYA_2' => $typedata['ID'],
+                                            'DATA_SMENY_MENEDZHERA' => ConvertTimeStamp(time(), "FULL") 
+                                        ]
+                                    ];
+                                    $id = Utils::createIBlockElement(PLYWOODIB, $data, []);
+
+                                }
+
+                                if($managerlamartyemail) {
+                                    $data = [
+                                        'ACTIVE' => 'Y',
+                                        'NAME' => 'Смена менеджера по ЛДСП',
+                                        'PROPERTY_VALUES' => [
+                                            'SOTRUDNIK'=> $managerlamartyemail,
+                                            'SKVOZNAYA_KOMPANIYA_2' => $typedata['ID'],
+                                            'DATA_SMENY_MENEDZHERA' => ConvertTimeStamp(time(), "FULL") 
+                                        ]
+                                    ];
+                                    $id = Utils::createIBlockElement(LAMARTYIB, $data, []);
+
                                 }
                                 
                                 return $result;
