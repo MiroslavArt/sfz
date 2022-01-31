@@ -74,8 +74,9 @@ class ExportImport
                 }
                 foreach($selectspmanagerchanges as $item) {
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
-                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                    
                     if($throughcompanytwo) {
+                        $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
                         $change = $root->Changes->addChild('Change');
                         $change->addAttribute('changeid', $item['ID']);
                         $change->field = 'managerplyemail';
@@ -90,8 +91,9 @@ class ExportImport
                 }
                 foreach($selectlammanagerchanges as $item) {
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
-                    $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
+                    
                     if($throughcompanytwo) {
+                        $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
                         $change = $root->Changes->addChild('Change');
                         $change->addAttribute('changeid', $item['ID']);
                         $change->field = 'managerlamartyemail';
