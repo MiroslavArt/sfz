@@ -52,7 +52,7 @@ BX.sfz.General.ChangeThema = {
     changelogo: function() {
         $(".logo-image-container").each(function (index, el){
             var firstChild = $(el).find(':first-child')
-            $(firstChild).attr("src","/upload/sfz/sfzlogo.png");
+            $(firstChild).attr("src","/upload/sfz/sfzlogo.png").width(200).height(51);
             $(firstChild).removeAttr("srcset")
         });
     }

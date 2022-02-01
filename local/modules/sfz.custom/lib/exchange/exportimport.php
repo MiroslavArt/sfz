@@ -328,15 +328,15 @@ class ExportImport
             }
         }
         $ibidsec = [];
-        if($newel['daelerlamarty']) {
-            $ibidsec = current(Utils::getIBlockElementsByConditions(dealerIB, ["=NAME"=>$newel['daelerlamarty']], ['NAME'=>'desc']));
+        if($newel['dealerlamarty']) {
+            $ibidsec = current(Utils::getIBlockElementsByConditions(dealerIB, ["=NAME"=>$newel['dealerlamarty']], ['NAME'=>'desc']));
             if($ibidsec['ID']>0) {
                 $arParseCompany[dealerLamUF] = $ibidsec['ID']; 
             }
         }
 
-        if($newel['daelerlamarty2']) {
-            $arParseCompany[statusdealUF] = $newel['daelerlamarty2']; 
+        if($newel['dealerlamarty2']) {
+            $arParseCompany[statusdealUF] = $newel['dealerlamarty2']; 
         }
         
         if($newel['partner']) {

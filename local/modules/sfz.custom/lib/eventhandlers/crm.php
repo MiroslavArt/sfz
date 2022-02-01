@@ -79,7 +79,7 @@ class Crm
                 if($arFields[dealerLamUF]) {
                     $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$arFields[dealerLamUF]], ['NAME'=>'desc']));
                     if($ibid) {
-                        $PROPS['daelerlamarty'] = $ibid['NAME'];
+                        $PROPS['dealerlamarty'] = $ibid['NAME'];
                     }
                 }
                 if($arFields[marketUF]) {
@@ -89,7 +89,7 @@ class Crm
                     }
                 }
                 if($arFields[statusdealUF]) {
-                    $PROPS['daelerlamarty2'] = $arFields[statusdealUF];
+                    $PROPS['dealerlamarty2'] = $arFields[statusdealUF];
                 }
                 if($arFields[partncodeUF]) {
                     $PROPS['partner'] = $arFields[partncodeUF];
