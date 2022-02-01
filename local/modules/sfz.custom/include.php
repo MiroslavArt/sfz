@@ -1,11 +1,13 @@
 <?php
+$date = new DateTime();
+
 \CJSCore::RegisterExt('general_change_thema',
 [
-    'js' => '/local/js/general_change_thema.js'
+    'js' => '/local/js/general_change_thema.js?'.$date->getTimestamp()
 ]
 );
 \CJSCore::RegisterExt('type_requests_filtercontract',
 [
-    'js' => '/local/js/type_requests_filtercontract.js'
+    'js' => '/local/js/type_requests_filtercontract.js?'.$date->getTimestamp()
 ]
 );
