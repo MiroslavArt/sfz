@@ -16,17 +16,22 @@ use Bitrix\Crm\Service\Factory;
 
 class Crm
 {
-    public static function onAfterCrmCompanyUpdate(&$arFields)
+    public static function onBeforeCrmCompanyUpdate(&$arFields)
     {
-        Loader::includeModule('crm');
-        Loader::includeModule('sfz.custom');
-        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
         if($arFields['TITLE']) {
             global $APPLICATION;
             $APPLICATION->ThrowException('Имя компании менять запрещено, соответствующие изменения должны проводится на стороне ERP Галактика'); 
             return false;
         }
-        
+
+    }
+
+    public static function onAfterCrmCompanyUpdate(&$arFields)
+    {
+        Loader::includeModule('crm');
+        Loader::includeModule('sfz.custom');
+        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
+       
         if(makeexportXML=='Y' && rootXML) {
             if(count($arFields)>4 && !array_key_exists(hashUF, $arFields)) {
                 $companyid = $arFields["ID"];
