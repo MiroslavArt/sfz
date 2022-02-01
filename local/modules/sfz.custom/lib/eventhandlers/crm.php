@@ -20,7 +20,8 @@ class Crm
     {
         if($arFields['TITLE']) {
             global $APPLICATION;
-            $APPLICATION->ThrowException('Имя компании менять запрещено, соответствующие изменения должны проводится на стороне ERP Галактика'); 
+            $arFields['RESULT_MESSAGE'] = "Имя компании менять запрещено, соответствующие изменения должны проводится на стороне ERP Галактика";
+            $APPLICATION->ThrowException($arFields['RESULT_MESSAGE']); 
             return false;
         }
 
