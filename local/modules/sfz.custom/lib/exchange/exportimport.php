@@ -86,15 +86,15 @@ class ExportImport
                 }*/
                 foreach($selectspmanagerchanges as $item) {
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
-                    
                     if($throughcompanytwo) {
                         $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
                         $change = $root->Changes->addChild('Change');
                         $change->addAttribute('changeid', $item['ID']);
                         $change->field = 'managerplyemail';
                         $change->date = $item['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
+                        $change->companyid = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
                         $change->company = $typeval['TITLE'];
-                        $change->type = 'Сквозная - 2';
+                        //$change->type = 'Сквозная - 2';
                         $user = Utils::getUserbycondition(array('=ID' =>$item['PROPERTIES']['SOTRUDNIK']['VALUE']));
                         if($user) {
                             $change->newval = $user['EMAIL']; 
@@ -103,15 +103,15 @@ class ExportImport
                 }
                 foreach($selectlammanagerchanges as $item) {
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
-                    
                     if($throughcompanytwo) {
                         $typeval = Utils::getTypevalues(TYPE2ID, $throughcompanytwo);
                         $change = $root->Changes->addChild('Change');
                         $change->addAttribute('changeid', $item['ID']);
                         $change->field = 'managerlamartyemail';
                         $change->date = $item['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
+                        $change->companyid = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
                         $change->company = $typeval['TITLE'];
-                        $change->type = 'Сквозная - 2';
+                        //$change->type = 'Сквозная - 2';
                         $user = Utils::getUserbycondition(array('=ID' =>$item['PROPERTIES']['SOTRUDNIK']['VALUE']));
                         if($user) {
                             $change->newval = $user['EMAIL']; 
@@ -121,6 +121,115 @@ class ExportImport
 
             }
             $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'managerchangehistory.xml');
+            // дамп компаний
+            $arFilter = [
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "*",
+                "UF_*"
+            ];
+            $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+            $inputUTF8 = <<<INPUT
+            <?xml version="1.0" encoding="UTF-8"?>
+            <Catalog>
+                <Companies>
+                </Companies>
+            </Catalog>    
+            INPUT;
+
+            //$root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
+            $root = simplexml_load_string($inputUTF8);
+            while($company = $res->Fetch()) {
+                $addcompany = $root->Companies->addChild('Company');
+                $addcompany->addAttribute('bitrixid', $item['ID']);
+                //if($company['TITLE']) {
+                //    $addcompany->org = $company['TITLE'];
+                //}
+                if($company['FM']['EMAIL']) {
+                    foreach($company['FM']['EMAIL'] as $item) {
+                        if($item['VALUE']) {
+                            if($email) {
+                                $email = $email.','.$item['VALUE'];  
+                            } else {
+                                $email = $item['VALUE']; 
+                            }
+                        }
+                    }
+                    if($email) {
+                        $addcompany->email = $email;
+                    }
+                }
+                if($company['FM']['PHONE']) {
+                    foreach($company['FM']['PHONE'] as $item) {                     
+                        if($item['VALUE']) {
+                            if($phone) {
+                                $phone = $phone.','.$item['VALUE'];  
+                            } else {
+                                $phone = $item['VALUE']; 
+                            }
+                        }
+                    }                  
+                    if($phone) {
+                        $addcompany->tel = $phone;
+                    }
+                }
+                if($company[marketnameUF]) {
+                    $typeval = Utils::getTypevalues(TYPE1ID, $company[marketnameUF]);
+                    if($typeval) {
+                        $thr1company = $addcompany->addChild('name1');
+                        $thr1company->addAttribute('id', $typeval['ID']);
+                        $thr1company->rustitle = $typeval['TITLE']; 
+                        if($typeval[TYPE1UFENG]) {
+                            $thr1company->entitle = $typeval[TYPE1UFENG];
+                        }
+                    }
+                }
+                if($company[marketthroughnameUF]) {
+                    $typeval = Utils::getTypevalues(TYPE2ID, $company[marketthroughnameUF]);
+                    if($typeval) {
+                        $thr1company = $addcompany->addChild('name2');
+                        $thr1company->addAttribute('id', $typeval['ID']);
+                        $thr1company->rustitle = $typeval['TITLE']; 
+                        if($typeval[TYPE2UFENG]) {
+                            $thr1company->entitle = $typeval[TYPE2UFENG];
+                        }
+                    }
+                }
+                
+                if($company[dealerSyPlyUF]) {
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$company[dealerSyPlyUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $addcompany->dealerply = $ibid['NAME'];
+                    }
+                }
+                if($company[dealerLamUF]) {
+                    $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$company[dealerLamUF]], ['NAME'=>'desc']));
+                    if($ibid) {
+                        $addcompany->dealerlamarty = $ibid['NAME'];
+                    }
+                }
+                if($company[marketUF]) {
+                    $fieldval = Utils::getEnumvalue(marketiID, $company[marketUF], 'value');
+                    if($fieldval) {
+                        $addcompany->market = $fieldval;
+                    }
+                }
+                if($company[statusdealUF]) {
+                    $addcompany->dealerlamarty2 = $company[statusdealUF];
+                }
+                if($company[partncodeUF]) {
+                    $addcompany->partner = $company[partncodeUF];
+                }
+                if($company[furnitcompUF]) {
+                    $addcompany->mebel = $company[furnitcompUF];
+                }
+                
+                if($company[marketinUF]) {
+                    $addcompany->ismarket = $company[marketinUF]; 
+                }
+            }
+            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'actualcompanylist.xml');
         }
         return '\SFZ\Custom\Exchange\ExportImport::dumpCompanyXML();';
     }
