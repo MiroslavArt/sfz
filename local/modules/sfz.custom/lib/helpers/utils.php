@@ -519,12 +519,20 @@ class Utils
      * @throws \Bitrix\Main\LoaderException
      */
     public static function getTypevalues ( $typeid, $typeidvalue )
-        //public static function createElement(array $fields, array $properties)
+    //public static function createElement(array $fields, array $properties)
     {
         $factory = Service\Container::getInstance()->getFactory($typeid);
-        $item = $factory->getItem($typeidvalue);
-        return $item->getData();
+        $items = $factory->getItems([
+            'select' => [],
+            'filter' => ['ID'=>$typeidvalue]
+        ]);
+        $item = current($items);
+        if($item) {
+            return $item->getData();
+        } else {
+            return 0;
+        }
+        //$item = $factory->getItem($typeidvalue);
+        //return $item->getData();
     }
-
-
 }
