@@ -32,8 +32,8 @@ class Crm
         Loader::includeModule('crm');
         Loader::includeModule('sfz.custom');
         //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "export1", "__miros.log");
-       
-        if(makeexportXML=='Y' && rootXML) {
+        // комментируем старую выгрузку
+        /*if(makeexportXML=='Y' && rootXML) {
             if(count($arFields)>4 && !array_key_exists(hashUF, $arFields)) {
                 $companyid = $arFields["ID"];
                 $PROPS = [];
@@ -145,7 +145,7 @@ class Crm
                     }
                 }
             }
-        }
+        }*/
     }
 
     public static function onEntityDetailsTabsInitialized(\Bitrix\Main\Event $event)

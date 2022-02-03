@@ -20,7 +20,7 @@ class Type extends Service\Container
         {
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             // our new custom factory class
-            $factory = new class($type) extends Factory\Dynamic {
+            /*$factory = new class($type) extends Factory\Dynamic {
                 public function getUpdateOperation(Item $item, Context $context = null): Operation\Update
                 {
                     $operation = parent::getUpdateOperation($item, $context);
@@ -59,7 +59,7 @@ class Type extends Service\Container
                     );
                 }    
             };
-            return $factory;
+            return $factory;*/
         } elseif($entityTypeId == TYPE2ID) {
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             // our new custom factory class
@@ -75,12 +75,12 @@ class Type extends Service\Container
                                 $result = new Result();
                                 $typedata = $item->getData(); 
 
-                                if($item->isChangedTitle()) {
+                                /*if($item->isChangedTitle()) {
                                     $PROPS['name2'] = $typedata['TITLE']; 
                                 }
                                 if($item->isChanged(TYPE2UFENG)) {
                                     $PROPS['name2eng'] = $typedata[TYPE2UFENG]; 
-                                }
+                                }*/
                                 if($item->isChanged(TYPE2UFMANSYPLY)) {
                                     $managerplyemail = $typedata[TYPE2UFMANSYPLY]; 
                                     //$user = Utils::getUserbycondition(array('=ID' =>$typedata[TYPE2UFMANSYPLY]));
@@ -101,7 +101,7 @@ class Type extends Service\Container
                                 //\Bitrix\Main\Diag\Debug::writeToFile($item->isChangedTitle(), "tchanged".date("d.m.Y G.i.s"), "__stzexp.log");
                                 //\Bitrix\Main\Diag\Debug::writeToFile($item->isChanged('UF_CRM_3_1642771199'), "ufchanged".date("d.m.Y G.i.s"), "__stzexp.log");
 
-                                foreach($PROPS as $key=>$item) {
+                                /*foreach($PROPS as $key=>$item) {
                                     $data = [
                                         'ACTIVE' => 'Y',
                                         'NAME' => $key,
@@ -112,7 +112,7 @@ class Type extends Service\Container
                                         ]
                                     ];
                                     $id = Utils::createIBlockElement(makeexportIB, $data, []);
-                                }
+                                }*/
                                 
                                 if($managerplyemail) {
                                     $data = [

@@ -18,13 +18,25 @@ class ExportImport
         Loader::includeModule('crm');
         $date = date("d.m.Y H:i:s", time() - 24*60*60);
         $fromdate = ConvertDateTime($date); 
-        $selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
-        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, [">=TIMESTAMP_X"=>$fromdate]);
-        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, [">=TIMESTAMP_X"=>$fromdate]);
+        //$selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
+        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y']);
+        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y']);
+        //$selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, [">=TIMESTAMP_X"=>$fromdate]);
+        //$selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, [">=TIMESTAMP_X"=>$fromdate]);
         if(rootXML) {
-            if($selectchanges || $selectspmanagerchanges || $selectlammanagerchanges) {
-                $root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
-                foreach($selectchanges as $item) {
+            if($selectspmanagerchanges || $selectlammanagerchanges) {
+            //if($selectchanges || $selectspmanagerchanges || $selectlammanagerchanges) {
+                $inputUTF8 = <<<INPUT
+                <?xml version="1.0" encoding="UTF-8"?>
+                <Catalog>
+                    <Changes>
+                    </Changes>
+                </Catalog>    
+                INPUT;
+
+                //$root = simplexml_load_string('<Catalog><Changes></Changes></Catalog>');
+                $root = simplexml_load_string($inputUTF8);
+                /*foreach($selectchanges as $item) {
                     $company = $item['PROPERTIES']['KOMPANIYA']['VALUE'];
                     $throughcompanyone = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_1']['VALUE'];
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
@@ -71,7 +83,7 @@ class ExportImport
                             $change->newval = $item['PROPERTIES']['NOVOE_ZNACHENIE']['VALUE']; 
                         }
                     }
-                }
+                }*/
                 foreach($selectspmanagerchanges as $item) {
                     $throughcompanytwo = $item['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE'];
                     
@@ -108,9 +120,7 @@ class ExportImport
                 }
 
             }
-            
-            
-            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'companyupdate.xml');
+            $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'managerchangehistory.xml');
         }
         return '\SFZ\Custom\Exchange\ExportImport::dumpCompanyXML();';
     }
