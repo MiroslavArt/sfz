@@ -177,7 +177,7 @@ class ExportImport
                         $addcompany->tel = $phone;
                     }
                 }
-                /*if($company[marketnameUF]) {
+                if($company[marketnameUF]) {
                     $typeval = Utils::getTypevalues(TYPE1ID, $company[marketnameUF]);
                     if($typeval) {
                         $thr1company = $addcompany->addChild('name1');
@@ -198,7 +198,7 @@ class ExportImport
                             $thr1company->entitle = $typeval[TYPE2UFENG];
                         }
                     }
-                }*/
+                }
                 
                 if($company[dealerSyPlyUF]) {
                     $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$company[dealerSyPlyUF]], ['NAME'=>'desc']));
