@@ -143,6 +143,9 @@ class ExportImport
             while($company = $res->Fetch()) {
                 $addcompany = $root->Companies->addChild('Company');
                 $addcompany->addAttribute('bitrixid', $item['ID']);
+                echo "<pre>";
+                print_r($company);
+                echo "</pre>";
                 //if($company['TITLE']) {
                 //    $addcompany->org = $company['TITLE'];
                 //}
