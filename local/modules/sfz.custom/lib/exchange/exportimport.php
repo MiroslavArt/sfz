@@ -142,10 +142,10 @@ class ExportImport
             $root = simplexml_load_string($inputUTF8);
             while($company = $res->Fetch()) {
                 $addcompany = $root->Companies->addChild('Company');
-                $addcompany->addAttribute('bitrixid', $item['ID']);
-                echo "<pre>";
-                print_r($company);
-                echo "</pre>";
+                $addcompany->addAttribute('bitrixid', $company['ID']);
+                //echo "<pre>";
+                //print_r($company);
+                //echo "</pre>";
                 //if($company['TITLE']) {
                 //    $addcompany->org = $company['TITLE'];
                 //}
@@ -177,7 +177,7 @@ class ExportImport
                         $addcompany->tel = $phone;
                     }
                 }
-                if($company[marketnameUF]) {
+                /*if($company[marketnameUF]) {
                     $typeval = Utils::getTypevalues(TYPE1ID, $company[marketnameUF]);
                     if($typeval) {
                         $thr1company = $addcompany->addChild('name1');
@@ -198,7 +198,7 @@ class ExportImport
                             $thr1company->entitle = $typeval[TYPE2UFENG];
                         }
                     }
-                }
+                }*/
                 
                 if($company[dealerSyPlyUF]) {
                     $ibid = current(Utils::getIBlockElementsByConditions(dealerIB, ["=ID"=>$company[dealerSyPlyUF]], ['NAME'=>'desc']));
