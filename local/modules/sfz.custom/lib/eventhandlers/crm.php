@@ -27,8 +27,10 @@ class Crm
 
     }
 
-    public static function onAfterRequisiteAdd($id)
+    public static function onAfterRequisiteAdd(\Bitrix\Main\Event $event)
     {
+        $id = $event->getParameter('id');
+        $fields = $event->getParameter('fields');
         \Bitrix\Main\Diag\Debug::writeToFile($id, "reqadd", "__miros.log");
 
     }
