@@ -82,9 +82,8 @@ class Application
         $eventManager = EventManager::getInstance();
         $eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
         $eventManager->addEventHandler('crm','onBeforeCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onBeforeCrmCompanyUpdate']);
-        $eventManager->addEventHandler('crm','onBeforeRequisiteUpdate', ['\SFZ\Custom\EventHandlers\Crm','onBeforeRequisiteUpdate']);
         $eventManager->addEventHandler('crm','onAfterRequisiteAdd', ['\SFZ\Custom\EventHandlers\Crm','onAfterRequisiteAdd']);
-        $eventManager->addEventHandler('crm','onBeforeRequisiteAdd', ['\SFZ\Custom\EventHandlers\Crm','onBeforeRequisiteAdd']);
+        
         // хандлер таба - пока деактивен
         $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
