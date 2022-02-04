@@ -143,36 +143,38 @@ class ExportImport
             while($company = $res->Fetch()) {
                 $addcompany = $root->Companies->addChild('Company');
                 $addcompany->addAttribute('bitrixid', $company['ID']);
-                echo "<pre>";
-                print_r($company);
-                echo "</pre>";
-                //if($company['TITLE']) {
-                //    $addcompany->org = $company['TITLE'];
-                //}
-                if($company['FM']['EMAIL']) {
-                    foreach($company['FM']['EMAIL'] as $item) {
-                        if($item['VALUE']) {
-                            if($email) {
-                                $email = $email.','.$item['VALUE'];  
-                            } else {
-                                $email = $item['VALUE']; 
-                            }
+
+                if($company['HAS_EMAIL']=='Y') {
+                    $email = '';
+                    $rs = \CCrmFieldMulti::GetList(
+                        array("ID"=>"ASC"),
+                        array('ENTITY_ID'=>'COMPANY', 'TYPE_ID' => 'EMAIL', 'ELEMENT_ID' => $company['ID'])
+                    );
+                    while($ar=$rs->fetch()){
+                        if($email) {
+                            $email = $email.','.$ar['VALUE'];  
+                        } else {
+                            $email = $ar['VALUE']; 
                         }
                     }
+                    
                     if($email) {
                         $addcompany->email = $email;
                     }
                 }
-                if($company['FM']['PHONE']) {
-                    foreach($company['FM']['PHONE'] as $item) {                     
-                        if($item['VALUE']) {
-                            if($phone) {
-                                $phone = $phone.','.$item['VALUE'];  
-                            } else {
-                                $phone = $item['VALUE']; 
-                            }
-                        }
-                    }                  
+                if($company['HAS_PHONE']=='Y') {
+                    $phone = '';
+                    $rs = \CCrmFieldMulti::GetList(
+                        array("ID"=>"ASC"),
+                        array('ENTITY_ID'=>'COMPANY', 'TYPE_ID' => 'PHONE', 'ELEMENT_ID' => $company['ID'])
+                    );
+                    while($ar=$rs->fetch()){
+                        if($phone) {
+                            $phone = $phone.','.$ar['VALUE'];  
+                        } else {
+                            $phone = $ar['VALUE']; 
+                        } 
+                    }              
                     if($phone) {
                         $addcompany->tel = $phone;
                     }
