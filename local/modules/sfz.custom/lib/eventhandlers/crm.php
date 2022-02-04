@@ -35,15 +35,15 @@ class Crm
 
     }
 
-    public static function onBeforeRequisiteUpdate($id)
+    public static function onBeforeRequisiteUpdate(\Bitrix\Main\Event $event)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($id, "requpdate", "__miros.log");
-
+    
+        \Bitrix\Main\Diag\Debug::writeToFile('here', "requpdate", "__miros.log");
     }
 
-    public static function onBeforeRequisiteAdd($id)
+    public static function onBeforeRequisiteAdd(\Bitrix\Main\Event $event)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($id, "reqadd", "__miros.log");
+        \Bitrix\Main\Diag\Debug::writeToFile('here', "reqadd", "__miros.log");
 
     }
 
