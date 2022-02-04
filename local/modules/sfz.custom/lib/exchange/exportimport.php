@@ -143,6 +143,9 @@ class ExportImport
             while($company = $res->Fetch()) {
                 $addcompany = $root->Companies->addChild('Company');
                 $addcompany->addAttribute('bitrixid', $company['ID']);
+                if($company[idGalUF]) {
+                    $addcompany->addAttribute('galaxyid', $company[idGalUF]);
+                }
 
                 if($company['HAS_EMAIL']=='Y') {
                     $email = '';
@@ -223,6 +226,7 @@ class ExportImport
                 if($company[statusdealUF]) {
                     $addcompany->dealerlamarty2 = $company[statusdealUF];
                 }
+                
                 if($company[partncodeUF]) {
                     $addcompany->partner = $company[partncodeUF];
                 }

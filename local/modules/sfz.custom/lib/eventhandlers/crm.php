@@ -29,23 +29,11 @@ class Crm
 
     public static function onAfterRequisiteAdd(\Bitrix\Main\Event $event)
     {
-        $id = $event->getParameter('id');
-        $fields = $event->getParameter('fields');
-        \Bitrix\Main\Diag\Debug::writeToFile($id, "reqadd", "__miros.log");
+        
 
     }
 
-    public static function onBeforeRequisiteUpdate(\Bitrix\Main\Event $event)
-    {
     
-        \Bitrix\Main\Diag\Debug::writeToFile('here', "requpdate", "__miros.log");
-    }
-
-    public static function onBeforeRequisiteAdd(\Bitrix\Main\Event $event)
-    {
-        \Bitrix\Main\Diag\Debug::writeToFile('here', "reqadd", "__miros.log");
-
-    }
 
     public static function onAfterCrmCompanyUpdate(&$arFields)
     {
