@@ -27,6 +27,18 @@ class Crm
 
     }
 
+    public static function onBeforeRequisiteUpdate(&$arFields)
+    {
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "requpdate", "__miros.log");
+
+    }
+
+    public static function onBeforeRequisiteAdd(&$arFields)
+    {
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "reqadd", "__miros.log");
+
+    }
+
     public static function onAfterCrmCompanyUpdate(&$arFields)
     {
         Loader::includeModule('crm');

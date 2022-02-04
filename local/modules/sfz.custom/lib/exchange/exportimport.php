@@ -143,9 +143,9 @@ class ExportImport
             while($company = $res->Fetch()) {
                 $addcompany = $root->Companies->addChild('Company');
                 $addcompany->addAttribute('bitrixid', $company['ID']);
-                //echo "<pre>";
-                //print_r($company);
-                //echo "</pre>";
+                echo "<pre>";
+                print_r($company);
+                echo "</pre>";
                 //if($company['TITLE']) {
                 //    $addcompany->org = $company['TITLE'];
                 //}
@@ -230,6 +230,14 @@ class ExportImport
                 
                 if($company[marketinUF]) {
                     $addcompany->ismarket = $company[marketinUF]; 
+                } else {
+                    $addcompany->ismarket = 0; 
+                }
+
+                if($company[archiveUF]) {
+                    $addcompany->isarch = $company[archiveUF]; 
+                } else {
+                    $addcompany->isarch = 0; 
                 }
             }
             $root->asXML($_SERVER['DOCUMENT_ROOT'].rootXML.'/'.date("d.m.y").'_'.date("H.i.s").'_'.'actualcompanylist.xml');
