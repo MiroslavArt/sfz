@@ -27,21 +27,21 @@ class Crm
 
     }
 
-    public static function onAfterRequisiteUpdate(&$arFields)
+    public static function onAfterRequisiteAdd($id)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "requpdate", "__miros.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($id, "reqadd", "__miros.log");
 
     }
 
-    public static function onBeforeRequisiteUpdate(&$arFields)
+    public static function onBeforeRequisiteUpdate($id)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "requpdate", "__miros.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($id, "requpdate", "__miros.log");
 
     }
 
-    public static function onBeforeRequisiteAdd(&$arFields)
+    public static function onBeforeRequisiteAdd($id)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "reqadd", "__miros.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($id, "reqadd", "__miros.log");
 
     }
 
