@@ -83,6 +83,10 @@ else
 			);
 			$selectorOptions = array_merge($selectorOptions, $entityTypesSelectorOptions);
 
+			
+			\Bitrix\Main\Diag\Debug::writeToFile($arResult, "selopt".date("d.m.Y G.i.s"), "__miros.log");
+			\Bitrix\Main\Diag\Debug::writeToFile($selectorOptions, "selopt".date("d.m.Y G.i.s"), "__miros.log");
+
 			$APPLICATION->IncludeComponent(
 				'bitrix:main.user.selector',
 				'',
