@@ -87,6 +87,7 @@ class Application
         // хандлер таба - пока деактивен
         $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
+        $eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
         
         $eventManager->addEventHandler('iblock','OnBeforeIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnBeforeIBlockElementAdd']);
         
@@ -94,7 +95,7 @@ class Application
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
     }
 
-    public static function initFactorySubstitute()
+    public static function initFactorySubstitute()  
     {
        if (makeexportXML=='Y')
        {
