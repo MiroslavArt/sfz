@@ -80,16 +80,16 @@ class Application
     public static function initEventHandlers()
     {
         $eventManager = EventManager::getInstance();
-        $eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
-        $eventManager->addEventHandler('crm','onBeforeCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onBeforeCrmCompanyUpdate']);
-        $eventManager->addEventHandler('crm','onAfterRequisiteAdd', ['\SFZ\Custom\EventHandlers\Crm','onAfterRequisiteAdd']);
+        //$eventManager->addEventHandler('crm','onAfterCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onAfterCrmCompanyUpdate']);
+        //$eventManager->addEventHandler('crm','onBeforeCrmCompanyUpdate', ['\SFZ\Custom\EventHandlers\Crm','onBeforeCrmCompanyUpdate']);
+        //$eventManager->addEventHandler('crm','onAfterRequisiteAdd', ['\SFZ\Custom\EventHandlers\Crm','onAfterRequisiteAdd']);
         
         // хандлер таба - пока деактивен
         $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
-        $eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
+        //$eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
         
-        $eventManager->addEventHandler('iblock','OnBeforeIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnBeforeIBlockElementAdd']);
+        //$eventManager->addEventHandler('iblock','OnBeforeIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnBeforeIBlockElementAdd']);
         
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);

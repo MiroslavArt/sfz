@@ -53,9 +53,6 @@ class Main
         $entityId = $event->getParameter('entityId');
         $userFields = $event->getParameter('userFields');
         $value = $event->getParameter('value');
-        \Bitrix\Main\Diag\Debug::writeToFile($entityId, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($userFields, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($value, "dataexp".date("d.m.Y G.i.s"), "__stzexp.log");
 
         return $result;
      
