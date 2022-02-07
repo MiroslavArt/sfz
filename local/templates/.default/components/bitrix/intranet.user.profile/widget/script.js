@@ -543,12 +543,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	      } : null, _classPrivateMethodGet$1(this, _getAdminPanelContainer, _getAdminPanelContainer2).call(this) ? {
 	        html: _classPrivateMethodGet$1(this, _getAdminPanelContainer, _getAdminPanelContainer2).call(this),
 	        backgroundColor: '#fafafa'
-	      } : null, [], _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)) ? [{
-	        html: _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)),
-	        overflow: true,
-	        marginBottom: 24,
-	        flex: _classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this) ? 0.5 : 1
-	      }, (_classPrivateMethodGe = _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this)) !== null && _classPrivateMethodGe !== void 0 ? _classPrivateMethodGe : _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)] : _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 0), _classPrivateMethodGet$1(this, _getLoginHistoryContainer, _getLoginHistoryContainer2).call(this), {
+	      } : null, [], _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)) ? [(_classPrivateMethodGe = _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this)) !== null && _classPrivateMethodGe !== void 0 ? _classPrivateMethodGe : _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)] : _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 0), _classPrivateMethodGet$1(this, _getLoginHistoryContainer, _getLoginHistoryContainer2).call(this), {
 	        html: _classPrivateMethodGet$1(this, _getBindings, _getBindings2).call(this),
 	        marginBottom: 24,
 	        backgroundColor: '#fafafa'
