@@ -114,7 +114,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 
 	var _container = /*#__PURE__*/new WeakMap();
 
-	var ThemePicker = /*#__PURE__*/function (_EventEmitter) {
+	/*var ThemePicker = function (_EventEmitter) {
 	  babelHelpers.inherits(ThemePicker, _EventEmitter);
 
 	  function ThemePicker(data) {
@@ -212,7 +212,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	    }
 	  }]);
 	  return ThemePicker;
-	}(main_core_events.EventEmitter);
+	}(main_core_events.EventEmitter);*/
 
 	var _templateObject$2, _templateObject2$1, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
