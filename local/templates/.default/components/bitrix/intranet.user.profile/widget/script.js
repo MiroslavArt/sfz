@@ -551,10 +551,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	      }, _classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)] : null, _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this, _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this) === null) && _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this) ? [{
 	        flex: 0.5,
 	        html: _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 0.7)
-	      }, [{
-	        html: _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this),
-	        displayBlock: true
-	      }, _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)]] : _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this) || _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this) ? [{
+	      }, [_classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)]] : _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this) || _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this) ? [{
 	        html: _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 2),
 	        flex: 2
 	      }, (_classPrivateMethodGe = _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this)) !== null && _classPrivateMethodGe !== void 0 ? _classPrivateMethodGe : _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)] : _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 0), _classPrivateMethodGet$1(this, _getLoginHistoryContainer, _getLoginHistoryContainer2).call(this), {
