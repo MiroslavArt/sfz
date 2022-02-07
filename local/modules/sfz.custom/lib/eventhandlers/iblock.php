@@ -9,9 +9,17 @@ use SFZ\Custom\Helpers\Utils;
 
 class Iblock
 {
-    public static function OnBeforeIBlockElementAdd(&$arFields)
+    public static function OnAfterIBlockElementAdd(&$arFields)
     {
-        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "аа".date("d.m.Y G.i.s"));
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "аdd".date("d.m.Y G.i.s"));
+        //global $APPLICATION;
+        //$APPLICATION->throwException("Косяк.");
+        //return false;
+    }
+
+    public static function OnAfterIBlockElementUpdate(&$arFields)
+    {
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "аа".date("d.m.Y G.i.s"));
         //global $APPLICATION;
         //$APPLICATION->throwException("Косяк.");
         //return false;

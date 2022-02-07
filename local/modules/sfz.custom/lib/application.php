@@ -89,8 +89,8 @@ class Application
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
         //$eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
         
-        //$eventManager->addEventHandler('iblock','OnBeforeIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnBeforeIBlockElementAdd']);
-        
+        $eventManager->addEventHandler('iblock','OnAfterIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementAdd']);
+        $eventManager->addEventHandler('iblock','OnAfterIBlockElementUpdate', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementUpdate']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
     }
