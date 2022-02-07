@@ -12,6 +12,7 @@ class Iblock
 {
     public static function OnAfterIBlockElementAdd(&$arFields)
     {
+        
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 
         } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
@@ -20,6 +21,7 @@ class Iblock
         if($manfield) {
             \Bitrix\Main\Diag\Debug::writeToFile('here1', "dataexp".date("d.m.Y G.i.s"));
             $element = Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]);
+            \Bitrix\Main\Diag\Debug::writeToFile($element, "dataexp".date("d.m.Y G.i.s"));
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE'];
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
             if($manager && $companyid) {
