@@ -543,11 +543,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	      } : null, _classPrivateMethodGet$1(this, _getAdminPanelContainer, _getAdminPanelContainer2).call(this) ? {
 	        html: _classPrivateMethodGet$1(this, _getAdminPanelContainer, _getAdminPanelContainer2).call(this),
 	        backgroundColor: '#fafafa'
-	      } : null, [{
-	        html: _classPrivateMethodGet$1(this, _getMaskContainer, _getMaskContainer2).call(this),
-	        disabled: true,
-	        backgroundColor: '#fafafa'
-	      }], _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)) ? [{
+	      } : null, [], _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)) ? [{
 	        html: _classPrivateMethodGet$1(this, _getCompanyPulse, _getCompanyPulse2).call(this, !!_classPrivateMethodGet$1(this, _getStressLevel, _getStressLevel2).call(this)),
 	        overflow: true,
 	        marginBottom: 24,
