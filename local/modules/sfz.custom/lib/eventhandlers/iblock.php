@@ -18,10 +18,11 @@ class Iblock
             $manfield = TYPE2UFMANLAM; 
         }
         if($manfield) {
+            
             $element = Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]);
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE'];
-            $company = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
-            if($manager && $company) {
+            $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
+            if($manager && $companyid) {
                 self::updatethrougcompany($companyid, $manfield, $manager); 
             }
         }
@@ -41,10 +42,10 @@ class Iblock
     }
 
     private static function updatethrougcompany($companyid, $manfield, $manager) {
-        $factory = Service\Container::getInstance()->getFactory($typeid);
+        $factory = Service\Container::getInstance()->getFactory(TYPE2ID);
         $items = $factory->getItems([
             'select' => [],
-            'filter' => ['ID'=>TYPE2ID]
+            'filter' => ['ID'=>$companyid]
         ]);
         $item = current($items); 
         if($item) {
