@@ -12,20 +12,16 @@ class Iblock
 {
     public static function OnAfterIBlockElementAdd(&$arFields)
     {
-        
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 
         } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
             $manfield = TYPE2UFMANLAM; 
         }
         if($manfield) {
-            \Bitrix\Main\Diag\Debug::writeToFile('here1', "dataexp".date("d.m.Y G.i.s"));
-            $element = Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]);
-            \Bitrix\Main\Diag\Debug::writeToFile($element, "dataexp".date("d.m.Y G.i.s"));
+            $element = current(Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]));
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE'];
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
             if($manager && $companyid) {
-                \Bitrix\Main\Diag\Debug::writeToFile('here2', "dataexp".date("d.m.Y G.i.s"));
                 self::updatethrougcompany($companyid, $manfield, $manager); 
             }
         }
