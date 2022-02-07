@@ -126,10 +126,10 @@ BX.ready(function() {
 				'b24netPanel' => $arResult['B24NET_WWW'] ? 'Y' : 'N',
 				'pulse' => !$arResult['isExtranetSite'] ? 'Y' : 'N',
 				'appInstalled' => [
-					'APP_WINDOWS_INSTALLED' => $arResult['User']['APP_WINDOWS_INSTALLED'] ? 'Y' : 'N',
-					'APP_MAC_INSTALLED' => $arResult['User']['APP_MAC_INSTALLED'] ? 'Y' : 'N',
-					'APP_IOS_INSTALLED' => $arResult['User']['APP_IOS_INSTALLED'] ? 'Y' : 'N',
-					'APP_ANDROID_INSTALLED' => $arResult['User']['APP_ANDROID_INSTALLED'] ? 'Y' : 'N',
+					'APP_WINDOWS_INSTALLED' => $arResult['User']['APP_WINDOWS_INSTALLED'] ? 'Y' : 'Y',
+					'APP_MAC_INSTALLED' => $arResult['User']['APP_MAC_INSTALLED'] ? 'Y' : 'Y',
+					'APP_IOS_INSTALLED' => $arResult['User']['APP_IOS_INSTALLED'] ? 'Y' : 'Y',
+					'APP_ANDROID_INSTALLED' => $arResult['User']['APP_ANDROID_INSTALLED'] ? 'Y' : 'Y',
 				],
 				'stressLevel' => Main\Config\Option::get('intranet', 'stresslevel_available', 'Y') === 'Y' && (
 					!$bitrix24Included || \Bitrix\Bitrix24\Release::isAvailable('stresslevel')
