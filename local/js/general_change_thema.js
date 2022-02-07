@@ -6,6 +6,7 @@ BX.sfz.General.ChangeThema = {
         this.userid = BX.message('USER_ID')
         if(usertype!=1) {
             // удаляем на кнопке профиля
+            BX('user-block').removeEventListener('click', handler);
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hidetopHandler()");
             // удаляем в нижнем меню
             this.hidebottomHandler()
@@ -26,7 +27,6 @@ BX.sfz.General.ChangeThema = {
                     href: '/company/personal/user/' + useridval + '/'
                 },			
                 { text : "Настройка уведомлений", className : "menu-popup-no-icon", onclick : "BXIM.openSettings({'onlyPanel':'notify'})"},
-                { text : "Панель управления", className : "menu-popup-no-icon", href : "/bitrix/admin/"},
                 {'text':'Расширения','items':[{'id':'landing_bind','system':true,'text':'Выбрать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'id':'landing_create','system':true,'text':'Создать базу знаний','onclick':'BX.SidePanel.Instance.open(\'/kb/binding/menu/?menuId=top_panel:user_menu&create=Y\', {allowChangeHistory: false});','sort':'100','sectionCode':'other'},{'delimiter':true},{'href':'/marketplace/?placement=USER_PROFILE_MENU','text':'Битрикс24.Маркет'}]},
                 { text : "Выйти", className : "menu-popup-no-icon", href : "/auth/?logout=yes&sessid=" + BX.bitrix_sessid() + "&backurl=" + encodeURIComponent(B24.getBackUrl()) }
 			],
