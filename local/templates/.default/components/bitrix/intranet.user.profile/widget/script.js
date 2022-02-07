@@ -705,7 +705,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	  });
 	}
 
-	/*function _getThemeContainer2() {
+	function _getThemeContainer2() {
 	  var _this6 = this;
 
 	  return babelHelpers.classPrivateFieldGet(this, _cache).remember('themePicker', function () {
@@ -717,7 +717,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	    themePicker.subscribe('onOpen', _this6.hide);
 	    return themePicker.getPromise();
 	  });
-	}*/
+	}
 
 	function _getMaskContainer2() {
 	  return babelHelpers.classPrivateFieldGet(this, _cache).remember('Mask', function () {
