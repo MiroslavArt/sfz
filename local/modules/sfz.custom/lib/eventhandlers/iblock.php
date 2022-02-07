@@ -18,11 +18,12 @@ class Iblock
             $manfield = TYPE2UFMANLAM; 
         }
         if($manfield) {
-            
+            \Bitrix\Main\Diag\Debug::writeToFile('here1', "dataexp".date("d.m.Y G.i.s"));
             $element = Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]);
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE'];
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
             if($manager && $companyid) {
+                \Bitrix\Main\Diag\Debug::writeToFile('here2', "dataexp".date("d.m.Y G.i.s"));
                 self::updatethrougcompany($companyid, $manfield, $manager); 
             }
         }
