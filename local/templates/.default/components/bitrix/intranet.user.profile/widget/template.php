@@ -118,10 +118,10 @@ BX.ready(function() {
 				'URL' => $userUrl,
 			],
 			'features' => [
-				'themePicker' => array_intersect_key(
+				/*'themePicker' => array_intersect_key(
 					($themePicker->getCurrentTheme() ?? []),
 					['title' => '', 'previewColor' => '', 'previewImage' => '', 'id' => '']
-				),
+				),*/
 				'adminPanel' => (!$bitrix24Included && $USER->isAdmin()) ? 'Y' : 'N',
 				'b24netPanel' => $arResult['B24NET_WWW'] ? 'Y' : 'N',
 				'pulse' => !$arResult['isExtranetSite'] ? 'Y' : 'N',
