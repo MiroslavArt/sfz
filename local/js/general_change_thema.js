@@ -6,7 +6,7 @@ BX.sfz.General.ChangeThema = {
         this.userid = BX.message('USER_ID')
         if(usertype!=1) {
             // удаляем на кнопке профиля
-            BX('user-block').removeEventListener('click', handler);
+            $("#user-block").off("click");
             $("#user-block").attr("onClick","BX.sfz.General.ChangeThema.hidetopHandler()");
             // удаляем в нижнем меню
             this.hidebottomHandler()
