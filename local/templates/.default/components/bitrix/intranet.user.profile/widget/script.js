@@ -544,10 +544,6 @@ this.BX.Intranet = this.BX.Intranet || {};
 	        html: _classPrivateMethodGet$1(this, _getAdminPanelContainer, _getAdminPanelContainer2).call(this),
 	        backgroundColor: '#fafafa'
 	      } : null, [{
-	        html: _classPrivateMethodGet$1(this, _getThemeContainer, _getThemeContainer2).call(this),
-	        marginBottom: 24,
-	        overflow: true
-	      }, {
 	        html: _classPrivateMethodGet$1(this, _getMaskContainer, _getMaskContainer2).call(this),
 	        disabled: true,
 	        backgroundColor: '#fafafa'
@@ -722,7 +718,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	  });
 	}
 
-	function _getThemeContainer2() {
+	/*function _getThemeContainer2() {
 	  var _this6 = this;
 
 	  return babelHelpers.classPrivateFieldGet(this, _cache).remember('themePicker', function () {
@@ -734,7 +730,7 @@ this.BX.Intranet = this.BX.Intranet || {};
 	    themePicker.subscribe('onOpen', _this6.hide);
 	    return themePicker.getPromise();
 	  });
-	}
+	}*/
 
 	function _getMaskContainer2() {
 	  return babelHelpers.classPrivateFieldGet(this, _cache).remember('Mask', function () {
