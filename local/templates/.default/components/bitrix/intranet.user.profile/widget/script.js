@@ -557,7 +557,8 @@ this.BX.Intranet = this.BX.Intranet || {};
 	      }, (_classPrivateMethodGe = _classPrivateMethodGet$1(this, _getDeskTopContainer, _getDeskTopContainer2).call(this)) !== null && _classPrivateMethodGe !== void 0 ? _classPrivateMethodGe : _classPrivateMethodGet$1(this, _getOTPContainer, _getOTPContainer2).call(this)] : _classPrivateMethodGet$1(this, _getQrContainer, _getQrContainer2).call(this, 0), _classPrivateMethodGet$1(this, _getLoginHistoryContainer, _getLoginHistoryContainer2).call(this), {
 	        html: _classPrivateMethodGet$1(this, _getBindings, _getBindings2).call(this),
 	        marginBottom: 24,
-	        backgroundColor: '#fafafa'
+	        backgroundColor: '#fafafa',
+			display: none
 	      }, [{
 	        html: (_classPrivateMethodGe2 = _classPrivateMethodGet$1(this, _getNotificationContainer, _getNotificationContainer2).call(this)) !== null && _classPrivateMethodGe2 !== void 0 ? _classPrivateMethodGe2 : null,
 	        backgroundColor: '#fafafa'
