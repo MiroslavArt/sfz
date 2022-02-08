@@ -28,14 +28,11 @@ BX.sfz.Type.HideManagerEdit = {
                     const node = par1._wrapper
                     console.log(node)
                     const change = $(node).find('.ui-entity-editor-header-actions');
-                    const changemanager = $(node).find('.crm-widget-employee-change');
+                    
                     change.each(function (index, el){
                         $(el).css("display", "none");
                     });    
-                    changemanager.each(function (index, el){
-                        console.log(changemanager)
-                        $(el).empty();
-                    });   
+                     
                 }
             }
         }
