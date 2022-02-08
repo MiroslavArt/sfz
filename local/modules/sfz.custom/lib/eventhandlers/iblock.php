@@ -43,9 +43,13 @@ class Iblock
 
     private static function checkforupdate($iblockid, $companyid, $datefrom, $searchid) {
         $checkresult = false; 
-        $fromdate = ConvertDateTime($datefrom); 
+        \Bitrix\Main\Diag\Debug::writeToFile($datefrom, "dataexp".date("d.m.Y G.i.s"));
+        $fromdate = ConvertDateTime($datefrom, "Y-m-d"); 
+        \Bitrix\Main\Diag\Debug::writeToFile($fromdate, "dataexp".date("d.m.Y G.i.s"));
         $checkelement = Utils::getIBlockElementsByConditions($iblockid, [">"."PROPERTY_DATA_SMENY_MENEDZHERA"=>$fromdate, 
             "=PROPERTY_SKVOZNAYA_KOMPANIYA_2"=>$companyid]);
+        \Bitrix\Main\Diag\Debug::writeToFile($checkelement, "dataexp".date("d.m.Y G.i.s"));
+        
         if(empty($checkelement)) {
             $checkresult = true;
         }
