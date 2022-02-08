@@ -33,7 +33,7 @@ class Iblock
             $datefrom = $element['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
 
             if($manager && $companyid) {
-                $check = self::checkforupdate($arFields['IBLOCK_ID'], $companyid, $datefrom);
+                $check = self::checkforupdate($arFields['IBLOCK_ID'], $companyid, $datefrom, $arFields['ID']);
                 if($check) {
                     self::updatethrougcompany($companyid, $manfield, $manager); 
                 }
@@ -41,10 +41,10 @@ class Iblock
         }
     }
 
-    private static function checkforupdate($iblockid, $companyid, $datefrom) {
+    private static function checkforupdate($iblockid, $companyid, $datefrom, $searchid) {
         $checkresult = false; 
         $fromdate = ConvertDateTime($datefrom); 
-        $checkelement = Utils::getIBlockElementsByConditions($iblockid, [">PROPERTY_DATA_SMENY_MENEDZHERA"=>$fromdate, 
+        $checkelement = Utils::getIBlockElementsByConditions($iblockid, [">"."PROPERTY_DATA_SMENY_MENEDZHERA"=>$fromdate, 
             "=PROPERTY_SKVOZNAYA_KOMPANIYA_2"=>$companyid]);
         if(empty($checkelement)) {
             $checkresult = true;
