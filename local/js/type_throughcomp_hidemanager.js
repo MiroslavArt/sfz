@@ -26,7 +26,7 @@ BX.sfz.Type.HideManagerEdit = {
             if (par2.hasOwnProperty('id')) {
                 if(par2.id=='additional') {
                     const node = par1._wrapper
-                    console.log(node)
+
                     const change = $(node).find('.ui-entity-editor-header-actions');
                     
                     change.each(function (index, el){
