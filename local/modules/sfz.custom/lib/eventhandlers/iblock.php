@@ -12,6 +12,15 @@ class Iblock
 {
     public static function OnAfterIBlockElementAdd(&$arFields)
     {
+        self::processupdate($arFields); 
+    }
+
+    public static function OnAfterIBlockElementUpdate(&$arFields)
+    {
+        self::processupdate($arFields);        
+    }
+
+    private static function processupdate($arFields) {
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 
         } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
@@ -21,25 +30,28 @@ class Iblock
             $element = current(Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]));
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE'];
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
+            $datefrom = $element['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
+
             if($manager && $companyid) {
-                self::updatethrougcompany($companyid, $manfield, $manager); 
+                $check = self::checkforupdate($arFields['IBLOCK_ID'], $companyid, $datefrom);
+                if($check) {
+                    self::updatethrougcompany($companyid, $manfield, $manager); 
+                }
             }
         }
     }
 
-    public static function OnAfterIBlockElementUpdate(&$arFields)
-    {
-        if($arFields['IBLOCK_ID']==PLYWOODIB) {
-            $manfield = TYPE2UFMANSYPLY; 
-        } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
-            $manfield = TYPE2UFMANLAM; 
+    private static function checkforupdate($iblockid, $companyid, $datefrom) {
+        $checkresult = false; 
+        $fromdate = ConvertDateTime($datefrom); 
+        $checkelement = Utils::getIBlockElementsByConditions($iblockid, [">PROPERTY_DATA_SMENY_MENEDZHERA"=>$fromdate, 
+            "=SKVOZNAYA_KOMPANIYA_2"=>$companyid]);
+        if(empty($checkelement)) {
+            $checkresult = true;
         }
-        if($manfield) {
-            $element = Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]);
-
-        }
+        return $checkresult; 
     }
-
+    
     private static function updatethrougcompany($companyid, $manfield, $manager) {
         $factory = Service\Container::getInstance()->getFactory(TYPE2ID);
         $items = $factory->getItems([
