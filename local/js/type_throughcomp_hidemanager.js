@@ -32,6 +32,7 @@ BX.sfz.Type.HideManagerEdit = {
                         $(el).css("display", "none");
                     });    
                     changemanager.each(function (index, el){
+                        console.log(changemanager)
                         $(el).empty();
                     });   
                 }
