@@ -50,8 +50,8 @@ class Main
             } else {
                 $mode = 'hideedit';
             }
-            $ufarr = json_encode([TYPE2UFMANSYPLY, TYPE2UFMANLAM]);
-            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.HideManagerEdit.init("'.$mode.'", "'.$ufarr.'");});</script>');
+            //$ufarr = json_encode([TYPE2UFMANSYPLY, TYPE2UFMANLAM]);
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.HideManagerEdit.init("'.$mode.'", "'.TYPE2UFMANSYPLY.'", "'.TYPE2UFMANLAM.'");});</script>');
         }
     }
 
