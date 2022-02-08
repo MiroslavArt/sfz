@@ -10,8 +10,10 @@ BX.sfz.Type.HideManagerEdit = {
     hidesection: function(par1, par2) {
         if (typeof par2 === 'object') {
             if (par2.hasOwnProperty('id')) {
+                console.log("here1")
                 if(par2.id=='additional') {
                     const node = par1._wrapper
+                    console.log(node)
                     node.parentNode.removeChild(node);
                 }
             }
