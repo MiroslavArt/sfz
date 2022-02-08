@@ -45,7 +45,7 @@ class Iblock
         $checkresult = false; 
         $fromdate = ConvertDateTime($datefrom); 
         $checkelement = Utils::getIBlockElementsByConditions($iblockid, [">PROPERTY_DATA_SMENY_MENEDZHERA"=>$fromdate, 
-            "=SKVOZNAYA_KOMPANIYA_2"=>$companyid]);
+            "=PROPERTY_SKVOZNAYA_KOMPANIYA_2"=>$companyid]);
         if(empty($checkelement)) {
             $checkresult = true;
         }
