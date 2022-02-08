@@ -11,3 +11,8 @@ $date = new DateTime();
     'js' => '/local/js/type_requests_filtercontract.js?'.$date->getTimestamp()
 ]
 );
+\CJSCore::RegisterExt('type_throughcomp_hidemanager',
+[
+    'js' => '/local/js/type_throughcomp_hidemanager.js?'.$date->getTimestamp()
+]
+);

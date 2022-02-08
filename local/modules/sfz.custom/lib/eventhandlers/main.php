@@ -25,24 +25,33 @@ class Main
         if(hidethema=="Y") {
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         }
-        if(contractactivate == 'Y') {
+        
+        $urlTemplates = [
+            'type_detail_request' => 'crm/type/'.TYPECODE.'/details/#type_id#/',
+            'type_detail_throughcompany' => 'crm/type/'.TYPE2ID.'/details/#type_id#/'
+        ];
 
-            $urlTemplates = [
-                'type_detail' => 'crm/type/'.typecode.'/details/#type_id#/'
-            ];
+        $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
 
-            $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
-  
-            if($page=='type_detail') {
-                $typeid = $arVars['type_id'];
-                $companyid = 'na'; 
-                if($typeid) {
-                    $typeval = Utils::getTypevalues ( typecode, $typeid );
-                    $companyid = $typeval['COMPANY_ID'] ? $typeval['COMPANY_ID'] : 'na'; 
-                }
-                \CJSCore::init(['type_requests_filtercontract']);
-                $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.contractuf.'", "'.$companyid.'");});</script>');
+        if($page=='type_detail_request' && CONTRACTACTIVATE == 'Y') {
+            $typeid = $arVars['type_id'];
+            $companyid = 'na'; 
+            if($typeid) {
+                $typeval = Utils::getTypevalues ( typecode, $typeid );
+                $companyid = $typeval['COMPANY_ID'] ? $typeval['COMPANY_ID'] : 'na'; 
             }
+            \CJSCore::init(['type_requests_filtercontract']);
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.RequestsFilterContract.init("'.contractuf.'", "'.$companyid.'");});</script>');
+        } elseif($page=='type_detail_throughcompany') {
+            $typeid = $arVars['type_id'];
+            \CJSCore::init(['type_throughcomp_hidemanager']);
+            if($typeid==0) {
+                $mode = 'hidesection'; 
+            } else {
+                $mode = 'hideedit';
+            }
+            $ufarr = [TYPE2UFMANSYPLY, TYPE2UFMANLAM];
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Type.HideManagerEdit.init("'.$mode.'", "'.$ufarr.'");});</script>');
         }
     }
 
