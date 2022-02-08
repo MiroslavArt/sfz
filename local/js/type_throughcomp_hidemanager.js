@@ -14,7 +14,7 @@ BX.sfz.Type.HideManagerEdit = {
                 if(par2.id=='additional') {
                     const node = par1._wrapper
                     console.log(node)
-                    node.parentNode.removeChild(node);
+                    $(node).empty();
                 }
             }
         }
