@@ -21,7 +21,6 @@ BX.sfz.Type.HideManagerEdit = {
         }
     }, 
     hidesectionchange: function(par1, par2) {
-        console.log(par1)
         if (typeof par2 === 'object') {
             if (par2.hasOwnProperty('id')) {
                 if(par2.id=='additional') {
@@ -36,5 +35,5 @@ BX.sfz.Type.HideManagerEdit = {
                 }
             }
         }
-    },
+    }
 }
