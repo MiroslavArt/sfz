@@ -66,4 +66,17 @@ class Main
         return $result;
      
     }
+
+    public static function OnAfterUserUpdate(&$arFields)
+    {
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"));
+        $user = \Bitrix\Main\UserTable::getList(array(
+            'filter' => array(
+                '=ID' => $arFields['ID']
+            ),
+            'limit'=>2,
+            'select'=>array('*','UF_*'),
+        ))->Fethc();
+        \Bitrix\Main\Diag\Debug::writeToFile($user, "dataexp".date("d.m.Y G.i.s"));
+    }
 }

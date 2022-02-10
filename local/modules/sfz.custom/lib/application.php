@@ -87,12 +87,14 @@ class Application
         // хандлер таба - пока деактивен
         $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
+        $eventManager->addEventHandler('main','OnAfterUserUpdate', ['\SFZ\Custom\EventHandlers\Main','OnAfterUserUpdate']);
         //$eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
         
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementAdd']);
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementUpdate', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementUpdate']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
+        
     }
 
     public static function initFactorySubstitute()  
