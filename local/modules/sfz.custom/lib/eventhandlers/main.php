@@ -76,7 +76,7 @@ class Main
             ),
             'limit'=>2,
             'select'=>array('*','UF_*'),
-        ))->Fethc();
+        ))->Fetch();
         \Bitrix\Main\Diag\Debug::writeToFile($user, "dataexp".date("d.m.Y G.i.s"));
     }
 }
