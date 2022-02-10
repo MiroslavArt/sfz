@@ -69,7 +69,6 @@ class Main
 
     public static function OnAfterUserUpdate(&$arFields)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"));
         $user = \Bitrix\Main\UserTable::getList(array(
             'filter' => array(
                 '=ID' => $arFields['ID']
@@ -77,6 +76,13 @@ class Main
             'limit'=>2,
             'select'=>array('*','UF_*'),
         ))->Fetch();
-        \Bitrix\Main\Diag\Debug::writeToFile($user, "dataexp".date("d.m.Y G.i.s"));
+        
+        if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
+            $user = new \CUser;
+            $fields = [
+                'UF_DEPARTMENT' => [111]
+            ];
+            $user->Update($user['ID'], $fields);
+        }
     }
 }
