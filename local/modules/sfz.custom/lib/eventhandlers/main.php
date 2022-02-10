@@ -78,11 +78,11 @@ class Main
         ))->Fetch();
         
         if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
-            $user = new \CUser;
+            $userobj = new \CUser;
             $fields = [
                 'UF_DEPARTMENT' => [111]
             ];
-            $user->Update($user['ID'], $fields);
+            $userobj->Update($user['ID'], $fields);
         }
     }
 }
