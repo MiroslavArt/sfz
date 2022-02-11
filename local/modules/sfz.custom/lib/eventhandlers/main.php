@@ -76,13 +76,25 @@ class Main
             'limit'=>1,
             'select'=>array('*','UF_*'),
         ))->Fetch();
-        
+
         if($user['ACTIVE']=='N' && FIREDEPT) {
-            $userobj = new \CUser;
-            $fields = [
-                'UF_DEPARTMENT' => [FIREDEPT]
-            ];
-            $userobj->Update($user['ID'], $fields);
+            $update = true; 
+            if($user['UF_DEPARTMENT']) {
+                foreach($user['UF_DEPARTMENT'] as $item) {
+                    if($item==FIREDEPT) {
+                        $update = false;
+                    }
+                }
+            }
+            if($update) {
+                $userobj = new \CUser;
+                $fields = [
+                    'UF_DEPARTMENT' => [FIREDEPT]
+                ];
+                $userobj->Update($user['ID'], $fields);
+            }
         }
+        
+        
     }
 }
