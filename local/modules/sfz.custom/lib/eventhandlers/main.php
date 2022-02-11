@@ -77,7 +77,8 @@ class Main
             'select'=>array('*','UF_*'),
         ))->Fetch();
         
-        if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
+        //if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
+        if($user['ACTIVE']=='N') {
             $userobj = new \CUser;
             $fields = [
                 'UF_DEPARTMENT' => [111]
