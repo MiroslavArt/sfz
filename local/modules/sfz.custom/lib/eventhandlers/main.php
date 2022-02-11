@@ -80,7 +80,7 @@ class Main
         if($user['ACTIVE']=='N' && FIREDEPT) {
             $userobj = new \CUser;
             $fields = [
-                'UF_DEPARTMENT' => [FIREDEPT]
+                'UF_DEPARTMENT' => [int(FIREDEPT)]
             ];
             $userobj->Update($user['ID'], $fields);
         }
