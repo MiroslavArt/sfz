@@ -76,7 +76,7 @@ class Main
             'limit'=>2,
             'select'=>array('*','UF_*'),
         ))->Fetch();
-        
+        \Bitrix\Main\Diag\Debug::writeToFile($user, "dataexp".date("d.m.Y G.i.s"));
         //if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
         if($user['ACTIVE']=='N') {
             $userobj = new \CUser;
