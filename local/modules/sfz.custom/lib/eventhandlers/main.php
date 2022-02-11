@@ -73,15 +73,14 @@ class Main
             'filter' => array(
                 '=ID' => $arFields['ID']
             ),
-            'limit'=>2,
+            'limit'=>1,
             'select'=>array('*','UF_*'),
         ))->Fetch();
-        \Bitrix\Main\Diag\Debug::writeToFile($user, "dataexp".date("d.m.Y G.i.s"));
-        //if($user['ACTIVE']=='N' && empty($user['UF_DEPARTMENT'])) {
-        if($user['ACTIVE']=='N') {
+        
+        if($user['ACTIVE']=='N' && FIREDEPT) {
             $userobj = new \CUser;
             $fields = [
-                'UF_DEPARTMENT' => [111]
+                'UF_DEPARTMENT' => [FIREDEPT]
             ];
             $userobj->Update($user['ID'], $fields);
         }

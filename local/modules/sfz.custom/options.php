@@ -38,6 +38,12 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_hidethema'),
             Option::get($MODULE_ID, '_hidethema'),
             ['checkbox']
+        ],
+        [
+            'main_firedept',
+            Loc::getMessage($MODULE_ID.'_firedept'),
+            Option::get($MODULE_ID, '_firedept'),
+            ['text']
         ]
     ],
     'company' => [

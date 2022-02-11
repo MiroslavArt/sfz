@@ -24,6 +24,7 @@ class Application
 
     protected static function setConstants() {   
         define('hidethema', \COption::GetOptionString('sfz.custom', 'main_hidethema'));
+        define('FIREDEPT', \COption::GetOptionString('sfz.custom', 'main_firedept'));
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
         define('importfileXML', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
         define('makeexportXML', \COption::GetOptionString('sfz.custom', 'company_makeexportXML'));
