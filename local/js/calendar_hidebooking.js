@@ -11,6 +11,7 @@ BX.sfz.Calendar.HideBooking = {
     hidebookingButton: function() {
         
         $(".pagetitle-container").each(function (index, el){
+            console.log(index)
             $(el).empty();
         });
         //button.each(function (index, el){
