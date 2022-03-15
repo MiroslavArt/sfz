@@ -21,12 +21,12 @@ BX.sfz.Calendar.HideBooking = {
         console.log(data)
         const node = event.mainCont;
         console.log(node)
-        $(node).remove()
-        //const change = $(node).find('.calendar-grid-cell-inner');
-        //change.each(function (index, el){
-        //    console.log(el)
+        //$(node).remove()
+        const change = $(node).find('.calendar-grid-cell-inner');
+        change.each(function (index, el){
+            console.log(el)
             //$(el).css("display", "none");
-        //});  
+        });  
         //$(".calendar-grid-month-row").each(function (index, el){
         //    console.log(index)
         //    console.log(el) 
