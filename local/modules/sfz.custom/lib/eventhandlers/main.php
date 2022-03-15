@@ -56,10 +56,16 @@ class Main
         } elseif($page=='room_booking') {
             // выбираем группу
             $arGroups = \CUser::GetUserGroup($USER->GetID());
-            if(in_array(BOOKINGGROUP, $arGroups) || $USER->IsAdmin()) {
+            $hidegroup = 1;
+            if($USER->IsAdmin()) {
                 $hidegroup = 0;
             } else {
-                $hidegroup = 1;
+                foreach($arGroups as $group) {
+                    if($group==BOOKINGGROUP) {
+                        $hidegroup = 0;
+                        break;
+                    }
+                }
             }
             
             \CJSCore::init(['calendar_hidebooking']);
