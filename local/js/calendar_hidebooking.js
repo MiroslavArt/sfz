@@ -19,7 +19,7 @@ BX.sfz.Calendar.HideBooking = {
         console.log("hello")
         console.log(event)
         console.log(data)
-        const node = event.mainCont.childNodes[1];
+        const node = event.mainCont;
         var options = node.querySelectorAll('span');
         console.log(options)
         //$(node).remove()
