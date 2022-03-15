@@ -9,8 +9,11 @@ BX.sfz.Calendar.HideBooking = {
         
     },
     hidebookingButton: function() {
-        var button = $('.ui-btn-success').first();
-        console.log(button)
-        button.hide()
+        var button = $('.ui-btn-success');
+        button.each(function (index, el){
+            $(el).css("display", "none");
+        });  
+        //console.log(button)
+        //button.hide()
     }
 }
