@@ -17,11 +17,10 @@ BX.sfz.Calendar.HideBooking = {
     }, 
     hideClickAction: function(event, data) {
         delete event.sectionManager; 
-        delete event.roomsManager;
+        
         //console.log("hello")
         console.log(event)
-        //console.log(data)
-        //const node = event.viewsCont;
+       
         //var options = node.querySelectorAll('span');
         //console.log(options)
         //$(node).remove()
