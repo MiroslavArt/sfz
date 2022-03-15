@@ -17,9 +17,10 @@ BX.sfz.Calendar.HideBooking = {
     }, 
     hideClickAction: function() {
         console.log("hello")
-        $(".calendar-grid-cell-inner").each(function (index, el){
-            console.log(index) 
-            $(el).off('click');
+        $(".bx-layout-inner-inner-cont").each(function (index, el){
+            console.log(index)
+            //console.log(index) 
+            //$(el).off('click');
         });
     } 
 }
