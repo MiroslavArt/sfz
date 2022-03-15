@@ -5,7 +5,7 @@ BX.sfz.Calendar.HideBooking = {
         if(hidegroup==1) {
             console.log(hidegroup)
             this.hidebookingButton();
-            this.hideClickAction(); 
+            BX.addCustomEvent('onCalendarAfterBuildViews', BX.delegate(this.hideClickAction, this));
         }
     },
     hidebookingButton: function() {
@@ -17,10 +17,10 @@ BX.sfz.Calendar.HideBooking = {
     }, 
     hideClickAction: function() {
         console.log("hello")
-        $(".calendar-grid-month-row").each(function (index, el){
-            console.log(index)
-            console.log(el) 
+        //$(".calendar-grid-month-row").each(function (index, el){
+        //    console.log(index)
+        //    console.log(el) 
             //$(el).off('click');
-        });
+        //});
     } 
 }
