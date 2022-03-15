@@ -16,12 +16,14 @@ BX.sfz.Calendar.HideBooking = {
         });
     }, 
     hideClickAction: function(event, data) {
-        console.log("hello")
+        delete event.sectionManager; 
+        delete event.roomsManager;
+        //console.log("hello")
         console.log(event)
-        console.log(data)
-        const node = event.viewsCont;
-        var options = node.querySelectorAll('span');
-        console.log(options)
+        //console.log(data)
+        //const node = event.viewsCont;
+        //var options = node.querySelectorAll('span');
+        //console.log(options)
         //$(node).remove()
         //const change = $(node).find('.calendar-views-container');
         //change.each(function (index, el){
