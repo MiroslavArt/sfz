@@ -44,6 +44,12 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_firedept'),
             Option::get($MODULE_ID, '_firedept'),
             ['text']
+        ],
+        [
+            'main_bookinggroup',
+            Loc::getMessage($MODULE_ID.'_bookinggroup'),
+            Option::get($MODULE_ID, '_bookinggroup'),
+            ['text']
         ]
     ],
     'company' => [

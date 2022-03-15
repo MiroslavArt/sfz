@@ -2,6 +2,7 @@
 $MODULE_ID = 'sfz.custom';
 $MESS[$MODULE_ID.'_main'] = 'Основные настройки';
 $MESS[$MODULE_ID.'_firedept'] = 'Уволенные сотрудники';
+$MESS[$MODULE_ID.'_bookinggroup'] = ' ID группы, имеющей возможность добавлять события в корп календарь';
 $MESS[$MODULE_ID.'_hidethema'] = 'Запретить менять темы оформления не админстраторам';
 $MESS[$MODULE_ID.'_company'] = 'CRM: Синхронизация компаний';
 $MESS[$MODULE_ID.'_rootXML'] = 'Путь до папки обмена';
