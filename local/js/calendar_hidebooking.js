@@ -5,8 +5,7 @@ BX.sfz.Calendar.HideBooking = {
         if(hidegroup==1) {
             console.log(hidegroup)
             this.hidebookingButton();
-            BX.removeCustomEvent('viewOnClick', BX.delegate(this.hideClickAction, this))
-            //BX.addCustomEvent('onCalendarAfterBuildViews', BX.delegate(this.hideClickAction, this));
+            BX.addCustomEvent('onCalendarAfterBuildViews', BX.delegate(this.hideClickAction, this));
         }
     },
     hidebookingButton: function() {
