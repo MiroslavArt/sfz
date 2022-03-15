@@ -22,7 +22,7 @@ BX.sfz.Calendar.HideBooking = {
         const node = event.mainCont;
         console.log(node)
         //$(node).remove()
-        const change = $(node).find('.calendar-top-block');
+        const change = $(node).find('.calendar-month-view');
         change.each(function (index, el){
             console.log(el)
             //$(el).css("display", "none");
