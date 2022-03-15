@@ -16,3 +16,8 @@ $date = new DateTime();
     'js' => '/local/js/type_throughcomp_hidemanager.js?'.$date->getTimestamp()
 ]
 );
+\CJSCore::RegisterExt('calendar_hidebooking',
+[
+    'js' => '/local/js/calendar_hidebooking.js?'.$date->getTimestamp()
+]
+);
