@@ -5,21 +5,20 @@ BX.sfz.Calendar.HideBooking = {
         if(hidegroup==1) {
             console.log(hidegroup)
             this.hidebookingButton();
+            this.hideClickAction(); 
         }
-        
     },
     hidebookingButton: function() {
-        
         $(".pagetitle-container").each(function (index, el){
             if(index==1) {
                 $(el).remove()
             }
         });
-        //button.each(function (index, el){
-        //    console.log($(el))
-        //    $(el).css("display", "none");
-        //});  
-        //console.log(button)
-        //button.hide()
-    }
+    }, 
+    hideClickAction: function() {
+        $(".calendar-grid-cell-inner").each(function (index, el){
+            console.log(index) 
+            $(el).off('click');
+        });
+    } 
 }
