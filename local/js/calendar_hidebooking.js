@@ -17,7 +17,7 @@ BX.sfz.Calendar.HideBooking = {
     }, 
     hideClickAction: function() {
         console.log("hello")
-        $(".calendar-grid-month-cell").each(function (index, el){
+        $(".calendar-grid-month-row").each(function (index, el){
             console.log(index)
             console.log(el) 
             //$(el).off('click');
