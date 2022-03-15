@@ -19,7 +19,7 @@ BX.sfz.Calendar.HideBooking = {
         //event.sectionManager.sections = []; 
         event.sectionManager.sections.forEach(function(item, i, arr) {
             if(item.CAL_TYPE=="location") {
-                arr.splice(i, i); 
+                event.sectionManager.sections.splice(i, i); 
             }
         });
         console.log(event)
