@@ -55,13 +55,13 @@ class Main
             $asset->addString('<script>BX.ready(function () {BX.sfz.Type.HideManagerEdit.init("'.$mode.'", "'.TYPE2UFMANSYPLY.'", "'.TYPE2UFMANLAM.'");});</script>');
         } elseif($page=='room_booking') {
             // выбираем группу
-            $arGroups = CUser::GetUserGroup($USER->GetID());
-            /*if(in_array(BOOKINGGROUP, $arGroups) || $USER->IsAdmin()) {
+            $arGroups = \CUser::GetUserGroup($USER->GetID());
+            if(in_array(BOOKINGGROUP, $arGroups) || $USER->IsAdmin()) {
                 $hidegroup = 0;
             } else {
                 $hidegroup = 1;
-            }*/
-            $hidegroup = 1;
+            }
+            
             \CJSCore::init(['calendar_hidebooking']);
             $asset->addString('<script>BX.ready(function () {BX.sfz.Calendar.HideBooking.init("'.$hidegroup.'");});</script>');
         }
