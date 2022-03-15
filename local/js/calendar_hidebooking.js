@@ -19,7 +19,7 @@ BX.sfz.Calendar.HideBooking = {
         console.log("hello")
         console.log(event)
         console.log(data)
-        var node = event.viewsCont;
+        const node = event.mainCont;
         console.log(node)
         $(node).remove()
         //const change = $(node).find('.calendar-grid-cell-inner');
