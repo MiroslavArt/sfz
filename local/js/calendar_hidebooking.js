@@ -17,7 +17,11 @@ BX.sfz.Calendar.HideBooking = {
     }, 
     hideClickAction: function(event, data) {
         //event.sectionManager.sections = []; 
-       
+        event.sectionManager.sections.forEach(function(item, i, arr) {
+            if(item.CAL_TYPE=="location") {
+                arr.splice(i, i); 
+            }
+        });
         console.log(event)
        
         //var options = node.querySelectorAll('span');
