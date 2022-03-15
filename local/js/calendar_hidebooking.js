@@ -21,6 +21,8 @@ BX.sfz.Calendar.HideBooking = {
             
             if(item.type == "location") {
                 console.log(item)
+                var id = item.id
+                delete event.sectionManager.sectionIndex[id]    
                 delete arr[i];
                 //event.sectionManager.sections.splice(i, i); 
             }
