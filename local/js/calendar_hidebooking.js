@@ -16,9 +16,8 @@ BX.sfz.Calendar.HideBooking = {
         });
     }, 
     hideClickAction: function(event, data) {
-        event.sectionManager.sections = []; 
-        
-        //console.log("hello")
+        //event.sectionManager.sections = []; 
+       
         console.log(event)
        
         //var options = node.querySelectorAll('span');
