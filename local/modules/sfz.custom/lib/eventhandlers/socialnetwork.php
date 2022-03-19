@@ -31,6 +31,12 @@ class Socialnetwork {
             $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
             // Название закладки
             $arResult["Title"]["accidents"] = "Карта несчастных случаев";
+            if(!$arResult["Urls"]["Files"]) {
+                $arResult["Urls"]["Files"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/disk/path/", array("group_id" => $arResult["Group"]["ID"]));
+            }
+            if(!$arResult["Urls"]["files"]) {
+                $arResult["Urls"]["files"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/disk/path/", array("group_id" => $arResult["Group"]["ID"]));
+            }
             \Bitrix\Main\Diag\Debug::writeToFile($arResult, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         }
         else {
