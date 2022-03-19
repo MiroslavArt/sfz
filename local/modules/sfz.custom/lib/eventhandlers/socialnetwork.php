@@ -21,4 +21,20 @@ class Socialnetwork {
             "title" => "Карта несчастных случаев"
          );
     }
+    public static function OnFillSocNetMenu(&$arResult)
+    {
+        // Достуна для показа
+        $arResult["CanView"]["accidents"] = true;
+        // Ссылка закладки
+        $arResult["Urls"]["accidents"] = CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
+        // Название закладки
+        $arResult["Title"]["accidents"] = "Карта несчастных случаев";
+    }
+    public static function OnParseSocNetComponentPath(&$arUrlTemplates, &$arCustomPagesPath)
+    {
+        // Шаблон адреса страницы
+        $arUrlTemplates["accidents"] = "group/#group_id#/accidents/";
+        // Путь относительно корня сайта,
+        $arCustomPagesPath["accidents"] = "/local/page_templates/";
+    }
 }

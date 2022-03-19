@@ -97,7 +97,8 @@ class Application
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
         $eventManager->addEventHandler('socialnetwork','OnFillSocNetFeaturesList', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetFeaturesList']);
-        
+        $eventManager->addEventHandler('socialnetwork','OnFillSocNetMenu', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetMenu']);
+        $eventManager->addEventHandler('socialnetwork','OnParseSocNetComponentPath', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnParseSocNetComponentPath']);
     }
 
     public static function initFactorySubstitute()  
