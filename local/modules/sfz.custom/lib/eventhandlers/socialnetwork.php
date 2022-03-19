@@ -24,7 +24,10 @@ class Socialnetwork {
     public static function OnFillSocNetMenu(&$arResult)
     {
         // Достуна для показа
-        $arResult["CanView"]["accidents"] = true;
+        if(array_key_exists("accidents", $arResult["ActiveFeatures"]))
+            $arResult["CanView"]["accidents"] = true;
+        else 
+            $arResult["CanView"]["accidents"] = false;
         // Ссылка закладки
         $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
         // Название закладки
