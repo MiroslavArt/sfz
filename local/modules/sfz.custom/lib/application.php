@@ -96,6 +96,7 @@ class Application
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementUpdate', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementUpdate']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
+        $eventManager->addEventHandler('socialnetwork','OnFillSocNetFeaturesList', ['\SFZ\Custom\EventHandlers\Socialnetwork',' OnFillSocNetFeaturesList']);
         
     }
 
