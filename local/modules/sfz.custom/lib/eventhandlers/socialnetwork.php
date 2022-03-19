@@ -23,15 +23,19 @@ class Socialnetwork {
     }
     public static function OnFillSocNetMenu(&$arResult)
     {
+        \Bitrix\Main\Diag\Debug::writeToFile($arResult, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         // Достуна для показа
-        if(array_key_exists("accidents", $arResult["ActiveFeatures"]))
+        if(array_key_exists("accidents", $arResult["ActiveFeatures"])) {
             $arResult["CanView"]["accidents"] = true;
-        else 
+            // Ссылка закладки
+            $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
+            // Название закладки
+            $arResult["Title"]["accidents"] = "Карта несчастных случаев";
+            \Bitrix\Main\Diag\Debug::writeToFile($arResult, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        }
+        else {
             $arResult["CanView"]["accidents"] = false;
-        // Ссылка закладки
-        $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
-        // Название закладки
-        $arResult["Title"]["accidents"] = "Карта несчастных случаев";
+        }
     }
     public static function OnParseSocNetComponentPath(&$arUrlTemplates, &$arCustomPagesPath)
     {
