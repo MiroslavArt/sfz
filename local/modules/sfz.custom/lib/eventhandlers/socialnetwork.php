@@ -26,7 +26,7 @@ class Socialnetwork {
         // Достуна для показа
         $arResult["CanView"]["accidents"] = true;
         // Ссылка закладки
-        $arResult["Urls"]["accidents"] = CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
+        $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
         // Название закладки
         $arResult["Title"]["accidents"] = "Карта несчастных случаев";
     }
