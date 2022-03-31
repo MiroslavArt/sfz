@@ -50,6 +50,12 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_bookinggroup'),
             Option::get($MODULE_ID, '_bookinggroup'),
             ['text']
+        ],
+        [
+            'main_extfunct',
+            Loc::getMessage($MODULE_ID.'_extfunct'),
+            Option::get($MODULE_ID, '_extfunct'),
+            ['checkbox']
         ]
     ],
     'company' => [

@@ -26,6 +26,7 @@ class Application
         define('hidethema', \COption::GetOptionString('sfz.custom', 'main_hidethema'));
         define('FIREDEPT', \COption::GetOptionString('sfz.custom', 'main_firedept'));
         define('BOOKINGGROUP', \COption::GetOptionString('sfz.custom', 'main_bookinggroup'));
+        define('EXTFUNCT', \COption::GetOptionString('sfz.custom', 'main_extfunct'));
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
         define('importfileXML', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
         define('makeexportXML', \COption::GetOptionString('sfz.custom', 'company_makeexportXML'));
@@ -96,9 +97,11 @@ class Application
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementUpdate', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementUpdate']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
-        $eventManager->addEventHandler('socialnetwork','OnFillSocNetFeaturesList', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetFeaturesList']);
-        $eventManager->addEventHandler('socialnetwork','OnFillSocNetMenu', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetMenu']);
-        $eventManager->addEventHandler('socialnetwork','OnParseSocNetComponentPath', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnParseSocNetComponentPath']);
+        if(EXTFUNCT=="Y") {
+            $eventManager->addEventHandler('socialnetwork','OnFillSocNetFeaturesList', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetFeaturesList']);
+            $eventManager->addEventHandler('socialnetwork','OnFillSocNetMenu', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnFillSocNetMenu']);
+            $eventManager->addEventHandler('socialnetwork','OnParseSocNetComponentPath', ['\SFZ\Custom\EventHandlers\Socialnetwork','OnParseSocNetComponentPath']);
+        }
     }
 
     public static function initFactorySubstitute()  
