@@ -397,10 +397,16 @@ class ExportImport
         }
         if($newel['name1']) {
             $factory = Service\Container::getInstance()->getFactory(TYPE1ID);  
+            echo "<pre>";
+            print_r($newel['name1']);
+            echo "</pre>";
             $items = $factory->getItems([
                 'select' => [],
                 'filter' => ['TITLE'=>$newel['name1']]
             ]);
+            echo "<pre>";
+            print_r($items);
+            echo "</pre>";
             if($items) {
                 $arParseCompany[marketnameUF] = $items[0]['ID']; 
             } else {
@@ -424,12 +430,18 @@ class ExportImport
         }
         if($newel['name2']) {
             $factory = Service\Container::getInstance()->getFactory(TYPE2ID); 
+            echo "<pre>";
+            print_r($newel['name2']);
+            echo "</pre>";
             $items = $factory->getItems([
                 'select' => [],
                 'filter' => ['TITLE'=>$newel['name2']]
             ]);
+            echo "<pre>";
+            print_r($items);
+            echo "</pre>";
             if($items) {
-                $arParseCompany[marketnameUF] = $items[0]['ID']; 
+                $arParseCompany[marketthroughnameUF] = $items[0]['ID']; 
             } else {
                 $item = $factory->createItem(['TITLE'=>$newel['name2'], 'ASSIGNED_BY_ID'=>commdir]);
                 $operation = $factory->getAddOperation($item);
