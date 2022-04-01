@@ -451,7 +451,8 @@ class ExportImport
         }
         $fieldid = 0;
         if($newel['market']) {
-            $fieldid = Utils::getEnumvalue(marketiID, $newel['market']);
+            $cleanmarket = preg_replace('/\s+/', '', $newel['market']);
+            $fieldid = Utils::getEnumvalue(marketiID, $cleanmarket);
             if($fieldid>0) {
                 $arParseCompany[marketUF] = $fieldid; 
             }
