@@ -7,7 +7,8 @@ BX.iTrack.Crm.BpExt = {
     timelineInstance: null,
     tasks: [],
     init: function () {
-        /*if(typeof (BX.Crm.EntityEditor) !== 'undefined') {
+        if(typeof (BX.Crm.EntityEditor) !== 'undefined') {
+            console.log("firstcond")
             var editor = BX.Crm.EntityEditor.getDefault();
             if(editor) {
                 this.detailHandler(editor, {
@@ -19,11 +20,13 @@ BX.iTrack.Crm.BpExt = {
                     model: editor._model
                 });
             } else {
+                console.log("secondcond")
                 BX.addCustomEvent('BX.Crm.EntityEditor:onInit', BX.delegate(this.detailHandler, this));
             }
-        } else {*/
+        } else {
+            console.log("thirdcond")
             BX.addCustomEvent('BX.Crm.EntityEditor:onInit', BX.delegate(this.detailHandler, this));
-        //}
+        }
     },
     detailHandler: function (editor, data) {
         if(data.hasOwnProperty('entityId') && data.hasOwnProperty('model')) {
