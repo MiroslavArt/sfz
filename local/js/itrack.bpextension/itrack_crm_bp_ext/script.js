@@ -96,7 +96,7 @@ BX.iTrack.Crm.BpExt = {
 
         this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
        
-        if(typeof this.timelineInstance == "undefined" && timelineInstanceName == 'lead') {
+        if(typeof this.timelineInstance == "undefined") {
             timelineInstanceName = 'returning_'+ timelineInstanceName
             this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
         }
