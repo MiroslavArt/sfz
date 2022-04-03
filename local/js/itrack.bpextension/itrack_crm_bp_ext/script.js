@@ -38,9 +38,10 @@ BX.iTrack.Crm.BpExt = {
             if(data.hasOwnProperty('model')) {
                 this.model = data.model;
             }
-
+            console.log(this.entityId)
+            console.log(this.entityTypeId)
             this.getTasks();
-
+            
             BX.addCustomEvent("onPullEvent-crm", BX.delegate(this.onPullEvent, this));
         }
     },
