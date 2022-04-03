@@ -95,8 +95,9 @@ BX.iTrack.Crm.BpExt = {
                 break;
         }
         timelineInstanceName += '_' + this.entityId + '_details_timeline';
+        console.log(timelineInstanceName)
         this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
-
+        console.log(this.timelineInstance)
         for(var i in this.tasks) {
             this.tasks[i]._schedule.deleteItem(this.tasks[i]);
         }
