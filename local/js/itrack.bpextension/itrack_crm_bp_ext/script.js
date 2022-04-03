@@ -8,7 +8,7 @@ BX.iTrack.Crm.BpExt = {
     tasks: [],
     init: function () {
         if(typeof (BX.Crm.EntityEditor) !== 'undefined') {
-            console.log("firstcond")
+
             var editor = BX.Crm.EntityEditor.getDefault();
             if(editor) {
                 this.detailHandler(editor, {
@@ -20,26 +20,24 @@ BX.iTrack.Crm.BpExt = {
                     model: editor._model
                 });
             } else {
-                console.log("secondcond")
+
                 BX.addCustomEvent('BX.Crm.EntityEditor:onInit', BX.delegate(this.detailHandler, this));
             }
         } else {
-            console.log("thirdcond")
+
             BX.addCustomEvent('BX.Crm.EntityEditor:onInit', BX.delegate(this.detailHandler, this));
         }
     },
     detailHandler: function (editor, data) {
-        console.log(editor)
-        console.log(data)
+
         if(data.hasOwnProperty('entityId') && data.hasOwnProperty('model')) {
-            console.log("inside")
+
             this.entityId = data.entityId;
             this.entityTypeId = data.model.getEntityTypeId();
             if(data.hasOwnProperty('model')) {
                 this.model = data.model;
             }
-            console.log(this.entityId)
-            console.log(this.entityTypeId)
+
             this.getTasks();
             
             BX.addCustomEvent("onPullEvent-crm", BX.delegate(this.onPullEvent, this));
@@ -95,18 +93,14 @@ BX.iTrack.Crm.BpExt = {
                 break;
         }
         timelineInstanceName += '_' + this.entityId + '_details_timeline';
-        console.log(timelineInstanceName)
-
 
         this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
        
-        if(typeof this.timelineInstance == "undefined") {
+        if(typeof this.timelineInstance == "undefined" && timelineInstanceName == 'lead') {
             timelineInstanceName = 'returning_'+ timelineInstanceName
             this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
         }
 
-        console.log(BX.CrmTimelineManager.instances)
-        console.log(this.timelineInstance)
         if(typeof this.timelineInstance != "undefined") {
             for(var i in this.tasks) {
                 this.tasks[i]._schedule.deleteItem(this.tasks[i]);
