@@ -29,7 +29,10 @@ BX.iTrack.Crm.BpExt = {
         }
     },
     detailHandler: function (editor, data) {
+        console.log(editor)
+        console.log(data)
         if(data.hasOwnProperty('entityId') && data.hasOwnProperty('model')) {
+            console.log("inside")
             this.entityId = data.entityId;
             this.entityTypeId = data.model.getEntityTypeId();
             if(data.hasOwnProperty('model')) {
