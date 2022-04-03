@@ -98,54 +98,56 @@ BX.iTrack.Crm.BpExt = {
         console.log(timelineInstanceName)
         this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
         console.log(this.timelineInstance)
-        for(var i in this.tasks) {
-            this.tasks[i]._schedule.deleteItem(this.tasks[i]);
-        }
-        this.tasks.splice(0, this.tasks.length);
-
-        for(var i in responseData) {
-            var taskItem = responseData[i];
-            var newItem = BX.iTrack.Crm.CrmScheduleItemBP.create(
-                'BP_TASK_' + taskItem.ID,
-                {
-                    schedule: this.timelineInstance._schedule,
-                    container: this.timelineInstance._schedule._wrapper,
-                    activityEditor: this.timelineInstance._schedule._activityEditor,
-                    data: {
-                        'ASSOCIATED_ENTITY_TYPE_ID': 'BP_TASK_ACT',
-                        'ASSOCIATED_ENTITY_ID': 'BP_TASK_' + taskItem.ID,
-                        'ASSOCIATED_ENTITY': {
-                            'ID': 'BP_TASK_' + taskItem.ID,
-                            'OWNER_ID': this.entityId,
-                            'OWNER_TYPE_ID': this.entityTypeId,
-                            'TYPE_ID': 'BP_TASK_ACT',
-                            'PROVIDER_ID': 'CRM_REQUEST',
-                            'PROVIDER_TYPE_ID': 'REQUEST',
-                            'ASSOCIATED_ENTITY_ID': taskItem.ID,
-                            'DIRECTION': '0',
-                            'SUBJECT': taskItem.NAME,
-                            'STATUS': '1',
-                            'DESCRIPTION_TYPE': '1',
-                            //'RESPONSIBLE_ID': '496',
-                            'DESCRIPTION_RAW': taskItem.DESCRIPTION,
-                            //'PERMISSIONS': {'USER_ID': '496', 'POSTPONE': true, 'COMPLETE': true},
-                            'START_DATE': taskItem.MODIFIED,
-                            'WORKFLOW_TEMPLATE_NAME': taskItem.WORKFLOW_TEMPLATE_NAME,
-                            'WORKFLOW_ID': taskItem.WORKFLOW_ID,
-                            'DOCUMENT_ID': taskItem.DOCUMENT_ID,
-                            'TASK_ID': taskItem.ID
-                        },
-                        //'AUTHOR_ID': '496',
-                        //'AUTHOR': {'FORMATTED_NAME': 'ИНТЕГРАТОР БИТРИКС24', 'SHOW_URL': '/company/personal/user/496/'}
+        if(typeof this.timelineInstance != "undefined") {
+            for(var i in this.tasks) {
+                this.tasks[i]._schedule.deleteItem(this.tasks[i]);
+            }
+            this.tasks.splice(0, this.tasks.length);
+    
+            for(var i in responseData) {
+                var taskItem = responseData[i];
+                var newItem = BX.iTrack.Crm.CrmScheduleItemBP.create(
+                    'BP_TASK_' + taskItem.ID,
+                    {
+                        schedule: this.timelineInstance._schedule,
+                        container: this.timelineInstance._schedule._wrapper,
+                        activityEditor: this.timelineInstance._schedule._activityEditor,
+                        data: {
+                            'ASSOCIATED_ENTITY_TYPE_ID': 'BP_TASK_ACT',
+                            'ASSOCIATED_ENTITY_ID': 'BP_TASK_' + taskItem.ID,
+                            'ASSOCIATED_ENTITY': {
+                                'ID': 'BP_TASK_' + taskItem.ID,
+                                'OWNER_ID': this.entityId,
+                                'OWNER_TYPE_ID': this.entityTypeId,
+                                'TYPE_ID': 'BP_TASK_ACT',
+                                'PROVIDER_ID': 'CRM_REQUEST',
+                                'PROVIDER_TYPE_ID': 'REQUEST',
+                                'ASSOCIATED_ENTITY_ID': taskItem.ID,
+                                'DIRECTION': '0',
+                                'SUBJECT': taskItem.NAME,
+                                'STATUS': '1',
+                                'DESCRIPTION_TYPE': '1',
+                                //'RESPONSIBLE_ID': '496',
+                                'DESCRIPTION_RAW': taskItem.DESCRIPTION,
+                                //'PERMISSIONS': {'USER_ID': '496', 'POSTPONE': true, 'COMPLETE': true},
+                                'START_DATE': taskItem.MODIFIED,
+                                'WORKFLOW_TEMPLATE_NAME': taskItem.WORKFLOW_TEMPLATE_NAME,
+                                'WORKFLOW_ID': taskItem.WORKFLOW_ID,
+                                'DOCUMENT_ID': taskItem.DOCUMENT_ID,
+                                'TASK_ID': taskItem.ID
+                            },
+                            //'AUTHOR_ID': '496',
+                            //'AUTHOR': {'FORMATTED_NAME': 'ИНТЕГРАТОР БИТРИКС24', 'SHOW_URL': '/company/personal/user/496/'}
+                        }
                     }
-                }
-            );
-
-            var index = this.timelineInstance._schedule.calculateItemIndex(newItem);
-            var anchor = this.timelineInstance._schedule.createAnchor(index);
-            this.timelineInstance._schedule.addItem(newItem, index);
-            newItem.layout({ anchor: anchor });
-            this.tasks.push(newItem);
+                );
+    
+                var index = this.timelineInstance._schedule.calculateItemIndex(newItem);
+                var anchor = this.timelineInstance._schedule.createAnchor(index);
+                this.timelineInstance._schedule.addItem(newItem, index);
+                newItem.layout({ anchor: anchor });
+                this.tasks.push(newItem);
+            }
         }
     }
 };
