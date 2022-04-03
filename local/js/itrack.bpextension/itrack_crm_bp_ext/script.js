@@ -96,7 +96,15 @@ BX.iTrack.Crm.BpExt = {
         }
         timelineInstanceName += '_' + this.entityId + '_details_timeline';
         console.log(timelineInstanceName)
+
+
         this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
+       
+        if(typeof this.timelineInstance == "undefined") {
+            timelineInstanceName = 'returning_'+ timelineInstanceName
+            this.timelineInstance = BX.CrmTimelineManager.instances[timelineInstanceName];
+        }
+
         console.log(BX.CrmTimelineManager.instances)
         console.log(this.timelineInstance)
         if(typeof this.timelineInstance != "undefined") {
