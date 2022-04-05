@@ -201,7 +201,7 @@ $arAllOptions = [
             'company_checklead',
             Loc::getMessage($MODULE_ID.'_checklead'),
             Option::get($MODULE_ID, '_checklead'),
-            ['text']
+            ['checkbox']
         ],
         [
             'company_wfid',
