@@ -50,6 +50,9 @@ class Application
         define('archiveUF', \COption::GetOptionString('sfz.custom', 'company_archiveUF'));
         define('marketinUF', \COption::GetOptionString('sfz.custom', 'company_marketinUF'));
         define('commdir', \COption::GetOptionString('sfz.custom', 'company_commdir'));
+        define('CHECKLEAD', \COption::GetOptionString('sfz.custom', 'company_checklead'));
+        define('WFID', \COption::GetOptionString('sfz.custom', 'company_wfid'));
+        define('LEADSTAGE', \COption::GetOptionString('sfz.custom', 'company_leadstage'));
         define('CONTRACTACTIVATE', \COption::GetOptionString('sfz.custom', 'payrequests_contractactivate'));
         define('TYPECODE', \COption::GetOptionString('sfz.custom', 'payrequests_typecode'));
         define('contractuf', \COption::GetOptionString('sfz.custom', 'payrequests_contractuf'));

@@ -196,6 +196,24 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_commdir'),
             Option::get($MODULE_ID, '_commdir'),
             ['text']
+        ],
+        [
+            'company_checklead',
+            Loc::getMessage($MODULE_ID.'_checklead'),
+            Option::get($MODULE_ID, '_checklead'),
+            ['text']
+        ],
+        [
+            'company_wfid',
+            Loc::getMessage($MODULE_ID.'_wfid'),
+            Option::get($MODULE_ID, '_wfid'),
+            ['text']
+        ],
+        [
+            'company_leadstage',
+            Loc::getMessage($MODULE_ID.'_leadstage'),
+            Option::get($MODULE_ID, '_leadstage'),
+            ['text']
         ]
     ],
     'payrequests' => [
