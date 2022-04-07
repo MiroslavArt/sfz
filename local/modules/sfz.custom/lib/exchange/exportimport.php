@@ -548,4 +548,45 @@ class ExportImport
             return true; 
         }
     }
+
+    /*public static function leadupdate() {
+        if (\Bitrix\Main\Loader::includeModule('bizproc')) {
+
+            $arErrorsTmp = [];
+            $wfId = \CBPDocument::StartWorkflow(
+                WFID,
+                array("crm", "CCrmDocumentLead", 'LEAD_' . 4),
+                [
+                    \CBPDocument::PARAM_TAGRET_USER => "user_1",
+                    \CBPDocument::PARAM_DOCUMENT_EVENT_TYPE => \CBPDocumentEventType::Manual,
+                    'companyadded' => false
+                ],
+                $arErrorsTmp
+            );
+            if (!empty($arErrorsTmp)) {
+                echo "started";
+            }
+        }
+       
+        \Bitrix\Main\Loader::includeModule('crm');
+
+        $arFilter = [
+            "=COMPANY_ID" => 0,
+            "STATUS_ID" => LEADSTAGE,
+            "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+        ];
+        $arSelect = [
+            "*",
+            "UF_*"
+        ];
+        $res = \CCrmLead::GetListEx(Array(), $arFilter, false, false, $arSelect);
+
+        while($lead = $res->Fetch()) {
+            echo "<pre>";
+            print_r($lead);
+            echo "</pre>";
+
+        }
+
+    }*/
 }
