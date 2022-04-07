@@ -5,12 +5,44 @@ namespace SFZ\Custom\Exchange;
 use Bitrix\Main\Loader;
 use SFZ\Custom\Helpers\Utils;
 use Bitrix\Crm\Service;
+use Bitrix\Main\Result;
+use Bitrix\Main\Error;
+use Bitrix\Main\Web\Json;
 
 class ExportImport
 {
     public function __construct()
     {
         Loader::includeModule('crm');
+        $this->result = new Result();
+    }
+
+    public function processWebhook()
+    {
+        try {
+            $request = \Bitrix\Main\HttpApplication::getInstance()->getContext()->getRequest();
+            $number = $request->get('number');
+            if ($number) {
+                
+            } else {
+                $this->result->addError(new Error('numbernotspecified'));
+            }
+        } catch(\Exception $e) {
+            $this->result->addError(new Error('internal error'));
+        }
+        $this->showResponse();
+    }
+
+    private function showResponse()
+    {
+        $response = ['success' => true];
+        if(!$this->result->isSuccess()) {
+            $response['success'] = false;
+            $response['error'] = true;
+            $response['message'] = implode(', ',$this->result->getErrorMessages());
+        }
+
+        echo Json::encode($response);
     }
 
     public static function dumpCompanyXML()
