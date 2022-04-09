@@ -77,9 +77,7 @@ class ExportImport
                 return false;
             }
         } 
-        echo "<pre>";
-        print_r($phonescmp);
-        echo "</pre>";
+       
         
         if($phonescmp) {
             $firstcmp = current($phonescmp);
@@ -93,8 +91,9 @@ class ExportImport
             ];
             $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
             $cmp = $res->fetch(); 
+            
             if($cmp[marketnameUF]) {
-                $typeval = Utils::getTypevalues(TYPE2ID, $arFields[marketthroughnameUF]);
+                $typeval = Utils::getTypevalues(TYPE2ID, $cmp[marketnameUF]);
                 if($typeval) {
                     if($type=='pl' && $typeval[TYPE2UFMANSYPLY]) {
                         $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANSYPLY]));
