@@ -66,25 +66,28 @@ class ExportImport
                     $phonescnt[] = $ar;
                 }
             }
-            if($phonescnt) {
-                $firstcnt = current($phonescnt);
-                $cnt = \CCrmContact::GetByID($firstcnt['ELEMENT_ID']);
-                if($cnt) {
-                    $user = Utils::getUserbycondition(array('=ID' =>$cnt['ASSIGNED_BY_ID']));
-                    if($user) {
-                        if($user['UF_PHONE_INNER']) {
-                            return $user['UF_PHONE_INNER'];
-                        }
-                    }
-                } else {
-                    return false;
-                }
-            } elseif($phonescmp) {
-                return false; 
-            } else {
-                return false; 
-            }
         }
+        
+            
+        if($phonescnt) {
+            $firstcnt = current($phonescnt);
+            $cnt = \CCrmContact::GetByID($firstcnt['ELEMENT_ID']);
+            if($cnt) {
+                $user = Utils::getUserbycondition(array('=ID' =>$cnt['ASSIGNED_BY_ID']));
+                if($user) {
+                    if($user['UF_PHONE_INNER']) {
+                        return $user['UF_PHONE_INNER'];
+                    }
+                }
+            } else {
+                return false;
+            }
+        } elseif($phonescmp) {
+            return false; 
+        } else {
+            return false; 
+        }
+        
 
 
         
