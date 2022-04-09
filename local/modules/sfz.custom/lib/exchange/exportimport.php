@@ -87,18 +87,13 @@ class ExportImport
             ];
             $arSelect = [
                 "*",
-                marketnameUF
+                marketthroughnameUF
             ];
             $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
             $cmp = $res->fetch(); 
-            echo "<pre>";
-            print_r($cmp);
-            echo "</pre>";
-            if($cmp[marketnameUF]) {
-                $typeval = Utils::getTypevalues(TYPE2ID, $cmp[marketnameUF]);
-                echo "<pre>";
-                print_r($typeval);
-                echo "</pre>";
+           
+            if($cmp[marketthroughnameUF]) {
+                $typeval = Utils::getTypevalues(TYPE2ID, $cmp[marketthroughnameUF]);
                 if($typeval) {
                     if($type=='pl' && $typeval[TYPE2UFMANSYPLY]) {
                         $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANSYPLY]));
