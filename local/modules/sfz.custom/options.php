@@ -214,6 +214,18 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_leadstage'),
             Option::get($MODULE_ID, '_leadstage'),
             ['text']
+        ],
+        [
+            'company_syplynumbers',
+            Loc::getMessage($MODULE_ID.'_syplynumbers'),
+            Option::get($MODULE_ID, '_syplynumbers'),
+            ['text']
+        ],
+        [
+            'company_lamartynumbers',
+            Loc::getMessage($MODULE_ID.'_lamartynumbers'),
+            Option::get($MODULE_ID, '_lamartynumbers'),
+            ['text']
         ]
     ],
     'payrequests' => [

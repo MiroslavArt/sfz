@@ -53,6 +53,8 @@ class Application
         define('CHECKLEAD', \COption::GetOptionString('sfz.custom', 'company_checklead'));
         define('WFID', \COption::GetOptionString('sfz.custom', 'company_wfid'));
         define('LEADSTAGE', \COption::GetOptionString('sfz.custom', 'company_leadstage'));
+        define('SYPLYNUM', \COption::GetOptionString('sfz.custom', 'company_syplynumbers'));
+        define('LAMNUM', \COption::GetOptionString('sfz.custom', 'company_lamartynumbers'));
         define('CONTRACTACTIVATE', \COption::GetOptionString('sfz.custom', 'payrequests_contractactivate'));
         define('TYPECODE', \COption::GetOptionString('sfz.custom', 'payrequests_typecode'));
         define('contractuf', \COption::GetOptionString('sfz.custom', 'payrequests_contractuf'));

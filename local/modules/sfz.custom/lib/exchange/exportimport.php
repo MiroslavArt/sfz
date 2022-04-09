@@ -21,16 +21,32 @@ class ExportImport
     {
         try {
             $request = \Bitrix\Main\HttpApplication::getInstance()->getContext()->getRequest();
-            $number = preg_replace("/[^,.0-9]/", '', $request->get('number'));
-            if ($number) {
-                $intnumber = self::getIntnumber($number);
-                if($intnumber) {
-                    $this->result->setData([$intnumber]);
+            $fromnumber = preg_replace("/[^,.0-9]/", '', $request->get('fromnumber'));
+
+            $syplynumbers = explode(",", SYPLYNUM);
+            $lamnumbers = explode(",", LAMNUM);
+
+            $tonumber = preg_replace("/[^,.0-9]/", '', $request->get('tonumber'));
+
+            if(in_array($tonumber, $syplynumbers)) {
+                $par = 'pl';
+            } elseif(in_array($tonumber, $lamnumbers)) {
+                $par = 'lm';
+            }
+
+            if($par) {
+                if ($fromnumber) {
+                    $intnumber = self::getIntnumber($fromnumber, $par);
+                    if($intnumber) {
+                        $this->result->setData([$intnumber]);
+                    } else {
+                        $this->result->addError(new Error('numbernotfound'));
+                    }
                 } else {
-                    $this->result->addError(new Error('numbernotfound'));
+                    $this->result->addError(new Error('incoming number incorrect'));
                 }
             } else {
-                $this->result->addError(new Error('numbernotspecifiedingetpar'));
+                $this->result->addError(new Error('own number incorrect'));
             }
         } catch(\Exception $e) {
             $this->result->addError(new Error('internal error'));
@@ -97,7 +113,7 @@ class ExportImport
                 if($typeval) {
                     if($type=='pl' && $typeval[TYPE2UFMANSYPLY]) {
                         $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANSYPLY]));
-                    } elseif($type=='cb' && $typeval[TYPE2UFMANLAM]) {
+                    } elseif($type=='lm' && $typeval[TYPE2UFMANLAM]) {
                         $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANLAM]));
                     } else {
                         $user = Utils::getUserbycondition(array('=ID' =>$cmp['ASSIGNED_BY_ID']));
