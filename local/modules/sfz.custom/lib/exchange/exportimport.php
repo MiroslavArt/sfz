@@ -82,15 +82,14 @@ class ExportImport
             } else {
                 return false;
             }
-        } elseif($phonescmp) {
-            return false; 
-        } else {
-            return false; 
-        }
+        } 
         
-
-
         
+        if($phonescmp) {
+            return false; 
+        } 
+            
+        return false; 
     }
 
 
