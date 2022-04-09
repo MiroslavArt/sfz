@@ -21,11 +21,16 @@ class ExportImport
     {
         try {
             $request = \Bitrix\Main\HttpApplication::getInstance()->getContext()->getRequest();
-            $number = $request->get('number');
+            $number = preg_replace("/[^,.0-9]/", '', $request->get('number'));
             if ($number) {
-                
+                $intnumber = self::getIntnumber($number);
+                if($intnumber) {
+                    $this->result->setData([$intnumber]);
+                } else {
+                    $this->result->addError(new Error('numbernotfound'));
+                }
             } else {
-                $this->result->addError(new Error('numbernotspecified'));
+                $this->result->addError(new Error('numbernotspecifiedingetpar'));
             }
         } catch(\Exception $e) {
             $this->result->addError(new Error('internal error'));
@@ -35,8 +40,9 @@ class ExportImport
 
     private function showResponse()
     {
-        $response = ['success' => true];
-        if(!$this->result->isSuccess()) {
+        if($this->result->isSuccess()) {
+            $response = ['success' => true, 'intnumber' => current($this->result->getData())];
+        } else {
             $response['success'] = false;
             $response['error'] = true;
             $response['message'] = implode(', ',$this->result->getErrorMessages());
@@ -44,6 +50,25 @@ class ExportImport
 
         echo Json::encode($response);
     }
+
+    private static function getIntnumber($number) {
+        return $number; 
+        /*if(!$companyid) {
+            return true;
+        } else {
+            $rs = \CCrmFieldMulti::GetList(
+                array("ID"=>"ASC"),
+                array('ENTITY_ID'=>'COMPANY', 'TYPE_ID' => $contacttype, 'ELEMENT_ID' => $companyid)
+            );
+            while($ar=$rs->fetch()){
+                if($ar['VALUE']==$checkvalue) {
+                    return false;
+                }    
+            }
+            return true; 
+        }*/
+    }
+
 
     public static function dumpCompanyXML()
     {        
