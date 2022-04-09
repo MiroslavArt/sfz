@@ -94,6 +94,9 @@ class ExportImport
             
             if($cmp[marketnameUF]) {
                 $typeval = Utils::getTypevalues(TYPE2ID, $cmp[marketnameUF]);
+                echo "<pre>";
+                print_r($typeval);
+                echo "</pre>";
                 if($typeval) {
                     if($type=='pl' && $typeval[TYPE2UFMANSYPLY]) {
                         $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANSYPLY]));
