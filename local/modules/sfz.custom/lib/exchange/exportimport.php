@@ -77,6 +77,9 @@ class ExportImport
                 return false;
             }
         } 
+        echo "<pre>";
+        print_r($phonescmp);
+        echo "</pre>";
         
         if($phonescmp) {
             $firstcmp = current($phonescmp);
