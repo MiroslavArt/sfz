@@ -52,21 +52,42 @@ class ExportImport
     }
 
     private static function getIntnumber($number) {
-        return $number; 
-        /*if(!$companyid) {
-            return true;
-        } else {
-            $rs = \CCrmFieldMulti::GetList(
-                array("ID"=>"ASC"),
-                array('ENTITY_ID'=>'COMPANY', 'TYPE_ID' => $contacttype, 'ELEMENT_ID' => $companyid)
-            );
-            while($ar=$rs->fetch()){
-                if($ar['VALUE']==$checkvalue) {
-                    return false;
-                }    
+        $rs = \CCrmFieldMulti::GetList(
+            array("ID"=>"ASC"),
+            array('TYPE_ID' => 'PHONE')
+        );
+        $phonescnt = [];
+        $phonescmp = [];
+        while($ar=$rs->fetch()){
+            if(preg_replace("/[^,.0-9]/", '', $ar['VALUE'])==$number) {
+                if($ar['ENTITY_ID']=='COMPANY') {
+                    $phonescmp[] = $ar;
+                } elseif($ar['ENTITY_ID']=='CONTACT') {
+                    $phonescnt[] = $ar;
+                }
             }
-            return true; 
-        }*/
+            if($phonescnt) {
+                $firstcnt = current($phonescnt);
+                $cnt = \CCrmContact::GetByID($firstcnt['ELEMENT_ID']);
+                if($cnt) {
+                    $user = Utils::getUserbycondition(array('=ID' =>$cnt['ASSIGNED_BY_ID']));
+                    if($user) {
+                        if($user['UF_PHONE_INNER']) {
+                            return $user['UF_PHONE_INNER'];
+                        }
+                    }
+                } else {
+                    return false;
+                }
+            } elseif($phonescmp) {
+                return false; 
+            } else {
+                return false; 
+            }
+        }
+
+
+        
     }
 
 
