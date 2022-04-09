@@ -51,7 +51,7 @@ class ExportImport
         echo Json::encode($response);
     }
 
-    private static function getIntnumber($number) {
+    private static function getIntnumber($number, $type = 'pl') {
         $rs = \CCrmFieldMulti::GetList(
             array("ID"=>"ASC"),
             array('TYPE_ID' => 'PHONE')
@@ -67,27 +67,50 @@ class ExportImport
                 }
             }
         }
-        
             
         if($phonescnt) {
             $firstcnt = current($phonescnt);
             $cnt = \CCrmContact::GetByID($firstcnt['ELEMENT_ID']);
             if($cnt) {
                 $user = Utils::getUserbycondition(array('=ID' =>$cnt['ASSIGNED_BY_ID']));
-                if($user) {
-                    if($user['UF_PHONE_INNER']) {
-                        return $user['UF_PHONE_INNER'];
-                    }
-                }
             } else {
                 return false;
             }
         } 
         
-        
         if($phonescmp) {
-            return false; 
+            $firstcmp = current($phonescmp);
+            $arFilter = [
+                "=ID"=> $firstcmp['ELEMENT_ID'],
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "*",
+                marketnameUF
+            ];
+            $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+            $cmp = $res->fetch(); 
+            if($cmp[marketnameUF]) {
+                $typeval = Utils::getTypevalues(TYPE2ID, $arFields[marketthroughnameUF]);
+                if($typeval) {
+                    if($type=='pl' && $typeval[TYPE2UFMANSYPLY]) {
+                        $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANSYPLY]));
+                    } elseif($type=='cb' && $typeval[TYPE2UFMANLAM]) {
+                        $user = Utils::getUserbycondition(array('=ID' =>$typeval[TYPE2UFMANLAM]));
+                    } else {
+                        $user = Utils::getUserbycondition(array('=ID' =>$cmp['ASSIGNED_BY_ID']));
+                    }
+                }
+            } else {
+                $user = Utils::getUserbycondition(array('=ID' =>$cmp['ASSIGNED_BY_ID']));
+            }
         } 
+
+        if($user) {
+            if($user['UF_PHONE_INNER']) {
+                return $user['UF_PHONE_INNER'];
+            }
+        }
             
         return false; 
     }
