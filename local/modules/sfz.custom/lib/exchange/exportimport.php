@@ -91,7 +91,9 @@ class ExportImport
             ];
             $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
             $cmp = $res->fetch(); 
-            
+            echo "<pre>";
+            print_r($cmp);
+            echo "</pre>";
             if($cmp[marketnameUF]) {
                 $typeval = Utils::getTypevalues(TYPE2ID, $cmp[marketnameUF]);
                 echo "<pre>";
