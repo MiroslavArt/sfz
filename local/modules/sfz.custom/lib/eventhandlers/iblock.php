@@ -22,10 +22,11 @@ class Iblock
 
     public static function OnBeforeIBlockElementDelete(&$arFields)
     {
-        self::processupdate($arFields. false);        
+        self::processupdate($arFields, false);        
     }
 
     private static function processupdate($arFields, $save = true) {
+        
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 
         } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
