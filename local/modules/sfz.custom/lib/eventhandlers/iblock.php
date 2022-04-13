@@ -34,7 +34,7 @@ class Iblock
         if($manfield) {
             $element = current(Utils::getIBlockElementsByConditions($arFields['IBLOCK_ID'], ['ID'=>$arFields['ID']]));
             
-            
+            $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE']; 
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
             $datefrom = $element['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
 
@@ -44,6 +44,7 @@ class Iblock
                     if(!$save) {
                        $manager = "";
                     }
+                    
                     self::updatethrougcompany($companyid, $manfield, $manager); 
                 }
             }
