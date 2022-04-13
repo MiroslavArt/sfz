@@ -20,6 +20,11 @@ class Iblock
         self::processupdate($arFields);        
     }
 
+    public static function OnBeforeIBlockElementDelete(&$arFields)
+    {
+        self::processupdate($arFields);        
+    }
+
     private static function processupdate($arFields) {
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 

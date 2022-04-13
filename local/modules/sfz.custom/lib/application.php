@@ -100,6 +100,7 @@ class Application
         
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementAdd']);
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementUpdate', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementUpdate']);
+        $eventManager->addEventHandler('iblock','OnBeforeIBlockElementDelete', ['\SFZ\Custom\EventHandlers\Iblock','OnBeforeIBlockElementDelete']);
         // старый хандлер эпилога
         //$eventManager->addEventHandler('main','OnEpilog', ['\SFZ\Custom\EventHandlers\Main','onEpilog']);
         if(EXTFUNCT=="Y") {
