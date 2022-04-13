@@ -20,9 +20,10 @@ class Iblock
         self::processupdate($arFields);        
     }
 
-    public static function OnBeforeIBlockElementDelete(&$arFields)
+    public static function OnBeforeIBlockElementDelete($ID)
     {
-        self::processupdate($arFields, false);        
+        \Bitrix\Main\Diag\Debug::writeToFile($ID, "dataexp1".date("d.m.Y G.i.s"), "__debug.log");
+        //self::processupdate($arFields, false);        
     }
 
     private static function processupdate($arFields, $save = true) 
