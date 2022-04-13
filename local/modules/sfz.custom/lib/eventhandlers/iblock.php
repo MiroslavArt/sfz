@@ -20,9 +20,10 @@ class Iblock
         self::processupdate($arFields);        
     }
 
-    public static function OnBeforeIBlockElementDelete($ID)
+    public static function OnAfterIBlockElementDelete(&$arFields)
     {
-        $res = \CIBlockElement::GetByID($ID);
+        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        /*$res = \CIBlockElement::GetByID($ID);
         if($ar_res = $res->GetNext())
             $arrBID = $ar_res['IBLOCK_ID'];
 
@@ -30,7 +31,7 @@ class Iblock
             'ID' => $ID,
             'IBLOCK_ID' => $arrBID
         ];
-        self::processupdate($arFields, false);        
+        self::processupdate($arFields, false);*/        
     }
 
     private static function processupdate($arFields, $save = true) 
