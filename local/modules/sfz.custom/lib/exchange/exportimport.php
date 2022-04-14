@@ -480,7 +480,7 @@ class ExportImport
             idGalUF => $newel['@attributes']['id'],
             hashUF => $newel['row_hash'],
             "ASSIGNED_BY_ID" => commdir,
-            marketnameUF => "",
+            /*marketnameUF => "",
             marketthroughnameUF => "",
             dealerSyPlyUF => "",
             dealerLamUF => "",
@@ -493,7 +493,7 @@ class ExportImport
             manLamUF => "",
             marketUF => "",
             archiveUF => "",
-            marketinUF => ""
+            marketinUF => ""*/
         ]; 
         
         if($newel['tel']) {
