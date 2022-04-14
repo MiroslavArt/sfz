@@ -395,8 +395,9 @@ class ExportImport
                         "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
                     ];
                     $arSelect = [
-                        "*",
-                        "UF_*"
+                        "ID",
+                        idGalUF,
+                        hashUF
                     ];
                     $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
                     $arCompany = $res->fetch();
@@ -429,6 +430,9 @@ class ExportImport
                         }
                     } else {
                         if($arCompany[hashUF]!=$newel['row_hash']) {
+                            echo '<pre>';
+                            print_r($newel['row_hash']);
+                            echo '</pre>';
                             $arUpdateCompany = self::preparecompanydata($newel, $arCompany['ID']);
                             $res = $company->Update($arCompany['ID'],$arUpdateCompany);  
                             $requisiteFields=[
