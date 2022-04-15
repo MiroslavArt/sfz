@@ -392,7 +392,7 @@ class ExportImport
             while($item = $res->Fetch()) {
                 if($item[idGalUF]) {
                     $hash[$item[idGalUF]]['ID'] = $item['ID'];
-                    $hash[$item[idGalUF]]['hash'] = hashUF;
+                    $hash[$item[idGalUF]]['hash'] = $item[hashUF];
                 }
             }
 
