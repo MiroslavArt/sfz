@@ -377,6 +377,25 @@ class ExportImport
         Loader::includeModule('crm');
         $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/'.importfileXML;
         if (file_exists($impfile)) {
+            $arFilter = [
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "ID",
+                idGalUF,
+                hashUF	
+            ];
+            $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
+            
+            $hash = [];
+            
+            while($item = $res->Fetch()) {
+                if($item[idGalUF]) {
+                    $hash[$item[idGalUF]]['ID'] = $item['ID'];
+                    $hash[$item[idGalUF]]['hash'] = hashUF;
+                }
+            }
+
             $xml = simplexml_load_file($impfile);
             $contr = $xml->Contragent;
             $test = 0; 
@@ -390,7 +409,7 @@ class ExportImport
 
                 if($idgal && $title) {
 
-                    $arFilter = [
+                    /*$arFilter = [
                         idGalUF => $idgal, //выбираем определенную сделку по ID
                         "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
                     ];
@@ -400,9 +419,9 @@ class ExportImport
                         hashUF
                     ];
                     $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
-                    $arCompany = $res->fetch();
+                    $arCompany = $res->fetch();*/
 
-                    if(empty($arCompany)) {
+                    if(!$hash[$idgal]) {
 
                         $arNewCompany = self::preparecompanydata($newel);
                         $companyID = $company->Add($arNewCompany);
@@ -429,15 +448,15 @@ class ExportImport
                             $resultRequisit = $requisiteEntity->add($requisiteFields);
                         }
                     } else {
-                        if($arCompany[hashUF]!=$newel['row_hash']) {
+                        if($hash[$idgal]['hash']!=$newel['row_hash']) {
                             echo '<pre>';
                             print_r($newel['row_hash']);
                             echo '</pre>';
-                            $arUpdateCompany = self::preparecompanydata($newel, $arCompany['ID']);
-                            $res = $company->Update($arCompany['ID'],$arUpdateCompany);  
+                            $arUpdateCompany = self::preparecompanydata($newel, $hash[$idgal]['ID']);
+                            $res = $company->Update($hash[$idgal]['ID'],$arUpdateCompany);  
                             $requisiteFields=[
                                 "ENTITY_TYPE_ID"=>4, /*реквизит для компании*/
-                                "ENTITY_ID"=>$arCompany['ID'], /* ид нашей созданной компании*/
+                                "ENTITY_ID"=>$hash[$idgal]['ID'], /* ид нашей созданной компании*/
                                 "NAME"=>"Организация",
                                 "PRESET_ID"=>1,
                                 "RQ_COMPANY_NAME"=>$newel['org'],
@@ -455,7 +474,7 @@ class ExportImport
                             $rsRequisite = $requisiteEntity->getList([
                                             "select"=>array("*"),
                                             "filter"=>array(
-                                            "ENTITY_ID"=>$arCompany['ID'],
+                                            "ENTITY_ID"=>$hash[$idgal]['ID'],
                                             "ENTITY_TYPE_ID"=>\CCrmOwnerType::Company
                                             ),
                                             "order"=>array("SORT"=>"desc","ID"=>"desc")
