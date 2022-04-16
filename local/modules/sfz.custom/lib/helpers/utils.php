@@ -386,7 +386,7 @@ class Utils
      * @return array
      * @throws \Bitrix\Main\LoaderException
      */
-    public static function getIBlockElementsByConditions(int $iblock, array $filter = [], array $sort = [], array $selectElement = []):array
+    public static function getIBlockElementsByConditions(int $iblock, array $filter = [], array $sort = [], array $selectElement = [], $detpro = true):array
     {
         $key        =   0;
         $elements   =   [];
@@ -409,7 +409,9 @@ class Utils
 
         while ($el = $elementsList->GetNextElement()) {
             $elements[$key]                 =   $el->GetFields();
-            $elements[$key]['PROPERTIES']   =   $el->GetProperties();
+            if($detpro) {
+                $elements[$key]['PROPERTIES']   =   $el->GetProperties();
+            }
             $key++;
         }
 

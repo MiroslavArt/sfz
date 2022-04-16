@@ -133,6 +133,19 @@ class ExportImport
         return false; 
     }
 
+    public static function actualiseManagers() {
+        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y'], 
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'DESC']);
+        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y'], 
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'DESC']);
+        //if($selectspmanagerchanges || $selectlammanagerchanges) {
+
+        //}
+        
+
+
+        return '\SFZ\Custom\Exchange\ExportImport::actualiseManagers();';
+    }
 
     public static function dumpCompanyXML()
     {        

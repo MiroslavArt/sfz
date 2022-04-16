@@ -22,7 +22,7 @@ class Iblock
 
     public static function OnAfterIBlockElementDelete(&$arFields)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        //\Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         /*$res = \CIBlockElement::GetByID($ID);
         if($ar_res = $res->GetNext())
             $arrBID = $ar_res['IBLOCK_ID'];
@@ -36,7 +36,6 @@ class Iblock
 
     private static function processupdate($arFields, $save = true) 
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arFields, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         if($arFields['IBLOCK_ID']==PLYWOODIB) {
             $manfield = TYPE2UFMANSYPLY; 
         } elseif($arFields['IBLOCK_ID']==LAMARTYIB) {
@@ -55,7 +54,6 @@ class Iblock
                     if(!$save) {
                        $manager = "";
                     }
-                    \Bitrix\Main\Diag\Debug::writeToFile($manager, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
                     self::updatethrougcompany($companyid, $manfield, $manager); 
                 }
             }
