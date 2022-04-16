@@ -135,16 +135,80 @@ class ExportImport
 
     public static function actualiseManagers() {
         $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y'], 
-            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'DESC']);
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC'],[],[],true);
+
         $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y'], 
-            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'DESC']);
-        //if($selectspmanagerchanges || $selectlammanagerchanges) {
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC'],[],[],true);
 
-        //}
-        
+        $comparr = [];
+        $comparrtwo = [];
 
+        foreach($selectspmanagerchanges as $item) {
+            if($item['PROPERTY_SKVOZNAYA_KOMPANIYA_2_VALUE']) {
+                $comparr[$item['PROPERTY_SKVOZNAYA_KOMPANIYA_2_VALUE']] = $item['PROPERTY_SOTRUDNIK_VALUE'];
+            }
+        }
 
-        return '\SFZ\Custom\Exchange\ExportImport::actualiseManagers();';
+        foreach($selectlammanagerchanges as $item) {
+            if($item['PROPERTY_SKVOZNAYA_KOMPANIYA_2_VALUE']) {
+                $comparrtwo[$item['PROPERTY_SKVOZNAYA_KOMPANIYA_2_VALUE']] = $item['PROPERTY_SOTRUDNIK_VALUE'];
+            }
+        }
+
+        $factory = Service\Container::getInstance()->getFactory(TYPE2ID);
+
+        $items = $factory->getItems([
+            'select' => [],
+            'filter' => []
+        ]);
+
+        foreach($items as $item) {
+            $itemarr = $item->getData();
+
+            $update = false; 
+            $updatetwo = false; 
+
+            if(!array_key_exists($item['ID'], $comparr)) {
+                if($itemarr[TYPE2UFMANSYPLY]) {
+                    $update = true;
+                    $man = ''; 
+                }
+            } else {
+                if($itemarr[TYPE2UFMANSYPLY]!=$comparr[$item['ID']]) {
+                    $update = true;
+                    $man = $comparr[$item['ID']]; 
+                }
+
+            }
+
+            if(!array_key_exists($item['ID'], $comparrtwo)) {
+                if($itemarr[TYPE2UFMANLAM]) {
+                    $updatetwo = true;
+                    $mantwo = ''; 
+                }
+            } else {
+                if($itemarr[TYPE2UFMANLAM]!=$comparrtwo[$item['ID']]) {
+                    $updatetwo = true;
+                    $mantwo = $comparrtwo[$item['ID']]; 
+                }
+            }
+
+            if($update || $updatetwo) {
+                if($update) {
+                    $item->set(TYPE2UFMANSYPLY,$man);
+                }
+                if($updatetwo) {
+                    $item->set(TYPE2UFMANLAM,$mantwo);
+                }
+                $operation = $factory->getUpdateOperation($item);
+                $operation
+                    ->disableCheckFields()
+                    ->disableBizProc()
+                    ->disableCheckAccess()
+                ;
+                $updateResult = $operation->launch();
+            }
+        }
     }
 
     public static function dumpCompanyXML()
