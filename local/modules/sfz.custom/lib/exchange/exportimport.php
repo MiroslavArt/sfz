@@ -209,6 +209,7 @@ class ExportImport
                 $updateResult = $operation->launch();
             }
         }
+        return '\SFZ\Custom\Exchange\ExportImport::actualiseManagers();';
     }
 
     public static function dumpCompanyXML()
