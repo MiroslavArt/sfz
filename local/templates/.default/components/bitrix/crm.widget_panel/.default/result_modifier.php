@@ -2,7 +2,7 @@
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-\Bitrix\Main\Diag\Debug::writeToFile($arResult, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
+
 
 $newarResult = $arResult; 
 
@@ -16,3 +16,5 @@ foreach($newarResult['ROWS'] as $key => $item) {
     }
     //unset($secitem);
 }
+
+\Bitrix\Main\Diag\Debug::writeToFile($arResult, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
