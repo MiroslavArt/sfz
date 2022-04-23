@@ -28,10 +28,10 @@ BX.sfz.crm.kanban = {
             console.log(error);
         }.bind(this));
     },
-    requestSignals: function(signal) {
-        return BX.ajax.runAction('sfz:custom.api.signal.getContract', {
+    requestSignals: function(signals) {
+        return BX.ajax.runAction('sfz:custom.api.signal.getSignal', {
             data: {
-                companyid: '1'
+                signals: signals
             }
         });
     },
