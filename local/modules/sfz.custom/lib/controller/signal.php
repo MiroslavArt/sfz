@@ -9,7 +9,7 @@ use SFZ\Custom\Helpers\Utils;
 
 class Signal extends Controller
 {
-    public function connectSignals($signals)
+    public function getSignals($signals)
     {
         $arFilter = [
             "=ID" => $signals,
