@@ -28,7 +28,7 @@ class Signal extends Controller
         $res = \CCrmLead::GetListEx(Array(), $arFilter, false, false, $arSelect);
         $currencies = [];
         while($lead = $res->Fetch()) {
-            $currencies[$lead['ID']][$lead['ACCOUNT_CURRENCY_ID']] += $lead['OPPORTUNITY_ACCOUNT'];    
+            $currencies[$lead['STATUS_ID']][$lead['ACCOUNT_CURRENCY_ID']] += $lead['OPPORTUNITY_ACCOUNT'];    
         }
         
         return $currencies;
