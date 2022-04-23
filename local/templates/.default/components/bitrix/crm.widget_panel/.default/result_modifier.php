@@ -2,8 +2,6 @@
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-
-
 $newarResult = $arResult; 
 
 foreach($newarResult['ROWS'] as $key => $item) {
@@ -11,10 +9,10 @@ foreach($newarResult['ROWS'] as $key => $item) {
         if($secitem['controls'][0]['typeName']=='funnel' && $secitem['controls'][0]['entityTypeName']=='LEAD') {
             \Bitrix\Main\Diag\Debug::writeToFile('inside', "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
             //$secitem['controls'][0]['title'] = 'воронок'; 
-            $arResult['ROWS'][$key]['cells'][$seckey]['controls'][0]['data'] = []; 
+            //$arResult['ROWS'][$key]['cells'][$seckey]['controls'][0]['data'] = []; 
+            \Bitrix\Main\Diag\Debug::writeToFile($arResult['ROWS'][$key]['cells'][$seckey]['controls'][0]['data'], "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
         }
     }
     //unset($secitem);
 }
 
-\Bitrix\Main\Diag\Debug::writeToFile($arResult, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
