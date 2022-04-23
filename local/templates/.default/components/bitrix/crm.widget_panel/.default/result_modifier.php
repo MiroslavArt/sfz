@@ -11,7 +11,7 @@ foreach($newarResult['ROWS'] as $key => $item) {
         if($secitem['controls'][0]['typeName']=='funnel' && $secitem['controls'][0]['entityTypeName']=='LEAD') {
             \Bitrix\Main\Diag\Debug::writeToFile('inside', "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
             //$secitem['controls'][0]['title'] = 'воронок'; 
-            $arResult[$key]['cells'][$seckey]['controls'][0]['data'] = []; 
+            $arResult['ROWS'][$key]['cells'][$seckey]['controls'][0]['data'] = []; 
         }
     }
     //unset($secitem);
