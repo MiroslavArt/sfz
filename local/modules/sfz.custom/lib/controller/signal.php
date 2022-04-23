@@ -9,6 +9,28 @@ use SFZ\Custom\Helpers\Utils;
 
 class Signal extends Controller
 {
+    public function connectSignals($signals)
+    {
+        $arFilter = [
+            "=ID" => $signals,
+            "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+        ];
+        $arFilter = array_merge($arFilter, $filter);
+        $arSelect = [
+            "ID",
+            "ACCOUNT_CURRENCY_ID",
+            "OPPORTUNITY_ACCOUNT",
+            "STATUS_ID"
+        ];
+        $res = \CCrmLead::GetListEx(Array(), $arFilter, false, false, $arSelect);
+        $currencies = [];
+        while($lead = $res->Fetch()) {
+            $currencies[$lead['ID']][$lead['ACCOUNT_CURRENCY_ID']] += $lead['OPPORTUNITY_ACCOUNT'];    
+        }
+        
+        return $currencies;
+    }
+    
     public function getTypeclientAction($type)
     {
 

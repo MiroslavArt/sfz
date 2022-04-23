@@ -20,5 +20,12 @@ BX.sfz.crm.kanban = {
             }
         }
         console.log(collectSignals)
+        this.requestSignals(collectSignals).then(function(response) {
+            console.log(response);
+            //this.processCollectionResponse(response);
+            //this.processKanbanSignals();
+        }.bind(this), function(error){
+            console.log(error);
+        }.bind(this));
     }
 }
