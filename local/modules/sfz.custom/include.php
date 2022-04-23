@@ -21,3 +21,8 @@ $date = new DateTime();
     'js' => '/local/js/sfz.custom/calendar_hidebooking.js?'.$date->getTimestamp()
 ]
 );
+\CJSCore::RegisterExt('crm_kanban',
+[
+    'js' => '/local/js/sfz.custom/crm_kanban.js?'.$date->getTimestamp()
+]
+);

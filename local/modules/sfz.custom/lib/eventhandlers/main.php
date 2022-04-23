@@ -29,7 +29,8 @@ class Main
         $urlTemplates = [
             'type_detail_request' => 'crm/type/'.TYPECODE.'/details/#type_id#/',
             'type_detail_throughcompany' => 'crm/type/'.TYPE2ID.'/details/#type_id#/',
-            'room_booking' => 'calendar/rooms/'
+            'room_booking' => 'calendar/rooms/',
+            'lead_kanban' => ltrim(Option::get('crm', 'path_to_lead_kanban', '', SITE_ID), '/')
         ];
 
         $page = \CComponentEngine::parseComponentPath('/', $urlTemplates, $arVars);
@@ -70,6 +71,9 @@ class Main
             
             \CJSCore::init(['calendar_hidebooking']);
             $asset->addString('<script>BX.ready(function () {BX.sfz.Calendar.HideBooking.init("'.$hidegroup.'");});</script>');
+        } elseif($page=='lead_kanban') {
+            \CJSCore::init(['crm_kanban']);
+            $asset->addString('<script>BX.ready(function () {BX.sfz.crm.kanban.init();});</script>');
         }
     }
 
