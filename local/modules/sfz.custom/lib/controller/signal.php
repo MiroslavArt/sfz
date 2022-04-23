@@ -15,7 +15,7 @@ class Signal extends Controller
         Loader::includeModule('crm');
         
         $arFilter = [
-            "=ID" => $arFilter,
+            "=ID" => $signals,
             "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
         ];
         \Bitrix\Main\Diag\Debug::writeToFile($arFilter, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
