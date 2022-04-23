@@ -17,7 +17,7 @@ foreach($newarResult['ROWS'] as $key => $item) {
                 $opportunitydata = getLeadssum(["STATUS_ID"=>$thirditem['ID']]);
                 \Bitrix\Main\Diag\Debug::writeToFile($opportunitydata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
-                $thirditem['TOTAL'] = $thirditem['TOTAL'].' на сумму: '.$opportunitydata;
+                $thirditem['NAME'] = $thirditem['NAME'].' '.$opportunitydata;
             } 
             \Bitrix\Main\Diag\Debug::writeToFile($currentdata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
