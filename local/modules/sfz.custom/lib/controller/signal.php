@@ -6,11 +6,14 @@ use Bitrix\Crm;
 use Bitrix\Main\Engine\Controller;
 use Bitrix\Main\Config\Option;
 use SFZ\Custom\Helpers\Utils;
+use Bitrix\Main\Loader;
 
 class Signal extends Controller
 {
     public function getSignalAction($signals)
     {
+        Loader::includeModule('crm');
+        
         $arFilter = [
             "=ID" => $signals,
             "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
