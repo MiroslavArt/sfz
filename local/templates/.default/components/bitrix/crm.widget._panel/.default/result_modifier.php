@@ -11,4 +11,5 @@ foreach($arResult['ROWS'] as $item) {
             $secitem['controls'][0]['title'] = 'воронок'; 
         }
     }
+    unset($secitem);
 }
