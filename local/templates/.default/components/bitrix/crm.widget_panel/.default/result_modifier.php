@@ -6,6 +6,7 @@ use Bitrix\Main\Loader;
 Loader::includeModule('crm');
 
 $newarResult = $arResult; 
+\Bitrix\Main\Diag\Debug::writeToFile($arResult, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
 foreach($newarResult['ROWS'] as $key => $item) {
     foreach($item['cells'] as $seckey => $secitem) {
@@ -15,11 +16,11 @@ foreach($newarResult['ROWS'] as $key => $item) {
             $currentdata = $arResult['ROWS'][$key]['cells'][$seckey]['data'];
             foreach($currentdata['0']['items'] as &$thirditem) {
                 $opportunitydata = getLeadssum(["STATUS_ID"=>$thirditem['ID']]);
-                \Bitrix\Main\Diag\Debug::writeToFile($opportunitydata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
+                //\Bitrix\Main\Diag\Debug::writeToFile($opportunitydata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
                 $thirditem['NAME'] = $thirditem['NAME'].' '.$opportunitydata;
             } 
-            \Bitrix\Main\Diag\Debug::writeToFile($currentdata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
+            //\Bitrix\Main\Diag\Debug::writeToFile($currentdata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
             $arResult['ROWS'][$key]['cells'][$seckey]['data'] = $currentdata; 
 
