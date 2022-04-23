@@ -15,10 +15,10 @@ class Signal extends Controller
         Loader::includeModule('crm');
         
         $arFilter = [
-            "ID" => implode(",", $signals),
+            "=ID" => implode(",", $signals),
             "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
         ];
-        $arFilter = array_merge($arFilter, $filter);
+        \Bitrix\Main\Diag\Debug::writeToFile($arFilter, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $arSelect = [
             "ID",
             "ACCOUNT_CURRENCY_ID",
