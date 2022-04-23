@@ -13,9 +13,9 @@ class Signal extends Controller
     public function getSignalAction($signals)
     {
         Loader::includeModule('crm');
-        
+        \Bitrix\Main\Diag\Debug::writeToFile($signals, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $arFilter = [
-            "=ID" => $signals,
+            "ID" => $signals,
             "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
         ];
         $arFilter = array_merge($arFilter, $filter);
