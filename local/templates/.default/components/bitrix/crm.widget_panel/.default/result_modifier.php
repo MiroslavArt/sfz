@@ -21,7 +21,7 @@ foreach($newarResult['ROWS'] as $key => $item) {
             } 
             \Bitrix\Main\Diag\Debug::writeToFile($currentdata, "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
 
-            //$arResult['ROWS'][$key]['cells'][$seckey]['data'] = $currentdata; 
+            $arResult['ROWS'][$key]['cells'][$seckey]['data'] = $currentdata; 
 
             unset($thirditem);
             //\Bitrix\Main\Diag\Debug::writeToFile($arResult['ROWS'][$key]['cells'][$seckey]['data'], "resfunnel".date("d.m.Y G.i.s"), "__debug.log");
