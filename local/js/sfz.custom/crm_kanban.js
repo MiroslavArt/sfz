@@ -27,5 +27,12 @@ BX.sfz.crm.kanban = {
         }.bind(this), function(error){
             console.log(error);
         }.bind(this));
-    }
+    },
+    requestSignals: function(signal) {
+        return BX.ajax.runAction('sfz:custom.api.signal.getSignal', {
+            data: {
+                signals: signal
+            }
+        });
+    },
 }
