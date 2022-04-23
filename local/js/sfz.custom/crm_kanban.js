@@ -29,9 +29,9 @@ BX.sfz.crm.kanban = {
         }.bind(this));
     },
     requestSignals: function(signal) {
-        return BX.ajax.runAction('sfz:custom.api.signal.getSignal', {
+        return BX.ajax.runAction('sfz:custom.api.signal.getContract', {
             data: {
-                signals: signal
+                companyid: '1'
             }
         });
     },
