@@ -63,7 +63,7 @@ BX.sfz.crm.kanban = {
             console.log(edit)
             //edit.classList.remove('main-kanban-column-total-item');
             var newcontent = document.createElement('span')
-            newcontent.innerText = total + " на " + sum
+            newcontent.innerText = " на " + sum + " р."
             BX.append(newcontent, edit);
         }
     },     
