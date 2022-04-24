@@ -58,9 +58,10 @@ BX.sfz.crm.kanban = {
         //}.bind(this));
     },
     updateTitle: function(sum, total, node) {
-        var edit = node.querySelector('.main-kanban-column-edit');
+        var edit = node.querySelector('.main-kanban-column-total-item');
         if (edit != null) {
             console.log(edit)
+            edit.classList.remove('main-kanban-column-total-item');
         }
     },     
     requestSignals: function(signals) {
