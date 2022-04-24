@@ -18,9 +18,10 @@ BX.sfz.crm.kanban = {
                 sum = grid['columns'][i]['data']['sum'];
                 total = grid['columns'][i]['total'];
                 node = grid['columns'][i]['layout']['info']; 
-                console.log(sum)
-                console.log(total)
-                console.log(node)
+                this.updateTitle(sum, total, node)
+                //console.log(sum)
+                //console.log(total)
+                //console.log(node)
                 //if(i.data.sum>0) {
     
                 //}
@@ -56,6 +57,12 @@ BX.sfz.crm.kanban = {
         //    console.log(error);
         //}.bind(this));
     },
+    updateTitle: function(sum, total, node) {
+        var edit = node.querySelector('.main-kanban-column-edit');
+        if (edit != null) {
+            console.log(edit)
+        }
+    },     
     requestSignals: function(signals) {
         return BX.ajax.runAction('sfz:custom.api.signal.getSignal', {
             data: {
