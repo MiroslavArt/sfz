@@ -11,24 +11,29 @@ BX.sfz.crm.kanban = {
         var sum = 0
         var total = 0
         var node
-        for(var i in grid.columns) {
-            sum = i.data.sum;
-            total = i.total;
-            node = i.layout.info
-            console.log(sum)
-            console.log(total)
-            console.log(node)
-            //if(i.data.sum>0) {
-
-            //}
-        //    if(i>0) {
-                //var localValue = localStorage.getItem(i);
-                //if (localValue == null) {
-        //            collectSignals.push(i);
+        console.log(grid)
+        if(grid.hasOwnProperty('columns')) {
+            for(var i in grid.columns) {
+                sum = i.data.sum;
+                total = i.total;
+                node = i.layout.info
+                console.log(sum)
+                console.log(total)
+                console.log(node)
+                //if(i.data.sum>0) {
+    
                 //}
-
-        //    }
+            //    if(i>0) {
+                    //var localValue = localStorage.getItem(i);
+                    //if (localValue == null) {
+            //            collectSignals.push(i);
+                    //}
+    
+            //    }
+            }
         }
+
+        
         //console.log(grid)
         //var collectSignals = []
         //for(var i in grid.items) {
