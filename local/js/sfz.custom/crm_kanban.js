@@ -14,12 +14,13 @@ BX.sfz.crm.kanban = {
         console.log(grid)
         if(grid.hasOwnProperty('columns')) {
             for(var i in grid.columns) {
-                sum = i.data.sum;
-                total = i.total;
-                node = i.layout.info
-                console.log(sum)
-                console.log(total)
-                console.log(node)
+                console.log(i)
+                //sum = i.data.sum;
+                //total = i.total;
+                //node = i.layout.info
+                //console.log(sum)
+                //console.log(total)
+                //console.log(node)
                 //if(i.data.sum>0) {
     
                 //}
