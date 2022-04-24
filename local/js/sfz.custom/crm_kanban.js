@@ -8,25 +8,47 @@ BX.sfz.crm.kanban = {
     },
     kanbanHandler: function(grid){
         this.kanban = grid;
-        console.log(grid)
-        var collectSignals = []
-        for(var i in grid.items) {
-            if(i>0) {
+        var sum = 0
+        var total = 0
+        var node
+        for(var i in grid.columns) {
+            sum = i.data.sum;
+            total = i.total;
+            node = i.layout.info
+            console.log(sum)
+            console.log(total)
+            console.log(node)
+            //if(i.data.sum>0) {
+
+            //}
+        //    if(i>0) {
                 //var localValue = localStorage.getItem(i);
                 //if (localValue == null) {
-                    collectSignals.push(i);
+        //            collectSignals.push(i);
                 //}
 
-            }
+        //    }
         }
-        console.log(collectSignals)
-        this.requestSignals(collectSignals).then(function(response) {
-            console.log(response);
-            //this.processCollectionResponse(response);
-            //this.processKanbanSignals();
-        }.bind(this), function(error){
-            console.log(error);
-        }.bind(this));
+        //console.log(grid)
+        //var collectSignals = []
+        //for(var i in grid.items) {
+        //    if(i>0) {
+                //var localValue = localStorage.getItem(i);
+                //if (localValue == null) {
+        //            collectSignals.push(i);
+                //}
+
+        //    }
+        //}
+        //console.log(collectSignals)
+        //this.requestSignals(collectSignals).then(function(response) {
+        //    console.log(response);
+        //    this.processCollectionResponse(response);
+            
+            //this.processKanbanSignals(response);
+        //}.bind(this), function(error){
+        //    console.log(error);
+        //}.bind(this));
     },
     requestSignals: function(signals) {
         return BX.ajax.runAction('sfz:custom.api.signal.getSignal', {
@@ -35,4 +57,15 @@ BX.sfz.crm.kanban = {
             }
         });
     },
+    processCollectionResponse(response) {
+        if(response.hasOwnProperty('status')) {
+            console.log("status")
+            if(response.status == 'success') {
+                this.processKanbanSignals(response);
+            }
+        }
+    },   
+    processKanbanSignals(response) {
+
+    }
 }
