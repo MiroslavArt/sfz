@@ -16,7 +16,7 @@ BX.sfz.crm.kanban = {
             for(var i in grid.columns) {
                 //console.log(i)
                 sum = grid['columns'][i]['data']['sum'];
-                total = grid['columns'][i]['data']['total'];
+                total = grid['columns'][i]['total'];
                 node = grid['columns'][i]['layout']['info']; 
                 console.log(sum)
                 console.log(total)
