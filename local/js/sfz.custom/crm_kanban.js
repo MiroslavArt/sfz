@@ -61,7 +61,10 @@ BX.sfz.crm.kanban = {
         var edit = node.querySelector('.main-kanban-column-total-item');
         if (edit != null) {
             console.log(edit)
-            edit.classList.remove('main-kanban-column-total-item');
+            //edit.classList.remove('main-kanban-column-total-item');
+            var newcontent = document.createElement('span')
+            newcontent.innerText = total + " на " + sum
+            BX.append(newcontent, edit);
         }
     },     
     requestSignals: function(signals) {
