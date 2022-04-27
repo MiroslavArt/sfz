@@ -477,7 +477,7 @@ class ExportImport
             $xml = simplexml_load_file($impfile);
             $contr = $xml->Contragent;
             $test = 0; 
-            $company=new \CCrmCompany();
+            $company=new \CCrmCompany(false);
             $requisiteEntity = new \Bitrix\Crm\EntityRequisite();
             foreach($contr as $element) {
                 $newel = Utils::xml2array($element);
@@ -486,18 +486,6 @@ class ExportImport
                 $title = $newel['org'];
 
                 if($idgal && $title) {
-
-                    /*$arFilter = [
-                        idGalUF => $idgal, //выбираем определенную сделку по ID
-                        "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
-                    ];
-                    $arSelect = [
-                        "ID",
-                        idGalUF,
-                        hashUF
-                    ];
-                    $res = \CCrmCompany::GetListEx(Array(), $arFilter, false, false, $arSelect);
-                    $arCompany = $res->fetch();*/
 
                     if(!$hash[$idgal]) {
 
