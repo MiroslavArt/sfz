@@ -24,7 +24,6 @@ class Socialnetwork {
     }
     public static function OnFillSocNetMenu(&$arResult)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arResult, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         // Достуна для показа
         $asset = \Bitrix\Main\Page\Asset::getInstance();
         if(array_key_exists("accidents", $arResult["ActiveFeatures"])) {
@@ -33,7 +32,7 @@ class Socialnetwork {
             $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
             // Название закладки
             $arResult["Title"]["accidents"] = "Карта несчастных случаев";
-            $groupid = 34;
+            $groupid = $arResult["Group"]["ID"];
             \CJSCore::init(['group_interface']);
             $asset->addString('<script>BX.ready(function () {BX.sfz.Group.Interface.init("'.$groupid.'");});</script>');
             if(!$arResult["Urls"]["Files"]) {
