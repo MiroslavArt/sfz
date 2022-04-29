@@ -26,3 +26,8 @@ $date = new DateTime();
     'js' => '/local/js/sfz.custom/crm_kanban.js?'.$date->getTimestamp()
 ]
 );
+\CJSCore::RegisterExt('group_interface',
+[
+    'js' => '/local/js/sfz.custom/group_interface.js?'.$date->getTimestamp()
+]
+);

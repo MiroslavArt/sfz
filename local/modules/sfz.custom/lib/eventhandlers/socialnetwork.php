@@ -10,7 +10,7 @@ use SFZ\Custom\Helpers\Utils;
 class Socialnetwork {
     public static function OnFillSocNetFeaturesList(&$arSocNetFeaturesSettings)
     {
-        \Bitrix\Main\Diag\Debug::writeToFile($arSocNetFeaturesSettings, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        //\Bitrix\Main\Diag\Debug::writeToFile($arSocNetFeaturesSettings, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $arSocNetFeaturesSettings["accidents"] = array(
             "FeatureName" => "Карта несчастных случаев",
             "allowed" => array(SONET_ENTITY_USER, SONET_ENTITY_GROUP),
@@ -24,13 +24,18 @@ class Socialnetwork {
     }
     public static function OnFillSocNetMenu(&$arResult)
     {
+        \Bitrix\Main\Diag\Debug::writeToFile($arResult, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         // Достуна для показа
+        $asset = \Bitrix\Main\Page\Asset::getInstance();
         if(array_key_exists("accidents", $arResult["ActiveFeatures"])) {
             $arResult["CanView"]["accidents"] = true;
             // Ссылка закладки
             $arResult["Urls"]["accidents"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/accidents/", array("group_id" => $arResult["Group"]["ID"]));
             // Название закладки
             $arResult["Title"]["accidents"] = "Карта несчастных случаев";
+            $groupid = 34;
+            \CJSCore::init(['group_interface']);
+            $asset->addString('<script>BX.ready(function () {BX.sfz.Group.Interface.init("'.$groupid.'");});</script>');
             if(!$arResult["Urls"]["Files"]) {
                 $arResult["Urls"]["Files"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/disk/path/", array("group_id" => $arResult["Group"]["ID"]));
             }
