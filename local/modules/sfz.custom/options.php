@@ -328,6 +328,20 @@ $arAllOptions = [
             ['text']
         ]    
     ],
+    'infokiosk' => [
+        [
+            'infokiosk_kubikIB',
+            Loc::getMessage($MODULE_ID.'_kubikIB'),
+            Option::get($MODULE_ID, '_kubikIB'),
+            ['text']
+        ],
+        [
+            'infokiosk_incidentsIB',
+            Loc::getMessage($MODULE_ID.'_incidentsIB'),
+            Option::get($MODULE_ID, '_incidentsIB'),
+            ['text']
+        ]
+    ]
 ];
 
 if(isset($request["save"]) && check_bitrix_sessid()) {
@@ -367,6 +381,13 @@ $arTabs = [
         "TAB" => Loc::getMessage($MODULE_ID.'_throughcompanies'),
         "ICON" => $MODULE_ID . '_settings',
         "TITLE" => Loc::getMessage($MODULE_ID.'_throughcompanies'),
+        'TYPE' => 'options', //options || rights || user defined
+    ],
+    [
+        "DIV" => "infokiosk",
+        "TAB" => Loc::getMessage($MODULE_ID.'_infokiosk'),
+        "ICON" => $MODULE_ID . '_settings',
+        "TITLE" => Loc::getMessage($MODULE_ID.'_infokiosk'),
         'TYPE' => 'options', //options || rights || user defined
     ]
 ];
