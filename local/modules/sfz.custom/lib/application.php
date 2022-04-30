@@ -84,6 +84,7 @@ class Application
     public static function initCss()
     {
         global $APPLICATION;
+        // add custom css for crm forms
         $APPLICATION->SetAdditionalCSS("/local/css/sfz.css");
     }
 
