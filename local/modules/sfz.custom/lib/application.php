@@ -16,7 +16,7 @@ class Application
     public static function init()
     {
         self::setConstants();
-        //self::initCss();
+        self::initCss();
         //self::initJsHandlers();
         self::initEventHandlers();
         self::initFactorySubstitute(); 
@@ -82,7 +82,7 @@ class Application
     public static function initCss()
     {
         //global $APPLICATION;
-        //$APPLICATION->SetAdditionalCSS("/local/css/itrack.css");
+        $APPLICATION->SetAdditionalCSS("/local/css/sfz.css");
     }
 
     public static function initEventHandlers()
