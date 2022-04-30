@@ -83,7 +83,7 @@ class Application
 
     public static function initCss()
     {
-        //global $APPLICATION;
+        global $APPLICATION;
         $APPLICATION->SetAdditionalCSS("/local/css/sfz.css");
     }
 
