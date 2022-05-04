@@ -28,5 +28,12 @@ $APPLICATION->IncludeComponent(
    $component
 );
 ?>
-<br />
-Здесь будет карта несчастных случаев...
+<?
+$APPLICATION->IncludeComponent(
+   "sfz:sfz.accidents.map",
+   "",
+   Array(
+   ),
+   $component
+);
+?>
