@@ -27,6 +27,9 @@ class AccMap extends CBitrixComponent
 
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
 
+         
+        \Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($arrFilter, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $this->includeComponentTemplate();
     }
 

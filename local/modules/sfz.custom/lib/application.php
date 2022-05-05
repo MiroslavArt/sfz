@@ -74,6 +74,7 @@ class Application
         define('LAMARTYIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartyIB'));
         define('KUBIB', \COption::GetOptionString('sfz.custom', 'infokiosk_kubikIB'));
         define('INCIB', \COption::GetOptionString('sfz.custom', 'infokiosk_incidentsIB'));
+        define('PIXSIZE', \COption::GetOptionString('sfz.custom', 'infokiosk_pixelsize'));
     }
 
     protected static function initJsHandlers()

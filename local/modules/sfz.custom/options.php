@@ -340,6 +340,12 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_incidentsIB'),
             Option::get($MODULE_ID, '_incidentsIB'),
             ['text']
+        ],
+        [
+            'infokiosk_pixelsize',
+            Loc::getMessage($MODULE_ID.'_pixelsize'),
+            Option::get($MODULE_ID, '_pixelsize'),
+            ['text']
         ]
     ]
 ];

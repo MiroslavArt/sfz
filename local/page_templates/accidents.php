@@ -28,6 +28,41 @@ $APPLICATION->IncludeComponent(
    $component
 );
 ?>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:catalog.smart.filter", 
+	".default", 
+	array(
+		"CACHE_GROUPS" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "N",
+		"CONVERT_CURRENCY" => "N",
+		"DISPLAY_ELEMENT_COUNT" => "Y",
+		"FILTER_NAME" => "arrFilter",
+		"FILTER_VIEW_MODE" => "horizontal",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"IBLOCK_ID" => INCIB,
+		"IBLOCK_TYPE" => "lists",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"POPUP_POSITION" => "left",
+		"PREFILTER_NAME" => "smartPreFilter",
+		"PRICE_CODE" => array(
+		),
+		"SAVE_IN_SESSION" => "N",
+		"SECTION_CODE" => "",
+		"SECTION_CODE_PATH" => "",
+		"SECTION_DESCRIPTION" => "-",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_TITLE" => "-",
+		"SEF_MODE" => "N",
+		"SEF_RULE" => "",
+		"SMART_FILTER_PATH" => "",
+		"TEMPLATE_THEME" => "wood",
+		"XML_EXPORT" => "N",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
+
 <?
 $APPLICATION->IncludeComponent(
    "sfz:sfz.accidents.map",
