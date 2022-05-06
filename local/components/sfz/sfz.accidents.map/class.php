@@ -37,6 +37,7 @@ class AccMap extends CBitrixComponent
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
 
         $this->kubikvalues = $this->getKubikvalues();
+        \Bitrix\Main\Diag\Debug::writeToFile($this->kubikvalues, "kubik1".date("d.m.Y G.i.s"), "__debug.log");
         $this->size = $this->getSize();
         //\Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         \Bitrix\Main\Diag\Debug::writeToFile($this->filtervalues, "filter".date("d.m.Y G.i.s"), "__debug.log");
@@ -70,7 +71,10 @@ class AccMap extends CBitrixComponent
             
         $lengths = [];
         $heights = []; 
-
+        \Bitrix\Main\Diag\Debug::writeToFile($this->kubikvalues, "kubik2".date("d.m.Y G.i.s"), "__debug.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($this->columnidprop, "p1".date("d.m.Y G.i.s"), "__debug.log");
+        \Bitrix\Main\Diag\Debug::writeToFile($this->rowidprop, "p1".date("d.m.Y G.i.s"), "__debug.log");
+        
         foreach($this->kubikvalues as $item) {
             array_push($lengths, $item['PROPERTY_'.$this->columnidprop]);
             array_push($heights, $item['PROPERTY_'.$this->rowidprop]);
