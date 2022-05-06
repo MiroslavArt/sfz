@@ -11,12 +11,11 @@ class AccMap extends CBitrixComponent
     private $rowidprop;
     private $columnidprop;
     private $kartidprop; 
-    /*private $arLost;
-    private $lostId;
-    private $companyId;
-    private $contractId;
-    private $errors;
-    private $userRole;*/
+    private $elemprop;
+    private $yearprop;
+    private $stepenprop; 
+    private $descrprop; 
+    private $dolzhnprop; 
 
     public function onPrepareComponentParams($arParams)
     {
@@ -37,11 +36,10 @@ class AccMap extends CBitrixComponent
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
         $this->prepareProperties(); 
         $this->kubikvalues = $this->getKubikvalues();
-        \Bitrix\Main\Diag\Debug::writeToFile($this->kubikvalues, "kubik1".date("d.m.Y G.i.s"), "__debug.log");
+        
         $this->size = $this->getSize();
         //\Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($this->filtervalues, "filter".date("d.m.Y G.i.s"), "__debug.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($this->size, "size".date("d.m.Y G.i.s"), "__debug.log");
+        
         $this->includeComponentTemplate();
     }
 
@@ -64,6 +62,20 @@ class AccMap extends CBitrixComponent
                 $this->kartidprop = $uid['ID'];
             }
         }
+        $res = \CIBlockProperty::GetList([],['IBLOCK_ID'=>INCIB]);
+        while($uid = $res->fetch()) {
+            if($uid['CODE']=='ELEMENT_KARTY') {
+                $this->elemprop = $uid['ID'];
+            } elseif($uid['CODE']=='OPISANIE_NESCHASTNOGO_SLUCHAYA') {
+                $this->descrprop = $uid['ID'];
+            } elseif($uid['CODE']=='STEPEN_TYAZHESTI') {
+                $this->stepenprop = $uid['ID'];
+            } elseif($uid['CODE']=='DOLZHNOSTI') {
+                $this->stepenprop = $uid['ID'];
+            } elseif($uid['CODE']=='GOD_NESCHASTNOGO_SLUCHAYA') {
+                $this->yearprop = $uid['ID'];
+            }
+        }
     }
     
     private function getSize() {
@@ -71,9 +83,6 @@ class AccMap extends CBitrixComponent
             
         $lengths = [];
         $heights = []; 
-        \Bitrix\Main\Diag\Debug::writeToFile($this->kubikvalues, "kubik2".date("d.m.Y G.i.s"), "__debug.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($this->columnidprop, "p1".date("d.m.Y G.i.s"), "__debug.log");
-        \Bitrix\Main\Diag\Debug::writeToFile($this->rowidprop, "p1".date("d.m.Y G.i.s"), "__debug.log");
         
         foreach($this->kubikvalues as $item) {
             array_push($lengths, $item['PROPERTY_'.$this->columnidprop]);
@@ -86,15 +95,5 @@ class AccMap extends CBitrixComponent
 
     }
 
-    //use SFZ\Custom\Helpers\Utils;
-    //use \Bitrix\Main\Loader;
-    
-    //$kub = Utils::getIBlockElementsByConditions(KUBIB, ["ACTIVE"=>'Y', "!PROPERTY_RYAD"=>false, 
-    //"!PROPERTY_KOLONKA"=>false]);
-    //Loader::includeModule('iblock');
-    //$res = \CIBlock::GetProperties(KUBIB, Array(), Array("CODE"=>"SRC"));
-    
-    //echo "<pre>";
-    //print_r($res->Fetch());
-    //echo "</pre>";
+  
 }
