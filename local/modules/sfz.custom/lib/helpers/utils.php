@@ -386,7 +386,7 @@ class Utils
      * @return array
      * @throws \Bitrix\Main\LoaderException
      */
-    public static function getIBlockElementsByConditions(int $iblock, array $filter = [], array $sort = [], array $selectElement = [], $detpro = true):array
+    public static function getIBlockElementsByConditions(int $iblock, array $filter = [], array $sort = [], array $selectElement = [], array $groupBy = [], $detpro = true):array
     {
         $key        =   0;
         $elements   =   [];
@@ -403,9 +403,13 @@ class Utils
             $arOrder = $sort;
         }
 
+        if (empty($groupBy)) {
+            $groupBy = false;
+        } 
+
         $arFilter = array_merge(['IBLOCK_ID' => $iblock], $filter);
 
-        $elementsList = \CIBlockElement::GetList($arOrder, $arFilter, false, false, $arSelect);
+        $elementsList = \CIBlockElement::GetList($arOrder, $arFilter, $groupBy, false, $arSelect);
 
         while ($el = $elementsList->GetNextElement()) {
             $elements[$key]                 =   $el->GetFields();

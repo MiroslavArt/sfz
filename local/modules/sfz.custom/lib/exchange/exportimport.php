@@ -135,10 +135,10 @@ class ExportImport
 
     public static function actualiseManagers() {
         $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y'], 
-            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC'],[],[],true);
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC']);
 
         $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y'], 
-            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC'],[],[],true);
+            ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC']);
 
         $comparr = [];
         $comparrtwo = [];

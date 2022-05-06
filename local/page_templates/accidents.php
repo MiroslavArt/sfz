@@ -62,12 +62,12 @@ $APPLICATION->IncludeComponent(
 	),
 	false
 );?>
-
 <?
 $APPLICATION->IncludeComponent(
    "sfz:sfz.accidents.map",
    "",
    Array(
+	   "FILTER" => $GLOBALS['arrFilter']
    ),
    $component
 );
