@@ -46,7 +46,7 @@ class AccMap extends CBitrixComponent
 
     private function getKubikvalues() {
         return Utils::getIBlockElementsByConditions(KUBIB, ["ACTIVE"=>'Y', "!PROPERTY_RYAD"=>false, 
-            "!PROPERTY_KOLONKA"=>false], [], [], false);
+            "!PROPERTY_KOLONKA"=>false], [], [], [], false);
         
     }
     
