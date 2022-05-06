@@ -35,7 +35,7 @@ class AccMap extends CBitrixComponent
         $arResult =& $this->arResult;
 
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
-
+        $this->prepareProperties(); 
         $this->kubikvalues = $this->getKubikvalues();
         \Bitrix\Main\Diag\Debug::writeToFile($this->kubikvalues, "kubik1".date("d.m.Y G.i.s"), "__debug.log");
         $this->size = $this->getSize();
