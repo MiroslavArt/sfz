@@ -2,7 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 ?>
-<div class="sfz-map-wrap">
+<div id="mapwrapper" class="sfz-map-wrap">
     <table>
         <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>
             <tr>
@@ -13,3 +13,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
         <? } ?>
     </table>
 </div>
+
+<script>
+    BX.ready(
+        $('#mapwrapper').height($('#mapwrapper').width()*0.82);
+        $(window).resize(function(){
+            $('#mapwrapper').height($('#mapwrapper').width()*0.82);
+        });
+    );
+</script>
