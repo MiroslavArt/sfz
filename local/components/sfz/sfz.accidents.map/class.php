@@ -16,6 +16,9 @@ class AccMap extends CBitrixComponent
     private $stepenprop; 
     private $descrprop; 
     private $dolzhnprop; 
+    private $xcoordprop;
+    private $ycoordprop; 
+    private $accarr; 
 
     public function onPrepareComponentParams($arParams)
     {
@@ -38,21 +41,23 @@ class AccMap extends CBitrixComponent
         $arResult['height'] = VERTU;
         $arResult['length'] = HORIZON;
         $this->prepareProperties(); 
-        $this->kubikvalues = $this->getKubikvalues();
-        
-        $this->size = $this->getSize();
+        //$this->kubikvalues = $this->getKubikvalues();
+        //$this->size = $this->getSize();
         //\Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
-        
+        $this->accarr = $this->getAccidents(); 
+        \Bitrix\Main\Diag\Debug::writeToFile($this->accarr, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $this->includeComponentTemplate();
     }
 
     private function getKubikvalues() {
         return Utils::getIBlockElementsByConditions(KUBIB, ["ACTIVE"=>'Y', "!PROPERTY_RYAD"=>false, 
             "!PROPERTY_KOLONKA"=>false], [], [], [], false);
-        
+    }
+
+    private function getAccidents() {
+        return Utils::getIBlockElementsByConditions(INCIB, [$this->filtervalues]);
     }
     
-
     private function prepareProperties() {
         Loader::includeModule('iblock');
         $res = \CIBlockProperty::GetList([],['IBLOCK_ID'=>KUBIB]);
@@ -77,6 +82,10 @@ class AccMap extends CBitrixComponent
                 $this->stepenprop = $uid['ID'];
             } elseif($uid['CODE']=='GOD_NESCHASTNOGO_SLUCHAYA') {
                 $this->yearprop = $uid['ID'];
+            } elseif($uid['CODE']=='PORYADKOVYY_NOMER_YACHEYKI_PO_VERTIKALI') {
+                $this->ycoordprop = $uid['ID'];
+            } elseif($uid['CODE']=='PORYADKOVYY_NOMER_YACHEYKI_PO_GORIZONTALI') {
+                $this->xcoordprop = $uid['ID'];
             }
         }
     }
