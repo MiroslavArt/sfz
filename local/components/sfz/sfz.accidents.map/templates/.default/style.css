@@ -1,3 +1,9 @@
 .sfz-map-test {
     font-weight: bold;
 }
+
+.sfz-map-wrap {
+    height: auto;
+    width: auto;
+    background-image: url("/upload/sfz/karta.png");
+}
