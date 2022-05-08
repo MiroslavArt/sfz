@@ -3,7 +3,7 @@
 }
 
 .sfz-map-wrap {
-    height: auto;
-    width: auto;
+    height: 1000px;
+    width: 1000px;
     background-image: url("/upload/sfz/karta.png");
 }
