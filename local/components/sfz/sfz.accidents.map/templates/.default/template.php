@@ -18,9 +18,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
     BX.ready(function() {
         //var x = 1111;
         //console.log(x)
-        $('#mapwrapper').height($('#mapwrapper').width()*0.89);
+        $('#mapwrapper').height($('#mapwrapper').width()*1.2);
         $(window).resize(function(){
-            $('#mapwrapper').height($('#mapwrapper').width()*0.89);
+            $('#mapwrapper').height($('#mapwrapper').width()*1.2);
         }); 
     });
 </script>
