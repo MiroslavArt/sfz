@@ -3,6 +3,7 @@
 }
 
 .sfz-map-wrap {
+    height: 890px;
     width: 100%;
     background-image: url("/upload/sfz/karta.png");
     background-size: cover;
