@@ -11,7 +11,7 @@
     width: 100%;
     background-image: url("/upload/sfz/karta.png");
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
 }
 
 
