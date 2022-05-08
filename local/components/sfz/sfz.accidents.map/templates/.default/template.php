@@ -16,7 +16,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 <script>
     BX.ready(
-        console.log($('#mapwrapper').width());
+        var x = $('#mapwrapper').width();
+        console.log(x)
         //$('#mapwrapper').height($('#mapwrapper').width()*0.89);
         // $(window).resize(function(){
         //    $('#mapwrapper').height($('#mapwrapper').width()*0.89);
