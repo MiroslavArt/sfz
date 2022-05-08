@@ -16,9 +16,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 <script>
     BX.ready(
-        $('#mapwrapper').height($('#mapwrapper').width()*0.89);
-        $(window).resize(function(){
-            $('#mapwrapper').height($('#mapwrapper').width()*0.89);
-        });
+        console.log($('#mapwrapper').width());
+        //$('#mapwrapper').height($('#mapwrapper').width()*0.89);
+        // $(window).resize(function(){
+        //    $('#mapwrapper').height($('#mapwrapper').width()*0.89);
+        //});
     );
 </script>
