@@ -2,6 +2,11 @@
     font-weight: bold;
 }
 
+.sfz-map-table {
+    height: 100%;
+    width: 100%;
+}
+
 .sfz-map-wrap {
     height: 890px;
     width: 100%;
