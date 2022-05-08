@@ -342,9 +342,15 @@ $arAllOptions = [
             ['text']
         ],
         [
-            'infokiosk_pixelsize',
-            Loc::getMessage($MODULE_ID.'_pixelsize'),
-            Option::get($MODULE_ID, '_pixelsize'),
+            'infokiosk_cellshorizontal',
+            Loc::getMessage($MODULE_ID.'_cellshorizontal'),
+            Option::get($MODULE_ID, '_cellshorizontal'),
+            ['text']
+        ],
+        [
+            'infokiosk_cellsvertical',
+            Loc::getMessage($MODULE_ID.'_cellsvertical'),
+            Option::get($MODULE_ID, '_cellsvertical'),
             ['text']
         ]
     ]

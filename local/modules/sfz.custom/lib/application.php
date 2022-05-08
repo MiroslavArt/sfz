@@ -74,7 +74,8 @@ class Application
         define('LAMARTYIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartyIB'));
         define('KUBIB', \COption::GetOptionString('sfz.custom', 'infokiosk_kubikIB'));
         define('INCIB', \COption::GetOptionString('sfz.custom', 'infokiosk_incidentsIB'));
-        define('PIXSIZE', \COption::GetOptionString('sfz.custom', 'infokiosk_pixelsize'));
+        define('HORIZON', \COption::GetOptionString('sfz.custom', 'infokiosk_cellshorizontal'));
+        define('VERTU', \COption::GetOptionString('sfz.custom', 'infokiosk_cellsvertical'));
     }
 
     protected static function initJsHandlers()
