@@ -3,7 +3,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 ?>
 <div id="mapwrapper" class="sfz-map-wrap">
-    <table classs="sfz-map-table">
+    <table class="sfz-map-table">
         <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>
             <tr>
                 <? for ($j = 1; $j <= $arResult['height']; $j++) { ?>
