@@ -8,16 +8,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 <div class="sfz-map-wrap">
     <table>
         <tr>
-            <td class="sfz-map-network">Hi, I'm your first cell.</td>
-            <td class="sfz-map-network">I'm your second cell.</td>
-            <td class="sfz-map-network">I'm your third cell.</td>
-            <td class="sfz-map-network">I'm your fourth cell.</td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
         </tr>
         <tr>
-            <td class="sfz-map-network">Hi, I'm your first cell.</td>
-            <td class="sfz-map-network">I'm your second cell.</td>
-            <td class="sfz-map-network">I'm your third cell.</td>
-            <td class="sfz-map-network">I'm your fourth cell.</td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
+            <td class="sfz-map-network"></td>
         </tr>
     </table>
 </div>
