@@ -7,17 +7,12 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 ?>
 <div class="sfz-map-wrap">
     <table>
-        <tr>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-        </tr>
-        <tr>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-            <td class="sfz-map-network"></td>
-        </tr>
+        <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>
+            <tr>
+                <? for ($i = 1; $i <= $arResult['height']; $i++) { ?>
+                    <td class="sfz-map-network"></td>
+                <? } ?>
+            </tr>
+        <? } ?>
     </table>
 </div>

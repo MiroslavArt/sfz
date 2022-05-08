@@ -22,6 +22,7 @@ class AccMap extends CBitrixComponent
         // параметры для фильтров тут
         //$this->companyId = $arParams['CLIENT_ID'];
         //$this->contractId = $arParams['CONTRACT_ID'];
+
         $this->filtervalues = $arParams['FILTER'];
 
         return $arParams;
@@ -34,6 +35,8 @@ class AccMap extends CBitrixComponent
         $arResult =& $this->arResult;
 
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
+        $arResult['height'] = 125;
+        $arResult['length'] = 103;
         $this->prepareProperties(); 
         $this->kubikvalues = $this->getKubikvalues();
         
