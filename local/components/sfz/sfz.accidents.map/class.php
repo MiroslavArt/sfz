@@ -35,8 +35,8 @@ class AccMap extends CBitrixComponent
         $arResult =& $this->arResult;
 
         $arResult['testparam'] = 'Здесь будет отображение карты несчастных случаев';
-        $arResult['height'] = 125;
-        $arResult['length'] = 103;
+        $arResult['height'] = VERTU;
+        $arResult['length'] = HORIZON;
         $this->prepareProperties(); 
         $this->kubikvalues = $this->getKubikvalues();
         
