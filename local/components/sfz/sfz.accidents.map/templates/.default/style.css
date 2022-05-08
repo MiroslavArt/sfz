@@ -8,9 +8,12 @@
     background-size: cover;
 }
 
+.sfz-map-table {
+    width: 100%;
+    height: 100%;
+}
+
 .sfz-map-network {
     border: 0.3px solid rgb(210, 214, 214);
-    width: 8px;
-    height: 8px;
 }
 
