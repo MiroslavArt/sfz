@@ -7,7 +7,7 @@ function Leave(Element) {
 function Appear(Element) {
     //onsole.log(Element)
     var sluchai = $(Element).find("span")
-    var text 
+    var text = ''
     $.each(sluchai,function(index,value){
 
         // действия, которые будут выполняться для каждого элемента массива
