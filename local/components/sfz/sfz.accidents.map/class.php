@@ -44,8 +44,8 @@ class AccMap extends CBitrixComponent
         //$this->kubikvalues = $this->getKubikvalues();
         //$this->size = $this->getSize();
         //\Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
-        $this->accarr = $this->getAccidents(); 
-        \Bitrix\Main\Diag\Debug::writeToFile($this->accarr, "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        $arResult['accidents'] = $this->getAccidents(); 
+        \Bitrix\Main\Diag\Debug::writeToFile($arResult['accidents'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $this->includeComponentTemplate();
     }
 
@@ -55,7 +55,20 @@ class AccMap extends CBitrixComponent
     }
 
     private function getAccidents() {
-        return Utils::getIBlockElementsByConditions(INCIB, [$this->filtervalues]);
+        $retitems = [];
+        $items = Utils::getIBlockElementsByConditions(INCIB, [$this->filtervalues]);
+        foreach($items as $item) {
+            if($item['PROPERTIES']['PORYADKOVYY_NOMER_YACHEYKI_PO_GORIZONTALI']['VALUE'] && 
+                $item['PROPERTIES']['PORYADKOVYY_NOMER_YACHEYKI_PO_GORIZONTALI']['VALUE']) {
+                    $retitems['x'.$item['PROPERTIES']['PORYADKOVYY_NOMER_YACHEYKI_PO_GORIZONTALI']['VALUE'].'y'
+                        .$item['PROPERTIES']['PORYADKOVYY_NOMER_YACHEYKI_PO_VERTIKALI']['VALUE']][$item['ID']] = 
+                        ['DESCR'=>$item['PROPERTIES']['OPISANIE_NESCHASTNOGO_SLUCHAYA']['VALUE'], 'YEAR'=>
+                                $item['PROPERTIES']['GOD_NESCHASTNOGO_SLUCHAYA']['VALUE'], 'HARDNESS' =>
+                                    $item['PROPERTIES']['STEPEN_TYAZHESTI']['VALUE'], 'POSITION' =>
+                                        $item['PROPERTIES']['DOLZHNOSTI']['VALUE']];
+                }
+        }
+        return $retitems;
     }
     
     private function prepareProperties() {
