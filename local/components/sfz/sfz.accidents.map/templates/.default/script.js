@@ -15,7 +15,7 @@ function Appear(Element) {
         // value - это значение текущего элемента массива
         
         //выведем индекс и значение массива в консоль
-        text += $(value).text()
+        text += $(value).text() + '<br/>'
       
     });
     popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
