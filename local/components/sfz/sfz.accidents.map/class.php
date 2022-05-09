@@ -45,7 +45,7 @@ class AccMap extends CBitrixComponent
         //$this->size = $this->getSize();
         //\Bitrix\Main\Diag\Debug::writeToFile($GLOBALS['arrFilter'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $arResult['accidents'] = $this->getAccidents(); 
-        \Bitrix\Main\Diag\Debug::writeToFile($arResult['accidents'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
+        //\Bitrix\Main\Diag\Debug::writeToFile($arResult['accidents'], "dataexp".date("d.m.Y G.i.s"), "__debug.log");
         $this->includeComponentTemplate();
     }
 

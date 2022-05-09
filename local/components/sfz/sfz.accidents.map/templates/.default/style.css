@@ -25,3 +25,7 @@
     height: 100%;
     background-color: rgb(255, 0, 30);
 }
+
+.sfz-map-cell-content {
+    display: none;
+}
