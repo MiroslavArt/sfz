@@ -1,12 +1,12 @@
 function Leave(Element) {
-    console.log(Element)
-    /*popup.close()
-    return true;*/
+    //console.log(Element)
+    popup.close()
+    return true;
 }
 
 function Appear(Element) {
     console.log(Element)
-    /*popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
+    popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
         content: '<div>xxx</div>',
         darkMode: true,
         autoHide: true,
@@ -14,5 +14,5 @@ function Appear(Element) {
     });
 
    popup.show();
-   return true;*/
+   return true;
 }

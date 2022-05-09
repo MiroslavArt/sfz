@@ -31,10 +31,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
             $('#mapwrapper').height($('#mapwrapper').width()*0.89);
         }); 
         $( ".sfz-map-cell" ).mouseover(function(e) {
-            Appear(e)
+            Appear(e.currentTarget)
         });
         $( ".sfz-map-cell" ).mouseout(function(e) {
-            Leave(e)
+            Leave(e.currentTarget)
         });
     });
 </script>
