@@ -7,6 +7,7 @@ function Leave(Element) {
 function Appear(Element) {
     //onsole.log(Element)
     var sluchai = $(Element).find("span")
+    console.log(sluchai)
     popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
         content: sluchai,
         darkMode: true,
