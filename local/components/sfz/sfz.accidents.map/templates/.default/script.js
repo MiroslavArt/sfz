@@ -5,12 +5,13 @@ function Leave(Element) {
 }
 
 function Appear(Element) {
-    console.log(Element)
+    //onsole.log(Element)
+    var sluchai = $(Element).find("span")
     popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
-        content: '<div>xxx</div>',
+        content: sluchai,
         darkMode: true,
         autoHide: true,
-        closeIcon: true
+        closeIcon: false
     });
 
    popup.show();
