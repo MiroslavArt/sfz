@@ -20,7 +20,7 @@ function Appear(Element) {
       
     });
     //(Element.getAttribute("data-id")
-    popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
+    popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), Element, {
         content: text,
         width: 400,
         darkMode: true,
