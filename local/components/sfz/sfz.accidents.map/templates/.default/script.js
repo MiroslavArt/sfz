@@ -19,7 +19,8 @@ function Appear(Element) {
             ' С: ' + $(value).attr('data-dolzhn') + '</b><br/>' + $(value).text() + '<br/>'
       
     });
-    popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
+    //(Element.getAttribute("data-id")
+    popup = BX.PopupWindowManager.create('popup-message', null, {
         content: text,
         width: 400,
         darkMode: true,
