@@ -9,7 +9,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
                 <? for ($j = 1; $j <= $arResult['height']; $j++) { ?>
                     <td class="sfz-map-network">
                         <? if($arResult['accidents']['x'.$j.'y'.$i]) { ?>
-                            <div class="sfz-map-cell" data-id="<?= $arResult['accidents']['x'.$j.'y'.$i] ?>">
+                            <div class="sfz-map-cell">
                                 <? foreach($arResult['accidents']['x'.$j.'y'.$i] as $key => $item) { ?>
                                     <span class="sfz-map-cell-content" data-id="<?= $key ?>" data-year="<?= $item['YEAR'] ?>"
                                         data-tyazh="<?= $item['HARDNESS'] ?>" data-dolzhn="<?= $item['POSITION'] ?>"><?= $item['DESCR'] ?></span>
