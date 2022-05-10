@@ -5,7 +5,7 @@ function Leave(Element) {
 }
 
 function Appear(Element) {
-    //onsole.log(Element)
+    сonsole.log(Element)
     var sluchai = $(Element).find("span")
     var text = ''
     $.each(sluchai,function(index,value){
@@ -19,7 +19,7 @@ function Appear(Element) {
             ' С: ' + $(value).attr('data-dolzhn') + '</b><br/>' + $(value).text() + '<br/>'
       
     });
-    popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
+    popup = BX.PopupWindowManager.create('popup-message', Element, {
         content: text,
         width: 400,
         darkMode: true,
