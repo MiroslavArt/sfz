@@ -15,8 +15,8 @@ function Appear(Element) {
         // value - это значение текущего элемента массива
         
         //выведем индекс и значение массива в консоль
-        text += 'В ' + $(value).attr('data-year') + ' Категория: ' + $(value).attr('data-tyazh') + 
-            ' С: ' + $(value).attr('data-dolzhn') + '<br/>' + $(value).text() + '<br/>'
+        text += '<b>' + 'В ' + $(value).attr('data-year') + ' Категория: ' + $(value).attr('data-tyazh') + 
+            ' С: ' + $(value).attr('data-dolzhn') + '</b><br/>' + $(value).text() + '<br/>'
       
     });
     popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), null, {
