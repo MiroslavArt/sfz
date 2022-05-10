@@ -11,7 +11,8 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
                         <? if($arResult['accidents']['x'.$j.'y'.$i]) { ?>
                             <div class="sfz-map-cell">
                                 <? foreach($arResult['accidents']['x'.$j.'y'.$i] as $key => $item) { ?>
-                                    <span class="sfz-map-cell-content" data-id="<?= $key ?>"><?= $item['DESCR'] ?></span>
+                                    <span class="sfz-map-cell-content" data-id="<?= $key ?>" data-year="<?= $item['YEAR'] ?>"
+                                        data-tyazh="<?= $item['HARDNESS'] ?>" data-dolzhn="<?= $item['POSITION'] ?>"><?= $item['DESCR'] ?></span>
                                 <? } ?>
                             </div>
                         <? } ?>
