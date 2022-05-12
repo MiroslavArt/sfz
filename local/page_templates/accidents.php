@@ -30,7 +30,8 @@ $APPLICATION->IncludeComponent(
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.smart.filter", 
-	"bootstrap_v4", 
+	"visual_horizontal
+	", 
 	array(
 		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "36000000",
