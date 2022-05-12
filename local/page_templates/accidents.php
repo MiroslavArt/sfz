@@ -30,7 +30,7 @@ $APPLICATION->IncludeComponent(
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.smart.filter", 
-	"sfz_map
+	"sfz_map1
 	", 
 	array(
 		"CACHE_GROUPS" => "N",
