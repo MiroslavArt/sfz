@@ -59,7 +59,7 @@ $APPLICATION->IncludeComponent(
 		"SMART_FILTER_PATH" => "",
 		"TEMPLATE_THEME" => "wood",
 		"XML_EXPORT" => "N",
-		"COMPONENT_TEMPLATE" => "sfz_map"
+		"COMPONENT_TEMPLATE" => "sfz_map1"
 	),
 	false
 );?>
