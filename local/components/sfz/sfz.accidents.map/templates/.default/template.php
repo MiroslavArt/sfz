@@ -4,7 +4,7 @@ use Bitrix\Main\Localization\Loc;
 ?>
 <div>
     <input type="checkbox" id="network" name="network">
-    <label for="network">Отобразить сетку</label>
+    <label for="network"><? echo GetMessage("SHOW_GRID"); ?></label>
 </div>
 <div id="mapwrapper" class="sfz-map-wrap">
     <table class="sfz-map-table">
