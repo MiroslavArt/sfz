@@ -29,3 +29,7 @@
 .sfz-map-cell-content {
     display: none;
 }
+
+.sfz-map-title {
+    font-weight: normal;
+}
