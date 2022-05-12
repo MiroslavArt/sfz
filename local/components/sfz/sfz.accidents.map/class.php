@@ -65,7 +65,8 @@ class AccMap extends CBitrixComponent
                         ['DESCR'=>$item['PROPERTIES']['OPISANIE_NESCHASTNOGO_SLUCHAYA']['VALUE'], 'YEAR'=>
                                 $item['PROPERTIES']['GOD_NESCHASTNOGO_SLUCHAYA']['VALUE'], 'HARDNESS' =>
                                     $item['PROPERTIES']['STEPEN_TYAZHESTI']['VALUE'], 'POSITION' =>
-                                        $item['PROPERTIES']['DOLZHNOSTI']['VALUE']];
+                                        $item['PROPERTIES']['DOLZHNOSTI']['VALUE'], 'TYPE'=>
+                                            $item['PROPERTIES']['TIP_SOBYTIYA']['VALUE']];
                 }
         }
         return $retitems;

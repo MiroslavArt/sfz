@@ -15,14 +15,14 @@ function Appear(Element) {
         // value - это значение текущего элемента массива
         
         //выведем индекс и значение массива в консоль
-        text += '<b>' + 'В ' + $(value).attr('data-year') + ' Категория: ' + $(value).attr('data-tyazh') + 
-            ' С: ' + $(value).attr('data-dolzhn') + '</b><br/>' + $(value).text() + '<br/>'
+        text += '<b>' + 'Год ' + $(value).attr('data-year') + ' .Категория: ' + $(value).attr('data-tyazh') + 
+            ' .С: ' + $(value).attr('data-dolzhn') + ' .Тип: ' + $(value).attr('data-type') + '</b><br/>' + $(value).text() + '<br/>'
       
     });
     //(Element.getAttribute("data-id")
     popup = BX.PopupWindowManager.create(Element.getAttribute("data-id"), Element, {
         content: text,
-        width: 400,
+        width: 600,
         darkMode: true,
         autoHide: true,
         closeIcon: false

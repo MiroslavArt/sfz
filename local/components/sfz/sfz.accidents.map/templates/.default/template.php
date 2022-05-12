@@ -16,7 +16,8 @@ use Bitrix\Main\Localization\Loc;
                             <div class="sfz-map-cell">
                                 <? foreach($arResult['accidents']['x'.$j.'y'.$i] as $key => $item) { ?>
                                     <span class="sfz-map-cell-content" data-id="<?= $key ?>" data-year="<?= $item['YEAR'] ?>"
-                                        data-tyazh="<?= $item['HARDNESS'] ?>" data-dolzhn="<?= $item['POSITION'] ?>"><?= $item['DESCR'] ?></span>
+                                        data-tyazh="<?= $item['HARDNESS'] ?>" data-dolzhn="<?= $item['POSITION'] ?>"
+                                            data-type="<?= $item['TYPE'] ?>"><?= $item['DESCR'] ?></span>
                                 <? } ?>
                             </div>
                         <? } ?>
