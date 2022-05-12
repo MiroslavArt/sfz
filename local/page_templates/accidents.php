@@ -39,7 +39,7 @@ $APPLICATION->IncludeComponent(
 		"CONVERT_CURRENCY" => "N",
 		"DISPLAY_ELEMENT_COUNT" => "Y",
 		"FILTER_NAME" => "arrFilter",
-		"FILTER_VIEW_MODE" => "horizontal",
+		"FILTER_VIEW_MODE" => "vertical",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"IBLOCK_ID" => INCIB,
 		"IBLOCK_TYPE" => "lists",
