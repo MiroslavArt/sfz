@@ -3,15 +3,15 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main\Localization\Loc;
 ?>
 <div>
-    <input type="checkbox" id="network" name="network">
-    <label class="sfz-map-title" for="network"><? echo GetMessage("SHOW_GRID"); ?></label>
+    <input type="checkbox" id="grid" name="grid">
+    <label class="sfz-map-title" for="grid"><? echo GetMessage("SHOW_GRID"); ?></label>
 </div>
 <div id="mapwrapper" class="sfz-map-wrap">
     <table class="sfz-map-table">
         <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>
             <tr>
                 <? for ($j = 1; $j <= $arResult['height']; $j++) { ?>
-                    <td class="sfz-map-network">
+                    <td>
                         <? if($arResult['accidents']['x'.$j.'y'.$i]) { ?>
                             <div class="sfz-map-cell">
                                 <? foreach($arResult['accidents']['x'.$j.'y'.$i] as $key => $item) { ?>
@@ -41,5 +41,12 @@ use Bitrix\Main\Localization\Loc;
         $( ".sfz-map-cell" ).mouseout(function(e) {
             Leave(e.currentTarget)
         });
+        $('#grid').click(function(){
+            if ($(this).is(':checked')){
+                $('td').addClass("sfz-map-network")
+            } else {
+                $('td').removeClass("sfz-map-network")
+            }
+        });   
     });
 </script>
