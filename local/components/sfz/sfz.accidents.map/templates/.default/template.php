@@ -11,7 +11,7 @@ use Bitrix\Main\Localization\Loc;
         <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>
             <tr>
                 <? for ($j = 1; $j <= $arResult['height']; $j++) { ?>
-                    <td>
+                    <td class="sfz-map-background">
                         <? if($arResult['accidents']['x'.$j.'y'.$i]) { ?>
                             <div class="sfz-map-cell">
                                 <? foreach($arResult['accidents']['x'.$j.'y'.$i] as $key => $item) { ?>
@@ -44,9 +44,9 @@ use Bitrix\Main\Localization\Loc;
         });
         $('#grid').click(function(){
             if ($(this).is(':checked')){
-                $('td').addClass("sfz-map-network")
+                $('.sfz-map-background').addClass("sfz-map-network")
             } else {
-                $('td').removeClass("sfz-map-network")
+                $('.sfz-map-background').removeClass("sfz-map-network")
             }
         });   
     });
