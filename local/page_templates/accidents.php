@@ -30,7 +30,8 @@ $APPLICATION->IncludeComponent(
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.smart.filter", 
-	".default", 
+	".default_old
+	", 
 	array(
 		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "36000000",
