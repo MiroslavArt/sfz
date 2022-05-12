@@ -30,7 +30,7 @@ $APPLICATION->IncludeComponent(
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.smart.filter", 
-	"sfz_map1
+	".default
 	", 
 	array(
 		"CACHE_GROUPS" => "N",
@@ -59,7 +59,7 @@ $APPLICATION->IncludeComponent(
 		"SMART_FILTER_PATH" => "",
 		"TEMPLATE_THEME" => "wood",
 		"XML_EXPORT" => "N",
-		"COMPONENT_TEMPLATE" => "sfz_map1"
+		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
 );?>
