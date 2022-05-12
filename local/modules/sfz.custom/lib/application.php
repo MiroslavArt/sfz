@@ -72,7 +72,7 @@ class Application
         define('TYPE2UFMANLAM', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmanlam'));
         define('PLYWOODIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_plywoodIB'));
         define('LAMARTYIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartyIB'));
-        define('KUBIB', \COption::GetOptionString('sfz.custom', 'infokiosk_kubikIB'));
+        //define('KUBIB', \COption::GetOptionString('sfz.custom', 'infokiosk_kubikIB'));
         define('INCIB', \COption::GetOptionString('sfz.custom', 'infokiosk_incidentsIB'));
         define('HORIZON', \COption::GetOptionString('sfz.custom', 'infokiosk_cellshorizontal'));
         define('VERTU', \COption::GetOptionString('sfz.custom', 'infokiosk_cellsvertical'));

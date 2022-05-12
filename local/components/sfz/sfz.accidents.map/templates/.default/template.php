@@ -1,7 +1,12 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
+use Bitrix\Main\Localization\Loc;
 ?>
+<div>
+    <input type="checkbox" id="network" name="network"
+             >
+    <label for="network"><? Loc::getMessage('SHOW_GRID'); ?></label>
+</div>
 <div id="mapwrapper" class="sfz-map-wrap">
     <table class="sfz-map-table">
         <? for ($i = 1; $i <= $arResult['length']; $i++) { ?>

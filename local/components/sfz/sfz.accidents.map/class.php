@@ -49,10 +49,10 @@ class AccMap extends CBitrixComponent
         $this->includeComponentTemplate();
     }
 
-    private function getKubikvalues() {
+    /*private function getKubikvalues() {
         return Utils::getIBlockElementsByConditions(KUBIB, ["ACTIVE"=>'Y', "!PROPERTY_RYAD"=>false, 
             "!PROPERTY_KOLONKA"=>false], [], [], [], false);
-    }
+    }*/
 
     private function getAccidents() {
         $retitems = [];
@@ -73,7 +73,7 @@ class AccMap extends CBitrixComponent
     
     private function prepareProperties() {
         Loader::includeModule('iblock');
-        $res = \CIBlockProperty::GetList([],['IBLOCK_ID'=>KUBIB]);
+        /*$res = \CIBlockProperty::GetList([],['IBLOCK_ID'=>KUBIB]);
         while($uid = $res->fetch()) {
             if($uid['CODE']=='RYAD') {
                 $this->rowidprop = $uid['ID'];
@@ -82,10 +82,10 @@ class AccMap extends CBitrixComponent
             } elseif($uid['CODE']=='KARTINKA') {
                 $this->kartidprop = $uid['ID'];
             }
-        }
+        }*/
         $res = \CIBlockProperty::GetList([],['IBLOCK_ID'=>INCIB]);
         while($uid = $res->fetch()) {
-            if($uid['CODE']=='ELEMENT_KARTY') {
+            if($uid['CODE']=='TIP_SOBYTIYA') {
                 $this->elemprop = $uid['ID'];
             } elseif($uid['CODE']=='OPISANIE_NESCHASTNOGO_SLUCHAYA') {
                 $this->descrprop = $uid['ID'];
@@ -103,7 +103,7 @@ class AccMap extends CBitrixComponent
         }
     }
     
-    private function getSize() {
+    /*private function getSize() {
         $size = ['length' => 0, 'height' => 0];
             
         $lengths = [];
@@ -118,7 +118,7 @@ class AccMap extends CBitrixComponent
         $size['height'] = intval(max(array_unique($heights))); 
         return $size;
 
-    }
+    }*/
 
   
 }

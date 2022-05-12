@@ -329,12 +329,12 @@ $arAllOptions = [
         ]    
     ],
     'infokiosk' => [
-        [
+        /*[
             'infokiosk_kubikIB',
             Loc::getMessage($MODULE_ID.'_kubikIB'),
             Option::get($MODULE_ID, '_kubikIB'),
             ['text']
-        ],
+        ],*/
         [
             'infokiosk_incidentsIB',
             Loc::getMessage($MODULE_ID.'_incidentsIB'),
