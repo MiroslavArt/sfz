@@ -15,8 +15,8 @@ function Appear(Element) {
         // value - это значение текущего элемента массива
         
         //выведем индекс и значение массива в консоль
-        text += '<b>' + 'Год ' + $(value).attr('data-year') + ' .Категория: ' + $(value).attr('data-tyazh') + 
-            ' .С: ' + $(value).attr('data-dolzhn') + ' .Тип: ' + $(value).attr('data-type') + '</b><br/>' + $(value).text() + '<br/>'
+        text += '<b>' + 'Год ' + $(value).attr('data-year') + '.Категория: ' + $(value).attr('data-tyazh') + 
+            '.С: ' + $(value).attr('data-dolzhn') + '.Тип: ' + $(value).attr('data-type') + '</b><br/>' + $(value).text() + '<br/>'
       
     });
     //(Element.getAttribute("data-id")
