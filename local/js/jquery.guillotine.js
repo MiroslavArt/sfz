@@ -30,8 +30,8 @@
   };
 
   defaults = {
-    width: 1000,
-    height: 720,
+    width: 400,
+    height: 300,
     zoomStep: 0.1,
     init: null,
     eventOnChange: null,

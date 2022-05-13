@@ -55,6 +55,7 @@ jQuery(function() {
       // Bind actions
       $('#controls a').click(function(e) {
         e.preventDefault()
+        console.log("click")
         action = camelize(this.id)
         picture.guillotine(action)
       })
@@ -100,4 +101,3 @@ function Appear(Element) {
    popup.show();
    return true;
 }
-
