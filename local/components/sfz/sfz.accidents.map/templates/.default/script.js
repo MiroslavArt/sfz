@@ -50,12 +50,11 @@ jQuery(function() {
       // Show controls and data
       $('.loading').remove()
       $('#controls').removeClass('hidden')
-      //showData( picture.guillotine('getData') )
+      showData( picture.guillotine('getData') )
   
       // Bind actions
       $('#controls a').click(function(e) {
         e.preventDefault()
-        console.log("click")
         action = camelize(this.id)
         picture.guillotine(action)
       })
