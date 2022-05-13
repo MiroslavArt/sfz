@@ -40,6 +40,8 @@ jQuery(function() {
       for(var k in data) { $('#'+k).html(data[k]) }
     }
   
+    $('#controls').removeClass('hidden')
+
     picture.on('load', function() {
       picture.guillotine({ eventOnChange: 'guillotinechange' })
       picture.guillotine('fit')
