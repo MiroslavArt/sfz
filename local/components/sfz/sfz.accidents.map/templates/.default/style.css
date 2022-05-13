@@ -35,7 +35,7 @@
 }
 
 #controls {
-    background-color: #1b1b1b;
+    border: #888 1px;
     text-align: center;
     width: 100%;
 }
@@ -49,7 +49,7 @@
     color: #888;
 }
 #controls a:hover {
-    color: #fff;
+    color: rgb(2, 2, 2);
     text-decoration: none;
 }
 
