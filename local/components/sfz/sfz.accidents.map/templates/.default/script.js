@@ -36,7 +36,7 @@ jQuery(function() {
     }()
   
     var showData = function (data) {
-      data.scale = parseFloat(data.scale.toFixed(1))
+      data.scale = parseFloat(data.scale.toFixed(4))
       for(var k in data) { $('#'+k).html(data[k]) }
     }
   
