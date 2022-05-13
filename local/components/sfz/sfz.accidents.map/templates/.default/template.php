@@ -35,26 +35,3 @@ use Bitrix\Main\Localization\Loc;
     </table>
 </div>
 
-<script>
-    BX.ready(function() {
-        //var x = 1111;
-        //console.log(x)
-        $('#mapwrapper').height($('#mapwrapper').width()*0.89);
-        $(window).resize(function(){
-            $('#mapwrapper').height($('#mapwrapper').width()*0.89);
-        }); 
-        $( ".sfz-map-cell" ).mouseover(function(e) {
-            Appear(e.currentTarget)
-        });
-        $( ".sfz-map-cell" ).mouseout(function(e) {
-            Leave(e.currentTarget)
-        });
-        $('#grid').click(function(){
-            if ($(this).is(':checked')){
-                $('.sfz-map-background').addClass("sfz-map-network")
-            } else {
-                $('.sfz-map-background').removeClass("sfz-map-network")
-            }
-        });   
-    });
-</script>
