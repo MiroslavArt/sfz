@@ -32,8 +32,8 @@ BX.ready(function() {
     for (var i=0; i<5; i++) { picture.guillotine('zoomIn') }
 
     // Show controls and data
-    $('.loading').remove()
-    $('.notice, #controls, #data').removeClass('hidden')
+    //$('.loading').remove()
+    //$('.notice, #controls, #data').removeClass('hidden')
     showData( picture.guillotine('getData') )
 
     // Bind actions
