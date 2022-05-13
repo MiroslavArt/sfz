@@ -15,38 +15,7 @@ BX.ready(function() {
     });
    
 
-    var camelize = function() {
-    var regex = /[\W_]+(.)/g
-    var replacer = function (match, submatch) { return submatch.toUpperCase() }
-    return function (str) { return str.replace(regex, replacer) }
-    }()
 
-    var showData = function (data) {
-    data.scale = parseFloat(data.scale.toFixed(4))
-    for(var k in data) { $('#'+k).html(data[k]) }
-    }
-
-    picture.on('load', function() {
-    picture.guillotine({ eventOnChange: 'guillotinechange' })
-    picture.guillotine('fit')
-    for (var i=0; i<5; i++) { picture.guillotine('zoomIn') }
-
-    // Show controls and data
-    //$('.loading').remove()
-    //$('.notice, #controls, #data').removeClass('hidden')
-    showData( picture.guillotine('getData') )
-
-    // Bind actions
-    $('#controls a').click(function(e) {
-        console.log("click")
-        e.preventDefault()
-        action = camelize(this.id)
-        picture.guillotine(action)
-    })
-
-    // Update data on change
-    picture.on('guillotinechange', function(e, data, action) { showData(data) })
-    })
 
     $('#grid').click(function(){
         if ($(this).is(':checked')){
@@ -56,6 +25,46 @@ BX.ready(function() {
         }
     });   
 });
+
+jQuery(function() {
+    var picture = $('#mapwrapper')
+  
+    var camelize = function() {
+      var regex = /[\W_]+(.)/g
+      var replacer = function (match, submatch) { return submatch.toUpperCase() }
+      return function (str) { return str.replace(regex, replacer) }
+    }()
+  
+    var showData = function (data) {
+      data.scale = parseFloat(data.scale.toFixed(4))
+      for(var k in data) { $('#'+k).html(data[k]) }
+    }
+  
+    picture.on('load', function() {
+      picture.guillotine({ eventOnChange: 'guillotinechange' })
+      picture.guillotine('fit')
+      for (var i=0; i<5; i++) { picture.guillotine('zoomIn') }
+  
+      // Show controls and data
+      $('.loading').remove()
+      $('#controls').removeClass('hidden')
+      showData( picture.guillotine('getData') )
+  
+      // Bind actions
+      $('#controls a').click(function(e) {
+        e.preventDefault()
+        console.log("click")
+        action = camelize(this.id)
+        picture.guillotine(action)
+      })
+  
+      // Update data on change
+      picture.on('guillotinechange', function(e, data, action) { showData(data) })
+    })
+  
+    // Display random picture
+   
+  })
 
 function Leave(Element) {
     //console.log(Element)

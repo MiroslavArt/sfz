@@ -6,7 +6,7 @@ use Bitrix\Main\Localization\Loc;
     <input type="checkbox" id="grid" name="grid">
     <label class="sfz-map-title" for="grid"><? echo GetMessage("SHOW_GRID"); ?></label>
 </div>
-<div id='controls' class=''>
+<div id='controls' class='hidden'>
       <a href='#' id='rotate_left'  title='Rotate left'><i class='fa fa-rotate-left'></i></a>
       <a href='#' id='zoom_out'     title='Zoom out'><i class='fa fa-search-minus'></i></a>
       <a href='#' id='fit'          title='Fit image'><i class='fa fa-arrows-alt'></i></a>
