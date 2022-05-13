@@ -40,9 +40,9 @@ jQuery(function() {
       for(var k in data) { $('#'+k).html(data[k]) }
     }
   
-    $('#controls').removeClass('hidden')
+    //$('#controls').removeClass('hidden')
 
-    picture.on('load', function() {
+    //picture.on('load', function() {
       picture.guillotine({ eventOnChange: 'guillotinechange' })
       picture.guillotine('fit')
       for (var i=0; i<5; i++) { picture.guillotine('zoomIn') }
@@ -62,7 +62,7 @@ jQuery(function() {
   
       // Update data on change
       picture.on('guillotinechange', function(e, data, action) { showData(data) })
-    })
+    //})
   
     // Display random picture
    
