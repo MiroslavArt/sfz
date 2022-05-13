@@ -10,7 +10,7 @@ BX.sfz.Group.Interface = {
     },
     preventSlider() {
         var diskid = "#group_panel_menu_" + this.groupid + "_files"; 
-        console.log(diskid)
+        //console.log(diskid)
         if ($(diskid).length > 0) {
             $(diskid).attr('data-onclick', "top.location.href = '/workgroups/group/" + this.groupid + "/disk/path/'");
         } 
