@@ -36,8 +36,8 @@ class Socialnetwork {
             \CJSCore::init(['group_interface']);
             global $APPLICATION;
             // add custom css for crm forms
-            $APPLICATION->SetAdditionalCSS("/local/css/jquery.guillotine.css");
-            $APPLICATION->SetAdditionalCSS('/local/css/font-awesome.min.css');
+            $APPLICATION->SetAdditionalCSS("/local/templates/.default/css/jquery.guillotine.css");
+            $APPLICATION->SetAdditionalCSS('/local/templates/.default/css/font-awesome.min.css');
             $APPLICATION->AddHeadScript('/local/js/jquery.guillotine.js');
             $asset->addString('<script>BX.ready(function () {BX.sfz.Group.Interface.init("'.$groupid.'");});</script>');
             if(!$arResult["Urls"]["Files"]) {
