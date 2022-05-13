@@ -38,6 +38,7 @@ BX.ready(function() {
 
     // Bind actions
     $('#controls a').click(function(e) {
+        console.log("click")
         e.preventDefault()
         action = camelize(this.id)
         picture.guillotine(action)
