@@ -33,3 +33,26 @@
 .sfz-map-title {
     font-weight: normal;
 }
+
+#controls {
+    background-color: #1b1b1b;
+    text-align: center;
+    width: 100%;
+}
+#controls a {
+    display: inline-block;
+    padding: 0 5%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #888;
+}
+#controls a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none!important;
+}

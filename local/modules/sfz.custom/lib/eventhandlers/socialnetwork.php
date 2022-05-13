@@ -34,6 +34,11 @@ class Socialnetwork {
             $arResult["Title"]["accidents"] = "Карта несчастных случаев";
             $groupid = $arResult["Group"]["ID"];
             \CJSCore::init(['group_interface']);
+            global $APPLICATION;
+            // add custom css for crm forms
+            $APPLICATION->SetAdditionalCSS("/local/css/jquery.guillotine.css");
+            $APPLICATION->SetAdditionalCSS('/local/css/font-awesome.min.css');
+            $APPLICATION->AddHeadScript('/local/js/jquery.guillotine.js');
             $asset->addString('<script>BX.ready(function () {BX.sfz.Group.Interface.init("'.$groupid.'");});</script>');
             if(!$arResult["Urls"]["Files"]) {
                 $arResult["Urls"]["Files"] = \CComponentEngine::MakePathFromTemplate("/workgroups/group/#group_id#/disk/path/", array("group_id" => $arResult["Group"]["ID"]));
