@@ -65,6 +65,8 @@ jQuery(function() {
     //})
   
     // Display random picture
+      $('#fit').trigger('click');
+
    
   })
 
