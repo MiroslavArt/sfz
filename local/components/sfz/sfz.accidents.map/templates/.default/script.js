@@ -26,7 +26,7 @@ BX.ready(function() {
     });   
 });
 
-jQuery(function() {
+/*jQuery(function() {
     var picture = $('#mapwrapper')
   
     var camelize = function() {
@@ -68,7 +68,7 @@ jQuery(function() {
       $('#fit').trigger('click');
 
    
-  })
+  })*/
 
 function Leave(Element) {
     //console.log(Element)
