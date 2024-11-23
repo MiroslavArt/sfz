@@ -7,3 +7,5 @@ if(Bitrix\Main\Loader::includeModule('sfz.custom')) {
     \SFZ\Custom\Application::init();
 }
 
+require_once dirname(__DIR__) ."/standard_classes_replacement/StandardClassesReplacementAutoloader.php";
+StandardClassesReplacementAutoloader::RegisterAutoloadFunction();

@@ -1,2 +1,2 @@
 <?php
-echo "plus"; 
+echo "plus";

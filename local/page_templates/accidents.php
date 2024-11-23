@@ -62,7 +62,8 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => ".default"
 	),
 	false
-);?>
+);
+?>
 <?
 $APPLICATION->IncludeComponent(
    "sfz:sfz.accidents.map",

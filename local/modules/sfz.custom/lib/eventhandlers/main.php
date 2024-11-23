@@ -20,12 +20,17 @@ class Main
         
         global $USER;
         //\CJSCore::init(['jquery', 'general_change_thema', 'type_requests_filtercontract']);
-        \CJSCore::init(['jquery', 'general_change_thema']);
         $asset = Asset::getInstance();
+        $asset->addString('<link href="/upload/sfz/select2.min.css" rel="stylesheet"></link>');
+        $asset->addString('<script src="/upload/sfz/select2.min.js"></script>');
+        \CJSCore::init(['jquery', 'general_change_thema', 'workflow_features']);
+        
         if(hidethema=="Y") {
             $asset->addString('<script>BX.ready(function () {BX.sfz.General.ChangeThema.init("'.$USER->IsAdmin().'");});</script>');
         }
-        
+       
+        $asset->addString('<script>BX.ready(function () {BX.sfz.wf.features.init();});</script>');
+
         $urlTemplates = [
             'type_detail_request' => 'crm/type/'.TYPECODE.'/details/#type_id#/',
             'type_detail_throughcompany' => 'crm/type/'.TYPE2ID.'/details/#type_id#/',

@@ -11,7 +11,7 @@ BX.sfz.crm.kanban = {
         var sum = 0
         var total = 0
         var node
-        console.log(grid)
+        //console.log(grid)
         if(grid.hasOwnProperty('columns')) {
             for(var i in grid.columns) {
                 //console.log(i)
@@ -60,7 +60,7 @@ BX.sfz.crm.kanban = {
     updateTitle: function(sum, total, node) {
         var edit = node.querySelector('.main-kanban-column-total-item');
         if (edit != null) {
-            console.log(edit)
+            //console.log(edit)
             //edit.classList.remove('main-kanban-column-total-item');
             var newcontent = document.createElement('span')
             newcontent.innerText = " на " + sum + " р."
@@ -76,7 +76,7 @@ BX.sfz.crm.kanban = {
     },
     processCollectionResponse(response) {
         if(response.hasOwnProperty('status')) {
-            console.log("status")
+            //console.log("status")
             if(response.status == 'success') {
                 this.processKanbanSignals(response);
             }

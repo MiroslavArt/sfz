@@ -3,9 +3,9 @@ BX.ready(function() {
     //console.log(x)
     var picture = $('#mapwrapper')
 
-    picture.height(picture.width()*0.89);
+    picture.height(picture.width()*1);
     $(window).resize(function(){
-        picture.height(picture.width()*0.89);
+        picture.height(picture.width()*1);
     }); 
     $( ".sfz-map-cell" ).mouseover(function(e) {
         Appear(e.currentTarget)

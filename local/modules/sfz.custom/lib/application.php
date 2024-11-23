@@ -26,6 +26,8 @@ class Application
         define('hidethema', \COption::GetOptionString('sfz.custom', 'main_hidethema'));
         define('FIREDEPT', \COption::GetOptionString('sfz.custom', 'main_firedept'));
         define('BOOKINGGROUP', \COption::GetOptionString('sfz.custom', 'main_bookinggroup'));
+        define('IBBIRTHD', \COption::GetOptionString('sfz.custom', 'main_birthdayIB'));
+        define('IBCONGBIRTHD', \COption::GetOptionString('sfz.custom', 'main_birthdaycongrIB'));
         define('EXTFUNCT', \COption::GetOptionString('sfz.custom', 'main_extfunct'));
         define('rootXML', \COption::GetOptionString('sfz.custom', 'company_rootXML'));
         define('importfileXML', \COption::GetOptionString('sfz.custom', 'company_importfileXML'));
@@ -41,6 +43,7 @@ class Application
         define('idGalUF', \COption::GetOptionString('sfz.custom', 'company_idGalUF'));
         define('hashUF', \COption::GetOptionString('sfz.custom', 'company_hashUF'));
         define('statusdealUF', \COption::GetOptionString('sfz.custom', 'company_statusdealUF'));
+        define('STATUSDEALUFID', \COption::GetOptionString('sfz.custom', 'company_statusdealUFID'));
         define('manLamUF', \COption::GetOptionString('sfz.custom', 'company_manLamUF'));
         define('manSyPlyUF', \COption::GetOptionString('sfz.custom', 'company_manSyPlyUF'));
         define('partncodeUF', \COption::GetOptionString('sfz.custom', 'company_partncodeUF'));
@@ -70,8 +73,17 @@ class Application
         define('TYPE2UFENG', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufeng'));
         define('TYPE2UFMANSYPLY', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmansyply'));
         define('TYPE2UFMANLAM', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmanlam'));
+        define('TYPE2UFMANSYPLYD', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmansyplydept'));
+        define('TYPE2UFMANLAMD', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2ufmanlamdept'));
+        define('TYPE2UFACTIVE', \COption::GetOptionString('sfz.custom', 'throughcompanies_type2active'));
         define('PLYWOODIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_plywoodIB'));
         define('LAMARTYIB', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartyIB'));
+        define('PLYWOODSUBST', \COption::GetOptionString('sfz.custom', 'throughcompanies_plywoodSUBST'));
+        define('LAMARTYSUBST', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartySUBST'));
+        define('PLYWOODSUBSTUNDO', \COption::GetOptionString('sfz.custom', 'throughcompanies_plywoodSUBSTUNDO'));
+        define('LAMARTYSUBSTUNDO', \COption::GetOptionString('sfz.custom', 'throughcompanies_lamartySUBSTUNDO'));
+        define('WFFILTER', \COption::GetOptionString('sfz.custom', 'throughcompanies_wfFilter'));
+        define('WFCODEFILTER', \COption::GetOptionString('sfz.custom', 'throughcompanies_wfcodeFilter'));
         //define('KUBIB', \COption::GetOptionString('sfz.custom', 'infokiosk_kubikIB'));
         define('INCIB', \COption::GetOptionString('sfz.custom', 'infokiosk_incidentsIB'));
         define('HORIZON', \COption::GetOptionString('sfz.custom', 'infokiosk_cellshorizontal'));
@@ -101,6 +113,8 @@ class Application
         $eventManager->addEventHandler('crm','onEntityDetailsTabsInitialized', ['\SFZ\Custom\EventHandlers\Crm','onEntityDetailsTabsInitialized']);
         $eventManager->addEventHandler('main','OnProlog', ['\SFZ\Custom\EventHandlers\Main','onProlog']);
         $eventManager->addEventHandler('main','OnAfterUserUpdate', ['\SFZ\Custom\EventHandlers\Main','OnAfterUserUpdate']);
+        //$eventManager->addEventHandler("report", "onAnalyticPageCollect", ['\SFZ\Custom\EventHandlers\Crm',"onAnalyticPageCollect"]);
+        
         //$eventManager->addEventHandler('main','onGetUserFieldValues', ['\SFZ\Custom\EventHandlers\Main','onGetUserFieldValues']);
         
         $eventManager->addEventHandler('iblock','OnAfterIBlockElementAdd', ['\SFZ\Custom\EventHandlers\Iblock','OnAfterIBlockElementAdd']);

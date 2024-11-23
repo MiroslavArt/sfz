@@ -31,3 +31,8 @@ $date = new DateTime();
     'js' => '/local/js/sfz.custom/group_interface.js?'.$date->getTimestamp()
 ]
 );
+\CJSCore::RegisterExt('workflow_features',
+[
+    'js' => '/local/js/sfz.custom/workflow_features.js?'.$date->getTimestamp()
+]
+);

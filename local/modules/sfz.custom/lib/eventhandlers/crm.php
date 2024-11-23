@@ -13,6 +13,9 @@ use Bitrix\Crm\Service;
 use Bitrix\Crm\Service\Operation;
 use Bitrix\Main\DI;
 use Bitrix\Crm\Service\Factory;
+use Bitrix\Crm\Integration\Report\Filter\Deal\SalesDynamicFilter;
+use Bitrix\Crm\Integration\Report\Dashboard\Sales\SalesDynamic;
+use Bitrix\Crm\Integration\Report\Dashboard\MyReports;
 
 class Crm
 {
@@ -32,6 +35,41 @@ class Crm
         
 
     }
+
+    public static function onAnalyticPageCollect()
+    {
+        Loader::includeModule('crm');
+        $analyticPageList = [];
+
+        //TODO: make query from HL or Iblock
+
+        $reportPage = new \Bitrix\Report\VisualConstructor\AnalyticBoard();
+        $reportPage->setTitle('Воронка СФЗ');
+        $reportPage->setBoardKey('crm-vc-myreports-lead');
+        $reportPage->setBatchKey('my_reports');  //kernel ID for  node
+        //$reportPage->setBoardKey(MyReports\DealBoard::BOARD_KEY);
+        $reportPage->addFeedbackButton();
+
+        if (method_exists($reportPage, 'setGroup'))
+        {
+            $reportPage->setGroup('sales_general');
+        }
+
+        $reportPage->setExternal(false);
+
+        $reportViewUrl = '/local/page_templates/pipeline.php';
+        $reportViewUrl = \CHTTP::urlAddParams($reportViewUrl, [
+            'ID' => 1,
+            'publicSidePanel' => 'N'
+        ]);
+        $reportPage->setExternalUrl($reportViewUrl); //this link will be opened in slider
+
+        $reportPage->setFilter(new SalesDynamicFilter(SalesDynamic::BOARD_KEY . "_" . SalesDynamic::VERSION . "_SFZ"));
+
+        $analyticPageList[] = $reportPage;
+
+        return $analyticPageList;
+     }
 
     
 

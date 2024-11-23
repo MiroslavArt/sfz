@@ -452,6 +452,9 @@ class Utils
         return strip_tags($el->LAST_ERROR);
     }
 
+
+
+
         /**
      * Get enum id
      * @param array $fields

@@ -47,8 +47,8 @@ class Iblock
             $manager = $element['PROPERTIES']['SOTRUDNIK']['VALUE']; 
             $companyid = $element['PROPERTIES']['SKVOZNAYA_KOMPANIYA_2']['VALUE']; 
             $datefrom = $element['PROPERTIES']['DATA_SMENY_MENEDZHERA']['VALUE'];
-
-            if($manager && $companyid) {
+            
+            if($manager && $companyid && date('Y-m-d') >= date('Y-m-d', strtotime($datefrom))) {
                 $check = self::checkforupdate($arFields['IBLOCK_ID'], $companyid, $datefrom, $arFields['ID']);
                 if($check) {
                     if(!$save) {

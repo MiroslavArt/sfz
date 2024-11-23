@@ -134,10 +134,13 @@ class ExportImport
     }
 
     public static function actualiseManagers() {
-        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y'], 
+        // нужен фильтр по дате
+        $date = date("Y-m-d");
+        
+        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y', '<=PROPERTY_DATA_SMENY_MENEDZHERA' => $date], 
             ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC']);
 
-        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y'], 
+        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y', '<=PROPERTY_DATA_SMENY_MENEDZHERA' => $date], 
             ['PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>'DESC', 'PROPERTY_DATA_SMENY_MENEDZHERA'=>'ASC', 'PROPERTY_SOTRUDNIK'=>'ASC']);
 
         $comparr = [];
@@ -212,14 +215,88 @@ class ExportImport
         return '\SFZ\Custom\Exchange\ExportImport::actualiseManagers();';
     }
 
+    public static function actualiseManagersLeaveLamarty() {
+        $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/temp_delegates_lamarty.xml';
+
+        //$attr = $xml->attributes();
+
+        //$attrib = end($attr);
+
+        //echo $attrib['stamp'];
+
+        if (file_exists($impfile)) {
+
+            $xml = simplexml_load_file($impfile);
+            foreach($xml as $element) {
+                $newel = Utils::xml2array($element);
+                $user = Utils::getUserbycondition(array('EMAIL' =>$newel['рабочий_емейл_менеджера']));
+                if($user) {
+                    $userid = $user['ID'];
+                    $factory = Service\Container::getInstance()->getFactory(TYPE2ID);
+	
+                    $items = $factory->getItems([
+                        'select' => [],
+                        'filter' => ['TITLE'=>$newel['клиент']]
+                    ]);
+                    $item = current($items);
+                    if($item) {
+                        $cdata = $item->getData();
+                        if($cdata['ID']) {
+ 
+                            $fromdate =  date("Y-m-d", strtotime($newel['дата_начала_временного_отсутствия'])); 
+                            
+                            $selectlammanagerchanges1 = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y', '=PROPERTY_DATA_SMENY_MENEDZHERA' => $fromdate,
+                                '=PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>$cdata['ID'], "=PROPERTY_SOTRUDNIK"=>$userid]);
+
+                            if(!$selectlammanagerchanges1) {
+                                    $selectlammanagerchanges2 = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y', '<PROPERTY_DATA_SMENY_MENEDZHERA' => $fromdate,
+                                    '=PROPERTY_SKVOZNAYA_KOMPANIYA_2'=>$cdata['ID'], "!PROPERTY_ZAMESHCHENIE"=>LAMARTYSUBST], ['PROPERTY_DATA_SMENY_MENEDZHERA'=>'DESC']);
+
+                                    if($selectlammanagerchanges2) {
+                                        $curmanager = $selectlammanagerchanges2[0]['PROPERTIES']['SOTRUDNIK']['VALUE'];
+                                        $data = [
+                                            'ACTIVE' => 'Y',
+                                            'NAME' => 'Замещение менеджера',
+                                            'PROPERTY_VALUES' => [
+                                                'SOTRUDNIK'=> $userid,
+                                                'SKVOZNAYA_KOMPANIYA_2' => $cdata['ID'],
+                                                'DATA_SMENY_MENEDZHERA' => $newel['дата_начала_временного_отсутствия'],
+                                                'ZAMESHCHENIE' => LAMARTYSUBST
+                                            ]
+                                        ];
+                                        $id = Utils::createIBlockElement(LAMARTYIB, $data, []);
+                                        
+                                        $data = [
+                                            'ACTIVE' => 'Y',
+                                            'NAME' => 'Восстановление после замещения',
+                                            'PROPERTY_VALUES' => [
+                                                'SOTRUDNIK'=> $curmanager,
+                                                'SKVOZNAYA_KOMPANIYA_2' => $cdata['ID'],
+                                                'DATA_SMENY_MENEDZHERA' => $newel['дата_окончания_временного_отсутствия'],
+                                                'ZAMESHCHENIE' => LAMARTYSUBSTUNDO
+                                            ]
+                                        ];
+                                        $id = Utils::createIBlockElement(LAMARTYIB, $data, []);
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return '\SFZ\Custom\Exchange\ExportImport::actualiseManagersLeaveLamarty();';
+
+    }
+
     public static function dumpCompanyXML()
     {        
         Loader::includeModule('crm');
         $date = date("d.m.Y H:i:s", time() - 24*60*60);
         $fromdate = ConvertDateTime($date); 
         //$selectchanges = Utils::getIBlockElementsByConditions(makeexportIB, [">=TIMESTAMP_X"=>$fromdate]);
-        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y']);
-        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y']);
+        $selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, ["ACTIVE"=>'Y', 'NAME'=>['Смена менеджера по фанере','Добавление менеджера по продаже фанеры']]);
+        $selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, ["ACTIVE"=>'Y', 'NAME'=>['Смена менеджера по ЛДСП', 'Добавление менеджера по продаже ЛДСП']]);
         //$selectspmanagerchanges = Utils::getIBlockElementsByConditions(PLYWOODIB, [">=TIMESTAMP_X"=>$fromdate]);
         //$selectlammanagerchanges = Utils::getIBlockElementsByConditions(LAMARTYIB, [">=TIMESTAMP_X"=>$fromdate]);
         if(rootXML) {
@@ -423,7 +500,13 @@ class ExportImport
                     }
                 }
                 if($company[statusdealUF]) {
-                    $addcompany->dealerlamarty2 = $company[statusdealUF];
+                    $const = STATUSDEALUFID; 
+                    if(!$const) {
+                        $const = 302;
+                    }
+                    $fieldvalstat = Utils::getEnumvalue($const, $company[statusdealUF], 'value');
+                    $addcompany->dealerlamarty2 = $fieldvalstat;
+                    //$addcompany->dealerlamarty2 = $company[statusdealUF];
                 }
                 
                 if($company[partncodeUF]) {
@@ -797,6 +880,118 @@ class ExportImport
             echo "</pre>";
 
         }
+     }*/
+    public static function syncFeeds() {
+        if(Loader::includeModule('crm')) {
+            $arFilter = [
+                "CHECK_PERMISSIONS"=>"N" //не проверять права доступа текущего пользователя
+            ];
+            $arSelect = [
+                "ID", COMPANYUF1, COMPANYUF2
+            ];
+            $res = \CCrmCompany::GetListEx([], $arFilter, false, false, $arSelect);
+        
+            while($arEnum = $res->Fetch()) {
+                $contactIDs = \Bitrix\Crm\Binding\ContactCompanyTable::getCompanyContactIDs($arEnum['ID']);
+                if($contactIDs) {
+                   foreach($contactIDs as $item) {
+                        \Bitrix\Crm\Timeline\Entity\TimelineBindingTable::attach(
+                            \CCrmOwnerType::Contact,
+                            $item, 
+                            \CCrmOwnerType::Company,
+                            $arEnum['ID'],
+                            [
+                                \Bitrix\Crm\Timeline\TimelineType::ACTIVITY
+                            ]
+                        );
+                        \CCrmActivity::AttachBinding(\CCrmOwnerType::Contact, $item, \CCrmOwnerType::Company, $arEnum['ID']);
+                        if($arEnum[COMPANYUF1]) {
+                            \Bitrix\Crm\Timeline\Entity\TimelineBindingTable::attach(
+                                \CCrmOwnerType::Contact,
+                                $item, 
+                                TYPE1ID,
+                                $arEnum[COMPANYUF1],
+                                [
+                                    \Bitrix\Crm\Timeline\TimelineType::ACTIVITY
+                                ]
+                            );
+                            \CCrmActivity::AttachBinding(\CCrmOwnerType::Contact, $item, TYPE1ID, $arEnum[COMPANYUF1]);
+        
+                        }
+                        if($arEnum[COMPANYUF2]) {
+                            \Bitrix\Crm\Timeline\Entity\TimelineBindingTable::attach(
+                                \CCrmOwnerType::Contact,
+                                $item, 
+                                TYPE2ID,
+                                $arEnum[COMPANYUF2],
+                                [
+                                    \Bitrix\Crm\Timeline\TimelineType::ACTIVITY
+                                ]
+                            );
+                            \CCrmActivity::AttachBinding(\CCrmOwnerType::Contact, $item, TYPE2ID, $arEnum[COMPANYUF2]);
+        
+                        }
+        
+                    }
+        
+                } 
+            }
+        }
+        return '\SFZ\Custom\Exchange\ExportImport::syncFeeds();';
+    }
 
-    }*/
+    public static function preparebirthdayXML()
+    {
+        return '\SFZ\Custom\Exchange\ExportImport::preparebirthdayXML();';
+    }
+
+    public static function preparebirthdayoldXML()
+    {
+        $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/b24_persons.xml';
+
+        $imptab = [];
+        $implel = [];
+
+        if (file_exists($impfile)) {
+
+            $xml = simplexml_load_file($impfile);
+            foreach($xml as $element) {
+                $newel = Utils::xml2array($element);
+                $implel[] = $newel['tab'];
+                $imptab[$newel['tab']] = $newel;
+        
+            }
+        }
+
+        $selectempl = Utils::getIBlockElementsByConditions(IBBIRTHD, ["ACTIVE"=>'Y', '=NAME' => $implel]);
+    
+        $curel = [];
+
+        foreach($selectempl as $value) {
+            $curel[] = $value['NAME']; 
+        }
+
+        $diff = array_diff($implel, $curel);
+
+        foreach($diff as $value) {
+            $data = [
+                'ACTIVE' => 'Y',
+                'NAME' => $value,
+                'PROPERTY_VALUES' => [
+                    'FIO'=> $imptab[$value]['fio'],
+                    'OTDEL' => mb_strtolower($imptab[$value]['dept']),
+                    'DEN_ROZHDENIYA' => $imptab[$value]['bdt']
+                ]
+            ];
+            $id = Utils::createIBlockElement(IBBIRTHD, $data, []);
+        }
+
+        $selectempl = Utils::getIBlockElementsByConditions(IBBIRTHD, ["ACTIVE"=>'Y', '!=NAME' => $implel]);
+
+        foreach($selectempl as $value) {
+            \CIBlockElement::Delete($value['ID']);
+
+        }
+        return '\SFZ\Custom\Exchange\ExportImport::preparebirthdayXML();';
+    }
 }

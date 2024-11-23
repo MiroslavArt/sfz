@@ -52,6 +52,18 @@ $arAllOptions = [
             ['text']
         ],
         [
+            'main_birthdayIB',
+            Loc::getMessage($MODULE_ID.'_birthdayIB'),
+            Option::get($MODULE_ID, '_birthdayIB'),
+            ['text']
+        ],
+        [
+            'main_birthdaycongrIB',
+            Loc::getMessage($MODULE_ID.'_birthdaycongrIB'),
+            Option::get($MODULE_ID, '_birthdaycongrIB'),
+            ['text']
+        ],
+        [
             'main_extfunct',
             Loc::getMessage($MODULE_ID.'_extfunct'),
             Option::get($MODULE_ID, '_extfunct'),
@@ -141,6 +153,12 @@ $arAllOptions = [
             'company_statusdealUF',
             Loc::getMessage($MODULE_ID.'_statusdealUF'),
             Option::get($MODULE_ID, '_statusdealUF'),
+            ['text']
+        ],
+        [
+            'company_statusdealUFID',
+            Loc::getMessage($MODULE_ID.'_statusdealUFID'),
+            Option::get($MODULE_ID, '_statusdealUFID'),
             ['text']
         ],
         [
@@ -310,9 +328,27 @@ $arAllOptions = [
             ['text']
         ], 
         [
+            'throughcompanies_type2ufmansyplydept',
+            Loc::getMessage($MODULE_ID.'_type2ufmansyplydept'),
+            Option::get($MODULE_ID, '_type2ufmansyplydept'),
+            ['text']
+        ], 
+        [
             'throughcompanies_type2ufmanlam',
             Loc::getMessage($MODULE_ID.'_type2ufmanlam'),
             Option::get($MODULE_ID, '_type2ufmanlam'),
+            ['text']
+        ],
+        [
+            'throughcompanies_type2ufmanlamdept',
+            Loc::getMessage($MODULE_ID.'_type2ufmanlamdept'),
+            Option::get($MODULE_ID, '_type2ufmanlamdept'),
+            ['text']
+        ],
+        [
+            'throughcompanies_type2active',
+            Loc::getMessage($MODULE_ID.'_type2active'),
+            Option::get($MODULE_ID, '_type2active'),
             ['text']
         ],
         [
@@ -326,7 +362,43 @@ $arAllOptions = [
             Loc::getMessage($MODULE_ID.'_lamartyIB'),
             Option::get($MODULE_ID, '_lamartyIB'),
             ['text']
-        ]    
+        ],
+        [
+            'throughcompanies_plywoodSUBST',
+            Loc::getMessage($MODULE_ID.'_plywoodSUBST'),
+            Option::get($MODULE_ID, '_plywoodSUBST'),
+            ['text']
+        ],  
+        [
+            'throughcompanies_plywoodSUBSTUNDO',
+            Loc::getMessage($MODULE_ID.'_plywoodSUBSTUNDO'),
+            Option::get($MODULE_ID, '_plywoodSUBSTUNDO'),
+            ['text']
+        ],
+        [
+            'throughcompanies_lamartySUBST',
+            Loc::getMessage($MODULE_ID.'_lamartySUBST'),
+            Option::get($MODULE_ID, '_lamartySUBST'),
+            ['text']
+        ],    
+        [
+            'throughcompanies_lamartySUBSTUNDO',
+            Loc::getMessage($MODULE_ID.'_lamartySUBSTUNDO'),
+            Option::get($MODULE_ID, '_lamartySUBSTUNDO'),
+            ['text']
+        ],
+        [
+            'throughcompanies_wfFilter',
+            Loc::getMessage($MODULE_ID.'_wfFilter'),
+            Option::get($MODULE_ID, '_wfFilter'),
+            ['text']
+        ],
+        [
+            'throughcompanies_wfcodeFilter',
+            Loc::getMessage($MODULE_ID.'_wfcodeFilter'),
+            Option::get($MODULE_ID, '_wfcodeFilter'),
+            ['text']
+        ],
     ],
     'infokiosk' => [
         /*[
