@@ -942,6 +942,69 @@ class ExportImport
 
     public static function preparebirthdayXML()
     {
+        $impfile = $_SERVER['DOCUMENT_ROOT'].rootXML.'/b24_persons.xml';
+
+        $imptab = [];
+        $implel = [];
+
+        if (file_exists($impfile)) {
+
+            $xml = simplexml_load_file($impfile);
+            foreach($xml as $element) {
+                $newel = Utils::xml2array($element);
+                $implel[] = $newel['tab'];
+                $imptab[$newel['tab']] = $newel;
+
+            }
+        }
+
+        $selectempl = Utils::getIBlockElementsByConditions(IBBIRTHD, ["ACTIVE"=>'Y']);
+
+        foreach($selectempl as $value) {
+            $curel[] = $value['NAME'];
+            $cureletab[$value['NAME']] = [
+                'ID' => $value['ID'],
+                'fio' => $value['PROPERTIES']['FIO']['VALUE'],
+                'dept' => $value['PROPERTIES']['OTDEL']['VALUE'],
+            ];
+        }
+
+        // добавляемые записи
+        $addid = array_diff($implel, $curel);
+
+        // удаляемые записи
+        $delid = array_diff($curel, $implel);
+
+        // обновляемые записи
+        $updid = array_intersect($curel, $implel);
+
+        foreach($addid as $value) {
+            $data = [
+                'ACTIVE' => 'Y',
+                'NAME' => $value,
+                'PROPERTY_VALUES' => [
+                    'FIO'=> $imptab[$value]['fio'],
+                    'OTDEL' => mb_strtolower($imptab[$value]['dept']),
+                    'DEN_ROZHDENIYA' => $imptab[$value]['bdt']
+                ]
+            ];
+            $id = createIBlockElement(IBBIRTHD, $data, []);
+        }
+
+        foreach($delid as $value) {
+            \CIBlockElement::Delete($cureletab[$value]['ID']);
+        }
+
+        foreach($updid as $value) {
+            if(($cureletab[$value]['fio']!=$imptab[$value]['fio'])) {
+                \CIBlockElement::SetPropertyValuesEx($cureletab[$value]['ID'], false, ['FIO' => $imptab[$value]['fio']]);
+            }
+
+            if(($cureletab[$value]['dept']!=$imptab[$value]['dept'])) {
+                \CIBlockElement::SetPropertyValuesEx($cureletab[$value]['ID'], false, ['OTDEL' => $imptab[$value]['dept']]);
+            }
+        }
+
         return '\SFZ\Custom\Exchange\ExportImport::preparebirthdayXML();';
     }
 
@@ -972,7 +1035,7 @@ class ExportImport
         }
 
         $diff = array_diff($implel, $curel);
-
+        // bdt = '02.11.1994'
         foreach($diff as $value) {
             $data = [
                 'ACTIVE' => 'Y',

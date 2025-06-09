@@ -1,0 +1,5 @@
+<?php
+$MESS['NOTAMEDIA_ANALYTICS_MODULE_NAME'] = 'Аналитика СФЗ';
+$MESS['NOTAMEDIA_ANALYTICS_PARTNER_NAME'] = 'Notamedia';
+$MESS['NOTAMEDIA_ANALYTICS_PARTNER_DESC'] = 'Аналитика СФЗ';
+$MESS['NOTAMEDIA_ANALYTICS_PARTNER_URI'] = 'https://notamedia.com';

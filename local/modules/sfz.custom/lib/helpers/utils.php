@@ -452,7 +452,35 @@ class Utils
         return strip_tags($el->LAST_ERROR);
     }
 
+    /**
+     * Update product
+     * @param int $id
+     * @param array $params
+     * @param array $properties
+     */
+    public static function updateElement(int $id, array $params = [], array $properties = [])
+    {
+        if (empty($id) || $id === null) {
+            exit('ID not set!');
+        }
 
+        $el = new \CIBlockElement();
+
+        if (!empty($params)) {
+            $res = $el->Update($id, $params);
+        }
+
+        if (!empty($properties)) {
+            foreach ($properties as $key => $property) {
+                \CIBlockElement::SetPropertyValuesEx($id, false, [$key => $property]);
+            }
+        }
+        if($el->LAST_ERROR) {
+            return strip_tags($el->LAST_ERROR);
+        } else {
+            return $res;
+        }
+    }
 
 
         /**

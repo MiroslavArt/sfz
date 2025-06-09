@@ -1,0 +1,63 @@
+.HBPoem {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: red;
+    font-size: .9em; 
+}
+
+.NextBDTitle {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    font-weight: bold;
+    color: green;
+    font-size: .9em; 
+}
+
+.NextDate
+{
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: red;
+    font-size: .9em; 
+}
+
+.NextNames
+{
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: black;
+    font-size: .9em; 
+}
+
+.asterisks {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    font-weight: bold;
+    color: green;
+    font-size: .7em; 
+}
+
+.HBText {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: black;
+    font-size: .9em; 
+}
+
+.HBSimpleText {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: black;
+    font-size: .7em; 
+}
+
+.SimpleTitle {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    font-weight: bold;
+    color: green;
+    font-size: .7em; 
+}
+
+A {
+    font-family: verdana, arial, helvetica, sans-serif; 
+    color: black;
+    text-decoration: none;
+    font-size: .7em;
+}
+
+.main-table {
+    width: 100%;
+}
