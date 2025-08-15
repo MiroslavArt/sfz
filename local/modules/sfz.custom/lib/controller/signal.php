@@ -10,6 +10,30 @@ use Bitrix\Main\Loader;
 
 class Signal extends Controller
 {
+
+    /* add new public method */
+    public function configureActions()
+    {
+        return [
+            'getSignalAction' => [
+                'prefilters' => []
+            ],
+            'getTypeclientAction' => [
+                'prefilters' => []
+            ]
+        ];
+    }
+
+    /* public static method to get items from HL block with $hblid 6 */
+
+
+
+
+
+
+
+
+
     public function getSignalAction($signals)
     {
         Loader::includeModule('crm');
